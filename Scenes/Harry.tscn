@@ -1,0 +1,285 @@
+[gd_scene load_steps=30 format=2]
+
+[ext_resource path="res://Montreal.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Scenes/Harry.gd" type="Script" id=2]
+[ext_resource path="res://assets/MenuHarry.png" type="Texture" id=3]
+[ext_resource path="res://assets/viev.png" type="Texture" id=4]
+[ext_resource path="res://assets/viep.png" type="Texture" id=5]
+[ext_resource path="res://assets/Harry/HarryBlesse0_1.png" type="Texture" id=6]
+[ext_resource path="res://assets/Harry/HarryFatigue1.png" type="Texture" id=7]
+[ext_resource path="res://assets/Harry/HarryInquiet0.png" type="Texture" id=8]
+[ext_resource path="res://assets/Harry/HarryBlesse2_0.png" type="Texture" id=9]
+[ext_resource path="res://assets/Harry/HarryBlesse2_1.png" type="Texture" id=10]
+[ext_resource path="res://assets/Harry/HarryInquiet1.png" type="Texture" id=11]
+[ext_resource path="res://assets/Harry/HarryFatigue2.png" type="Texture" id=12]
+[ext_resource path="res://assets/Harry/HarryBlesse0_0.png" type="Texture" id=13]
+[ext_resource path="res://assets/Harry/HarryBlesse1_0.png" type="Texture" id=14]
+[ext_resource path="res://assets/Harry/HarryBlesse1_1.png" type="Texture" id=15]
+[ext_resource path="res://assets/Harry/HarryFatigue0.png" type="Texture" id=16]
+[ext_resource path="res://assets/Harry/HarryNeutre0.png" type="Texture" id=17]
+[ext_resource path="res://assets/Harry/HarryKO2.png" type="Texture" id=18]
+[ext_resource path="res://assets/Harry/HarryKO0.png" type="Texture" id=19]
+[ext_resource path="res://assets/Harry/HarryEnerve2.png" type="Texture" id=20]
+[ext_resource path="res://assets/Harry/HarryInquiet2.png" type="Texture" id=21]
+[ext_resource path="res://assets/Harry/HarryNeutre1.png" type="Texture" id=22]
+[ext_resource path="res://assets/Harry/HarryKO1.png" type="Texture" id=23]
+[ext_resource path="res://assets/Harry/HarryNeutre2.png" type="Texture" id=24]
+[ext_resource path="res://assets/Harry/HarryEnerve1.png" type="Texture" id=25]
+[ext_resource path="res://assets/Harry/HarryEnerve0.png" type="Texture" id=26]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 8 ), ExtResource( 11 ), ExtResource( 21 ) ],
+"loop": true,
+"name": "Inquiet",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 13 ), ExtResource( 6 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 9 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "Blesse",
+"speed": 6.0
+}, {
+"frames": [ ExtResource( 16 ), ExtResource( 7 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "Fatigue",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 26 ), ExtResource( 25 ), ExtResource( 20 ) ],
+"loop": true,
+"name": "Enerve",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 19 ), ExtResource( 23 ), ExtResource( 18 ) ],
+"loop": true,
+"name": "KO",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 17 ), ExtResource( 22 ), ExtResource( 24 ) ],
+"loop": true,
+"name": "Neutre",
+"speed": 3.0
+} ]
+
+[node name="Harry" type="HBoxContainer"]
+margin_right = 618.0
+margin_bottom = 280.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HarryMenu" type="MarginContainer" parent="."]
+margin_right = 364.0
+margin_bottom = 280.0
+size_flags_horizontal = 3
+custom_constants/margin_right = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="NinePatchRect" parent="HarryMenu"]
+margin_right = 359.0
+margin_bottom = 280.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 3 )
+
+[node name="Menu" type="MarginContainer" parent="HarryMenu/Background"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 5
+custom_constants/margin_top = 5
+custom_constants/margin_left = 5
+custom_constants/margin_bottom = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HarryMenu/Background/Menu"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 354.0
+margin_bottom = 275.0
+custom_constants/separation = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="HarryMenu/Background/Menu/VBoxContainer"]
+margin_right = 349.0
+margin_bottom = 152.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+columns = 2
+
+[node name="SkillChargeBouclier" type="Button" parent="HarryMenu/Background/Menu/VBoxContainer/GridContainer" groups=["HarryButtons"]]
+margin_right = 172.0
+margin_bottom = 48.0
+focus_neighbour_left = NodePath("../SkillLancerBouclier")
+focus_neighbour_top = NodePath("../SkillLancement")
+focus_neighbour_right = NodePath("../SkillLancerBouclier")
+focus_neighbour_bottom = NodePath("../SkillSoin")
+focus_next = NodePath("../SkillLancerBouclier")
+focus_previous = NodePath("../SkillLancement")
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 1 )
+custom_styles/disabled = SubResource( 1 )
+text = "Charge de bouclier"
+
+[node name="SkillLancerBouclier" type="Button" parent="HarryMenu/Background/Menu/VBoxContainer/GridContainer" groups=["HarryButtons"]]
+margin_left = 176.0
+margin_right = 348.0
+margin_bottom = 48.0
+focus_neighbour_left = NodePath("../SkillChargeBouclier")
+focus_neighbour_top = NodePath("../SkillDefense")
+focus_neighbour_right = NodePath("../SkillChargeBouclier")
+focus_neighbour_bottom = NodePath("../SkillDefense")
+focus_next = NodePath("../SkillSoin")
+focus_previous = NodePath("../SkillChargeBouclier")
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 1 )
+custom_styles/disabled = SubResource( 2 )
+text = "Lancer de bouclier"
+
+[node name="SkillSoin" type="Button" parent="HarryMenu/Background/Menu/VBoxContainer/GridContainer" groups=["HarryButtons"]]
+margin_top = 52.0
+margin_right = 172.0
+margin_bottom = 100.0
+focus_neighbour_left = NodePath("../SkillDefense")
+focus_neighbour_top = NodePath("../SkillChargeBouclier")
+focus_neighbour_right = NodePath("../SkillDefense")
+focus_neighbour_bottom = NodePath("../SkillLancement")
+focus_next = NodePath("../SkillDefense")
+focus_previous = NodePath("../SkillLancerBouclier")
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 1 )
+custom_styles/disabled = SubResource( 2 )
+text = "Soin"
+
+[node name="SkillDefense" type="Button" parent="HarryMenu/Background/Menu/VBoxContainer/GridContainer" groups=["HarryButtons"]]
+margin_left = 176.0
+margin_top = 52.0
+margin_right = 348.0
+margin_bottom = 100.0
+focus_neighbour_left = NodePath("../SkillSoin")
+focus_neighbour_top = NodePath("../SkillLancerBouclier")
+focus_neighbour_right = NodePath("../SkillSoin")
+focus_neighbour_bottom = NodePath("../SkillLancerBouclier")
+focus_next = NodePath("../SkillLancement")
+focus_previous = NodePath("../SkillSoin")
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 1 )
+custom_styles/disabled = SubResource( 2 )
+text = "Défense"
+
+[node name="SkillLancement" type="Button" parent="HarryMenu/Background/Menu/VBoxContainer/GridContainer" groups=["HarryButtons"]]
+margin_top = 104.0
+margin_right = 172.0
+margin_bottom = 152.0
+focus_neighbour_left = NodePath(".")
+focus_neighbour_top = NodePath("../SkillSoin")
+focus_neighbour_right = NodePath(".")
+focus_neighbour_bottom = NodePath("../SkillChargeBouclier")
+focus_next = NodePath("../SkillChargeBouclier")
+focus_previous = NodePath("../SkillDefense")
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 1 )
+custom_styles/disabled = SubResource( 2 )
+text = "Lancement"
+
+[node name="PV" type="Label" parent="HarryMenu/Background/Menu/VBoxContainer/GridContainer"]
+margin_left = 176.0
+margin_top = 117.0
+margin_right = 348.0
+margin_bottom = 138.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+custom_fonts/font = ExtResource( 1 )
+text = "PV : 230 / 230"
+align = 1
+
+[node name="Séparation" type="ColorRect" parent="HarryMenu/Background/Menu/VBoxContainer"]
+margin_top = 158.0
+margin_right = 349.0
+margin_bottom = 162.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.08
+
+[node name="MarginContainer" type="MarginContainer" parent="HarryMenu/Background/Menu/VBoxContainer"]
+margin_top = 168.0
+margin_right = 349.0
+margin_bottom = 270.0
+rect_min_size = Vector2( 349, 65 )
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+custom_constants/margin_right = 5
+custom_constants/margin_top = 5
+custom_constants/margin_left = 5
+custom_constants/margin_bottom = 5
+
+[node name="Description" type="Label" parent="HarryMenu/Background/Menu/VBoxContainer/MarginContainer"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 344.0
+margin_bottom = 97.0
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 1 )
+text = "Harry, explorateur qui s'est retrouvé dans le donjon par chance. Calme et méthodique, il peut protéger ses alliés."
+autowrap = true
+clip_text = true
+
+[node name="HarryPortrait" type="MarginContainer" parent="."]
+margin_left = 368.0
+margin_right = 618.0
+margin_bottom = 280.0
+custom_constants/margin_right = 5
+custom_constants/margin_left = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HarryPortrait"]
+margin_left = 5.0
+margin_right = 245.0
+margin_bottom = 280.0
+
+[node name="Cadre" type="Panel" parent="HarryPortrait/VBoxContainer"]
+margin_right = 240.0
+margin_bottom = 240.0
+rect_min_size = Vector2( 240, 240 )
+
+[node name="HarrySprite" type="AnimatedSprite" parent="HarryPortrait/VBoxContainer/Cadre"]
+position = Vector2( 120, 120 )
+frames = SubResource( 3 )
+animation = "Neutre"
+frame = 2
+playing = true
+
+[node name="HarryLifeBar" type="TextureProgress" parent="HarryPortrait/VBoxContainer"]
+margin_top = 244.0
+margin_right = 240.0
+margin_bottom = 280.0
+rect_min_size = Vector2( 0, 36 )
+max_value = 230.0
+value = 230.0
+texture_under = ExtResource( 4 )
+texture_progress = ExtResource( 5 )
+
+[node name="TimerBlesse" type="Timer" parent="."]
+
+[connection signal="pressed" from="HarryMenu/Background/Menu/VBoxContainer/GridContainer/SkillChargeBouclier" to="." method="_on_SkillChargeBouclier_pressed"]
+[connection signal="pressed" from="HarryMenu/Background/Menu/VBoxContainer/GridContainer/SkillLancerBouclier" to="." method="_on_SkillLancerBouclier_pressed"]
+[connection signal="pressed" from="HarryMenu/Background/Menu/VBoxContainer/GridContainer/SkillSoin" to="." method="_on_SkillSoin_pressed"]
+[connection signal="pressed" from="HarryMenu/Background/Menu/VBoxContainer/GridContainer/SkillDefense" to="." method="_on_SkillDefense_pressed"]
+[connection signal="pressed" from="HarryMenu/Background/Menu/VBoxContainer/GridContainer/SkillLancement" to="." method="_on_SkillLancement_pressed"]
+[connection signal="timeout" from="TimerBlesse" to="." method="_on_TimerBlesse_timeout"]
