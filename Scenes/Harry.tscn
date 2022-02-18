@@ -3,7 +3,7 @@
 [ext_resource path="res://Montreal.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Scenes/Harry.gd" type="Script" id=2]
 [ext_resource path="res://assets/MenuHarry.png" type="Texture" id=3]
-[ext_resource path="res://assets/viev.png" type="Texture" id=4]
+[ext_resource path="res://assets/vievb.png" type="Texture" id=4]
 [ext_resource path="res://assets/viep.png" type="Texture" id=5]
 [ext_resource path="res://assets/Harry/HarryBlesse0_1.png" type="Texture" id=6]
 [ext_resource path="res://assets/Harry/HarryFatigue1.png" type="Texture" id=7]
@@ -38,8 +38,18 @@ animations = [ {
 "name": "Inquiet",
 "speed": 3.0
 }, {
-"frames": [ ExtResource( 13 ), ExtResource( 6 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 9 ), ExtResource( 10 ) ],
+"frames": [ ExtResource( 17 ), ExtResource( 22 ), ExtResource( 24 ) ],
 "loop": true,
+"name": "Neutre",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 26 ), ExtResource( 25 ), ExtResource( 20 ) ],
+"loop": true,
+"name": "Enerve",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 13 ), ExtResource( 6 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 9 ), ExtResource( 10 ) ],
+"loop": false,
 "name": "Blesse",
 "speed": 6.0
 }, {
@@ -48,19 +58,9 @@ animations = [ {
 "name": "Fatigue",
 "speed": 3.0
 }, {
-"frames": [ ExtResource( 26 ), ExtResource( 25 ), ExtResource( 20 ) ],
-"loop": true,
-"name": "Enerve",
-"speed": 3.0
-}, {
 "frames": [ ExtResource( 19 ), ExtResource( 23 ), ExtResource( 18 ) ],
 "loop": true,
 "name": "KO",
-"speed": 3.0
-}, {
-"frames": [ ExtResource( 17 ), ExtResource( 22 ), ExtResource( 24 ) ],
-"loop": true,
-"name": "Neutre",
 "speed": 3.0
 } ]
 
@@ -275,11 +275,8 @@ value = 230.0
 texture_under = ExtResource( 4 )
 texture_progress = ExtResource( 5 )
 
-[node name="TimerBlesse" type="Timer" parent="."]
-
 [connection signal="pressed" from="HarryMenu/Background/Menu/VBoxContainer/GridContainer/SkillChargeBouclier" to="." method="_on_SkillChargeBouclier_pressed"]
 [connection signal="pressed" from="HarryMenu/Background/Menu/VBoxContainer/GridContainer/SkillLancerBouclier" to="." method="_on_SkillLancerBouclier_pressed"]
 [connection signal="pressed" from="HarryMenu/Background/Menu/VBoxContainer/GridContainer/SkillSoin" to="." method="_on_SkillSoin_pressed"]
 [connection signal="pressed" from="HarryMenu/Background/Menu/VBoxContainer/GridContainer/SkillDefense" to="." method="_on_SkillDefense_pressed"]
 [connection signal="pressed" from="HarryMenu/Background/Menu/VBoxContainer/GridContainer/SkillLancement" to="." method="_on_SkillLancement_pressed"]
-[connection signal="timeout" from="TimerBlesse" to="." method="_on_TimerBlesse_timeout"]

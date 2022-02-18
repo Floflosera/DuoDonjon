@@ -69,24 +69,9 @@ font_data = ExtResource( 18 )
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
-"frames": [ ExtResource( 30 ), ExtResource( 36 ), ExtResource( 38 ) ],
+"frames": [ ExtResource( 29 ), ExtResource( 43 ), ExtResource( 39 ) ],
 "loop": true,
-"name": "Neutre",
-"speed": 3.0
-}, {
-"frames": [ ExtResource( 22 ), ExtResource( 4 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 7 ), ExtResource( 8 ) ],
-"loop": true,
-"name": "Blesse",
-"speed": 6.0
-}, {
-"frames": [ ExtResource( 33 ), ExtResource( 37 ), ExtResource( 32 ) ],
-"loop": true,
-"name": "KO",
-"speed": 3.0
-}, {
-"frames": [ ExtResource( 28 ), ExtResource( 5 ), ExtResource( 21 ) ],
-"loop": true,
-"name": "Fatigue",
+"name": "Content",
 "speed": 3.0
 }, {
 "frames": [ ExtResource( 6 ), ExtResource( 10 ), ExtResource( 35 ) ],
@@ -94,27 +79,42 @@ animations = [ {
 "name": "Inquiet",
 "speed": 3.0
 }, {
+"frames": [ ExtResource( 22 ), ExtResource( 4 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 7 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "Blesse",
+"speed": 6.0
+}, {
+"frames": [ ExtResource( 28 ), ExtResource( 5 ), ExtResource( 21 ) ],
+"loop": true,
+"name": "Fatigue",
+"speed": 3.0
+}, {
 "frames": [ ExtResource( 44 ), ExtResource( 42 ), ExtResource( 34 ) ],
 "loop": true,
 "name": "Enerve",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 33 ), ExtResource( 37 ), ExtResource( 32 ) ],
+"loop": true,
+"name": "KO",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 30 ), ExtResource( 36 ), ExtResource( 38 ) ],
+"loop": true,
+"name": "Neutre",
 "speed": 3.0
 }, {
 "frames": [ ExtResource( 31 ), ExtResource( 40 ), ExtResource( 41 ) ],
 "loop": true,
 "name": "Triste",
 "speed": 3.0
-}, {
-"frames": [ ExtResource( 29 ), ExtResource( 43 ), ExtResource( 39 ) ],
-"loop": true,
-"name": "Content",
-"speed": 3.0
 } ]
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
-"frames": [ ExtResource( 53 ), ExtResource( 54 ), ExtResource( 55 ) ],
+"frames": [ ExtResource( 23 ), ExtResource( 58 ), ExtResource( 24 ) ],
 "loop": true,
-"name": "Neutre",
+"name": "Contente",
 "speed": 3.0
 }, {
 "frames": [ ExtResource( 48 ), ExtResource( 17 ), ExtResource( 47 ) ],
@@ -122,9 +122,9 @@ animations = [ {
 "name": "KO",
 "speed": 3.0
 }, {
-"frames": [ ExtResource( 61 ), ExtResource( 51 ), ExtResource( 60 ) ],
+"frames": [ ExtResource( 53 ), ExtResource( 54 ), ExtResource( 55 ) ],
 "loop": true,
-"name": "Fatiguee",
+"name": "Neutre",
 "speed": 3.0
 }, {
 "frames": [ ExtResource( 12 ), ExtResource( 15 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 16 ), ExtResource( 50 ) ],
@@ -137,19 +137,19 @@ animations = [ {
 "name": "Inquiete",
 "speed": 3.0
 }, {
-"frames": [ ExtResource( 59 ), ExtResource( 57 ), ExtResource( 46 ) ],
-"loop": true,
-"name": "Triste",
-"speed": 3.0
-}, {
 "frames": [ ExtResource( 49 ), ExtResource( 62 ), ExtResource( 52 ) ],
 "loop": true,
 "name": "Enervee",
 "speed": 3.0
 }, {
-"frames": [ ExtResource( 23 ), ExtResource( 58 ), ExtResource( 24 ) ],
+"frames": [ ExtResource( 61 ), ExtResource( 51 ), ExtResource( 60 ) ],
 "loop": true,
-"name": "Contente",
+"name": "Fatiguee",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 59 ), ExtResource( 57 ), ExtResource( 46 ) ],
+"loop": true,
+"name": "Triste",
 "speed": 3.0
 } ]
 
@@ -263,7 +263,7 @@ rect_min_size = Vector2( 240, 240 )
 position = Vector2( 120, 120 )
 frames = SubResource( 3 )
 animation = "Neutre"
-frame = 2
+frame = 1
 playing = true
 
 [node name="HarryLifeBar" type="TextureProgress" parent="HBoxContainer/HarryDia/HarryPortrait/VBoxContainer"]

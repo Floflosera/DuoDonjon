@@ -2,6 +2,13 @@ extends HBoxContainer
 
 #les signaux permettent de transmettre une information à d'autres scènes
 signal butPressed
+signal degatsTermine
+signal skillCasted
+
+onready var tourEffectue = false
+
+var choixSkill
+onready var priorite = false
 
 #Les statistiques d'Harry
 export var pvmax = 230		#les points de vie qu'il peut avoir au maximum
@@ -32,6 +39,8 @@ func modifDesc(text):
 func changerSprite():
 	if(pv == 0):						#Le personnage n'a plus assez de vie pour combattre
 		spriteAnim.play("KO")
+	elif(etatFlaux.pv == 0):			#L'autre personnage n'a plus beaucoup de vie
+		spriteAnim.play("Enerve")
 	elif(pv <= pvmax/3):				#Le personnage n'a plus beaucoup de vie
 		spriteAnim.play("Fatigue")
 	elif(etatFlaux.pv <= pvmax/3):		#L'autre personnage n'a plus beaucoup de vie
@@ -48,30 +57,74 @@ func degatsPris(degats):
 		pv -= degats				#Sinon les dégâts sont soustraits aux pv du personnage
 	barreVie.value = pv										#On met à jour l'affichage des pv de la barre
 	labelVie.set_text("PV :" + str(pv) + "/" + str(pvmax))	#Et du texte
-	$TimerBlesse.start()			#On lance un timer de une seconde pour savoir quand arrêter l'animation de blessure
-
-#Quand le timmer "TimerBlesse" se termine (au bout d'une seconde)
-func _on_TimerBlesse_timeout():
-	changerSprite()			#On modifie le sprite en veillant à respecter les conditions dans la méthode
-	$TimerBlesse.stop()		#On arrête le timer quand c'est fini
+	yield(spriteAnim,"animation_finished")
+	changerSprite()
+	etatFlaux.changerSprite()
+	emit_signal("degatsTermine")
 
 #Liste des bouttons que l'on peut presser, il renvoie tous le signal "un bouton a été pressé"
 #Ce signal est ensuite reçu dans GeneralInterface pour savoir que le choix a eu lieu
 func _on_SkillChargeBouclier_pressed():
+	choixSkill = 0
 	emit_signal("butPressed")
 
+func castSkillChargeBouclier():
+	etatFlaux.degatsPris(10)
+	yield(etatFlaux,"degatsTermine")
 
 func _on_SkillLancerBouclier_pressed():
+	choixSkill = 1
 	emit_signal("butPressed")
 
+func castSkillLancerBouclier():
+	etatFlaux.degatsPris(20)
+	yield(etatFlaux,"degatsTermine")
 
 func _on_SkillSoin_pressed():
+	choixSkill = 2
 	emit_signal("butPressed")
 
+func castSkillSoin():
+	etatFlaux.degatsPris(30)
+	yield(etatFlaux,"degatsTermine")
 
 func _on_SkillDefense_pressed():
+	choixSkill = 3
+	priorite = true
 	emit_signal("butPressed")
 
+func castSkillDefense():
+	etatFlaux.degatsPris(40)
+	yield(etatFlaux,"degatsTermine")
 
 func _on_SkillLancement_pressed():
+	choixSkill = 4
+	priorite = true
 	emit_signal("butPressed")
+
+func castSkillLancement():
+	etatFlaux.degatsPris(50)
+	yield(etatFlaux,"degatsTermine")
+
+func castSkill():
+	match choixSkill:
+		0:
+			castSkillChargeBouclier()
+			yield(etatFlaux,"degatsTermine")
+		1:
+			castSkillLancerBouclier()
+			yield(etatFlaux,"degatsTermine")
+		2:
+			castSkillSoin()
+			yield(etatFlaux,"degatsTermine")
+		3:
+			castSkillDefense()
+			yield(etatFlaux,"degatsTermine")
+			priorite = false
+		4:
+			castSkillLancement()
+			yield(etatFlaux,"degatsTermine")
+			priorite = false
+		
+	tourEffectue = true
+	emit_signal("skillCasted")

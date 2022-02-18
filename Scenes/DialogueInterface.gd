@@ -3,6 +3,7 @@ extends MarginContainer
 #Signal qui permet d'alerter de la fin d'un dialogue
 signal dialogueFini
 
+#Stockage du bouton de confirmation dans une variable
 onready var confirmation = get_node("HBoxContainer/FlauxDia/FlauxMenu/Background/Menu/VBoxContainer/Confirm")
 
 #Fonction pour créer une boite de texte pour Harry, Flaux, mettre leur émotion

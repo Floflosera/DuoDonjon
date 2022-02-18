@@ -35,6 +35,7 @@ func choixTour():
 		#Permet de retirer le curseur tous les boutons d'Harry (le groupe "HarryButtons" contient chaque bouton d'Harry)
 		get_tree().call_group("HarryButtons", "release_focus")
 		$HBoxContainer/Harry.modifDesc("") #Une fois l'action choisie, on vide la description des actions
+		$HBoxContainer/Harry.tourEffectue = false
 	
 	if($HBoxContainer/Flaux.pv > 0):
 		skillsFlauxSeCacher.grab_focus() #met le curseur de menu sur le premier skill de Flaux
@@ -45,11 +46,12 @@ func choixTour():
 		#Permet de retirer le curseur tous les boutons de Flaux (le groupe "FlauxButtons" contient chaque bouton de Flaux)
 		get_tree().call_group("FlauxButtons", "release_focus")
 		$HBoxContainer/Flaux.modifDesc("") #Une fois l'action choisie, on vide la description des actions
+		$HBoxContainer/Flaux.tourEffectue = false
 	
 	emit_signal("choixTourFini") #Permet d'avertir la scène de combat que le tour est terminé
 
 #Fonction qui boucle à l'infini, elle est toujours actif tant que la scène est présente
-func _delta_process():
+func _process(delta):
 	#En fonction d'où se situe le focus, on affiche un texte différent dans la description du personnage concerné
 	if(skillsHarryChargeBouclier.has_focus()):
 		$HBoxContainer/Harry.modifDesc("Ça c'est genre Charge de Bouclier tu sais le truc là")
@@ -77,7 +79,7 @@ func _delta_process():
 func _on_Harry_butPressed():
 	
 	#Des testes pour voir si "degatsPris(x)" fonctionne
-	#$HBoxContainer/Harry.degatsPris(180)
+	#$HBoxContainer/Harry.degatsPris(300)
 	#$HBoxContainer/Flaux.degatsPris(0)
 	pass
 
@@ -87,6 +89,6 @@ func _on_Flaux_butPressed():
 	#Des testes pour voir si "degatsPris(x)" fonctionne
 	#$HBoxContainer/Harry.pv = $HBoxContainer/Harry.pvmax #Pour remettre Harry full life et testé quand il regarde Flaux
 	#$HBoxContainer/Harry.degatsPris(0)
-	#$HBoxContainer/Flaux.degatsPris(160)
+	#$HBoxContainer/Flaux.degatsPris(300)
 	#choixTour() #permet de tester plusieurs choix de tour d'affiler
 	pass
