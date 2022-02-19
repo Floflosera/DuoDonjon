@@ -18,6 +18,7 @@ func _ready():
 	#yield($DialogueInterface, "dialogueFini")
 	#$DialogueInterface.visible = false
 	
+	
 	while(true):
 		$GeneralInterface.choixTour() #lance le choix du tour, simple test pour l'instant, il sera au début de chaque tour
 		yield($GeneralInterface, "choixTourFini")

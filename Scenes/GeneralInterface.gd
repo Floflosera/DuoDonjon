@@ -33,7 +33,7 @@ func choixTour():
 		yield($HBoxContainer/Harry, "butPressed")
 		
 		#Permet de retirer le curseur tous les boutons d'Harry (le groupe "HarryButtons" contient chaque bouton d'Harry)
-		get_tree().call_group("HarryButtons", "release_focus")
+		#get_tree().call_group("HarryButtons", "release_focus")
 		$HBoxContainer/Harry.modifDesc("") #Une fois l'action choisie, on vide la description des actions
 		$HBoxContainer/Harry.tourEffectue = false
 	

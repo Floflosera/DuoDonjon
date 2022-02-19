@@ -53,6 +53,7 @@ func degatsPris(degats):
 	spriteAnim.play("Blesse")		#Lance l'animation des dégâts pris
 	if(pv - degats <= 0):			#La condition fait en sorte de ne pas avoir des pv négatifs
 		pv = 0						#Si les pv sont inférieurs aux dégâts réçus, alors on tombe à 0pv
+		tourEffectue = true			#Si un allié n'a plus de pv, alors son tour sera compté comme déjà passé
 	else:
 		pv -= degats				#Sinon les dégâts sont soustraits aux pv du personnage
 	barreVie.value = pv										#On met à jour l'affichage des pv de la barre
@@ -61,6 +62,16 @@ func degatsPris(degats):
 	changerSprite()
 	etatFlaux.changerSprite()
 	emit_signal("degatsTermine")
+
+func soinPV(valeur):
+	if(pv + valeur >= pvmax):
+		pv = pvmax
+	else:
+		pv += valeur
+	barreVie.value = pv										#On met à jour l'affichage des pv de la barre
+	labelVie.set_text("PV :" + str(pv) + "/" + str(pvmax))	#Et du texte
+	changerSprite()
+	etatFlaux.changerSprite()
 
 #Liste des bouttons que l'on peut presser, il renvoie tous le signal "un bouton a été pressé"
 #Ce signal est ensuite reçu dans GeneralInterface pour savoir que le choix a eu lieu
@@ -85,8 +96,10 @@ func _on_SkillSoin_pressed():
 	emit_signal("butPressed")
 
 func castSkillSoin():
-	etatFlaux.degatsPris(30)
-	yield(etatFlaux,"degatsTermine")
+	soinPV(50)
+	etatFlaux.soinPV(50)
+	yield(spriteAnim,"animation_finished")
+	#faire une petite animation de soin et attendre la fin
 
 func _on_SkillDefense_pressed():
 	choixSkill = 3
@@ -116,7 +129,8 @@ func castSkill():
 			yield(etatFlaux,"degatsTermine")
 		2:
 			castSkillSoin()
-			yield(etatFlaux,"degatsTermine")
+			yield(spriteAnim,"animation_finished")
+			#faudra attendre la fin de l'anim de soin
 		3:
 			castSkillDefense()
 			yield(etatFlaux,"degatsTermine")
