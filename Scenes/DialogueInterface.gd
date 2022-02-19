@@ -21,7 +21,6 @@ var dialogue_spFlaux = 0
 var current = 0
 
 func start_dialogue():
-	emit_signal("dialogue_started")
 	current = 0
 	index_dialogue()
 	dialogue_textHarry = dialogue_keys[current].textHarry
@@ -32,9 +31,6 @@ func start_dialogue():
 
 func next_dialogue():
 	current += 1
-	#if current == dialogue_keys.size():
-	#	emit_signal("dialogueFini")
-	#	return
 	dialogue_textHarry = dialogue_keys[current].textHarry
 	dialogue_spHarry = int(dialogue_keys[current].spHarry)
 	dialogue_textFlaux = dialogue_keys[current].textFlaux
@@ -80,11 +76,17 @@ func boiteDeDiaAnim(textHarry,spHarry,textFlaux,spFlaux):
 		$HBoxContainer/HarryDia.modifDia(tempTextH)
 		$TimerDia.start()
 		yield($TimerDia,"timeout")
+		if Input.is_action_pressed("ui_select"):
+			$HBoxContainer/HarryDia.modifDia(textHarry)
+			break
 	for c in textFlaux:
 		tempTextF += c
 		$HBoxContainer/FlauxDia.modifDia(tempTextF)
 		$TimerDia.start()
 		yield($TimerDia,"timeout")
+		if Input.is_action_pressed("ui_select"):
+			$HBoxContainer/FlauxDia.modifDia(textFlaux)
+			break
 	confirmation.grab_focus()
 
 

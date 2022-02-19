@@ -12,6 +12,7 @@ var temp
 
 func _ready():
 	ordreTour()
+	$GeneralInterface.load_skills()
 	
 	#$DialogueInterface.visible = true
 	#$DialogueInterface.dialogueTest() #Permet de lancer un dialogue, ici le Test, celui pour tester (incroyable)

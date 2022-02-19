@@ -2,18 +2,31 @@ extends MarginContainer
 
 signal choixTourFini
 
+onready var fr = true
+onready var en = false
+
 #Tous les boutons de skills d'Harry sont stockés dans une variable pour agir sur leur focus plus tard
 onready var skillsHarryChargeBouclier = get_node("HBoxContainer/Harry/HarryMenu/Background/Menu/VBoxContainer/GridContainer/SkillChargeBouclier")
+var chargeBouclierDesc
 onready var skillsHarryLancerBouclier = get_node("HBoxContainer/Harry/HarryMenu/Background/Menu/VBoxContainer/GridContainer/SkillLancerBouclier")
+var lancerBouclierDesc
 onready var skillsHarrySoin = get_node("HBoxContainer/Harry/HarryMenu/Background/Menu/VBoxContainer/GridContainer/SkillSoin")
+var soinDesc
 onready var skillsHarryDefense = get_node("HBoxContainer/Harry/HarryMenu/Background/Menu/VBoxContainer/GridContainer/SkillDefense")
+var defenseDesc
 onready var skillsHarryLancement = get_node("HBoxContainer/Harry/HarryMenu/Background/Menu/VBoxContainer/GridContainer/SkillLancement")
+var lancementDesc
 #De même, les boutons de skills de Flaux dans une variable pour agir sur leur focus plus tard
 onready var skillsFlauxSeCacher = get_node("HBoxContainer/Flaux/FlauxMenu/Background/Menu/VBoxContainer/GridContainer/SkillSeCacher")
+var seCacherDesc
 onready var skillsFlauxCoupPlongeant = get_node("HBoxContainer/Flaux/FlauxMenu/Background/Menu/VBoxContainer/GridContainer/SkillCoupPlongeant")
+var coupPlongeantDesc
 onready var skillsFlauxLabourage = get_node("HBoxContainer/Flaux/FlauxMenu/Background/Menu/VBoxContainer/GridContainer/SkillLabourage")
+var labourageDesc
 onready var skillsFlauxLaceration = get_node("HBoxContainer/Flaux/FlauxMenu/Background/Menu/VBoxContainer/GridContainer/SkillLaceration")
+var lacerationDesc
 onready var skillsFlauxAffutage = get_node("HBoxContainer/Flaux/FlauxMenu/Background/Menu/VBoxContainer/GridContainer/SkillAffutage")
+var affutageDesc
 
 #Fonction qui se lance automatiquement à l'apparition de GeneralInterface
 func _ready():
@@ -54,26 +67,26 @@ func choixTour():
 func _process(delta):
 	#En fonction d'où se situe le focus, on affiche un texte différent dans la description du personnage concerné
 	if(skillsHarryChargeBouclier.has_focus()):
-		$HBoxContainer/Harry.modifDesc("Ça c'est genre Charge de Bouclier tu sais le truc là")
+		$HBoxContainer/Harry.modifDesc(chargeBouclierDesc)
 	if(skillsHarryLancerBouclier.has_focus()):
-		$HBoxContainer/Harry.modifDesc("Ici on a le Lancer de Bouclier, genre tu prends le bouclier, tu le lances et tout")
+		$HBoxContainer/Harry.modifDesc(lancerBouclierDesc)
 	if(skillsHarrySoin.has_focus()):
-		$HBoxContainer/Harry.modifDesc("Mec insane, ça c'est un skill, tu soignes, mais genre Flaux et toi")
+		$HBoxContainer/Harry.modifDesc(soinDesc)
 	if(skillsHarryDefense.has_focus()):
-		$HBoxContainer/Harry.modifDesc("Alors là c'est autre chose, tu mets ton bouclier devant toi et tu prends moins de dégâts")
+		$HBoxContainer/Harry.modifDesc(defenseDesc)
 	if(skillsHarryLancement.has_focus()):
-		$HBoxContainer/Harry.modifDesc("Il est rigolo lui, c'est genre tu boost Flaux et elle fait mal")
+		$HBoxContainer/Harry.modifDesc(lancementDesc)
 	
 	if(skillsFlauxSeCacher.has_focus()):
-		$HBoxContainer/Flaux.modifDesc("Faux vite se cacher !")
+		$HBoxContainer/Flaux.modifDesc(seCacherDesc)
 	if(skillsFlauxCoupPlongeant.has_focus()):
-		$HBoxContainer/Flaux.modifDesc("En haut ! C'est faux ! Ma faux !")
+		$HBoxContainer/Flaux.modifDesc(coupPlongeantDesc)
 	if(skillsFlauxLabourage.has_focus()):
-		$HBoxContainer/Flaux.modifDesc("Tu vas voir ce que ça fait d'être fauché !")
+		$HBoxContainer/Flaux.modifDesc(labourageDesc)
 	if(skillsFlauxLaceration.has_focus()):
-		$HBoxContainer/Flaux.modifDesc("Vrai ou faux ? Ma vrai faux va vraiment de faucher. Faux pas vraiment réfléchir.")
+		$HBoxContainer/Flaux.modifDesc(lacerationDesc)
 	if(skillsFlauxAffutage.has_focus()):
-		$HBoxContainer/Flaux.modifDesc("Faux vraiment que je prenne soin de ma Flaux, euh Faux, faut vraiment du coup...")
+		$HBoxContainer/Flaux.modifDesc(affutageDesc)
 
 #Fonction reliée au signal "butPressed" d'Harry, elle s'active lorsqu'un bouton d'Harry est pressé
 func _on_Harry_butPressed():
@@ -92,3 +105,77 @@ func _on_Flaux_butPressed():
 	#$HBoxContainer/Flaux.degatsPris(300)
 	#choixTour() #permet de tester plusieurs choix de tour d'affiler
 	pass
+
+export(String, FILE, "*.json") var skill_file
+var skills_keys = []
+var skills_name = ""
+var skills_desc = ""
+var current = 0
+
+const skill_fileFR = "res://text/FR/Skills.json"
+const skill_fileEN = "res://text/EN/Skills.json"
+
+func start_skills():
+	current = 0
+	index_skills()
+	skills_name = skills_keys[current].nameSkill
+	skills_desc = skills_keys[current].descSkill
+
+
+func next_skills():
+	current += 1
+	skills_name = skills_keys[current].nameSkill
+	skills_desc = skills_keys[current].descSkill
+
+
+func index_skills():
+	var skills = load_fileSkills(skill_file)
+	skills_keys.clear()
+	for key in skills:
+		skills_keys.append(skills[key])
+
+
+func load_fileSkills(file_path):
+	var file = File.new()
+	if file.file_exists(file_path):
+		file.open(file_path, file.READ)
+		var skills = parse_json(file.get_as_text())
+		return skills
+
+func load_skills():
+	if(fr):
+		skill_file = skill_fileFR
+	elif(en):
+		skill_file = skill_fileEN
+	load_fileSkills(skill_file)
+	start_skills()
+	skillsHarryChargeBouclier.set_text(skills_name)
+	chargeBouclierDesc = skills_desc
+	next_skills()
+	skillsHarryLancerBouclier.set_text(skills_name)
+	lancerBouclierDesc = skills_desc
+	next_skills()
+	skillsHarrySoin.set_text(skills_name)
+	soinDesc = skills_desc
+	next_skills()
+	skillsHarryDefense.set_text(skills_name)
+	defenseDesc = skills_desc
+	next_skills()
+	skillsHarryLancement.set_text(skills_name)
+	lancementDesc = skills_desc
+	
+	next_skills()
+	skillsFlauxSeCacher.set_text(skills_name)
+	seCacherDesc = skills_desc
+	next_skills()
+	skillsFlauxCoupPlongeant.set_text(skills_name)
+	coupPlongeantDesc = skills_desc
+	next_skills()
+	skillsFlauxLabourage.set_text(skills_name)
+	labourageDesc = skills_desc
+	next_skills()
+	skillsFlauxLaceration.set_text(skills_name)
+	lacerationDesc = skills_desc
+	next_skills()
+	skillsFlauxAffutage.set_text(skills_name)
+	affutageDesc = skills_desc

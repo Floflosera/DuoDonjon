@@ -1,0 +1,12 @@
+{
+  "skill_1" : {"nameSkill": "Charge de bouclier", "descSkill": "Harry Skill 1"},
+  "skill_2" : {"nameSkill": "Lancer de bouclier", "descSkill": "Harry Skill 2"},
+  "skill_3" : {"nameSkill": "Soin", "descSkill": "Harry Skill 3"},
+  "skill_4" : {"nameSkill": "Défense", "descSkill": "Harry Skill 4"},
+  "skill_5" : {"nameSkill": "Lancement", "descSkill": "Harry Skill 5"},
+  "skill_6" : {"nameSkill": "Se cacher", "descSkill": "Flaux Skill 1"},
+  "skill_7" : {"nameSkill": "Coup Plongeant", "descSkill": "Flaux Skill 2"},
+  "skill_8" : {"nameSkill": "Labourage", "descSkill": "Flaux Skill 3"},
+  "skill_9" : {"nameSkill": "Lacération", "descSkill": "Flaux Skill 4"},
+  "skill_10" : {"nameSkill": "Affûtage", "descSkill": "Flaux Skill 5"},
+}

@@ -1,0 +1,12 @@
+{
+  "skill_1" : {"nameSkill": "Shield charge", "descSkill": "Harry Skill 1"},
+  "skill_2" : {"nameSkill": "Shield throw", "descSkill": "Harry Skill 2"},
+  "skill_3" : {"nameSkill": "Heal", "descSkill": "Harry Skill 3"},
+  "skill_4" : {"nameSkill": "Defense", "descSkill": "Harry Skill 4"},
+  "skill_5" : {"nameSkill": "Launch", "descSkill": "Harry Skill 5"},
+  "skill_6" : {"nameSkill": "Hide", "descSkill": "Flaux Skill 1"},
+  "skill_7" : {"nameSkill": "Dive shot", "descSkill": "Flaux Skill 2"},
+  "skill_8" : {"nameSkill": "Plowing", "descSkill": "Flaux Skill 3"},
+  "skill_9" : {"nameSkill": "Laceration", "descSkill": "Flaux Skill 4"},
+  "skill_10" : {"nameSkill": "Sharpening", "descSkill": "Flaux Skill 5"},
+}
