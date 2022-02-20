@@ -1,5 +1,7 @@
 extends HBoxContainer
 
+#Rien de spécialement nouveau ici, on peut changer le label du personnage et son sprite en fonction du paramètre
+
 onready var spriteAnim = get_node("FlauxPortrait/VBoxContainer/Cadre/FlauxSprite")
 
 func modifDia(text):

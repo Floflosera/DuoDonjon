@@ -5,9 +5,16 @@ signal butPressed
 signal degatsTermine
 signal skillCasted
 
+#La variable qui permet de savoir si une action a été effectué
+#Elle est false de base, et devient true lorsqu'on effectue une action (ou que le personnage n'a plus de pv)
+#Elle redevient false lorsque l'on choisit sa nouvelle action
 onready var tourEffectue = false
 
+#Stocke le choix d'action du joueur
 var choixSkill
+#Variable qui permet de vérifier si une action est prioritaire ou non
+#Elle devient vrai lorsque l'on choisit une attaque prioritaire
+#Elle redevient fausse lorsque l'on lance une attaque prioritaire
 onready var priorite = false
 
 #Les statistiques de Flaux
@@ -22,14 +29,8 @@ onready var spriteAnim = get_node("FlauxPortrait/VBoxContainer/Cadre/FlauxSprite
 onready var barreVie = get_node("FlauxPortrait/VBoxContainer/FlauxLifeBar") #Barre de vie en textureProgress
 onready var labelVie = get_node("FlauxMenu/Background/Menu/VBoxContainer/GridContainer/PV") #Zone de texte avec la vie
 
-#onready var interfaceGeneralF = get_node("../..") #permet d'accéder aux méthodes/variables de l'interface, non utilisé
-
 #Stockage de la scène d'Harry dans une variable pour vérifier ses informations plus tard
 onready var etatHarry = get_node("../Harry")
-
-#Fonction qui s'active à l'apparition de la scène, non utilisé pour l'instant
-func _ready():
-	pass
 
 #Méthode qui permet de modifier le contenu du texte qui décrit les compétences avec ce qui est entré en paramètre
 func modifDesc(text):
@@ -48,7 +49,14 @@ func changerSprite():
 	else:								#Aucun des problèmes si-dessus
 		spriteAnim.play("Neutre")
 
-#Méthode qui permet d'infliger des "degats" points de degats au personnage visé
+#Pour afficher la vie en fonction de la langue
+func labelVieF():
+	if(get_node("../..").fr):
+		labelVie.set_text("PV : " + str(pv) + "/" + str(pvmax))	#Avec PV
+	else:
+		labelVie.set_text("HP : " + str(pv) + "/" + str(pvmax))	#Ou HP
+
+#Méthode qui permet d'infliger "degats" points de degats au personnage visé
 func degatsPris(degats):
 	spriteAnim.play("Blessee")		#Lance l'animation des dégâts pris
 	if(pv - degats <= 0):			#La condition fait en sorte de ne pas avoir des pv négatifs
@@ -56,30 +64,35 @@ func degatsPris(degats):
 		tourEffectue = true			#Si un allié n'a plus de pv, alors son tour sera compté comme déjà passé
 	else:
 		pv -= degats				#Sinon les dégâts sont soustraits aux pv du personnage
-	barreVie.value = pv										#On met à jour l'affichage des pv de la barre
-	labelVie.set_text("PV :" + str(pv) + "/" + str(pvmax))	#Et du texte
-	yield(spriteAnim,"animation_finished")
-	changerSprite()
-	etatHarry.changerSprite()
+	barreVie.value = pv				#On met à jour l'affichage des pv de la barre
+	labelVieF()						#Et des PV en textes
+	yield(spriteAnim,"animation_finished")	#Attend la fin de l'animation de blessure
+	changerSprite()							#Change le sprite des 2 persos
+	etatHarry.changerSprite()				#pour revérifier quelle sprite il faut afficher
 	emit_signal("degatsTermine")
 
+#Fonction lancer lorsqu'un soin est utilisé sur un personnage, il soigne "valeur" pv
 func soinPV(valeur):
-	if(pv + valeur >= pvmax):
-		pv = pvmax
+	if(pv + valeur >= pvmax):		#On ne peut pas dépasser sa valeur max de vie
+		pv = pvmax					#Comme pour les dégâts, on donne une valeur fixe auquel cas
 	else:
-		pv += valeur
-	barreVie.value = pv										#On met à jour l'affichage des pv de la barre
-	labelVie.set_text("PV :" + str(pv) + "/" + str(pvmax))	#Et du texte
-	changerSprite()
-	etatHarry.changerSprite()
+		pv += valeur				#Sinon on se soigne de la valeur en question
+	barreVie.value = pv				#On met à jour l'affichage des pv de la barre
+	labelVieF()						#Et des PV en textes
+	changerSprite()					#On change le sprite des 2 persos
+	etatHarry.changerSprite()		#pour revérifier quelle sprite il faut afficher
 
 #Liste des bouttons que l'on peut presser, il renvoie tous le signal "un bouton a été pressé"
 #Ce signal est ensuite reçu dans GeneralInterface pour savoir que le choix a eu lieu
+#La variable "choixSkill" est un nombre qui porte le numéro de la compétence choisie pour la lancer plus tard
+#On passe la priorite a vrai si l'attaque en question est prioritaire à l'ordre de la vitesse
 func _on_SkillSeCacher_pressed():
 	choixSkill = 0
 	priorite = true
 	emit_signal("butPressed")
 
+#Chaque bouton permet de pouvoir lancer un sort plus tard durant la déroulement du tour
+#Ces sorts sont associés aux fonctions "castSkill" et ont chacun des effets différents
 func castSkillSeCacher():
 	etatHarry.degatsPris(10)
 	yield(etatHarry,"degatsTermine")
@@ -116,6 +129,8 @@ func castSkillAffutage():
 	etatHarry.degatsPris(50)
 	yield(etatHarry,"degatsTermine")
 
+#castSkill() est la fonction qui lance une compétence en fonction du choix effectué précédemment
+#les compétences prioritaires remettent la variable priorite sur false une fois lancé
 func castSkill():
 	match choixSkill:
 		0:
@@ -135,5 +150,5 @@ func castSkill():
 			castSkillAffutage()
 			yield(etatHarry,"degatsTermine")
 			
-	tourEffectue = true
+	tourEffectue = true				#Quand une compétence est lancé, le tour est effectué
 	emit_signal("skillCasted")

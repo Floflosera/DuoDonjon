@@ -27,6 +27,3 @@ margin_bottom = 300.0
 [node name="Harry" parent="HBoxContainer" instance=ExtResource( 1 )]
 
 [node name="Flaux" parent="HBoxContainer" instance=ExtResource( 2 )]
-
-[connection signal="butPressed" from="HBoxContainer/Harry" to="." method="_on_Harry_butPressed"]
-[connection signal="butPressed" from="HBoxContainer/Flaux" to="." method="_on_Flaux_butPressed"]

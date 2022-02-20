@@ -1,5 +1,7 @@
 extends HBoxContainer
 
+#Rien de spécialement nouveau ici, on peut changer le label du personnage et son sprite en fonction du paramètre
+
 onready var spriteAnim = get_node("HarryPortrait/VBoxContainer/Cadre/HarrySprite")
 
 #Permet de modifier le texte de sa boite de dialogue par le contenu de la variable "text"
