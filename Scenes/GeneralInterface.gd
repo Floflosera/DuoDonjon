@@ -4,8 +4,8 @@ extends MarginContainer
 signal choixTourFini
 
 #Les variables qui informe de si le jeu est en français ou anglais
-onready var fr = true
-onready var en = false
+onready var fr = false
+onready var en = true
 
 #Tous les boutons de skills d'Harry sont stockés dans une variable pour agir sur leur focus plus tard
 onready var skillsHarryChargeBouclier = get_node("HBoxContainer/Harry/HarryMenu/Background/Menu/VBoxContainer/GridContainer/SkillChargeBouclier")

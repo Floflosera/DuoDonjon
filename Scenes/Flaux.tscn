@@ -29,6 +29,11 @@
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
+"frames": [ ExtResource( 15 ), ExtResource( 11 ), ExtResource( 14 ) ],
+"loop": true,
+"name": "KO",
+"speed": 3.0
+}, {
 "frames": [ ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ) ],
 "loop": true,
 "name": "Neutre",
@@ -47,11 +52,6 @@ animations = [ {
 "frames": [ ExtResource( 25 ), ExtResource( 18 ), ExtResource( 24 ) ],
 "loop": true,
 "name": "Fatiguee",
-"speed": 3.0
-}, {
-"frames": [ ExtResource( 15 ), ExtResource( 11 ), ExtResource( 14 ) ],
-"loop": true,
-"name": "KO",
 "speed": 3.0
 }, {
 "frames": [ ExtResource( 5 ), ExtResource( 9 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 10 ), ExtResource( 17 ) ],
@@ -93,7 +93,7 @@ rect_min_size = Vector2( 240, 240 )
 position = Vector2( 120, 120 )
 frames = SubResource( 2 )
 animation = "Neutre"
-frame = 2
+frame = 1
 playing = true
 
 [node name="FlauxLifeBar" type="TextureProgress" parent="FlauxPortrait/VBoxContainer"]
@@ -162,10 +162,12 @@ focus_neighbour_right = NodePath("../SkillCoupPlongeant")
 focus_neighbour_bottom = NodePath("../SkillLabourage")
 focus_next = NodePath("../SkillCoupPlongeant")
 focus_previous = NodePath("../SkillAffutage")
+mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 2 )
 custom_styles/disabled = SubResource( 1 )
+button_mask = 0
 text = "Se cacher"
 
 [node name="SkillCoupPlongeant" type="Button" parent="FlauxMenu/Background/Menu/VBoxContainer/GridContainer" groups=["FlauxButtons"]]
@@ -178,10 +180,12 @@ focus_neighbour_right = NodePath("../SkillSeCacher")
 focus_neighbour_bottom = NodePath("../SkillLaceration")
 focus_next = NodePath("../SkillLabourage")
 focus_previous = NodePath("../SkillSeCacher")
+mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 2 )
 custom_styles/disabled = SubResource( 1 )
+button_mask = 0
 text = "Coup plongeant"
 
 [node name="SkillLabourage" type="Button" parent="FlauxMenu/Background/Menu/VBoxContainer/GridContainer" groups=["FlauxButtons"]]
@@ -194,10 +198,12 @@ focus_neighbour_right = NodePath("../SkillLaceration")
 focus_neighbour_bottom = NodePath("../SkillSeCacher")
 focus_next = NodePath("../SkillLaceration")
 focus_previous = NodePath("../SkillCoupPlongeant")
+mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 2 )
 custom_styles/disabled = SubResource( 1 )
+button_mask = 0
 text = "Labourage"
 
 [node name="SkillLaceration" type="Button" parent="FlauxMenu/Background/Menu/VBoxContainer/GridContainer" groups=["FlauxButtons"]]
@@ -211,10 +217,12 @@ focus_neighbour_right = NodePath("../SkillLabourage")
 focus_neighbour_bottom = NodePath("../SkillAffutage")
 focus_next = NodePath("../SkillAffutage")
 focus_previous = NodePath("../SkillLabourage")
+mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 2 )
 custom_styles/disabled = SubResource( 1 )
+button_mask = 0
 text = "Lacération"
 
 [node name="PV" type="Label" parent="FlauxMenu/Background/Menu/VBoxContainer/GridContainer"]
@@ -238,6 +246,7 @@ focus_neighbour_right = NodePath(".")
 focus_neighbour_bottom = NodePath("../SkillCoupPlongeant")
 focus_next = NodePath("../SkillSeCacher")
 focus_previous = NodePath("../SkillLaceration")
+mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 2 )

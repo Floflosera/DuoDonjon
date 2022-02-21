@@ -52,7 +52,7 @@ func deroulementTour():
 	$TimerActions.start()					#Les timers permettent de voir les actions de manière plus clair
 	yield($TimerActions, "timeout")
 	for i in range(combattants.size()):
-		if(combattants[i].priorite):
+		if(combattants[i].priorite && combattants[i].tourEffectue == false):
 			actionCombattant(combattants[i])
 			yield(self,"actionFinie")
 	
@@ -62,10 +62,6 @@ func deroulementTour():
 			yield(self,"actionFinie")
 	
 	emit_signal("derouleTourFini")					#Informe de la fin du déroulement des actions
-
-#Timer pour attendre entre les actions du déroulement du tour
-func _on_TimerActions_timeout():
-	$TimerActions.stop()		#Le timer s'arrête lorsqu'il se termine, pour être prêt à une nouvelle utilisation
 
 #Lit le dialogue entrée en paramètre (qui est une méthode de la scène DialogueInterface)
 func litDialogue(dialog):

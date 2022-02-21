@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=2]
+[gd_scene load_steps=71 format=2]
 
 [ext_resource path="res://Scenes/DialogueInterface.gd" type="Script" id=1]
 [ext_resource path="res://assets/MenuHarry.png" type="Texture" id=2]
@@ -79,11 +79,6 @@ animations = [ {
 "name": "Inquiet",
 "speed": 3.0
 }, {
-"frames": [ ExtResource( 22 ), ExtResource( 4 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 7 ), ExtResource( 8 ) ],
-"loop": true,
-"name": "Blesse",
-"speed": 6.0
-}, {
 "frames": [ ExtResource( 33 ), ExtResource( 37 ), ExtResource( 32 ) ],
 "loop": true,
 "name": "KO",
@@ -103,6 +98,11 @@ animations = [ {
 "loop": true,
 "name": "Neutre",
 "speed": 3.0
+}, {
+"frames": [ ExtResource( 22 ), ExtResource( 4 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 7 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "Blesse",
+"speed": 6.0
 }, {
 "frames": [ ExtResource( 31 ), ExtResource( 40 ), ExtResource( 41 ) ],
 "loop": true,
@@ -152,6 +152,16 @@ animations = [ {
 "name": "Contente",
 "speed": 3.0
 } ]
+
+[sub_resource type="StyleBoxEmpty" id=7]
+
+[sub_resource type="StyleBoxEmpty" id=8]
+
+[sub_resource type="StyleBoxEmpty" id=9]
+
+[sub_resource type="StyleBoxEmpty" id=10]
+
+[sub_resource type="StyleBoxEmpty" id=6]
 
 [node name="DialogueInterface" type="MarginContainer"]
 anchor_right = 1.0
@@ -263,6 +273,7 @@ rect_min_size = Vector2( 240, 240 )
 position = Vector2( 120, 120 )
 frames = SubResource( 3 )
 animation = "Neutre"
+frame = 1
 playing = true
 
 [node name="HarryLifeBar" type="TextureProgress" parent="HBoxContainer/HarryDia/HarryPortrait/VBoxContainer"]
@@ -307,7 +318,7 @@ rect_min_size = Vector2( 240, 240 )
 position = Vector2( 120, 120 )
 frames = SubResource( 4 )
 animation = "Neutre"
-frame = 1
+frame = 2
 playing = true
 
 [node name="FlauxLifeBar" type="TextureProgress" parent="HBoxContainer/FlauxDia/FlauxPortrait/VBoxContainer"]
@@ -386,11 +397,18 @@ clip_text = true
 margin_top = 225.0
 margin_right = 349.0
 margin_bottom = 270.0
+mouse_filter = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.4
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/disabled = SubResource( 10 )
+custom_styles/normal = SubResource( 6 )
+button_mask = 0
 
 [node name="TimerDia" type="Timer" parent="."]
 wait_time = 0.02
+one_shot = true
 
 [connection signal="pressed" from="HBoxContainer/FlauxDia/FlauxMenu/Background/Menu/VBoxContainer/Confirm" to="." method="_on_Confirm_pressed"]
-[connection signal="timeout" from="TimerDia" to="." method="_on_TimerDia_timeout"]

@@ -33,5 +33,4 @@ script = ExtResource( 4 )
 visible = false
 
 [node name="TimerActions" type="Timer" parent="."]
-
-[connection signal="timeout" from="TimerActions" to="." method="_on_TimerActions_timeout"]
+one_shot = true

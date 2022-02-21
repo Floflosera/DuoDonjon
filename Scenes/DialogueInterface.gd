@@ -4,8 +4,8 @@ extends MarginContainer
 signal dialogueFini
 
 #Variable qui indique la langue du jeu (qui sera choisi par le joueur)
-onready var fr = true
-onready var en = false
+onready var fr = false
+onready var en = true
 
 #Texte temporaire pour l'affichage progressif des textes
 var tempTextH
@@ -137,7 +137,3 @@ func dialogueTest():
 	elif(en):
 		dialogue_file = dialogueTesten
 	dialogueRead() #puis on lance la lecture du dialogue
-
-#Timer pour l'affichage progressif des dialogues
-func _on_TimerDia_timeout():
-	$TimerDia.stop() #Le timer s'arrête lorsqu'il se termine, pour être prêt à une nouvelle utilisation
