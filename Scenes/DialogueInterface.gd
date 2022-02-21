@@ -4,8 +4,8 @@ extends MarginContainer
 signal dialogueFini
 
 #Variable qui indique la langue du jeu (qui sera choisi par le joueur)
-onready var fr = false
-onready var en = true
+onready var fr = true
+onready var en = false
 
 #Texte temporaire pour l'affichage progressif des textes
 var tempTextH

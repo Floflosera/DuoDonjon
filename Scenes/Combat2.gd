@@ -19,8 +19,8 @@ var temp
 func _ready():
 	ordreTour() #définie l'ordre des tours au début du combat
 	
-	#litDialogue($DialogueInterface.dialogueTest()) #Lancement du dialogue Test
-	#yield($DialogueInterface, "dialogueFini")
+	litDialogue($DialogueInterface.dialogueTest()) #Lancement du dialogue Test
+	yield($DialogueInterface, "dialogueFini")
 	
 	#Exemple de boucle d'un combat
 	while((combattantHarry.pv > 0 || combattantFlaux.pv > 0) && $Ennemi2.pv > 0):
@@ -42,7 +42,7 @@ func ordreTour():
 #Permet de vérifier si un combattant utilise une attaque prioritaire et auquel cas la lance
 func actionCombattant(combattant):
 	combattant.castSkill()				#Si oui, la compétence choisie est lancé
-	yield(combattant, "skillCasted")
+	yield(combattant, "skillFinished")
 	$TimerActions.start()
 	yield($TimerActions, "timeout")
 	emit_signal("actionFinie")

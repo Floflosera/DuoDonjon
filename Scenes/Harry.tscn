@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Montreal.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Scenes/Harry.gd" type="Script" id=2]
@@ -27,20 +27,11 @@
 [ext_resource path="res://assets/Harry/HarryEnerve1.png" type="Texture" id=25]
 [ext_resource path="res://assets/Harry/HarryEnerve0.png" type="Texture" id=26]
 
-[sub_resource type="StyleBoxEmpty" id=1]
-
-[sub_resource type="StyleBoxEmpty" id=2]
-
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
 "frames": [ ExtResource( 8 ), ExtResource( 11 ), ExtResource( 21 ) ],
 "loop": true,
 "name": "Inquiet",
-"speed": 3.0
-}, {
-"frames": [ ExtResource( 19 ), ExtResource( 23 ), ExtResource( 18 ) ],
-"loop": true,
-"name": "KO",
 "speed": 3.0
 }, {
 "frames": [ ExtResource( 16 ), ExtResource( 7 ), ExtResource( 12 ) ],
@@ -53,15 +44,20 @@ animations = [ {
 "name": "Enerve",
 "speed": 3.0
 }, {
+"frames": [ ExtResource( 13 ), ExtResource( 6 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 9 ), ExtResource( 10 ) ],
+"loop": false,
+"name": "Blesse",
+"speed": 6.0
+}, {
 "frames": [ ExtResource( 17 ), ExtResource( 22 ), ExtResource( 24 ) ],
 "loop": true,
 "name": "Neutre",
 "speed": 3.0
 }, {
-"frames": [ ExtResource( 13 ), ExtResource( 6 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 9 ), ExtResource( 10 ) ],
-"loop": false,
-"name": "Blesse",
-"speed": 6.0
+"frames": [ ExtResource( 19 ), ExtResource( 23 ), ExtResource( 18 ) ],
+"loop": true,
+"name": "KO",
+"speed": 3.0
 } ]
 
 [node name="Harry" type="HBoxContainer"]
@@ -132,7 +128,6 @@ mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 1 )
-custom_styles/disabled = SubResource( 1 )
 button_mask = 0
 text = "Charge de bouclier"
 
@@ -150,7 +145,6 @@ mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 1 )
-custom_styles/disabled = SubResource( 2 )
 button_mask = 0
 text = "Lancer de bouclier"
 
@@ -168,7 +162,6 @@ mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 1 )
-custom_styles/disabled = SubResource( 2 )
 button_mask = 0
 text = "Soin"
 
@@ -187,7 +180,6 @@ mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 1 )
-custom_styles/disabled = SubResource( 2 )
 button_mask = 0
 text = "Défense"
 
@@ -205,7 +197,6 @@ mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 1 )
-custom_styles/disabled = SubResource( 2 )
 button_mask = 0
 text = "Lancement"
 
@@ -272,7 +263,6 @@ rect_min_size = Vector2( 240, 240 )
 position = Vector2( 120, 120 )
 frames = SubResource( 3 )
 animation = "Neutre"
-frame = 1
 playing = true
 
 [node name="HarryLifeBar" type="TextureProgress" parent="HarryPortrait/VBoxContainer"]

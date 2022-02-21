@@ -18,34 +18,34 @@ var choixSkill
 #Elle redevient fausse lorsque l'on lance une attaque prioritaire
 onready var priorite = false
 
-#Les statistiques d'Harry
-export var pvmax = 230		#les points de vie qu'il peut avoir au maximum
-export var pv = 230			#les points de vie qu'il a actuellement
-export var defense = 2		#sa défense, influt sur les dégâts reçus
-export var vitesse = 2		#sa vitesse, influt sur l'ordre des actions d'un tour
+#Les statistiques
+export var pvmax = 1		#les points de vie qu'il peut avoir au maximum
+export var pv = 1			#les points de vie qu'il a actuellement
+export var defense = 0		#sa défense, influt sur les dégâts reçus
+export var vitesse = 0 		#sa vitesse, influt sur l'ordre des actions d'un tour
 
 #Stockage du sprite dans une variable pour pouvoir modifier son animation plus rapidement (et intuitivement)
-onready var spriteAnim = get_node("HarryPortrait/VBoxContainer/Cadre/HarrySprite") #Sprite animé d'Harry
+onready var spriteAnim = get_node("Portrait/VBoxContainer/Cadre/Sprite") #Sprite animé d'Harry
 #Stockage de ce qui affiche la vie pour pouvoir modifier leur valeur plus rapidement/intuitivement
-onready var barreVie = get_node("HarryPortrait/VBoxContainer/HarryLifeBar") #Barre de vie en textureProgress
-onready var labelVie = get_node("HarryMenu/Background/Menu/VBoxContainer/GridContainer/PV") #Zone de texte avec la vie
+onready var barreVie = get_node("Portrait/VBoxContainer/LifeBar") #Barre de vie en textureProgress
+onready var labelVie = get_node("CadreMenu/Background/Menu/VBoxContainer/GridContainer/PV") #Zone de texte avec la vie
 
-#Stockage de la scène de Flaux dans une variable pour vérifier ses informations plus tard
-onready var etatFlaux = get_node("../Flaux")
+#Stockage de la scène de l'allié dans une variable pour vérifier ses informations plus tard
+var allie
 
 #Méthode qui permet de modifier le contenu du texte qui décrit les compétences avec ce qui est entré en paramètre
 func modifDesc(text):
-	$HarryMenu/Background/Menu/VBoxContainer/MarginContainer/Description.set_text(text)
+	$CadreMenu/Background/Menu/VBoxContainer/MarginContainer/Description.set_text(text)
 
 #Méthode qui permet de changer le sprite du personnage en fonction de son état par priorité
 func changerSprite():
 	if(pv == 0):						#Le personnage n'a plus assez de vie pour combattre
 		spriteAnim.play("KO")
-	elif(etatFlaux.pv == 0):			#L'autre personnage n'a plus beaucoup de vie
+	elif(allie.pv == 0):			#L'autre personnage n'a plus beaucoup de vie
 		spriteAnim.play("Enerve")
 	elif(pv <= pvmax/3):				#Le personnage n'a plus beaucoup de vie
 		spriteAnim.play("Fatigue")
-	elif(etatFlaux.pv <= pvmax/3):		#L'autre personnage n'a plus beaucoup de vie
+	elif(allie.pv <= pvmax/3):		#L'autre personnage n'a plus beaucoup de vie
 		spriteAnim.play("Inquiet")
 	else:								#Aucun des problèmes si-dessus
 		spriteAnim.play("Neutre")
@@ -69,7 +69,7 @@ func degatsPris(degats):
 	labelVieF()						#Et des PV en textes
 	yield(spriteAnim,"animation_finished")	#Attend la fin de l'animation de blessure
 	changerSprite()							#Change le sprite des 2 persos
-	etatFlaux.changerSprite()				#pour revérifier quelle sprite il faut afficher
+	allie.changerSprite()				#pour revérifier quelle sprite il faut afficher
 	emit_signal("degatsTermine")
 
 #Fonction lancer lorsqu'un soin est utilisé sur un personnage, il soigne "valeur" pv
@@ -81,103 +81,88 @@ func soinPV(valeur):
 	barreVie.value = pv				#On met à jour l'affichage des pv de la barre
 	labelVieF()						#Et des PV en textes
 	changerSprite()					#On change le sprite des 2 persos
-	etatFlaux.changerSprite()		#pour revérifier quelle sprite il faut afficher
+	allie.changerSprite()			#pour revérifier quelle sprite il faut afficher
 
 #Permet de rerendre utilisable le skill utilise au tour précédent pour le tour suivant
 func abled():
-	$HarryMenu/Background/Menu/VBoxContainer/GridContainer/SkillChargeBouclier.disabled = false
-	$HarryMenu/Background/Menu/VBoxContainer/GridContainer/SkillLancerBouclier.disabled = false
-	$HarryMenu/Background/Menu/VBoxContainer/GridContainer/SkillSoin.disabled = false
-	$HarryMenu/Background/Menu/VBoxContainer/GridContainer/SkillDefense.disabled = false
-	$HarryMenu/Background/Menu/VBoxContainer/GridContainer/SkillLancement.disabled = false
+	$CadreMenu/Background/Menu/VBoxContainer/GridContainer/Skill1.disabled = false
+	$CadreMenu/Background/Menu/VBoxContainer/GridContainer/Skill2.disabled = false
+	$CadreMenu/Background/Menu/VBoxContainer/GridContainer/Skill3.disabled = false
+	$CadreMenu/Background/Menu/VBoxContainer/GridContainer/Skill4.disabled = false
+	$CadreMenu/Background/Menu/VBoxContainer/GridContainer/Skill5.disabled = false
 
 #Liste des bouttons que l'on peut presser, il renvoie tous le signal "un bouton a été pressé"
 #Ce signal est ensuite reçu dans GeneralInterface pour savoir que le choix a eu lieu
 #La variable "choixSkill" est un nombre qui porte le numéro de la compétence choisie pour la lancer plus tard
 #On passe la priorite a vrai si l'attaque en question est prioritaire à l'ordre de la vitesse
-func _on_SkillChargeBouclier_pressed():
+func _on_Skill1_pressed():
 	choixSkill = 0
 	abled()
 	#on bloque une action pendant un tour lorsqu'elle est utilisée
-	$HarryMenu/Background/Menu/VBoxContainer/GridContainer/SkillChargeBouclier.disabled = true
+	$CadreMenu/Background/Menu/VBoxContainer/GridContainer/Skill1.disabled = true
 	emit_signal("butPressed")
 
 #Chaque bouton permet de pouvoir lancer un sort plus tard durant la déroulement du tour
 #Ces sorts sont associés aux fonctions "castSkill" et ont chacun des effets différents
-func castSkillChargeBouclier():
-	etatFlaux.degatsPris(10)
-	yield(etatFlaux,"degatsTermine")
-	emit_signal("skillCast")
+func castSkill1():
+	pass
 
-func _on_SkillLancerBouclier_pressed():
+func _on_Skill2_pressed():
 	choixSkill = 1
 	abled()
-	$HarryMenu/Background/Menu/VBoxContainer/GridContainer/SkillLancerBouclier.disabled = true
+	$CadreMenu/Background/Menu/VBoxContainer/GridContainer/Skill2.disabled = true
 	emit_signal("butPressed")
 
-func castSkillLancerBouclier():
-	etatFlaux.degatsPris(20)
-	yield(etatFlaux,"degatsTermine")
-	emit_signal("skillCast")
+func castSkill2():
+	pass
 
-func _on_SkillSoin_pressed():
+func _on_Skill3_pressed():
 	choixSkill = 2
 	abled()
-	$HarryMenu/Background/Menu/VBoxContainer/GridContainer/SkillSoin.disabled = true
+	$CadreMenu/Background/Menu/VBoxContainer/GridContainer/Skill3.disabled = true
 	emit_signal("butPressed")
 
 #Le skill de soin permet de soigner les deux alliés
-func castSkillSoin():
-	soinPV(50)
-	etatFlaux.soinPV(50)
-	yield(spriteAnim,"animation_finished")
-	#faire une petite animation de soin et attendre la fin
-	emit_signal("skillCast")
+func castSkill3():
+	pass
 
-func _on_SkillDefense_pressed():
+func _on_Skill4_pressed():
 	choixSkill = 3
 	abled()
-	$HarryMenu/Background/Menu/VBoxContainer/GridContainer/SkillDefense.disabled = true
-	priorite = true
+	$CadreMenu/Background/Menu/VBoxContainer/GridContainer/Skill4.disabled = true
 	emit_signal("butPressed")
 
-func castSkillDefense():
-	etatFlaux.degatsPris(40)
-	priorite = false
-	yield(etatFlaux,"degatsTermine")
-	emit_signal("skillCast")
+func castSkill4():
+	pass
 
-func _on_SkillLancement_pressed():
+func _on_Skill5_pressed():
 	choixSkill = 4
 	abled()
-	$HarryMenu/Background/Menu/VBoxContainer/GridContainer/SkillLancement.disabled = true
-	priorite = true
+	$CadreMenu/Background/Menu/VBoxContainer/GridContainer/Skill5.disabled = true
 	emit_signal("butPressed")
 
-func castSkillLancement():
-	etatFlaux.degatsPris(50)
-	priorite = false
-	yield(etatFlaux,"degatsTermine")
-	emit_signal("skillCast")
+func castSkill5():
+	pass
 
 #castSkill() est la fonction qui lance une compétence en fonction du choix effectué précédemment
 #les compétences prioritaires remettent la variable priorite sur false une fois lancé
+#La fonction est un peu détaillée mais elle devra être surchargée
 func castSkill():
 	match choixSkill:
 		0:
-			castSkillChargeBouclier()
+			castSkill1()
 			yield(self,"skillCast")
 		1:
-			castSkillLancerBouclier()
+			castSkill2()
 			yield(self,"skillCast")
 		2:
-			castSkillSoin()
+			castSkill3()
 			yield(self,"skillCast")
 		3:
-			castSkillDefense()
+			castSkill4()
 			yield(self,"skillCast")
 		4:
-			castSkillLancement()
+			castSkill5()
 			yield(self,"skillCast")
 		
 	tourEffectue = true				#Quand une compétence est lancé, le tour est effectué

@@ -4,31 +4,31 @@ extends MarginContainer
 signal choixTourFini
 
 #Les variables qui informe de si le jeu est en français ou anglais
-onready var fr = false
-onready var en = true
+onready var fr = true
+onready var en = false
 
 #Tous les boutons de skills d'Harry sont stockés dans une variable pour agir sur leur focus plus tard
-onready var skillsHarryChargeBouclier = get_node("HBoxContainer/Harry/HarryMenu/Background/Menu/VBoxContainer/GridContainer/SkillChargeBouclier")
+onready var skillsHarry1 = $HBoxContainer/Harry/CadreMenu/Background/Menu/VBoxContainer/GridContainer/Skill1
 #Et chaque skill a une variable qui stockera sa description qui s'affiche pendant le choix
-var chargeBouclierDesc
-onready var skillsHarryLancerBouclier = get_node("HBoxContainer/Harry/HarryMenu/Background/Menu/VBoxContainer/GridContainer/SkillLancerBouclier")
+var coupBouclierDesc
+onready var skillsHarry2 = $HBoxContainer/Harry/CadreMenu/Background/Menu/VBoxContainer/GridContainer/Skill2
 var lancerBouclierDesc
-onready var skillsHarrySoin = get_node("HBoxContainer/Harry/HarryMenu/Background/Menu/VBoxContainer/GridContainer/SkillSoin")
+onready var skillsHarry3 = $HBoxContainer/Harry/CadreMenu/Background/Menu/VBoxContainer/GridContainer/Skill3
 var soinDesc
-onready var skillsHarryDefense = get_node("HBoxContainer/Harry/HarryMenu/Background/Menu/VBoxContainer/GridContainer/SkillDefense")
+onready var skillsHarry4 = $HBoxContainer/Harry/CadreMenu/Background/Menu/VBoxContainer/GridContainer/Skill4
 var defenseDesc
-onready var skillsHarryLancement = get_node("HBoxContainer/Harry/HarryMenu/Background/Menu/VBoxContainer/GridContainer/SkillLancement")
+onready var skillsHarry5 = $HBoxContainer/Harry/CadreMenu/Background/Menu/VBoxContainer/GridContainer/Skill5
 var lancementDesc
 #De même, les boutons de skills de Flaux dans une variable pour agir sur leur focus plus tard
-onready var skillsFlauxSeCacher = get_node("HBoxContainer/Flaux/FlauxMenu/Background/Menu/VBoxContainer/GridContainer/SkillSeCacher")
+onready var skillsFlaux1 = $HBoxContainer/Flaux/CadreMenu/Background/Menu/VBoxContainer/GridContainer/Skill1
 var seCacherDesc
-onready var skillsFlauxCoupPlongeant = get_node("HBoxContainer/Flaux/FlauxMenu/Background/Menu/VBoxContainer/GridContainer/SkillCoupPlongeant")
+onready var skillsFlaux2 = $HBoxContainer/Flaux/CadreMenu/Background/Menu/VBoxContainer/GridContainer/Skill2
 var coupPlongeantDesc
-onready var skillsFlauxLabourage = get_node("HBoxContainer/Flaux/FlauxMenu/Background/Menu/VBoxContainer/GridContainer/SkillLabourage")
+onready var skillsFlaux3 = $HBoxContainer/Flaux/CadreMenu/Background/Menu/VBoxContainer/GridContainer/Skill3
 var labourageDesc
-onready var skillsFlauxLaceration = get_node("HBoxContainer/Flaux/FlauxMenu/Background/Menu/VBoxContainer/GridContainer/SkillLaceration")
+onready var skillsFlaux4 = $HBoxContainer/Flaux/CadreMenu/Background/Menu/VBoxContainer/GridContainer/Skill4
 var lacerationDesc
-onready var skillsFlauxAffutage = get_node("HBoxContainer/Flaux/FlauxMenu/Background/Menu/VBoxContainer/GridContainer/SkillAffutage")
+onready var skillsFlaux5 = $HBoxContainer/Flaux/CadreMenu/Background/Menu/VBoxContainer/GridContainer/Skill5
 var affutageDesc
 
 #Fonction qui se lance automatiquement à l'apparition de GeneralInterface
@@ -46,19 +46,19 @@ func choixTour():
 	
 	#On vérifie toujours si le personnage à assez de vie pour agir
 	if($HBoxContainer/Harry.pv > 0):
-		skillsHarryChargeBouclier.grab_focus() #met le curseur de menu sur le premier skill d'Harry
+		skillsHarry1.grab_focus() #met le curseur de menu sur le premier skill d'Harry
 		
 		#on attend qu'un des boutons de skills d'Harry soit pressé,
 		#on continuera quand on aura reçu le signal "butPressed" de la scène Harry
 		yield($HBoxContainer/Harry, "butPressed")
 		
 		#Permet de retirer le curseur tous les boutons d'Harry (le groupe "HarryButtons" contient chaque bouton d'Harry)
-		#get_tree().call_group("HarryButtons", "release_focus")
+		get_tree().call_group("HarryButtons", "release_focus")
 		$HBoxContainer/Harry.modifDesc("") #Une fois l'action choisie, on vide la description des actions
 		$HBoxContainer/Harry.tourEffectue = false #Le tour venant d'être choisi n'est pas encore effectué
 	
 	if($HBoxContainer/Flaux.pv > 0):
-		skillsFlauxSeCacher.grab_focus() #met le curseur de menu sur le premier skill de Flaux
+		skillsFlaux1.grab_focus() #met le curseur de menu sur le premier skill de Flaux
 		
 		#de même on attend le signal "butPressed" mais pour la scène de Flaux
 		yield($HBoxContainer/Flaux, "butPressed")
@@ -73,26 +73,26 @@ func choixTour():
 #Fonction qui boucle à l'infini, elle est toujours actif tant que la scène est présente
 func _process(delta):
 	#En fonction d'où se situe le focus, on affiche un texte différent dans la description du personnage concerné
-	if(skillsHarryChargeBouclier.has_focus()):
-		$HBoxContainer/Harry.modifDesc(chargeBouclierDesc)
-	if(skillsHarryLancerBouclier.has_focus()):
+	if(skillsHarry1.has_focus()):
+		$HBoxContainer/Harry.modifDesc(coupBouclierDesc)
+	if(skillsHarry2.has_focus()):
 		$HBoxContainer/Harry.modifDesc(lancerBouclierDesc)
-	if(skillsHarrySoin.has_focus()):
+	if(skillsHarry3.has_focus()):
 		$HBoxContainer/Harry.modifDesc(soinDesc)
-	if(skillsHarryDefense.has_focus()):
+	if(skillsHarry4.has_focus()):
 		$HBoxContainer/Harry.modifDesc(defenseDesc)
-	if(skillsHarryLancement.has_focus()):
+	if(skillsHarry5.has_focus()):
 		$HBoxContainer/Harry.modifDesc(lancementDesc)
 	
-	if(skillsFlauxSeCacher.has_focus()):
+	if(skillsFlaux1.has_focus()):
 		$HBoxContainer/Flaux.modifDesc(seCacherDesc)
-	if(skillsFlauxCoupPlongeant.has_focus()):
+	if(skillsFlaux2.has_focus()):
 		$HBoxContainer/Flaux.modifDesc(coupPlongeantDesc)
-	if(skillsFlauxLabourage.has_focus()):
+	if(skillsFlaux3.has_focus()):
 		$HBoxContainer/Flaux.modifDesc(labourageDesc)
-	if(skillsFlauxLaceration.has_focus()):
+	if(skillsFlaux4.has_focus()):
 		$HBoxContainer/Flaux.modifDesc(lacerationDesc)
-	if(skillsFlauxAffutage.has_focus()):
+	if(skillsFlaux5.has_focus()):
 		$HBoxContainer/Flaux.modifDesc(affutageDesc)
 
 #La lecture des skills fonctionne d'une manière similaire à la lecture des dialogues dans un fichier
@@ -147,34 +147,34 @@ func load_skills():
 	
 	#Commence la lecture puis continue 4 fois pour les compétences d'Harry
 	start_skills()
-	skillsHarryChargeBouclier.set_text(skills_name)
-	chargeBouclierDesc = skills_desc
+	skillsHarry1.set_text(skills_name)
+	coupBouclierDesc = skills_desc
 	next_skills()
-	skillsHarryLancerBouclier.set_text(skills_name)
+	skillsHarry2.set_text(skills_name)
 	lancerBouclierDesc = skills_desc
 	next_skills()
-	skillsHarrySoin.set_text(skills_name)
+	skillsHarry3.set_text(skills_name)
 	soinDesc = skills_desc
 	next_skills()
-	skillsHarryDefense.set_text(skills_name)
+	skillsHarry4.set_text(skills_name)
 	defenseDesc = skills_desc
 	next_skills()
-	skillsHarryLancement.set_text(skills_name)
+	skillsHarry5.set_text(skills_name)
 	lancementDesc = skills_desc
 	
 	#Continue la lecture pour les 5 compétences de Flaux
 	next_skills()
-	skillsFlauxSeCacher.set_text(skills_name)
+	skillsFlaux1.set_text(skills_name)
 	seCacherDesc = skills_desc
 	next_skills()
-	skillsFlauxCoupPlongeant.set_text(skills_name)
+	skillsFlaux2.set_text(skills_name)
 	coupPlongeantDesc = skills_desc
 	next_skills()
-	skillsFlauxLabourage.set_text(skills_name)
+	skillsFlaux3.set_text(skills_name)
 	labourageDesc = skills_desc
 	next_skills()
-	skillsFlauxLaceration.set_text(skills_name)
+	skillsFlaux4.set_text(skills_name)
 	lacerationDesc = skills_desc
 	next_skills()
-	skillsFlauxAffutage.set_text(skills_name)
+	skillsFlaux5.set_text(skills_name)
 	affutageDesc = skills_desc

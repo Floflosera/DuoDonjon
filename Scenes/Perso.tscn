@@ -1,0 +1,261 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Montreal.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Scenes/Perso.gd" type="Script" id=2]
+[ext_resource path="res://assets/MenuHarry.png" type="Texture" id=3]
+[ext_resource path="res://assets/vievb.png" type="Texture" id=4]
+[ext_resource path="res://assets/viep.png" type="Texture" id=5]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "Inquiet",
+"speed": 3.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "Fatigue",
+"speed": 3.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "Enerve",
+"speed": 3.0
+}, {
+"frames": [  ],
+"loop": false,
+"name": "Blesse",
+"speed": 6.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "Neutre",
+"speed": 3.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "KO",
+"speed": 3.0
+} ]
+
+[node name="Perso" type="HBoxContainer"]
+margin_right = 618.0
+margin_bottom = 280.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CadreMenu" type="MarginContainer" parent="."]
+margin_right = 364.0
+margin_bottom = 280.0
+size_flags_horizontal = 3
+custom_constants/margin_right = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="NinePatchRect" parent="CadreMenu"]
+margin_right = 359.0
+margin_bottom = 280.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 3 )
+
+[node name="Menu" type="MarginContainer" parent="CadreMenu/Background"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 5
+custom_constants/margin_top = 5
+custom_constants/margin_left = 5
+custom_constants/margin_bottom = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CadreMenu/Background/Menu"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 354.0
+margin_bottom = 275.0
+custom_constants/separation = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="CadreMenu/Background/Menu/VBoxContainer"]
+margin_right = 349.0
+margin_bottom = 152.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+columns = 2
+
+[node name="Skill1" type="Button" parent="CadreMenu/Background/Menu/VBoxContainer/GridContainer"]
+margin_right = 172.0
+margin_bottom = 48.0
+focus_neighbour_left = NodePath("../Skill2")
+focus_neighbour_top = NodePath("../Skill5")
+focus_neighbour_right = NodePath("../Skill2")
+focus_neighbour_bottom = NodePath("../Skill3")
+focus_next = NodePath("../Skill2")
+focus_previous = NodePath("../Skill5")
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 1 )
+button_mask = 0
+text = "Skill1"
+
+[node name="Skill2" type="Button" parent="CadreMenu/Background/Menu/VBoxContainer/GridContainer"]
+margin_left = 176.0
+margin_right = 348.0
+margin_bottom = 48.0
+focus_neighbour_left = NodePath("../Skill1")
+focus_neighbour_top = NodePath("../Skill4")
+focus_neighbour_right = NodePath("../Skill1")
+focus_neighbour_bottom = NodePath("../Skill4")
+focus_next = NodePath("../Skill3")
+focus_previous = NodePath("../Skill1")
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 1 )
+button_mask = 0
+text = "Skill2"
+
+[node name="Skill3" type="Button" parent="CadreMenu/Background/Menu/VBoxContainer/GridContainer"]
+margin_top = 52.0
+margin_right = 172.0
+margin_bottom = 100.0
+focus_neighbour_left = NodePath("../Skill4")
+focus_neighbour_top = NodePath("../Skill1")
+focus_neighbour_right = NodePath("../Skill4")
+focus_neighbour_bottom = NodePath("../Skill5")
+focus_next = NodePath("../Skill4")
+focus_previous = NodePath("../Skill2")
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 1 )
+button_mask = 0
+text = "Skill3"
+
+[node name="Skill4" type="Button" parent="CadreMenu/Background/Menu/VBoxContainer/GridContainer"]
+margin_left = 176.0
+margin_top = 52.0
+margin_right = 348.0
+margin_bottom = 100.0
+focus_neighbour_left = NodePath("../Skill3")
+focus_neighbour_top = NodePath("../Skill2")
+focus_neighbour_right = NodePath("../Skill3")
+focus_neighbour_bottom = NodePath("../Skill2")
+focus_next = NodePath("../Skill5")
+focus_previous = NodePath("../Skill3")
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 1 )
+button_mask = 0
+text = "Skill4"
+
+[node name="Skill5" type="Button" parent="CadreMenu/Background/Menu/VBoxContainer/GridContainer"]
+margin_top = 104.0
+margin_right = 172.0
+margin_bottom = 152.0
+focus_neighbour_left = NodePath(".")
+focus_neighbour_top = NodePath("../Skill3")
+focus_neighbour_right = NodePath(".")
+focus_neighbour_bottom = NodePath("../Skill1")
+focus_next = NodePath("../Skill1")
+focus_previous = NodePath("../Skill4")
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 1 )
+button_mask = 0
+text = "Skill5"
+
+[node name="PV" type="Label" parent="CadreMenu/Background/Menu/VBoxContainer/GridContainer"]
+margin_left = 176.0
+margin_top = 117.0
+margin_right = 348.0
+margin_bottom = 138.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+custom_fonts/font = ExtResource( 1 )
+text = "PV : 1 / 1"
+align = 1
+
+[node name="Séparation" type="ColorRect" parent="CadreMenu/Background/Menu/VBoxContainer"]
+margin_top = 158.0
+margin_right = 349.0
+margin_bottom = 162.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.08
+
+[node name="MarginContainer" type="MarginContainer" parent="CadreMenu/Background/Menu/VBoxContainer"]
+margin_top = 168.0
+margin_right = 349.0
+margin_bottom = 270.0
+rect_min_size = Vector2( 349, 65 )
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+custom_constants/margin_right = 5
+custom_constants/margin_top = 5
+custom_constants/margin_left = 5
+custom_constants/margin_bottom = 5
+
+[node name="Description" type="Label" parent="CadreMenu/Background/Menu/VBoxContainer/MarginContainer"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 344.0
+margin_bottom = 97.0
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 1 )
+text = "Lorem Ipsum"
+autowrap = true
+clip_text = true
+
+[node name="Portrait" type="MarginContainer" parent="."]
+margin_left = 368.0
+margin_right = 618.0
+margin_bottom = 280.0
+custom_constants/margin_right = 5
+custom_constants/margin_left = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Portrait"]
+margin_left = 5.0
+margin_right = 245.0
+margin_bottom = 280.0
+
+[node name="Cadre" type="Panel" parent="Portrait/VBoxContainer"]
+margin_right = 240.0
+margin_bottom = 240.0
+rect_min_size = Vector2( 240, 240 )
+
+[node name="Sprite" type="AnimatedSprite" parent="Portrait/VBoxContainer/Cadre"]
+position = Vector2( 120, 120 )
+frames = SubResource( 1 )
+animation = "Neutre"
+playing = true
+
+[node name="LifeBar" type="TextureProgress" parent="Portrait/VBoxContainer"]
+margin_top = 244.0
+margin_right = 240.0
+margin_bottom = 280.0
+rect_min_size = Vector2( 0, 36 )
+max_value = 2.0
+value = 1.0
+texture_under = ExtResource( 4 )
+texture_progress = ExtResource( 5 )
+
+[connection signal="pressed" from="CadreMenu/Background/Menu/VBoxContainer/GridContainer/Skill1" to="." method="_on_Skill1_pressed"]
+[connection signal="pressed" from="CadreMenu/Background/Menu/VBoxContainer/GridContainer/Skill2" to="." method="_on_Skill2_pressed"]
+[connection signal="pressed" from="CadreMenu/Background/Menu/VBoxContainer/GridContainer/Skill3" to="." method="_on_Skill3_pressed"]
+[connection signal="pressed" from="CadreMenu/Background/Menu/VBoxContainer/GridContainer/Skill4" to="." method="_on_Skill4_pressed"]
+[connection signal="pressed" from="CadreMenu/Background/Menu/VBoxContainer/GridContainer/Skill5" to="." method="_on_Skill5_pressed"]

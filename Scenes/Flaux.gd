@@ -3,7 +3,8 @@ extends HBoxContainer
 #les signaux permettent de transmettre une information à d'autres scènes
 signal butPressed
 signal degatsTermine
-signal skillCasted
+signal skillCast
+signal skillFinished
 
 #La variable qui permet de savoir si une action a été effectué
 #Elle est false de base, et devient true lorsqu'on effectue une action (ou que le personnage n'a plus de pv)
@@ -82,12 +83,23 @@ func soinPV(valeur):
 	changerSprite()					#On change le sprite des 2 persos
 	etatHarry.changerSprite()		#pour revérifier quelle sprite il faut afficher
 
+#Permet de rerendre utilisable le skill utilise au tour précédent pour le tour suivant
+func abled():
+	$FlauxMenu/Background/Menu/VBoxContainer/GridContainer/SkillSeCacher.disabled = false
+	$FlauxMenu/Background/Menu/VBoxContainer/GridContainer/SkillCoupPlongeant.disabled = false
+	$FlauxMenu/Background/Menu/VBoxContainer/GridContainer/SkillLabourage.disabled = false
+	$FlauxMenu/Background/Menu/VBoxContainer/GridContainer/SkillLaceration.disabled = false
+	$FlauxMenu/Background/Menu/VBoxContainer/GridContainer/SkillAffutage.disabled = false
+
 #Liste des bouttons que l'on peut presser, il renvoie tous le signal "un bouton a été pressé"
 #Ce signal est ensuite reçu dans GeneralInterface pour savoir que le choix a eu lieu
 #La variable "choixSkill" est un nombre qui porte le numéro de la compétence choisie pour la lancer plus tard
 #On passe la priorite a vrai si l'attaque en question est prioritaire à l'ordre de la vitesse
 func _on_SkillSeCacher_pressed():
 	choixSkill = 0
+	abled()
+	#on bloque une action pendant un tour lorsqu'elle est utilisée
+	$FlauxMenu/Background/Menu/VBoxContainer/GridContainer/SkillSeCacher.disabled = true
 	priorite = true
 	emit_signal("butPressed")
 
@@ -95,39 +107,53 @@ func _on_SkillSeCacher_pressed():
 #Ces sorts sont associés aux fonctions "castSkill" et ont chacun des effets différents
 func castSkillSeCacher():
 	etatHarry.degatsPris(10)
+	priorite = false
 	yield(etatHarry,"degatsTermine")
+	emit_signal("skillCast")
 
 func _on_SkillCoupPlongeant_pressed():
 	choixSkill = 1
+	abled()
+	$FlauxMenu/Background/Menu/VBoxContainer/GridContainer/SkillCoupPlongeant.disabled = true
 	emit_signal("butPressed")
 
 func castSkillCoupPlongeant():
 	etatHarry.degatsPris(20)
 	yield(etatHarry,"degatsTermine")
+	emit_signal("skillCast")
 
 func _on_SkillLabourage_pressed():
 	choixSkill = 2
+	abled()
+	$FlauxMenu/Background/Menu/VBoxContainer/GridContainer/SkillLabourage.disabled = true
 	emit_signal("butPressed")
 
 func castSkillLabourage():
 	etatHarry.degatsPris(30)
 	yield(etatHarry,"degatsTermine")
+	emit_signal("skillCast")
 
 func _on_SkillLaceration_pressed():
 	choixSkill = 3
+	abled()
+	$FlauxMenu/Background/Menu/VBoxContainer/GridContainer/SkillLaceration.disabled = true
 	emit_signal("butPressed")
 
 func castSkillLaceration():
 	etatHarry.degatsPris(40)
 	yield(etatHarry,"degatsTermine")
+	emit_signal("skillCast")
 
 func _on_SkillAffutage_pressed():
-	choixSkill = 4 
+	choixSkill = 4
+	abled()
+	$FlauxMenu/Background/Menu/VBoxContainer/GridContainer/SkillAffutage.disabled = true
 	emit_signal("butPressed")
 
 func castSkillAffutage():
 	etatHarry.degatsPris(50)
 	yield(etatHarry,"degatsTermine")
+	emit_signal("skillCast")
 
 #castSkill() est la fonction qui lance une compétence en fonction du choix effectué précédemment
 #les compétences prioritaires remettent la variable priorite sur false une fois lancé
@@ -135,20 +161,19 @@ func castSkill():
 	match choixSkill:
 		0:
 			castSkillSeCacher()
-			yield(etatHarry,"degatsTermine")
-			priorite = false
+			yield(self,"skillCast")
 		1:
 			castSkillCoupPlongeant()
-			yield(etatHarry,"degatsTermine")
+			yield(self,"skillCast")
 		2:
 			castSkillLabourage()
-			yield(etatHarry,"degatsTermine")
+			yield(self,"skillCast")
 		3:
 			castSkillLaceration()
-			yield(etatHarry,"degatsTermine")
+			yield(self,"skillCast")
 		4:
 			castSkillAffutage()
-			yield(etatHarry,"degatsTermine")
+			yield(self,"skillCast")
 			
 	tourEffectue = true				#Quand une compétence est lancé, le tour est effectué
-	emit_signal("skillCasted")
+	emit_signal("skillCast")
