@@ -1,12 +1,13 @@
 {
-  "skill_1" : {"nameSkill": "Shield charge", "descSkill": "Harry Skill 1"},
-  "skill_2" : {"nameSkill": "Shield throw", "descSkill": "Harry Skill 2"},
-  "skill_3" : {"nameSkill": "Heal", "descSkill": "Harry Skill 3"},
-  "skill_4" : {"nameSkill": "Defense", "descSkill": "Harry Skill 4"},
-  "skill_5" : {"nameSkill": "Launch", "descSkill": "Harry Skill 5"},
-  "skill_6" : {"nameSkill": "Hide", "descSkill": "Flaux Skill 1"},
-  "skill_7" : {"nameSkill": "Dive shot", "descSkill": "Flaux Skill 2"},
-  "skill_8" : {"nameSkill": "Plowing", "descSkill": "Flaux Skill 3"},
-  "skill_9" : {"nameSkill": "Laceration", "descSkill": "Flaux Skill 4"},
-  "skill_10" : {"nameSkill": "Sharpening", "descSkill": "Flaux Skill 5"},
+  "skill_1" :   {"nameSkill": "Shield bash", "descSkill": "Harry attacks with his shield, and reduces the damage he takes for the rest of the turn."},
+  "skill_2" :   {"nameSkill": "Shield throw", "descSkill": "Harry makes a strong shield attack."},
+  "skill_3" :   {"nameSkill": "Heal", "descSkill": "Harry heals the party."},
+  "skill_4" :   {"nameSkill": "Guard", "descSkill": "Acts first. Harry greatly reduces the damage he takes for the rest of the turn."},
+  "skill_5" :   {"nameSkill": "Launch", "descSkill": "Acts first. Harry uses his shield to propel Flaux and increase her damage if she attacks this turn."},
+
+  "skill_6" :   {"nameSkill": "Hide", "descSkill": "Acts first. Flaux can't be targeted or damaged for the rest of the turn."},
+  "skill_7" :   {"nameSkill": "Dive attack", "descSkill": "Flaux attacks with her scythe. So nice!"},
+  "skill_8" :   {"nameSkill": "Swirling scythe", "descSkill": "Flaux mows down all enemies at once. So strong!"},
+  "skill_9" :   {"nameSkill": "Lacerate", "descSkill": "Flaux aims for a weak spot and increases the damage an enemy takes for the rest of the turn. So cool!"},
+  "skill_10" :  {"nameSkill": "Sharpen", "descSkill": "Flaux takes some time to greatly increase the damage of her next attack."},
 }

@@ -79,6 +79,16 @@ animations = [ {
 "name": "Inquiet",
 "speed": 3.0
 }, {
+"frames": [ ExtResource( 44 ), ExtResource( 42 ), ExtResource( 34 ) ],
+"loop": true,
+"name": "Enerve",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 22 ), ExtResource( 4 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 7 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "Blesse",
+"speed": 6.0
+}, {
 "frames": [ ExtResource( 33 ), ExtResource( 37 ), ExtResource( 32 ) ],
 "loop": true,
 "name": "KO",
@@ -89,20 +99,10 @@ animations = [ {
 "name": "Fatigue",
 "speed": 3.0
 }, {
-"frames": [ ExtResource( 44 ), ExtResource( 42 ), ExtResource( 34 ) ],
-"loop": true,
-"name": "Enerve",
-"speed": 3.0
-}, {
 "frames": [ ExtResource( 30 ), ExtResource( 36 ), ExtResource( 38 ) ],
 "loop": true,
 "name": "Neutre",
 "speed": 3.0
-}, {
-"frames": [ ExtResource( 22 ), ExtResource( 4 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 7 ), ExtResource( 8 ) ],
-"loop": true,
-"name": "Blesse",
-"speed": 6.0
 }, {
 "frames": [ ExtResource( 31 ), ExtResource( 40 ), ExtResource( 41 ) ],
 "loop": true,
@@ -122,11 +122,6 @@ animations = [ {
 "name": "Neutre",
 "speed": 3.0
 }, {
-"frames": [ ExtResource( 25 ), ExtResource( 45 ), ExtResource( 56 ) ],
-"loop": true,
-"name": "Inquiete",
-"speed": 3.0
-}, {
 "frames": [ ExtResource( 49 ), ExtResource( 62 ), ExtResource( 52 ) ],
 "loop": true,
 "name": "Enervee",
@@ -135,6 +130,11 @@ animations = [ {
 "frames": [ ExtResource( 61 ), ExtResource( 51 ), ExtResource( 60 ) ],
 "loop": true,
 "name": "Fatiguee",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 25 ), ExtResource( 45 ), ExtResource( 56 ) ],
+"loop": true,
+"name": "Inquiete",
 "speed": 3.0
 }, {
 "frames": [ ExtResource( 12 ), ExtResource( 15 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 16 ), ExtResource( 50 ) ],
@@ -273,7 +273,7 @@ rect_min_size = Vector2( 240, 240 )
 position = Vector2( 120, 120 )
 frames = SubResource( 3 )
 animation = "Neutre"
-frame = 1
+frame = 2
 playing = true
 
 [node name="HarryLifeBar" type="TextureProgress" parent="HBoxContainer/HarryDia/HarryPortrait/VBoxContainer"]
@@ -318,7 +318,6 @@ rect_min_size = Vector2( 240, 240 )
 position = Vector2( 120, 120 )
 frames = SubResource( 4 )
 animation = "Neutre"
-frame = 2
 playing = true
 
 [node name="FlauxLifeBar" type="TextureProgress" parent="HBoxContainer/FlauxDia/FlauxPortrait/VBoxContainer"]
