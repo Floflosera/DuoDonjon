@@ -31,20 +31,10 @@ animations = [ {
 "name": "Inquiet",
 "speed": 3.0
 }, {
-"frames": [ ExtResource( 21 ), ExtResource( 15 ), ExtResource( 18 ) ],
-"loop": true,
-"name": "Fatigue",
-"speed": 3.0
-}, {
 "frames": [ ExtResource( 22 ), ExtResource( 9 ), ExtResource( 5 ) ],
 "loop": true,
 "name": "Enerve",
 "speed": 3.0
-}, {
-"frames": [ ExtResource( 19 ), ExtResource( 13 ), ExtResource( 11 ), ExtResource( 7 ), ExtResource( 16 ), ExtResource( 12 ) ],
-"loop": false,
-"name": "Blesse",
-"speed": 6.0
 }, {
 "frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ],
 "loop": true,
@@ -55,28 +45,38 @@ animations = [ {
 "loop": true,
 "name": "KO",
 "speed": 3.0
+}, {
+"frames": [ ExtResource( 21 ), ExtResource( 15 ), ExtResource( 18 ) ],
+"loop": true,
+"name": "Fatigue",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 19 ), ExtResource( 13 ), ExtResource( 11 ), ExtResource( 7 ), ExtResource( 16 ), ExtResource( 12 ) ],
+"loop": false,
+"name": "Blesse",
+"speed": 6.0
 } ]
 
 [node name="PersoHarry" instance=ExtResource( 1 )]
 script = ExtResource( 23 )
 
-[node name="Skill1" parent="CadreMenu/Background/Menu/VBoxContainer/GridContainer" index="0" groups=["HarryButtons"]]
+[node name="Skill1" parent="CadreMenu/Background/Menu/VBoxContainer/GridContainer" index="0" groups=["CharaButtons", "HarryButtons"]]
 focus_next = NodePath(".")
 focus_previous = NodePath(".")
 
-[node name="Skill2" parent="CadreMenu/Background/Menu/VBoxContainer/GridContainer" index="1" groups=["HarryButtons"]]
+[node name="Skill2" parent="CadreMenu/Background/Menu/VBoxContainer/GridContainer" index="1" groups=["CharaButtons", "HarryButtons"]]
 focus_next = NodePath(".")
 focus_previous = NodePath(".")
 
-[node name="Skill3" parent="CadreMenu/Background/Menu/VBoxContainer/GridContainer" index="2" groups=["HarryButtons"]]
+[node name="Skill3" parent="CadreMenu/Background/Menu/VBoxContainer/GridContainer" index="2" groups=["CharaButtons", "HarryButtons"]]
 focus_next = NodePath(".")
 focus_previous = NodePath(".")
 
-[node name="Skill4" parent="CadreMenu/Background/Menu/VBoxContainer/GridContainer" index="3" groups=["HarryButtons"]]
+[node name="Skill4" parent="CadreMenu/Background/Menu/VBoxContainer/GridContainer" index="3" groups=["CharaButtons", "HarryButtons"]]
 focus_next = NodePath(".")
 focus_previous = NodePath(".")
 
-[node name="Skill5" parent="CadreMenu/Background/Menu/VBoxContainer/GridContainer" index="4" groups=["HarryButtons"]]
+[node name="Skill5" parent="CadreMenu/Background/Menu/VBoxContainer/GridContainer" index="4" groups=["CharaButtons", "HarryButtons"]]
 focus_next = NodePath(".")
 focus_previous = NodePath(".")
 
@@ -88,6 +88,7 @@ text = "Harry, explorateur qui s'est retrouvé dans le donjon par chance. Calme 
 
 [node name="Sprite" parent="Portrait/VBoxContainer/Cadre" index="0"]
 frames = SubResource( 1 )
+frame = 1
 
 [node name="LifeBar" parent="Portrait/VBoxContainer" index="1"]
 max_value = 230.0

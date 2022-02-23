@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scenes/Ennemi.gd" type="Script" id=2]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [  ],
+"loop": false,
+"name": "Blesse",
+"speed": 6.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "Neutre",
+"speed": 3.0
+} ]
+
+[node name="Ennemi" type="AnimatedSprite" groups=["EnnemiGroupe"]]
+position = Vector2( 647, 302 )
+frames = SubResource( 1 )
+animation = "Neutre"
+script = ExtResource( 2 )
+
+[node name="Selection" type="Button" parent="." groups=["EnnemiButton"]]
+visible = false
+margin_left = -8.0
+margin_top = -169.0
+margin_right = 9.0
+margin_bottom = -149.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}

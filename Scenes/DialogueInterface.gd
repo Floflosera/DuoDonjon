@@ -21,6 +21,7 @@ var dialogue_textHarry = ""		#variable qui va récupérer les "textHarry" du fic
 var dialogue_spHarry = 0		#variable qui va récupérer les "spHarry" du fichier
 var dialogue_textFlaux = ""		#variable qui va récupérer les "textFlaux" du fichier
 var dialogue_spFlaux = 0		#variable qui va récupérer les "spFlaux" du fichier
+var dialogue_supOther = false
 var current = 0					#numéro de la ligne lu
 
 #Fonction qui débute un dialogue
@@ -31,6 +32,8 @@ func start_dialogue():
 	dialogue_spHarry = int(dialogue_keys[current].spHarry)	#à la ligne "current", pareil pour "textFlaux"
 	dialogue_textFlaux = dialogue_keys[current].textFlaux	#pour le numéro des sprites on tranforme le string
 	dialogue_spFlaux = int(dialogue_keys[current].spFlaux)	#en entier avec int()
+	dialogue_supOther = bool(dialogue_keys[current].supOther)
+	
 
 #Fonction qui permet de passer à la ligne suivante, lit de la même façon sans indexer le fichier
 func next_dialogue():
@@ -39,6 +42,7 @@ func next_dialogue():
 	dialogue_spHarry = int(dialogue_keys[current].spHarry)
 	dialogue_textFlaux = dialogue_keys[current].textFlaux
 	dialogue_spFlaux = int(dialogue_keys[current].spFlaux)
+	dialogue_supOther = bool(dialogue_keys[current].supOther)
 
 #Fonction qui dit quel fichier charger à load_dialogue et initialise dialogue_keys
 func index_dialogue():
@@ -72,7 +76,7 @@ func boiteDeDia(textHarry,spHarry,textFlaux,spFlaux):
 	confirmation.grab_focus()
 
 #Fonction similaire mais qui permet un affichage progressif des textes
-func boiteDeDiaAnim(textHarry,spHarry,textFlaux,spFlaux):
+func boiteDeDiaAnim(textHarry,spHarry,textFlaux,spFlaux,supOther):
 	#On commence par empêcher le joueur d'appuyer sur le bouton tout de suite
 	confirmation.release_focus()
 	#On change les sprites
@@ -81,28 +85,39 @@ func boiteDeDiaAnim(textHarry,spHarry,textFlaux,spFlaux):
 	#Vide les variables temporaires
 	tempTextH = ""
 	tempTextF = ""
-	#Vide les boites de dialogues actuelles
-	$HBoxContainer/HarryDia.modifDia("")
-	$HBoxContainer/FlauxDia.modifDia("")
 	
-	#Pour chaque caractère de la variable "textHarry", c prend la valeur du caractère
-	for c in textHarry:
-		tempTextH += c								#le texte temporaire concatène ce caractère avec lui même
-		$HBoxContainer/HarryDia.modifDia(tempTextH)	#On affiche ce texte temporaire
-		$TimerDia.start()							#On attend un peu, puis on recommence jusqu'à la fin du string
-		yield($TimerDia,"timeout")
-		if Input.is_action_pressed("ui_select"):		#Si le joueur appuie sur une touche de validation
-			$HBoxContainer/HarryDia.modifDia(textHarry)	#Alors on affiche tout le texte directement
-			break										#Puis on termine la boucle
-	#On fait la même chose avec le texte de Flaux, si le personnage ne parle pas alors on sort direct du for
-	for c in textFlaux:
-		tempTextF += c
-		$HBoxContainer/FlauxDia.modifDia(tempTextF)
-		$TimerDia.start()
-		yield($TimerDia,"timeout")
-		if Input.is_action_pressed("ui_select"):
-			$HBoxContainer/FlauxDia.modifDia(textFlaux)
-			break
+	if(textFlaux == ""):
+		if(supOther):
+			$HBoxContainer/FlauxDia.modifDia("")
+	
+	if(textHarry != ""):
+		#Vide la boite de dialogue actuelle
+		$HBoxContainer/HarryDia.modifDia("")
+		#Pour chaque caractère de la variable "textHarry", c prend la valeur du caractère
+		for c in textHarry:
+			tempTextH += c								#le texte temporaire concatène ce caractère avec lui même
+			$HBoxContainer/HarryDia.modifDia(tempTextH)	#On affiche ce texte temporaire
+			$TimerDia.start()							#On attend un peu, puis on recommence jusqu'à la fin du string
+			yield($TimerDia,"timeout")
+			if Input.is_action_pressed("ui_select"):		#Si le joueur appuie sur une touche de validation
+				$HBoxContainer/HarryDia.modifDia(textHarry)	#Alors on affiche tout le texte directement
+				break										#Puis on termine la boucle
+	else:
+		if(supOther):
+			$HBoxContainer/HarryDia.modifDia("")
+	
+	if(textFlaux != ""):
+		$HBoxContainer/FlauxDia.modifDia("")
+		#On fait la même chose avec le texte de Flaux, si le personnage ne parle pas alors on sort direct du for
+		for c in textFlaux:
+			tempTextF += c
+			$HBoxContainer/FlauxDia.modifDia(tempTextF)
+			$TimerDia.start()
+			yield($TimerDia,"timeout")
+			if Input.is_action_pressed("ui_select"):
+				$HBoxContainer/FlauxDia.modifDia(textFlaux)
+				break
+	
 	#À la fin, on redonne le focus du bouton de confirmation au joueur, pour qu'il puisse valider
 	confirmation.grab_focus()
 
@@ -119,13 +134,13 @@ func dialogueRead():
 	
 	#On affiche la première boite de dialogue (avec ou sans anim, pourrait varier par rapport à un choix (if))
 	#boiteDeDia(dialogue_textHarry,dialogue_spHarry,dialogue_textFlaux,dialogue_spFlaux)	#sans anim
-	boiteDeDiaAnim(dialogue_textHarry,dialogue_spHarry,dialogue_textFlaux,dialogue_spFlaux)	#avec
+	boiteDeDiaAnim(dialogue_textHarry,dialogue_spHarry,dialogue_textFlaux,dialogue_spFlaux,dialogue_supOther)
 	yield(confirmation, "pressed") #appuyer sur le bouton pour continuer
 	
 	while(current < dialogue_keys.size()-1): #tant qu'on n'est pas à la fin du fichier
 		next_dialogue() #on passe on dialogue suivant
 		#boiteDeDia(dialogue_textHarry,dialogue_spHarry,dialogue_textFlaux,dialogue_spFlaux)	#sans anim
-		boiteDeDiaAnim(dialogue_textHarry,dialogue_spHarry,dialogue_textFlaux,dialogue_spFlaux)	#avec
+		boiteDeDiaAnim(dialogue_textHarry,dialogue_spHarry,dialogue_textFlaux,dialogue_spFlaux,dialogue_supOther)
 		yield(confirmation, "pressed") #appuyer sur le bouton pour continuer
 	emit_signal("dialogueFini") #quand cette fonction se termine, émet le signal "dialogueFini"
 

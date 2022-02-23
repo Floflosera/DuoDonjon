@@ -7,12 +7,26 @@ func _ready():
 	defense = 1
 	vitesse = 4
 
-#Surcharge pour les compétences prioritaires
+#Surcharge pour les compétences prioritaires et qui ciblent
 func _on_Skill1_pressed():
 	choixSkill = 0
 	abled()
-	$CadreMenu/Background/Menu/VBoxContainer/GridContainer/Skill1.disabled = true
+	skill1.disabled = true
 	priorite = true
+	emit_signal("butPressed")
+
+func _on_Skill2_pressed():
+	choixSkill = 1
+	abled()
+	skill2.disabled = true
+	ciblage = true
+	emit_signal("butPressed")
+
+func _on_Skill4_pressed():
+	choixSkill = 3
+	abled()
+	skill4.disabled = true
+	ciblage = true
 	emit_signal("butPressed")
 
 #Surcharge des castSkill
@@ -23,8 +37,9 @@ func castSkill1():
 	emit_signal("skillCast")
 
 func castSkill2():
-	allie.degatsPris(20)
-	yield(allie,"degatsTermine")
+	cible.degatsPris(20)
+	ciblage = false
+	yield(cible,"degatsTermine")
 	emit_signal("skillCast")
 
 func castSkill3():
@@ -33,8 +48,9 @@ func castSkill3():
 	emit_signal("skillCast")
 
 func castSkill4():
-	allie.degatsPris(40)
-	yield(allie,"degatsTermine")
+	cible.degatsPris(40)
+	ciblage = false
+	yield(cible,"degatsTermine")
 	emit_signal("skillCast")
 
 func castSkill5():

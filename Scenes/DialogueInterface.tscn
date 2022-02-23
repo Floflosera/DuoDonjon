@@ -1,14 +1,12 @@
-[gd_scene load_steps=71 format=2]
+[gd_scene load_steps=69 format=2]
 
 [ext_resource path="res://Scenes/DialogueInterface.gd" type="Script" id=1]
 [ext_resource path="res://assets/MenuHarry.png" type="Texture" id=2]
-[ext_resource path="res://assets/viep.png" type="Texture" id=3]
 [ext_resource path="res://assets/Harry/HarryBlesse0_1.png" type="Texture" id=4]
 [ext_resource path="res://assets/Harry/HarryFatigue1.png" type="Texture" id=5]
 [ext_resource path="res://assets/Harry/HarryInquiet0.png" type="Texture" id=6]
 [ext_resource path="res://assets/Harry/HarryBlesse2_0.png" type="Texture" id=7]
 [ext_resource path="res://assets/Harry/HarryBlesse2_1.png" type="Texture" id=8]
-[ext_resource path="res://assets/viev.png" type="Texture" id=9]
 [ext_resource path="res://assets/Harry/HarryInquiet1.png" type="Texture" id=10]
 [ext_resource path="res://assets/MenuFlaux.png" type="Texture" id=11]
 [ext_resource path="res://assets/Flaux/FlauxBlessee0_0.png" type="Texture" id=12]
@@ -74,9 +72,19 @@ animations = [ {
 "name": "Content",
 "speed": 3.0
 }, {
+"frames": [ ExtResource( 31 ), ExtResource( 40 ), ExtResource( 41 ) ],
+"loop": true,
+"name": "Triste",
+"speed": 3.0
+}, {
 "frames": [ ExtResource( 6 ), ExtResource( 10 ), ExtResource( 35 ) ],
 "loop": true,
 "name": "Inquiet",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 28 ), ExtResource( 5 ), ExtResource( 21 ) ],
+"loop": true,
+"name": "Fatigue",
 "speed": 3.0
 }, {
 "frames": [ ExtResource( 44 ), ExtResource( 42 ), ExtResource( 34 ) ],
@@ -89,37 +97,27 @@ animations = [ {
 "name": "Blesse",
 "speed": 6.0
 }, {
-"frames": [ ExtResource( 33 ), ExtResource( 37 ), ExtResource( 32 ) ],
-"loop": true,
-"name": "KO",
-"speed": 3.0
-}, {
-"frames": [ ExtResource( 28 ), ExtResource( 5 ), ExtResource( 21 ) ],
-"loop": true,
-"name": "Fatigue",
-"speed": 3.0
-}, {
 "frames": [ ExtResource( 30 ), ExtResource( 36 ), ExtResource( 38 ) ],
 "loop": true,
 "name": "Neutre",
 "speed": 3.0
 }, {
-"frames": [ ExtResource( 31 ), ExtResource( 40 ), ExtResource( 41 ) ],
+"frames": [ ExtResource( 33 ), ExtResource( 37 ), ExtResource( 32 ) ],
 "loop": true,
-"name": "Triste",
+"name": "KO",
 "speed": 3.0
 } ]
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
-"frames": [ ExtResource( 48 ), ExtResource( 17 ), ExtResource( 47 ) ],
+"frames": [ ExtResource( 23 ), ExtResource( 58 ), ExtResource( 24 ) ],
 "loop": true,
-"name": "KO",
+"name": "Contente",
 "speed": 3.0
 }, {
-"frames": [ ExtResource( 53 ), ExtResource( 54 ), ExtResource( 55 ) ],
+"frames": [ ExtResource( 59 ), ExtResource( 57 ), ExtResource( 46 ) ],
 "loop": true,
-"name": "Neutre",
+"name": "Triste",
 "speed": 3.0
 }, {
 "frames": [ ExtResource( 49 ), ExtResource( 62 ), ExtResource( 52 ) ],
@@ -127,29 +125,29 @@ animations = [ {
 "name": "Enervee",
 "speed": 3.0
 }, {
-"frames": [ ExtResource( 61 ), ExtResource( 51 ), ExtResource( 60 ) ],
-"loop": true,
-"name": "Fatiguee",
-"speed": 3.0
-}, {
-"frames": [ ExtResource( 25 ), ExtResource( 45 ), ExtResource( 56 ) ],
-"loop": true,
-"name": "Inquiete",
-"speed": 3.0
-}, {
 "frames": [ ExtResource( 12 ), ExtResource( 15 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 16 ), ExtResource( 50 ) ],
 "loop": true,
 "name": "Blessee",
 "speed": 6.0
 }, {
-"frames": [ ExtResource( 59 ), ExtResource( 57 ), ExtResource( 46 ) ],
+"frames": [ ExtResource( 61 ), ExtResource( 51 ), ExtResource( 60 ) ],
 "loop": true,
-"name": "Triste",
+"name": "Fatiguee",
 "speed": 3.0
 }, {
-"frames": [ ExtResource( 23 ), ExtResource( 58 ), ExtResource( 24 ) ],
+"frames": [ ExtResource( 53 ), ExtResource( 54 ), ExtResource( 55 ) ],
 "loop": true,
-"name": "Contente",
+"name": "Neutre",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 48 ), ExtResource( 17 ), ExtResource( 47 ) ],
+"loop": true,
+"name": "KO",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 25 ), ExtResource( 45 ), ExtResource( 56 ) ],
+"loop": true,
+"name": "Inquiete",
 "speed": 3.0
 } ]
 
@@ -273,19 +271,8 @@ rect_min_size = Vector2( 240, 240 )
 position = Vector2( 120, 120 )
 frames = SubResource( 3 )
 animation = "Neutre"
-frame = 2
+frame = 1
 playing = true
-
-[node name="HarryLifeBar" type="TextureProgress" parent="HBoxContainer/HarryDia/HarryPortrait/VBoxContainer"]
-visible = false
-margin_top = 244.0
-margin_right = 240.0
-margin_bottom = 280.0
-rect_min_size = Vector2( 0, 36 )
-max_value = 230.0
-value = 230.0
-texture_under = ExtResource( 9 )
-texture_progress = ExtResource( 3 )
 
 [node name="FlauxDia" type="HBoxContainer" parent="HBoxContainer"]
 margin_left = 622.0
@@ -318,18 +305,8 @@ rect_min_size = Vector2( 240, 240 )
 position = Vector2( 120, 120 )
 frames = SubResource( 4 )
 animation = "Neutre"
+frame = 2
 playing = true
-
-[node name="FlauxLifeBar" type="TextureProgress" parent="HBoxContainer/FlauxDia/FlauxPortrait/VBoxContainer"]
-visible = false
-margin_top = 244.0
-margin_right = 240.0
-margin_bottom = 280.0
-rect_min_size = Vector2( 0, 36 )
-max_value = 177.0
-value = 177.0
-texture_under = ExtResource( 9 )
-texture_progress = ExtResource( 3 )
 
 [node name="FlauxMenu" type="MarginContainer" parent="HBoxContainer/FlauxDia"]
 margin_left = 254.0

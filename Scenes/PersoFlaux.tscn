@@ -35,20 +35,10 @@ animations = [ {
 "name": "Inquiet",
 "speed": 3.0
 }, {
-"frames": [ ExtResource( 15 ), ExtResource( 19 ), ExtResource( 14 ) ],
-"loop": true,
-"name": "Fatigue",
-"speed": 3.0
-}, {
 "frames": [ ExtResource( 12 ), ExtResource( 22 ), ExtResource( 9 ) ],
 "loop": true,
 "name": "Enerve",
 "speed": 3.0
-}, {
-"frames": [ ExtResource( 20 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 8 ), ExtResource( 11 ), ExtResource( 6 ) ],
-"loop": false,
-"name": "Blesse",
-"speed": 6.0
 }, {
 "frames": [ ExtResource( 10 ), ExtResource( 13 ), ExtResource( 18 ) ],
 "loop": true,
@@ -59,6 +49,16 @@ animations = [ {
 "loop": true,
 "name": "KO",
 "speed": 3.0
+}, {
+"frames": [ ExtResource( 15 ), ExtResource( 19 ), ExtResource( 14 ) ],
+"loop": true,
+"name": "Fatigue",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 20 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 8 ), ExtResource( 11 ), ExtResource( 6 ) ],
+"loop": false,
+"name": "Blesse",
+"speed": 6.0
 } ]
 
 [sub_resource type="DynamicFont" id=2]
@@ -109,7 +109,6 @@ rect_min_size = Vector2( 240, 240 )
 position = Vector2( 120, 120 )
 frames = SubResource( 1 )
 animation = "Neutre"
-frame = 2
 playing = true
 
 [node name="LifeBar" type="TextureProgress" parent="Portrait/VBoxContainer"]
@@ -170,7 +169,7 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 3.0
 columns = 2
 
-[node name="Skill1" type="Button" parent="CadreMenu/Background/Menu/VBoxContainer/GridContainer" groups=["FlauxButtons"]]
+[node name="Skill1" type="Button" parent="CadreMenu/Background/Menu/VBoxContainer/GridContainer" groups=["CharaButtons", "FlauxButtons"]]
 margin_right = 172.0
 margin_bottom = 48.0
 focus_neighbour_left = NodePath("../Skill2")
@@ -186,7 +185,7 @@ custom_fonts/font = SubResource( 2 )
 button_mask = 0
 text = "Skill1"
 
-[node name="Skill2" type="Button" parent="CadreMenu/Background/Menu/VBoxContainer/GridContainer" groups=["FlauxButtons"]]
+[node name="Skill2" type="Button" parent="CadreMenu/Background/Menu/VBoxContainer/GridContainer" groups=["CharaButtons", "FlauxButtons"]]
 margin_left = 176.0
 margin_right = 348.0
 margin_bottom = 48.0
@@ -203,7 +202,7 @@ custom_fonts/font = SubResource( 3 )
 button_mask = 0
 text = "Skill2"
 
-[node name="Skill3" type="Button" parent="CadreMenu/Background/Menu/VBoxContainer/GridContainer" groups=["FlauxButtons"]]
+[node name="Skill3" type="Button" parent="CadreMenu/Background/Menu/VBoxContainer/GridContainer" groups=["CharaButtons", "FlauxButtons"]]
 margin_top = 52.0
 margin_right = 172.0
 margin_bottom = 100.0
@@ -220,7 +219,7 @@ custom_fonts/font = SubResource( 4 )
 button_mask = 0
 text = "Skill3"
 
-[node name="Skill4" type="Button" parent="CadreMenu/Background/Menu/VBoxContainer/GridContainer" groups=["FlauxButtons"]]
+[node name="Skill4" type="Button" parent="CadreMenu/Background/Menu/VBoxContainer/GridContainer" groups=["CharaButtons", "FlauxButtons"]]
 margin_left = 176.0
 margin_top = 52.0
 margin_right = 348.0
@@ -248,7 +247,7 @@ custom_fonts/font = SubResource( 7 )
 text = "PV : 177 / 177"
 align = 1
 
-[node name="Skill5" type="Button" parent="CadreMenu/Background/Menu/VBoxContainer/GridContainer" groups=["FlauxButtons"]]
+[node name="Skill5" type="Button" parent="CadreMenu/Background/Menu/VBoxContainer/GridContainer" groups=["CharaButtons", "FlauxButtons"]]
 margin_left = 176.0
 margin_top = 104.0
 margin_right = 348.0
