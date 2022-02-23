@@ -5,6 +5,8 @@ signal derouleTourFini
 #Signal annonçant la fin de la fonction "actionCombattant(combattant)"
 signal actionFinie
 
+signal narraTextFini
+
 #Les variables de langues devront être mises sur le script principal et transférer dans les scènes suivantes
 #qui en ont besoin, pour l'instant la transmission n'est pas instantanné donc ça n'est pas directement possible
 onready var fr = true
@@ -12,9 +14,12 @@ onready var en = false
 
 #On stocke chaque combattant dans un tableau pour pouvoir gérer leur tour
 onready var combattants
+onready var nar = $CadreNarrateur/DescriptionAction
 
-#Variable utilisé pour faire des permutations
+#Variable utilisée pour faire des permutations
 var temp
+#Variable utilisée pour l'affichage progressif des textes
+var textTemp = ""
 
 #Définie l'ordre des tours avec un tri tournoi (le tableau est assez petit pour que ça soit court)
 func ordreTour():
@@ -43,13 +48,31 @@ func deroulementTour():
 	yield($TimerActions, "timeout")
 	for i in range(combattants.size()):
 		if(combattants[i].priorite && combattants[i].tourEffectue == false):
+			narraText(combattants[i].aTextSkill())
+			yield(self,"narraTextFini")
+			$TimerActions.start()
+			yield($TimerActions, "timeout")
 			actionCombattant(combattants[i])
 			yield(self,"actionFinie")
+			if(combattants[i].secondText):
+				narraText(combattants[i].aTextSkill2())
+				yield(self,"narraTextFini")
+				$TimerActions.start()
+				yield($TimerActions, "timeout")
 	
-	for i in range(combattants.size()):				#On parcourt le tableau des combattants
-		if(combattants[i].tourEffectue == false):	#Si le tour du combattant n'a pas encore eu lieu (via attaque prio)
+	for i in range(combattants.size()):		#On parcourt le tableau des combattants
+		if(combattants[i].tourEffectue == false):#Si le tour du combattant n'a pas encore eu lieu (via attaque prio)
+			narraText(combattants[i].aTextSkill())
+			yield(self,"narraTextFini")
+			$TimerActions.start()
+			yield($TimerActions, "timeout")
 			actionCombattant(combattants[i])
 			yield(self,"actionFinie")
+			if(combattants[i].secondText):
+				narraText(combattants[i].aTextSkill2())
+				yield(self,"narraTextFini")
+				$TimerActions.start()
+				yield($TimerActions, "timeout")
 	
 	get_tree().call_group("EnnemiGroupe", "clearCible")
 	
@@ -61,3 +84,19 @@ func litDialogue(dialog):
 	dialog #dialog est la méthode du dialogue choisi en entrée
 	yield($DialogueInterface, "dialogueFini")
 	$DialogueInterface.visible = false
+
+func narraText(text):
+	textTemp = ""
+	
+	for c in text:
+		textTemp += c								#le texte temporaire concatène ce caractère avec lui même
+		nar.set_text(textTemp)						#On affiche ce texte temporaire
+		$TimerText.start()							#On attend un peu, puis on recommence jusqu'à la fin du string
+		yield($TimerText,"timeout")
+		if(c == "!"):
+			$TimerText.set_wait_time(1.0)
+			$TimerText.start()
+			yield($TimerText,"timeout")
+			$TimerText.set_wait_time(0.02)
+	
+	emit_signal("narraTextFini")

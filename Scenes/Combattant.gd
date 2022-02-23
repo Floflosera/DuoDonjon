@@ -27,12 +27,26 @@ var cible
 func cibler(c):
 	cible = c
 
+onready var secondText = false
+
 #Les statistiques
 export var pvmax = 1		#les points de vie qu'il peut avoir au maximum
 export var pv = 1			#les points de vie qu'il a actuellement
 export var defense = 0		#sa défense, influt sur les dégâts reçus
 export var vitesse = 0 		#sa vitesse, influt sur l'ordre des actions d'un tour
-	
+
+var textSkill = [] #tableau des textes affichés au lancement d'une attaque
+
+func skillTextAppend(skillsText):
+	textSkill.append(skillsText)
+
+func aTextSkill():
+	return textSkill[choixSkill]
+
+#Tout le monde pourrait l'avoir mais le texte est spécifique au combattant qui l'utilise
+func aTextSkill2():
+	pass
+
 #Méthode qui permet de changer le sprite du personnage en fonction de son état par priorité
 func changerSprite():
 	spriteAnim.play("Neutre")

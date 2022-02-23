@@ -33,7 +33,7 @@ visible = false
 [node name="TimerActions" type="Timer" parent="."]
 one_shot = true
 
-[node name="NinePatchRect" type="NinePatchRect" parent="."]
+[node name="CadreNarrateur" type="NinePatchRect" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -286.5
@@ -44,7 +44,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="NinePatchRect"]
+[node name="DescriptionAction" type="Label" parent="CadreNarrateur"]
 margin_left = 11.0
 margin_top = 9.0
 margin_right = 561.0
@@ -56,3 +56,7 @@ clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="TimerText" type="Timer" parent="."]
+wait_time = 0.02
+one_shot = true

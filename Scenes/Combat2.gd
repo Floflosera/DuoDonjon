@@ -28,4 +28,4 @@ func _ready():
 		yield(self, "derouleTourFini")
 
 func pvEnnemi():
-	$NinePatchRect/Label.set_text(str($EnnemiGroup/Ennemi2.pv))
+	nar.set_text(str(combattantEnnemi2.pv))

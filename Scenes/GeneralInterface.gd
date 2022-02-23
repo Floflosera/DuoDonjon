@@ -121,7 +121,8 @@ func _process(delta):
 export(String, FILE, "*.json") var skill_file
 var skills_keys = []
 var skills_name = "" #Pour les skills on ne souhaite récupérer que les noms
-var skills_desc = "" #et les descriptions
+var skills_desc = "" #les descriptions
+var skills_text = "" #et ce qui est afficher au lancement de l'attaque
 var current = 0
 
 #Le chemin pour la lecture du fichier des compétences en français et en anglais
@@ -134,12 +135,14 @@ func start_skills():
 	index_skills()
 	skills_name = skills_keys[current].nameSkill
 	skills_desc = skills_keys[current].descSkill
+	skills_text = skills_keys[current].textSkill
 
 #Permet de faire la lecture des lignes suivantes
 func next_skills():
 	current += 1
 	skills_name = skills_keys[current].nameSkill
 	skills_desc = skills_keys[current].descSkill
+	skills_text = skills_keys[current].textSkill
 
 #Indexe le fichier
 func index_skills():
@@ -171,32 +174,42 @@ func load_skills():
 	start_skills()
 	cHarry.skill1.set_text(skills_name)
 	coupBouclierDesc = skills_desc
+	cHarry.skillTextAppend(skills_text)
 	next_skills()
 	cHarry.skill2.set_text(skills_name)
 	lancerBouclierDesc = skills_desc
+	cHarry.skillTextAppend(skills_text)
 	next_skills()
 	cHarry.skill3.set_text(skills_name)
 	soinDesc = skills_desc
+	cHarry.skillTextAppend(skills_text)
 	next_skills()
 	cHarry.skill4.set_text(skills_name)
 	defenseDesc = skills_desc
+	cHarry.skillTextAppend(skills_text)
 	next_skills()
 	cHarry.skill5.set_text(skills_name)
 	lancementDesc = skills_desc
+	cHarry.skillTextAppend(skills_text)
 	
 	#Continue la lecture pour les 5 compétences de Flaux
 	next_skills()
 	cFlaux.skill1.set_text(skills_name)
 	seCacherDesc = skills_desc
+	cFlaux.skillTextAppend(skills_text)
 	next_skills()
 	cFlaux.skill2.set_text(skills_name)
 	coupPlongeantDesc = skills_desc
+	cFlaux.skillTextAppend(skills_text)
 	next_skills()
 	cFlaux.skill3.set_text(skills_name)
 	labourageDesc = skills_desc
+	cFlaux.skillTextAppend(skills_text)
 	next_skills()
 	cFlaux.skill4.set_text(skills_name)
 	lacerationDesc = skills_desc
+	cFlaux.skillTextAppend(skills_text)
 	next_skills()
 	cFlaux.skill5.set_text(skills_name)
 	affutageDesc = skills_desc
+	cFlaux.skillTextAppend(skills_text)

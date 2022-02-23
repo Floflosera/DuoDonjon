@@ -13,7 +13,7 @@
   "skill_6" : {	"nameSkill": "Se cacher", "descSkill": "Agit en premier. Flaux ne peut pas être ciblée ou touchée pour le reste du tour.",
 		"textSkill": "Flaux se camoufle dans l'ombre."},
   "skill_7" : {	"nameSkill": "Coup plongeant", "descSkill": "Flaux attaque avec sa faux. Trop drôle !",
-		"textSkill": "Flaux bondit et donne un coup vertical !"},,
+		"textSkill": "Flaux bondit et donne un coup vertical !"},
   "skill_8" : {	"nameSkill": "Labourage", "descSkill": "Flaux fauche tous les ennemis d'un seul coup. Trop forte !",
 		"textSkill": "Flaux balaye les ennemis !"},
   "skill_9" : {	"nameSkill": "Lacération", "descSkill": "Flaux vise un point faible pour augmenter les dégâts que subit l'ennemi pour le reste du tour. Trop cool !",
