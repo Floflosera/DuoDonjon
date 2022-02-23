@@ -1,0 +1,21 @@
+{
+  "ennemi1_skill1" : {	"nameSkill": "Coup de Boulet", "textSkill": "Machin fait un coup de boulet !"},
+  "ennemi1_skill2" : {	"nameSkill": "", "textSkill": ""},
+  "ennemi1_skill3" : {	"nameSkill": "", "textSkill": ""},
+
+  "ennemi2_skill1" : {	"nameSkill": "", "textSkill": ""},
+  "ennemi2_skill2" : {	"nameSkill": "", "textSkill": ""},
+  "ennemi2_skill3" : {	"nameSkill": "", "textSkill": ""},
+
+  "ennemi3_skill1" : {	"nameSkill": "", "textSkill": ""},
+  "ennemi3_skill2" : {	"nameSkill": "", "textSkill": ""},
+  "ennemi3_skill3" : {	"nameSkill": "", "textSkill": ""},
+
+  "ennemi4_skill1" : {	"nameSkill": "", "textSkill": ""},
+  "ennemi4_skill2" : {	"nameSkill": "", "textSkill": ""},
+  "ennemi4_skill3" : {	"nameSkill": "", "textSkill": ""},
+
+  "ennemi5_skill1" : {	"nameSkill": "", "textSkill": ""},
+  "ennemi5_skill2" : {	"nameSkill": "", "textSkill": ""},
+  "ennemi5_skill3" : {	"nameSkill": "", "textSkill": ""},
+}
