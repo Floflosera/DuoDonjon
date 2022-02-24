@@ -36,25 +36,25 @@ animations = [ {
 "name": "Enerve",
 "speed": 3.0
 }, {
-"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ],
-"loop": true,
-"name": "Neutre",
-"speed": 3.0
-}, {
-"frames": [ ExtResource( 6 ), ExtResource( 10 ), ExtResource( 20 ) ],
-"loop": true,
-"name": "KO",
-"speed": 3.0
-}, {
 "frames": [ ExtResource( 21 ), ExtResource( 15 ), ExtResource( 18 ) ],
 "loop": true,
 "name": "Fatigue",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "Neutre",
 "speed": 3.0
 }, {
 "frames": [ ExtResource( 19 ), ExtResource( 13 ), ExtResource( 11 ), ExtResource( 7 ), ExtResource( 16 ), ExtResource( 12 ) ],
 "loop": false,
 "name": "Blesse",
 "speed": 6.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 10 ), ExtResource( 20 ) ],
+"loop": true,
+"name": "KO",
+"speed": 3.0
 } ]
 
 [node name="PersoHarry" instance=ExtResource( 1 )]
@@ -88,7 +88,7 @@ text = "Harry, explorateur qui s'est retrouvé dans le donjon par chance. Calme 
 
 [node name="Sprite" parent="Portrait/VBoxContainer/Cadre" index="0"]
 frames = SubResource( 1 )
-frame = 1
+frame = 2
 
 [node name="LifeBar" parent="Portrait/VBoxContainer" index="1"]
 max_value = 230.0

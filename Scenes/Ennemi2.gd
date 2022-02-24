@@ -20,6 +20,8 @@ func _ready():
 	next_skills()
 	skillTextAppend(skills_text)
 	charge_skills()
+	ligne_skills(6)
+	skillTextAppend(skills_text)
 
 func charge_skills():
 	skillTextAppend(skills_keys[5].textSkill)
@@ -44,8 +46,8 @@ func degatsPrisDef(degats):
 
 func choixSkill():
 	if(assome > 0):
-		pass
-	if(combat.nTour <= 3):
+		choixSkill = 4
+	elif(combat.nTour <= 3):
 		choixSkill = 0
 	elif(combat.nTour == 4):
 		choixSkill = 1
@@ -55,10 +57,7 @@ func choixSkill():
 	else:
 		choixSkill = randi()%2
 	
-	if(assome > 0):
-		tourEffectue = true
-	else:
-		tourEffectue = false
+	tourEffectue = false
 
 func castSkill1():
 	
@@ -98,6 +97,13 @@ func castSkill3():
 	
 	cible.degatsPrisDef(150 + randi()%16)
 	yield(cible,"degatsTermine")
+	emit_signal("skillCast")
+
+func castSkill5():
+	secondText = false
+	
+	yield(self,"animation_finished")
+	
 	emit_signal("skillCast")
 
 #Surcharge 2
