@@ -26,6 +26,6 @@ margin_bottom = 300.0
 
 [node name="Harry" parent="HBoxContainer" instance=ExtResource( 4 )]
 
-[node name="Flaux" parent="HBoxContainer" instance=ExtResource( 5 )]
+[node name="Flaux" parent="HBoxContainer" groups=["AllieGroupe", "CombattantGroupe"] instance=ExtResource( 5 )]
 margin_left = 622.0
 margin_right = 1240.0

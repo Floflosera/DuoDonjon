@@ -5,9 +5,19 @@ signal butPressed
 onready var fr = true
 onready var en = false
 
+onready var combat = get_node("../..")
+
 onready var selection = $Selection
 
 onready var ciblePar = [false,false]
+
+onready var lacere = false
+
+func degatsPrisDef(degats):
+	if(lacere):
+		degatsPris(int((degats-defense)*1.25))
+	else:
+		degatsPris(degats-defense)
 
 func _ready():
 	spriteAnim = self
@@ -17,6 +27,10 @@ func _ready():
 func clearCible():
 	ciblePar[0] = false
 	ciblePar[1] = false
+
+#Surcharge
+func clearThings():
+	lacere = false
 
 #La lecture des skills fonctionne d'une manière similaire à la lecture des dialogues dans un fichier
 export(String, FILE, "*.json") var skill_file

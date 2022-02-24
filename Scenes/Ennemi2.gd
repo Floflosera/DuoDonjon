@@ -3,13 +3,16 @@ extends "res://Scenes/Ennemi.gd"
 onready var aHarry = get_node("../../GeneralInterface/HBoxContainer/Harry")
 onready var aFlaux = get_node("../../GeneralInterface/HBoxContainer/Flaux")
 
-onready var assome = false
+onready var allies = [aHarry,aFlaux]
+
+onready var prepare = false
+onready var assome = 0
 
 func _ready():
 	#Statistiques de l'ennemi
 	pvmax = 500
 	pv = 500
-	defense = 2
+	defense = 15
 	vitesse = 3
 	
 	ligne_skills(3)
@@ -28,40 +31,77 @@ func aTextSkill2():
 func _on_Selection_pressed():
 	emit_signal("butPressed")
 
+#Surcharge
+func degatsPrisDef(degats):
+	if(lacere && assome > 0):
+		degatsPris(int((degats-defense)*2.25))
+	elif(assome > 0):
+		degatsPris(int((degats-defense)*2))
+	elif(lacere):
+		degatsPris(int((degats-defense)*1.25))
+	else:
+		degatsPris(degats-defense)
+
 func choixSkill():
-	choixSkill = 2#randi()%3
+	if(assome > 0):
+		pass
+	if(combat.nTour <= 3):
+		choixSkill = 0
+	elif(combat.nTour == 4):
+		choixSkill = 1
+	elif(prepare == true):
+		choixSkill = 2
+		prepare = false
+	else:
+		choixSkill = randi()%2
 	
-	match choixSkill:
-		0:
-			pass
-		1:
-			pass
-		2:
-			pass
-	cibler(aHarry)
-	
-	tourEffectue = false
+	if(assome > 0):
+		tourEffectue = true
+	else:
+		tourEffectue = false
 
 func castSkill1():
-	secondText = false
 	
-	cible.degatsPris(10)
+	secondText = false
+			
+	if(aFlaux.hide):
+		cibler(aHarry)
+	else:
+		cibler(allies[randi()%2])
+	
+	cible.degatsPrisDef(60 + randi()%7)
 	yield(cible,"degatsTermine")
+	
 	emit_signal("skillCast")
 
 func castSkill2():
-	secondText = false
 	
-	cible.degatsPris(10)
-	yield(cible,"degatsTermine")
+	secondText = false
+	prepare = true
+	
+	yield(self,"animation_finished")
+	
 	emit_signal("skillCast")
 
 func castSkill3():
-	if(aHarry.choixSkill == 3 && aFlaux.choixSkill == 0):
+	
+	if(aHarry.guard && aFlaux.hide):
+		assome = 2
 		secondText = true
+		cibler(aHarry)
+	elif(aFlaux.hide):
+		secondText = false
+		cibler(aHarry)
 	else:
 		secondText = false
+		cibler(allies[randi()%2])
 	
-	cible.degatsPris(10)
+	cible.degatsPrisDef(150 + randi()%16)
 	yield(cible,"degatsTermine")
 	emit_signal("skillCast")
+
+#Surcharge 2
+func clearThings():
+	lacere = false
+	if(assome > 0):
+		assome -= 1

@@ -15,11 +15,6 @@ animations = [ {
 }, {
 "frames": [  ],
 "loop": true,
-"name": "Fatigue",
-"speed": 3.0
-}, {
-"frames": [  ],
-"loop": true,
 "name": "Enerve",
 "speed": 3.0
 }, {
@@ -27,6 +22,11 @@ animations = [ {
 "loop": false,
 "name": "Blesse",
 "speed": 6.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "Fatigue",
+"speed": 3.0
 }, {
 "frames": [  ],
 "loop": true,
@@ -39,7 +39,7 @@ animations = [ {
 "speed": 3.0
 } ]
 
-[node name="Perso" type="HBoxContainer"]
+[node name="Perso" type="HBoxContainer" groups=["AllieGroupe", "CombattantGroupe"]]
 margin_right = 618.0
 margin_bottom = 280.0
 size_flags_horizontal = 3

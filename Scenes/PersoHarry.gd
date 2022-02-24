@@ -1,11 +1,24 @@
 extends "res://Scenes/Perso.gd"
 
+onready var bouclier = false
+onready var guard = false
+onready var launch = false
+
 func _ready():
 	allie = get_node("../Flaux")
 	pvmax = 230
 	pv = 230
-	defense = 2
+	defense = 20
 	vitesse = 2
+
+#Surcharge pour les différents états d'Harry
+func degatsPrisDef(degats):
+	if(bouclier):
+		degatsPris(int((degats-defense)*0.7))
+	elif(guard):
+		degatsPris(int((degats-defense)*0.4))
+	else:
+		degatsPris(degats-defense)
 
 #Surcharge pour les compétences prioritaires et qui ciblent
 func _on_Skill1_pressed():
@@ -39,32 +52,45 @@ func _on_Skill5_pressed():
 
 #Surcharge des castSkill
 func castSkill1():
-	cible.degatsPris(10)
+	bouclier = true
+	
+	cible.degatsPrisDef(40+randi()%5)
 	ciblage = false
+	
 	yield(cible,"degatsTermine")
 	emit_signal("skillCast")
 
 func castSkill2():
-	cible.degatsPris(20)
+	cible.degatsPrisDef(60+randi()%7)
 	ciblage = false
+	
 	yield(cible,"degatsTermine")
 	emit_signal("skillCast")
 
 func castSkill3():
 	soinPV(50)
 	allie.soinPV(50)
+	
 	yield(spriteAnim,"animation_finished")
-	#faire une petite animation de soin et attendre la fin
 	emit_signal("skillCast")
 
 func castSkill4():
-	allie.degatsPris(40)
+	
+	guard = true
 	priorite = false
-	yield(allie,"degatsTermine")
+	
+	yield(spriteAnim,"animation_finished")
 	emit_signal("skillCast")
 
 func castSkill5():
-	allie.degatsPris(40 + randi()%10)
+	
+	launch = true
 	priorite = false
-	yield(allie,"degatsTermine")
+	
+	yield(spriteAnim,"animation_finished")
 	emit_signal("skillCast")
+
+func clearThings():
+	bouclier = false
+	guard = false
+	launch = false

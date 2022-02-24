@@ -15,7 +15,7 @@ animations = [ {
 "speed": 3.0
 } ]
 
-[node name="Ennemi" type="AnimatedSprite" groups=["EnnemiGroupe"]]
+[node name="Ennemi" type="AnimatedSprite" groups=["CombattantGroupe", "EnnemiGroupe"]]
 position = Vector2( 647, 302 )
 frames = SubResource( 1 )
 animation = "Neutre"

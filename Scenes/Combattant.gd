@@ -54,6 +54,8 @@ func changerSprite():
 #Méthode qui permet d'infliger "degats" points de degats au personnage visé
 func degatsPris(degats):
 	spriteAnim.play("Blesse")		#Lance l'animation des dégâts pris
+	if(degats <= 1):
+		degats = 1
 	if(pv - degats <= 0):			#La condition fait en sorte de ne pas avoir des pv négatifs
 		pv = 0						#Si les pv sont inférieurs aux dégâts réçus, alors on tombe à 0pv
 		tourEffectue = true			#Si un allié n'a plus de pv, alors son tour sera compté comme déjà passé
@@ -62,6 +64,9 @@ func degatsPris(degats):
 	yield(spriteAnim,"animation_finished")	#Attend la fin de l'animation de blessure
 	changerSprite()							#Change le sprite des 2 persos
 	emit_signal("degatsTermine")
+
+func degatsPrisDef(degats):
+	degatsPris(degats-defense)
 
 #Fonction lancer lorsqu'un soin est utilisé sur un personnage, il soigne "valeur" pv
 func soinPV(valeur):
@@ -110,3 +115,7 @@ func castSkill():
 		
 	tourEffectue = true				#Quand une compétence est lancé, le tour est effectué
 	emit_signal("skillFinished")
+
+#à surcharger en fonction du combattants
+func clearThings():
+	pass

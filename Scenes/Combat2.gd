@@ -9,6 +9,10 @@ onready var combattantEnnemi2 = $EnnemiGroup/Ennemi2
 func _ready():
 	randomize() #à mettre dans le main
 	
+	combattantHarry.skill5.hide()
+	combattantFlaux.skill4.hide()
+	combattantFlaux.skill5.hide()
+	
 	combattants = [combattantHarry, combattantFlaux, combattantEnnemi2]
 	
 	ordreTour() #définie l'ordre des tours au début du combat
@@ -20,7 +24,10 @@ func _ready():
 	
 	#Exemple de boucle d'un combat
 	while((combattantHarry.pv > 0 || combattantFlaux.pv > 0) && combattantEnnemi2.pv > 0):
+		nTour += 1
+		
 		pvEnnemi()						#Temporaire
+		
 		$GeneralInterface.choixTour() #lance le choix du tour
 		yield($GeneralInterface, "choixTourFini")
 	

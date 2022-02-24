@@ -21,6 +21,8 @@ var temp
 #Variable utilisée pour l'affichage progressif des textes
 var textTemp = ""
 
+onready var nTour = 0
+
 #Définie l'ordre des tours avec un tri tournoi (le tableau est assez petit pour que ça soit court)
 func ordreTour():
 	for i in range(combattants.size()-1):						#On parcourt le tableau combattants
@@ -40,6 +42,7 @@ func actionCombattant(combattant):
 
 #Déroulement des actions d'un tour en fonction des priorités et vitesses
 func deroulementTour():
+	
 	for i in range(combattants.size()):
 		if(combattants[i].ennemi):
 			combattants[i].choixSkill()
@@ -50,31 +53,24 @@ func deroulementTour():
 		if(combattants[i].priorite && combattants[i].tourEffectue == false):
 			narraText(combattants[i].aTextSkill())
 			yield(self,"narraTextFini")
-			$TimerActions.start()
-			yield($TimerActions, "timeout")
 			actionCombattant(combattants[i])
 			yield(self,"actionFinie")
 			if(combattants[i].secondText):
 				narraText(combattants[i].aTextSkill2())
 				yield(self,"narraTextFini")
-				$TimerActions.start()
-				yield($TimerActions, "timeout")
 	
 	for i in range(combattants.size()):		#On parcourt le tableau des combattants
 		if(combattants[i].tourEffectue == false):#Si le tour du combattant n'a pas encore eu lieu (via attaque prio)
 			narraText(combattants[i].aTextSkill())
 			yield(self,"narraTextFini")
-			$TimerActions.start()
-			yield($TimerActions, "timeout")
 			actionCombattant(combattants[i])
 			yield(self,"actionFinie")
 			if(combattants[i].secondText):
 				narraText(combattants[i].aTextSkill2())
 				yield(self,"narraTextFini")
-				$TimerActions.start()
-				yield($TimerActions, "timeout")
 	
 	get_tree().call_group("EnnemiGroupe", "clearCible")
+	get_tree().call_group("CombattantGroupe", "clearThings")
 	
 	emit_signal("derouleTourFini")					#Informe de la fin du déroulement des actions
 
@@ -93,7 +89,7 @@ func narraText(text):
 		nar.set_text(textTemp)						#On affiche ce texte temporaire
 		$TimerText.start()							#On attend un peu, puis on recommence jusqu'à la fin du string
 		yield($TimerText,"timeout")
-		if(c == "!"):
+		if(c == "!" || c == "?" || c == "."):
 			$TimerText.set_wait_time(1.0)
 			$TimerText.start()
 			yield($TimerText,"timeout")

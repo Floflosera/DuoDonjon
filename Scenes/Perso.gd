@@ -13,6 +13,9 @@ onready var labelVie = get_node("CadreMenu/Background/Menu/VBoxContainer/GridCon
 
 #Stockage de la scène de l'allié dans une variable pour vérifier ses informations plus tard
 var allie
+#Faut prendre les ennemis en paramètre ouais
+onready var ennemiGroup = get_node("../../../EnnemiGroup")
+onready var ennemis =  ennemiGroup.ennemis
 
 onready var skill1 = $CadreMenu/Background/Menu/VBoxContainer/GridContainer/Skill1
 onready var skill2 = $CadreMenu/Background/Menu/VBoxContainer/GridContainer/Skill2
@@ -28,11 +31,11 @@ func modifDesc(text):
 func changerSprite():
 	if(pv == 0):						#Le personnage n'a plus assez de vie pour combattre
 		spriteAnim.play("KO")
-	elif(allie.pv == 0):			#L'autre personnage n'a plus beaucoup de vie
+	elif(allie.pv == 0):				#L'autre personnage n'a plus beaucoup de vie
 		spriteAnim.play("Enerve")
 	elif(pv <= pvmax/3):				#Le personnage n'a plus beaucoup de vie
 		spriteAnim.play("Fatigue")
-	elif(allie.pv <= pvmax/3):		#L'autre personnage n'a plus beaucoup de vie
+	elif(allie.pv <= allie.pvmax/3):	#L'autre personnage n'a plus beaucoup de vie
 		spriteAnim.play("Inquiet")
 	else:								#Aucun des problèmes si-dessus
 		spriteAnim.play("Neutre")
