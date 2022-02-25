@@ -37,12 +37,16 @@ func _on_Selection_pressed():
 func degatsPrisDef(degats):
 	if(lacere && assome > 0):
 		degatsPris(int((degats-defense)*2.25))
+		return str((degats-defense)*2.25)
 	elif(assome > 0):
 		degatsPris(int((degats-defense)*2))
+		return str((degats-defense)*2)
 	elif(lacere):
 		degatsPris(int((degats-defense)*1.25))
+		return str((degats-defense)*1.25)
 	else:
 		degatsPris(degats-defense)
+		return str(degats-defense)
 
 func choixSkill():
 	if(assome > 0):

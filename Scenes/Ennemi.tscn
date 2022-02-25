@@ -1,19 +1,28 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/Ennemi.gd" type="Script" id=2]
+[ext_resource path="res://assets/vieve.png" type="Texture" id=3]
+[ext_resource path="res://assets/viepe.png" type="Texture" id=4]
+[ext_resource path="res://Godot-Fontpack-d244bf6170b399a6d4d26a0d906058ddf2dafdf1/fonts/montreal/Montreal-Regular.ttf" type="DynamicFontData" id=5]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [  ],
-"loop": false,
-"name": "Blesse",
-"speed": 6.0
-}, {
-"frames": [  ],
 "loop": true,
 "name": "Neutre",
 "speed": 3.0
+}, {
+"frames": [  ],
+"loop": false,
+"name": "Blesse",
+"speed": 6.0
 } ]
+
+[sub_resource type="DynamicFont" id=2]
+size = 50
+outline_size = 2
+extra_spacing_char = 2
+font_data = ExtResource( 5 )
 
 [node name="Ennemi" type="AnimatedSprite" groups=["CombattantGroupe", "EnnemiGroupe"]]
 position = Vector2( 647, 302 )
@@ -28,6 +37,34 @@ margin_top = -169.0
 margin_right = 9.0
 margin_bottom = -149.0
 mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LifeBar" type="TextureProgress" parent="." groups=["LifeBarEnnemi"]]
+visible = false
+margin_left = -80.0
+margin_top = -143.0
+margin_right = 80.0
+margin_bottom = -114.0
+max_value = 2.0
+value = 1.0
+texture_under = ExtResource( 3 )
+texture_progress = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Degats" type="RichTextLabel" parent="."]
+margin_left = -99.0
+margin_top = -153.0
+margin_right = 100.0
+margin_bottom = -83.0
+custom_colors/default_color = Color( 0.913725, 0.0588235, 0.0588235, 1 )
+custom_fonts/normal_font = SubResource( 2 )
+bbcode_enabled = true
+bbcode_text = "[center][shake level=10]"
+scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
 }

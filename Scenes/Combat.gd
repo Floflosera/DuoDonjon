@@ -76,10 +76,10 @@ func deroulementTour():
 
 #Lit le dialogue entrée en paramètre (qui est une méthode de la scène DialogueInterface)
 func litDialogue(dialog):
-	$DialogueInterface.visible = true
+	$DialogueInterface.show()
 	dialog #dialog est la méthode du dialogue choisi en entrée
 	yield($DialogueInterface, "dialogueFini")
-	$DialogueInterface.visible = false
+	$DialogueInterface.hide()
 
 func narraText(text):
 	textTemp = ""

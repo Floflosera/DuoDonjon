@@ -35,6 +35,8 @@ export var pv = 1			#les points de vie qu'il a actuellement
 export var defense = 0		#sa défense, influt sur les dégâts reçus
 export var vitesse = 0 		#sa vitesse, influt sur l'ordre des actions d'un tour
 
+var barreVie #Barre de vie en textureProgress
+
 var textSkill = [] #tableau des textes affichés au lancement d'une attaque
 
 func skillTextAppend(skillsText):
@@ -61,6 +63,7 @@ func degatsPris(degats):
 		tourEffectue = true			#Si un allié n'a plus de pv, alors son tour sera compté comme déjà passé
 	else:
 		pv -= degats				#Sinon les dégâts sont soustraits aux pv du personnage
+	barreVie.value = pv
 	yield(spriteAnim,"animation_finished")	#Attend la fin de l'animation de blessure
 	changerSprite()							#Change le sprite des 2 persos
 	emit_signal("degatsTermine")

@@ -60,11 +60,13 @@ func choixCharaTour(chara):
 			get_tree().call_group("FlauxButtons", "release_focus")
 		
 		if(chara.ciblage):
-			groupeEnnemi.visibleButton()
+			get_tree().call_group("EnnemiButton", "show")
+			get_tree().call_group("LifeBarEnnemi", "show")
 			get_tree().call_group("EnnemiButton", "grab_focus")
 			yield(groupeEnnemi,"selectionne")
 			get_tree().call_group("EnnemiButton", "release_focus")
-			groupeEnnemi.invisibleButton()
+			get_tree().call_group("EnnemiButton", "hide")
+			get_tree().call_group("LifeBarEnnemi", "hide")
 			while(not(groupeEnnemi.ennemis[i].ciblePar[kiCible]) && i <= groupeEnnemi.ennemis.size()):
 				i += 1
 			if(groupeEnnemi.ennemis[i].ciblePar[kiCible]):

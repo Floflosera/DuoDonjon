@@ -50,18 +50,25 @@ func _on_Skill5_pressed():
 	priorite = true
 	emit_signal("butPressed")
 
+func harryDegats(degats):
+	deg = cible.degatsPrisDef(degats)
+	
+	yield(cible.spriteAnim,"frame_changed")
+	cible.showDegats.add_color_override("default_color", Color(23.0/255.0,0,110.0/255.0,1))
+	cible.showDegats.set_bbcode(cible.showDegats.get_bbcode() + deg)
+
 #Surcharge des castSkill
 func castSkill1():
 	bouclier = true
 	
-	cible.degatsPrisDef(40+randi()%5)
+	harryDegats(40+randi()%5)
 	ciblage = false
 	
 	yield(cible,"degatsTermine")
 	emit_signal("skillCast")
 
 func castSkill2():
-	cible.degatsPrisDef(60+randi()%7)
+	harryDegats(60+randi()%7)
 	ciblage = false
 	
 	yield(cible,"degatsTermine")

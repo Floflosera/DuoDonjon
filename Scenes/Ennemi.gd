@@ -8,20 +8,39 @@ onready var en = false
 onready var combat = get_node("../..")
 
 onready var selection = $Selection
+onready var showDegats = $Degats
 
 onready var ciblePar = [false,false]
 
 onready var lacere = false
 
+func degatsPris(degats):
+	spriteAnim.play("Blesse")		#Lance l'animation des dégâts pris
+	if(degats <= 1):
+		degats = 1
+	if(pv - degats <= 0):			#La condition fait en sorte de ne pas avoir des pv négatifs
+		pv = 0						#Si les pv sont inférieurs aux dégâts réçus, alors on tombe à 0pv
+		tourEffectue = true			#Si un allié n'a plus de pv, alors son tour sera compté comme déjà passé
+	else:
+		pv -= degats				#Sinon les dégâts sont soustraits aux pv du personnage
+	barreVie.value = pv
+	yield(spriteAnim,"animation_finished")	#Attend la fin de l'animation de blessure
+	changerSprite()							#Change le sprite des 2 persos
+	showDegats.set_bbcode("[center][shake level=10]")
+	emit_signal("degatsTermine")
+
 func degatsPrisDef(degats):
 	if(lacere):
 		degatsPris(int((degats-defense)*1.25))
+		return str((degats-defense)*1.25)
 	else:
 		degatsPris(degats-defense)
+		return str(degats-defense)
 
 func _ready():
 	spriteAnim = self
 	ennemi = true
+	barreVie = $LifeBar
 	load_skills()
 
 func clearCible():

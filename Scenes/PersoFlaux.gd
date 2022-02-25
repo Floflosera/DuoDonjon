@@ -34,13 +34,17 @@ func _on_Skill4_pressed():
 
 func flauxDegats(degats):
 	if(affute > 0 && allie.launch):
-		cible.degatsPrisDef(int(degats*3.5))
+		deg = cible.degatsPrisDef(int(degats*3.5))
 	elif(affute > 0):
-		cible.degatsPrisDef(int(degats*2.5))
+		deg = cible.degatsPrisDef(int(degats*2.5))
 	elif(allie.launch):
-		cible.degatsPrisDef(int(degats*1.5))
+		deg = cible.degatsPrisDef(int(degats*1.5))
 	else:
-		cible.degatsPrisDef(degats)
+		deg = cible.degatsPrisDef(degats)
+	
+	yield(cible.spriteAnim,"frame_changed")
+	cible.showDegats.add_color_override("default_color", Color(172.0/255.0,50.0/255.0,50.0/255.0,1))
+	cible.showDegats.set_bbcode(cible.showDegats.get_bbcode() + deg)
 
 #Surcharge des castSkill
 func castSkill1():

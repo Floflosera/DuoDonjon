@@ -6,9 +6,9 @@ signal butPressed
 func _ready():
 	ennemi = false
 	spriteAnim = get_node("Portrait/VBoxContainer/Cadre/Sprite")
+	barreVie = get_node("Portrait/VBoxContainer/LifeBar")
 
 #Stockage de ce qui affiche la vie pour pouvoir modifier leur valeur plus rapidement/intuitivement
-onready var barreVie = get_node("Portrait/VBoxContainer/LifeBar") #Barre de vie en textureProgress
 onready var labelVie = get_node("CadreMenu/Background/Menu/VBoxContainer/GridContainer/PV") #Zone de texte avec la vie
 
 #Stockage de la scène de l'allié dans une variable pour vérifier ses informations plus tard
@@ -16,6 +16,8 @@ var allie
 #Faut prendre les ennemis en paramètre ouais
 onready var ennemiGroup = get_node("../../../EnnemiGroup")
 onready var ennemis =  ennemiGroup.ennemis
+
+onready var deg = ""
 
 onready var skill1 = $CadreMenu/Background/Menu/VBoxContainer/GridContainer/Skill1
 onready var skill2 = $CadreMenu/Background/Menu/VBoxContainer/GridContainer/Skill2
