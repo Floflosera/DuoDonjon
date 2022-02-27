@@ -80,8 +80,6 @@ func choixCharaTour(chara):
 					chara.tourChoisi = true
 				else:
 					chara.ciblage = false
-					yield(chara.spriteAnim,"frame_changed")
-					chara.annuleF = false
 				i = 0
 			else:
 				chara.tourChoisi = true
