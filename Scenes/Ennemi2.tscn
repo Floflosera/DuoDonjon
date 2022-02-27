@@ -22,7 +22,7 @@ frames = SubResource( 1 )
 script = ExtResource( 2 )
 
 [node name="LifeBar" parent="." index="1"]
-max_value = 500.0
-value = 500.0
+max_value = 800.0
+value = 800.0
 
 [connection signal="pressed" from="Selection" to="." method="_on_Selection_pressed"]

@@ -26,7 +26,7 @@ func degatsPris(degats):
 	barreVie.value = pv
 	yield(spriteAnim,"animation_finished")	#Attend la fin de l'animation de blessure
 	changerSprite()							#Change le sprite des 2 persos
-	showDegats.set_bbcode("[center][shake level=10]")
+	showDegats.set_bbcode("[center][wave freq=25]")
 	emit_signal("degatsTermine")
 
 func degatsPrisDef(degats):

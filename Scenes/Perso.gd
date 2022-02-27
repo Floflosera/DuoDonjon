@@ -18,12 +18,16 @@ onready var ennemiGroup = get_node("../../../EnnemiGroup")
 onready var ennemis =  ennemiGroup.ennemis
 
 onready var deg = ""
+onready var tourChoisi = false
+onready var annuleF = false
 
 onready var skill1 = $CadreMenu/Background/Menu/VBoxContainer/GridContainer/Skill1
 onready var skill2 = $CadreMenu/Background/Menu/VBoxContainer/GridContainer/Skill2
 onready var skill3 = $CadreMenu/Background/Menu/VBoxContainer/GridContainer/Skill3
 onready var skill4 = $CadreMenu/Background/Menu/VBoxContainer/GridContainer/Skill4
 onready var skill5 = $CadreMenu/Background/Menu/VBoxContainer/GridContainer/Skill5
+
+onready var skills = [skill1,skill2,skill3,skill4,skill5]
 
 #Méthode qui permet de modifier le contenu du texte qui décrit les compétences avec ce qui est entré en paramètre
 func modifDesc(text):
@@ -75,13 +79,12 @@ func soinPV(valeur):
 	changerSprite()					#On change le sprite des 2 persos
 	allie.changerSprite()			#pour revérifier quelle sprite il faut afficher
 
-#Permet de rerendre utilisable le skill utilise au tour précédent pour le tour suivant
 func abled():
-	$CadreMenu/Background/Menu/VBoxContainer/GridContainer/Skill1.disabled = false
-	$CadreMenu/Background/Menu/VBoxContainer/GridContainer/Skill2.disabled = false
-	$CadreMenu/Background/Menu/VBoxContainer/GridContainer/Skill3.disabled = false
-	$CadreMenu/Background/Menu/VBoxContainer/GridContainer/Skill4.disabled = false
-	$CadreMenu/Background/Menu/VBoxContainer/GridContainer/Skill5.disabled = false
+	skill1.disabled = false
+	skill2.disabled = false
+	skill3.disabled = false
+	skill4.disabled = false
+	skill5.disabled = false
 
 #Liste des bouttons que l'on peut presser, il renvoie tous le signal "un bouton a été pressé"
 #Ce signal est ensuite reçu dans GeneralInterface pour savoir que le choix a eu lieu
@@ -89,31 +92,35 @@ func abled():
 #On passe la priorite a vrai si l'attaque en question est prioritaire à l'ordre de la vitesse
 func _on_Skill1_pressed():
 	choixSkill = 0
-	abled()
-	#on bloque une action pendant un tour lorsqu'elle est utilisée
-	$CadreMenu/Background/Menu/VBoxContainer/GridContainer/Skill1.disabled = true
+	
+	priorite = false
+	ciblage = false
 	emit_signal("butPressed")
 
 func _on_Skill2_pressed():
 	choixSkill = 1
-	abled()
-	$CadreMenu/Background/Menu/VBoxContainer/GridContainer/Skill2.disabled = true
+	
+	priorite = false
+	ciblage = false
 	emit_signal("butPressed")
 
 func _on_Skill3_pressed():
 	choixSkill = 2
-	abled()
-	$CadreMenu/Background/Menu/VBoxContainer/GridContainer/Skill3.disabled = true
+	
+	priorite = false
+	ciblage = false
 	emit_signal("butPressed")
 
 func _on_Skill4_pressed():
 	choixSkill = 3
-	abled()
-	$CadreMenu/Background/Menu/VBoxContainer/GridContainer/Skill4.disabled = true
+	
+	priorite = false
+	ciblage = false
 	emit_signal("butPressed")
 
 func _on_Skill5_pressed():
 	choixSkill = 4
-	abled()
-	$CadreMenu/Background/Menu/VBoxContainer/GridContainer/Skill5.disabled = true
+	
+	priorite = false
+	ciblage = false
 	emit_signal("butPressed")

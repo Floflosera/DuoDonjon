@@ -14,8 +14,9 @@ onready var cHarry = $HBoxContainer/Harry
 onready var cFlaux = $HBoxContainer/Flaux
 
 onready var groupeEnnemi = get_node("../EnnemiGroup")
-var kiCible
+onready var kiCible = 0
 
+onready var cFlauxFait = false
 
 #Chaque skill a une variable qui stockera sa description qui s'affiche pendant le choix
 var coupBouclierDesc
@@ -42,55 +43,87 @@ func _ready():
 	cFlaux.labelVieF()
 
 func choixCharaTour(chara):
-	#On vérifie toujours si le personnage à assez de vie pour agir
-	if(chara.pv > 0):
-		chara.skill1.grab_focus()#met le curseur de menu sur le premier skill d'Harry
+	
+	chara.tourChoisi = false
+	
+	while(not(chara.tourChoisi) && not(chara.annuleF)):
+		
+		chara.skills[chara.choixSkill].grab_focus()#met le curseur de menu sur le premier skill d'Harry
 		
 		#on attend qu'un des boutons de skills d'Harry soit pressé,
 		#on continuera quand on aura reçu le signal "butPressed" de la scène Harry
 		yield(chara, "butPressed")
 		
-		if(kiCible == 0):
-			#Permet de retirer le curseur tous les boutons d'un personnage
-			#(exemble : le groupe "HarryButtons" contient chaque bouton d'Harry)
-			get_tree().call_group("HarryButtons", "release_focus")
-		else:
-			#Retirer le focus de tous les boutons empêche Flaux de faire grab_focus
-			#parce que ça va trop vite
-			get_tree().call_group("FlauxButtons", "release_focus")
+		if(not(chara.annuleF)):
+			if(kiCible == 0):
+				#Permet de retirer le curseur tous les boutons d'un personnage
+				#(exemble : le groupe "HarryButtons" contient chaque bouton d'Harry)
+				get_tree().call_group("HarryButtons", "release_focus")
+			else:
+				#Retirer le focus de tous les boutons empêche Flaux de faire grab_focus
+				#parce que ça va trop vite
+				get_tree().call_group("FlauxButtons", "release_focus")
 		
-		if(chara.ciblage):
-			get_tree().call_group("EnnemiButton", "show")
-			get_tree().call_group("LifeBarEnnemi", "show")
-			get_tree().call_group("EnnemiButton", "grab_focus")
-			yield(groupeEnnemi,"selectionne")
-			get_tree().call_group("EnnemiButton", "release_focus")
-			get_tree().call_group("EnnemiButton", "hide")
-			get_tree().call_group("LifeBarEnnemi", "hide")
-			while(not(groupeEnnemi.ennemis[i].ciblePar[kiCible]) && i <= groupeEnnemi.ennemis.size()):
-				i += 1
-			if(groupeEnnemi.ennemis[i].ciblePar[kiCible]):
-				chara.cibler(groupeEnnemi.ennemis[i])
-			i = 0
-		
-		chara.modifDesc("") #Une fois l'action choisie, on vide la description des actions
+			if(chara.ciblage):
+				get_tree().call_group("EnnemiGroupe", "clearCible")
+				get_tree().call_group("EnnemiButton", "show")
+				get_tree().call_group("LifeBarEnnemi", "show")
+				get_tree().call_group("EnnemiButton", "grab_focus")
+				yield(groupeEnnemi,"selectionne")
+				get_tree().call_group("EnnemiButton", "release_focus")
+				get_tree().call_group("EnnemiButton", "hide")
+				get_tree().call_group("LifeBarEnnemi", "hide")
+				while(i < groupeEnnemi.ennemis.size() && not(groupeEnnemi.ennemis[i].ciblePar[kiCible])):
+					i += 1
+				if(i < groupeEnnemi.ennemis.size()):
+					chara.cibler(groupeEnnemi.ennemis[i])
+					chara.tourChoisi = true
+				else:
+					chara.ciblage = false
+					yield(chara.spriteAnim,"frame_changed")
+					chara.annuleF = false
+				i = 0
+			else:
+				chara.tourChoisi = true
+	
+	chara.modifDesc("") #Une fois l'action choisie, on vide la description des actions
+	
+	if(not(chara.annuleF)):
 		chara.tourEffectue = false #Le tour venant d'être choisi n'est pas encore effectué
+	else:
+		cFlauxFait = false
 	
 	emit_signal("choixCharaTourFini")
 
 #Fonction qui permet au joueur de sélectionner les actions qu'il souhaite faire
 func choixTour():
 	
-	kiCible = 0
+	cFlauxFait = false
 	
-	choixCharaTour(cHarry)
-	yield(self,"choixCharaTourFini")
+	while(not(cFlauxFait)):
+		
+		kiCible = 0
+		
+		#On vérifie toujours si le personnage à assez de vie pour agir
+		if(cHarry.pv > 0):
+			choixCharaTour(cHarry)
+			yield(self,"choixCharaTourFini")
+		
+		
+		kiCible = 1
+		cFlaux.annuleF = false
+		
+		if(cFlaux.pv > 0):
+			cFlauxFait = true
+			choixCharaTour(cFlaux)
+			yield(self,"choixCharaTourFini")
+		else:
+			cFlauxFait = true
 	
-	kiCible = 1
-	
-	choixCharaTour(cFlaux)
-	yield(self,"choixCharaTourFini")
-	
+	cHarry.abled()
+	cHarry.skills[cHarry.choixSkill].disabled = true
+	cFlaux.abled()
+	cFlaux.skills[cFlaux.choixSkill].disabled = true
 	
 	emit_signal("choixTourFini") #Permet d'avertir la scène de combat que le tour est terminé
 

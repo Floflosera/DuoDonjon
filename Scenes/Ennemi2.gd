@@ -10,8 +10,8 @@ onready var assome = 0
 
 func _ready():
 	#Statistiques de l'ennemi
-	pvmax = 500
-	pv = 500
+	pvmax = 800
+	pv = 800
 	defense = 15
 	vitesse = 3
 	
@@ -72,7 +72,7 @@ func castSkill1():
 	else:
 		cibler(allies[randi()%2])
 	
-	cible.degatsPrisDef(60 + randi()%7)
+	cible.degatsPrisDef(80 + randi()%9)
 	yield(cible,"degatsTermine")
 	
 	emit_signal("skillCast")

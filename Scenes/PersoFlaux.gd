@@ -10,25 +10,31 @@ func _ready():
 	defense = 10
 	vitesse = 4
 
+func _process(delta):
+	if(not(ciblage)):
+		if(Input.is_action_just_pressed("ui_cancel")):
+			annuleF = true
+			emit_signal("butPressed")
+
 #Surcharge pour les compétences prioritaires et qui ciblent
 func _on_Skill1_pressed():
 	choixSkill = 0
-	abled()
-	skill1.disabled = true
+	
 	priorite = true
+	ciblage = false
 	emit_signal("butPressed")
 
 func _on_Skill2_pressed():
 	choixSkill = 1
-	abled()
-	skill2.disabled = true
+	
+	priorite = false
 	ciblage = true
 	emit_signal("butPressed")
 
 func _on_Skill4_pressed():
 	choixSkill = 3
-	abled()
-	skill4.disabled = true
+	
+	priorite = false
 	ciblage = true
 	emit_signal("butPressed")
 
