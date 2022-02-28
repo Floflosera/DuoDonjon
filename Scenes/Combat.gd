@@ -35,7 +35,8 @@ onready var nTour = 0
 onready var nTourPV0 = 0
 
 func _ready():
-	charger_others()
+	nar.set_text("")
+	charger_others() #charger les textes "autres"
 
 #Définie l'ordre des tours avec un tri tournoi (le tableau est assez petit pour que ça soit court)
 func ordreTour():

@@ -41,10 +41,15 @@ func _ready():
 		
 		deroulementTour() #lance les actions choisies et celle(s) de ou des ennemi(s)
 		yield(self, "derouleTourFini")
+		
+		nar.set_text("")
 	
-	litDialogue($DialogueInterface.dialogueEnd())
-	yield($DialogueInterface, "dialogueFini")
-	
+	if(combattantEnnemi2.pv == 0):
+		$EnnemiGroup.hide()
+		litDialogue($DialogueInterface.dialogueEnd())
+		yield($DialogueInterface, "dialogueFini")
+	elif(combattantHarry.pv > 0 && combattantFlaux.pv > 0):
+		nar.narraText("Game Over")
 
 func pvEnnemi(): #pour tester
 	nar.set_text(str(combattantEnnemi2.pv))

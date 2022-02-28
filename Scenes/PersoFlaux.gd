@@ -43,10 +43,27 @@ func _on_Skill4_pressed():
 	ciblage = true
 	emit_signal("butPressed")
 
+func degatsPrisDef(degats):
+	if(emotion == 3):
+		degats += 20
+	elif(emotion == 2):
+		degats -= 20
+	elif(emotion == 1):
+		degats -= 10
+	
+	degatsPris(degats-defense)
+
 #fonction qui permet d'infliger des dégâts en fonction de l'état du personnage
 #degatsPrisDef renvoie une chaîne de caractères que deg prend
 #pour qu'on puisse ensuite afficher les dégats en changeant le texte "showDegats" de l'ennemi ciblé
 func flauxDegats(degats):
+	if(emotion == 3):
+		degats += 20
+	elif(emotion == 2):
+		degats -= 20
+	elif(emotion == 1):
+		degats += 10
+	
 	if(affute > 0 && allie.launch):
 		deg = cible.degatsPrisDef(int(degats*3.5))
 	elif(affute > 0):
@@ -74,7 +91,7 @@ func castSkill1():
 
 func castSkill2():
 	
-	flauxDegats(1000+randi()%8)#77
+	flauxDegats(77+randi()%8)
 	ciblage = false
 	
 	yield(cible,"degatsTermine")

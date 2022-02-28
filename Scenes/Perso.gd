@@ -35,6 +35,8 @@ onready var skill5 = $CadreMenu/Background/Menu/VBoxContainer/GridContainer/Skil
 #on met ces compétences dans un tableau pour pouvoir y accéder d'une autre manière (avec des indices)
 onready var skills = [skill1,skill2,skill3,skill4,skill5]
 
+onready var emotion = 0
+
 #Méthode qui permet de modifier le contenu du texte qui décrit les compétences avec ce qui est entré en paramètre
 func modifDesc(text):
 	$CadreMenu/Background/Menu/VBoxContainer/MarginContainer/Description.set_text(text)
@@ -63,14 +65,19 @@ func changerSpriteDia(n):
 func changerSprite():
 	if(pv == 0):						#Le personnage n'a plus assez de vie pour combattre
 		spriteAnim.play("KO")
+		emotion = -1
 	elif(allie.pv == 0):				#L'autre personnage n'a plus beaucoup de vie
 		spriteAnim.play("Enerve")
+		emotion = 3
 	elif(pv <= pvmax*0.4):				#Le personnage n'a plus beaucoup de vie
 		spriteAnim.play("Fatigue")
+		emotion = 2
 	elif(allie.pv <= allie.pvmax*0.4):	#L'autre personnage n'a plus beaucoup de vie
 		spriteAnim.play("Inquiet")
+		emotion = 1
 	else:								#Aucun des problèmes si-dessus
 		spriteAnim.play("Neutre")
+		emotion = 0
 
 #Pour afficher la vie en fonction de la langue
 func labelVieF():

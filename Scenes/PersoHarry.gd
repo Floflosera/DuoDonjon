@@ -15,6 +15,13 @@ func _ready():
 
 #Surcharge pour les différents états d'Harry lorsqu'il prend des dégâts
 func degatsPrisDef(degats):
+	if(emotion == 3):
+		degats += 20
+	elif(emotion == 2):
+		degats -= 20
+	elif(emotion == 1):
+		degats -= 10
+	
 	if(bouclier):
 		degatsPris(int((degats-defense)*0.7))
 	elif(guard):
@@ -53,7 +60,14 @@ func _on_Skill5_pressed():
 
 #fonction qui permet à Harry d'infliger des dégâts et de montrer les dégâts qu'il fait
 func harryDegats(degats):
-	deg = cible.degatsPrisDef(degats) #il ne peut pas augmenter sa puissance d'attaque
+	if(emotion == 3):
+		degats += 20
+	elif(emotion == 2):
+		degats -= 20
+	elif(emotion == 1):
+		degats += 10
+
+	deg = cible.degatsPrisDef(degats) #il n'augmente pas sa puissance autrement
 	
 	#on attend un petit instant (un changement de frame) pour afficher les dégâts quand l'ennemi clignote
 	yield(cible.spriteAnim,"frame_changed")
