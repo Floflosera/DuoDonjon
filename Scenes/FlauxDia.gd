@@ -1,28 +1,5 @@
-extends HBoxContainer
+extends Node
 
-#Rien de spécialement nouveau ici, on peut changer le label du personnage et son sprite en fonction du paramètre
-
-onready var spriteAnim = get_node("FlauxPortrait/VBoxContainer/Cadre/FlauxSprite")
-
+#Permet de modifier le texte de sa boite de dialogue par le contenu de la variable "text"
 func modifDia(text):
-	$FlauxMenu/Background/Menu/VBoxContainer/MarginContainer/Dialogue.set_text(text)
-
-#Change le sprite en fonction du nombre entré en paramètre
-func changerSprite(n):
-	match n:
-		0:
-			spriteAnim.play("Neutre")
-		1:
-			spriteAnim.play("Contente")
-		2:
-			spriteAnim.play("Enervee")
-		3:
-			spriteAnim.play("Triste")
-		4:
-			spriteAnim.play("Inquiete")
-		5:
-			spriteAnim.play("Fatiguee")
-		6:
-			spriteAnim.play("Blessee")
-		7:
-			spriteAnim.play("KO")
+	$Background/Menu/VBoxContainer/MarginContainer/Dialogue.set_text(text)

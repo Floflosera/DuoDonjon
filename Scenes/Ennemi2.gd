@@ -1,12 +1,15 @@
 extends "res://Scenes/Ennemi.gd"
 
+#L'ennemi stocke les alliés du combats dans des variables
 onready var aHarry = get_node("../../GeneralInterface/HBoxContainer/Harry")
 onready var aFlaux = get_node("../../GeneralInterface/HBoxContainer/Flaux")
 
+#ceux-ci sont rangés dans un tableau pour pouvoir y accéder de différentes façons
 onready var allies = [aHarry,aFlaux]
 
+#ceci sont les états temporaires spécifique à l'ennemi 2
 onready var prepare = false
-onready var assome = 0
+onready var assomme = 0
 
 func _ready():
 	#Statistiques de l'ennemi
@@ -15,6 +18,7 @@ func _ready():
 	defense = 15
 	vitesse = 3
 	
+	#charge le texte des compétences de l'ennemis stockés au ligne voulu
 	ligne_skills(3)
 	skillTextAppend(skills_text)
 	next_skills()
@@ -23,22 +27,25 @@ func _ready():
 	ligne_skills(6)
 	skillTextAppend(skills_text)
 
+#cas particulier avec la compétence de charge qui a deux textes
 func charge_skills():
 	skillTextAppend(skills_keys[5].textSkill)
 	skillTextAppend(skills_keys[5].textSkill2)
 
+#le 2e texte de ce skill est stocké comme l'affichage de texte de compétence 2
 func aTextSkill2():
 	return textSkill[3]
 
+#signal lorsqu'on appuie sur un bouton, il est envoyé au EnnemiGroup
 func _on_Selection_pressed():
 	emit_signal("butPressed")
 
-#Surcharge
+#Surcharge pour prendre en compte les différents cas
 func degatsPrisDef(degats):
-	if(lacere && assome > 0):
+	if(lacere && assomme > 0):
 		degatsPris(int((degats-defense)*2.25))
 		return str((degats-defense)*2.25)
-	elif(assome > 0):
+	elif(assomme > 0):
 		degatsPris(int((degats-defense)*2))
 		return str((degats-defense)*2)
 	elif(lacere):
@@ -48,8 +55,14 @@ func degatsPrisDef(degats):
 		degatsPris(degats-defense)
 		return str(degats-defense)
 
+#fonction qui permet de choisir la compétence lancer par l'ennemi
 func choixSkill():
-	if(assome > 0):
+	#L'ennemi assommé de fait rien
+	#Pendant les 3 premiers tour il fait sa première compétence
+	#Au 4e tour il prépare sa grosse attaque
+	#s'il a préparé sa grosse attaque au tour précédent, alors il la lancera et finit sa préparation
+	#sinon il choisi une compétence aléatoire entre sa première compétence et sa préparation
+	if(assomme > 0):
 		choixSkill = 4
 	elif(combat.nTour <= 3):
 		choixSkill = 0
@@ -63,17 +76,33 @@ func choixSkill():
 	
 	tourEffectue = false
 
+#les différentes compétences qui cible aléatoirement ou non en fonction de la situtation
 func castSkill1():
 	
 	secondText = false
-			
-	if(aFlaux.hide):
+	
+	if(aHarry.pv > 0 && aFlaux.pv > 0):
+		if(aFlaux.hide):
+			cibler(aHarry)
+		elif(combat.nTour <= 2):
+			cibler(allies[randi()%2])
+		elif(randi()%2 == 0):
+			cibler(allies[randi()%2])
+		else:
+			if(allies[0].pv<allies[1].pv):
+				cibler(aHarry)
+			else:
+				cibler(aFlaux)
+	elif(aHarry.pv > 0):
 		cibler(aHarry)
 	else:
-		cibler(allies[randi()%2])
+		cibler(aFlaux)
 	
-	cible.degatsPrisDef(80 + randi()%9)
-	yield(cible,"degatsTermine")
+	if(cible == aFlaux && aFlaux.hide):
+		yield(spriteAnim,"animation_finished")
+	else:
+		cible.degatsPrisDef(80 + randi()%9)
+		yield(cible,"degatsTermine")
 	
 	emit_signal("skillCast")
 
@@ -88,21 +117,41 @@ func castSkill2():
 
 func castSkill3():
 	
-	if(aHarry.guard && aFlaux.hide):
-		assome = 2
-		secondText = true
+	if(aHarry.pv > 0 && aFlaux.pv > 0):
+		if(aHarry.guard && aFlaux.hide):
+			assomme = 2
+			secondText = true
+			cibler(aHarry)
+		elif(aFlaux.hide):
+			secondText = false
+			cibler(aHarry)
+		else:
+			cibler(allies[randi()%2])
+			if(aHarry.guard && cible == aHarry):
+				assomme = 2
+				secondText = true
+			else:
+				secondText = false
+	elif(aHarry.pv > 0):
 		cibler(aHarry)
-	elif(aFlaux.hide):
-		secondText = false
-		cibler(aHarry)
+		if(aHarry.guard):
+			assomme = 2
+			secondText = true
+		else:
+			secondText = false
 	else:
-		secondText = false
-		cibler(allies[randi()%2])
+		secondText= false
+		cibler(aFlaux)
 	
-	cible.degatsPrisDef(150 + randi()%16)
-	yield(cible,"degatsTermine")
+	if(cible == aFlaux && aFlaux.hide):
+		yield(spriteAnim,"animation_finished")
+	else:
+		cible.degatsPrisDef(150 + randi()%16)
+		yield(cible,"degatsTermine")
+	
 	emit_signal("skillCast")
 
+#la compétence 5 est la compétence qui ne fait rien lorsque l'ennemi est assommé
 func castSkill5():
 	secondText = false
 	
@@ -110,8 +159,8 @@ func castSkill5():
 	
 	emit_signal("skillCast")
 
-#Surcharge 2
+#Surcharge, met à jour les états
 func clearThings():
 	lacere = false
-	if(assome > 0):
-		assome -= 1
+	if(assomme > 0):
+		assomme -= 1

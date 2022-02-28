@@ -1,5 +1,6 @@
 extends MarginContainer
 
+#variable utiliser pour énumérer un nombre de vérification dans une boucle
 onready var i = 0
 
 #Signal déclanché quand on finit le choix d'un tour
@@ -10,12 +11,16 @@ signal choixCharaTourFini
 onready var fr = true
 onready var en = false
 
+#les personnages sont stockés dans des variables pour y accéder plus facilement
 onready var cHarry = $HBoxContainer/Harry
 onready var cFlaux = $HBoxContainer/Flaux
-
+#le groupe d'ennemi est stocké aussi
 onready var groupeEnnemi = get_node("../EnnemiGroup")
+
+#on initialise la variable qui informe qui est en train de cibler (si le personnage cible)
 onready var kiCible = 0
 
+#un booléen qui permet d'annuler le choix d'action d'Harry quand on est au choix de Flaux
 onready var cFlauxFait = false
 
 #Chaque skill a une variable qui stockera sa description qui s'affiche pendant le choix
@@ -42,19 +47,25 @@ func _ready():
 	cHarry.labelVieF()	#permet de mettre HP à la place de PV si le jeu est en anglais
 	cFlaux.labelVieF()
 
+#fonction qui permet de choisir les actions d'un tour du personnage mis en paramètre
 func choixCharaTour(chara):
 	
+	#au début, on dit que le tour n'est pas encore choisi
 	chara.tourChoisi = false
 	
+	#tant que le tour n'est pas choisi et qu'on n'annule pas le tour avec Flaux
 	while(not(chara.tourChoisi) && not(chara.annuleF)):
 		
+		#On prend en focus le bouton 0 au début puis le dernier bouton choisi précédement
 		chara.skills[chara.choixSkill].grab_focus()#met le curseur de menu sur le premier skill d'Harry
 		
-		#on attend qu'un des boutons de skills d'Harry soit pressé,
-		#on continuera quand on aura reçu le signal "butPressed" de la scène Harry
+		#on attend qu'un des boutons de skills du perso soit pressé,
+		#on continuera quand on aura reçu le signal "butPressed" du perso en paramètre
 		yield(chara, "butPressed")
 		
+		#si on n'a pas annulé le tour avec Flaux
 		if(not(chara.annuleF)):
+			#en fonction du personnage, et donc de qui cible, on release le groupe de skills
 			if(kiCible == 0):
 				#Permet de retirer le curseur tous les boutons d'un personnage
 				#(exemble : le groupe "HarryButtons" contient chaque bouton d'Harry)
@@ -63,32 +74,49 @@ func choixCharaTour(chara):
 				#Retirer le focus de tous les boutons empêche Flaux de faire grab_focus
 				#parce que ça va trop vite
 				get_tree().call_group("FlauxButtons", "release_focus")
-		
+			
+			#si le personnage cible avec son attaque, alors
 			if(chara.ciblage):
+				#on nettoie les ciblages de l'ennemi pour éviter les problèmes si on annule l'action d'Harry
+				#après sa sélection
 				get_tree().call_group("EnnemiGroupe", "clearCible")
+				#on fait apparaître le bouton de ciblage et la barre de vie de l'ennemi
 				get_tree().call_group("EnnemiButton", "show")
 				get_tree().call_group("LifeBarEnnemi", "show")
+				#on prend le focus du bouton situé en bas de l'arbre de la scène des ennemis
 				get_tree().call_group("EnnemiButton", "grab_focus")
+				#on attend une sélection ou une annulation
 				yield(groupeEnnemi,"selectionne")
+				#on enlève le focus et cache les infos précédemment afficher
 				get_tree().call_group("EnnemiButton", "release_focus")
 				get_tree().call_group("EnnemiButton", "hide")
 				get_tree().call_group("LifeBarEnnemi", "hide")
+				
+				#On vérifie quel ennemi a été ciblé
 				while(i < groupeEnnemi.ennemis.size() && not(groupeEnnemi.ennemis[i].ciblePar[kiCible])):
 					i += 1
+				#si un ennemi a été ciblé, on le fait cibler par le personnage
 				if(i < groupeEnnemi.ennemis.size()):
 					chara.cibler(groupeEnnemi.ennemis[i])
 					chara.tourChoisi = true
+				#sinon le ciblage n'a pas eu lieu et on retourne au début du tant que
 				else:
 					chara.ciblage = false
+				#on remet i à 0 dans tous les cas
 				i = 0
+			#si on n'a pas cibler alors on ne peut pas annuler son action après coup (pas directement)
 			else:
 				chara.tourChoisi = true
 	
 	chara.modifDesc("") #Une fois l'action choisie, on vide la description des actions
 	
+	#quand on sort de la boucle, on vérifie si c'est parce que Flaux a annulé son tour
 	if(not(chara.annuleF)):
-		chara.tourEffectue = false #Le tour venant d'être choisi n'est pas encore effectué
+		#on n'a pas annulé le tour donc pas de soucis, on prépare l'action a lancé plus tard
+		chara.tourEffectue = false
 	else:
+		#Le tour venant d'être choisi n'est pas encore effectué
+		#donc on bouclera dans la fonction choixTour en disant que Flaux n'a pas fait son tour
 		cFlauxFait = false
 	
 	emit_signal("choixCharaTourFini")
@@ -96,11 +124,11 @@ func choixCharaTour(chara):
 #Fonction qui permet au joueur de sélectionner les actions qu'il souhaite faire
 func choixTour():
 	
-	cFlauxFait = false
+	cFlauxFait = false #booléen pour vérifier si Flaux annule l'action (donc faux de base)
 	
-	while(not(cFlauxFait)):
+	while(not(cFlauxFait)): #tant que Flaux n'a pas annulé l'action
 		
-		kiCible = 0
+		kiCible = 0 #premier personnage qui cible, Harry (utilisé pour cibler les ennemis, entre autres)
 		
 		#On vérifie toujours si le personnage à assez de vie pour agir
 		if(cHarry.pv > 0):
@@ -108,16 +136,22 @@ func choixTour():
 			yield(self,"choixCharaTourFini")
 		
 		
-		kiCible = 1
+		kiCible = 1 #premier personnage qui cible, Flaux
+		#avant le tour de Flaux, on fait passer son annulation de tour à faux au cas où
+		#le joueur appuie sur "cancel" avant le tour de Flaux
 		cFlaux.annuleF = false
 		
 		if(cFlaux.pv > 0):
-			cFlauxFait = true
+			cFlauxFait = true #s'il n'y a pas d'annulation alors ceci restera vrai
 			choixCharaTour(cFlaux)
 			yield(self,"choixCharaTourFini")
 		else:
+			#si Flaux n'a pas de vie alors on ne pourra pas annuler son tour
+			#donc on sortira de la boucle directement
 			cFlauxFait = true
 	
+	#permet de rendre toutes les compétences réutilisables puis d'empêcher l'utilisation
+	#de la compétence choisie ce tour pendant un tour
 	cHarry.abled()
 	cHarry.skills[cHarry.choixSkill].disabled = true
 	cFlaux.abled()

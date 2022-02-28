@@ -4,7 +4,7 @@ extends Node
 signal derouleTourFini
 #Signal annonçant la fin de la fonction "actionCombattant(combattant)"
 signal actionFinie
-
+#Signal annonçant la fin de l'affichage du texte en haut de l'écran
 signal narraTextFini
 
 #Les variables de langues devront être mises sur le script principal et transférer dans les scènes suivantes
@@ -12,8 +12,13 @@ signal narraTextFini
 onready var fr = true
 onready var en = false
 
+#On stocke chaque combattant dans des variables pour accéder plus facilement à leur informations et méthode
+onready var combattantHarry = $GeneralInterface/HBoxContainer/Harry
+onready var combattantFlaux = $GeneralInterface/HBoxContainer/Flaux
+
 #On stocke chaque combattant dans un tableau pour pouvoir gérer leur tour
 onready var combattants
+#On définie une variable pour le label de narration
 onready var nar = $CadreNarrateur/DescriptionAction
 
 #Variable utilisée pour faire des permutations
@@ -21,7 +26,16 @@ var temp
 #Variable utilisée pour l'affichage progressif des textes
 var textTemp = ""
 
+#texte affiché lorsqu'un personnage revient au combat
+var textPV0revive = ""
+
+#Numéro du tour
 onready var nTour = 0
+#Nombre de tour depuis qu'un des deux alliés est tombé KO
+onready var nTourPV0 = 0
+
+func _ready():
+	charger_others()
 
 #Définie l'ordre des tours avec un tri tournoi (le tableau est assez petit pour que ça soit court)
 func ordreTour():
@@ -43,20 +57,22 @@ func actionCombattant(combattant):
 #Déroulement des actions d'un tour en fonction des priorités et vitesses
 func deroulementTour():
 	
+	#Lance les choix de compétence de chaque ennemis du groupe ennemi
 	for i in range(combattants.size()):
 		if(combattants[i].ennemi):
 			combattants[i].choixSkill()
 	
 	$TimerActions.start()					#Les timers permettent de voir les actions de manière plus clair
 	yield($TimerActions, "timeout")
+	#Boucle pour lancer le tour des personnages qui utilisent une action prioritaire
 	for i in range(combattants.size()):
 		if(combattants[i].priorite && combattants[i].tourEffectue == false):
-			narraText(combattants[i].aTextSkill())
+			narraText(combattants[i].aTextSkill()) #les narraText() permettent d'afficher l'action effectuée
 			yield(self,"narraTextFini")
-			actionCombattant(combattants[i])
+			actionCombattant(combattants[i]) #lance l'action choisie
 			yield(self,"actionFinie")
-			if(combattants[i].secondText):
-				narraText(combattants[i].aTextSkill2())
+			if(combattants[i].secondText): #si l'action a un texte après son utilisation, alors...
+				narraText(combattants[i].aTextSkill2()) #on affiche son 2e affichage de texte
 				yield(self,"narraTextFini")
 	
 	for i in range(combattants.size()):		#On parcourt le tableau des combattants
@@ -69,8 +85,25 @@ func deroulementTour():
 				narraText(combattants[i].aTextSkill2())
 				yield(self,"narraTextFini")
 	
-	get_tree().call_group("EnnemiGroupe", "clearCible")
-	get_tree().call_group("CombattantGroupe", "clearThings")
+	get_tree().call_group("EnnemiGroupe", "clearCible") #on fait oublié aux ennemis par qui ils ont été ciblés
+	get_tree().call_group("CombattantGroupe", "clearThings") #on actualise les effets qui affaiblissent ou boost
+	
+	if(nTourPV0 == 0 && (combattantHarry.pv==0 || combattantFlaux.pv==0)):
+		nTourPV0 += 1
+	elif(nTourPV0 > 0 && nTourPV0 < 2):
+		nTourPV0 +=1
+	elif(nTourPV0 == 2):
+		if(combattantHarry.pv == 0 && combattantFlaux.pv > 0):
+			combattantHarry.soinPV(combattantHarry.pvmax*0.4)
+			narraText("Harry"+textPV0revive)
+			yield(self,"narraTextFini")
+		elif(combattantFlaux.pv == 0 && combattantHarry.pv > 0):
+			combattantFlaux.soinPV(combattantFlaux.pvmax*0.4)
+			narraText("Flaux"+textPV0revive)
+			yield(self,"narraTextFini")
+		$TimerActions.start()					#Les timers permettent de voir les actions de manière plus clair
+		yield($TimerActions, "timeout")
+		nTourPV0 = 0
 	
 	emit_signal("derouleTourFini")					#Informe de la fin du déroulement des actions
 
@@ -79,20 +112,62 @@ func litDialogue(dialog):
 	$DialogueInterface.show()
 	dialog #dialog est la méthode du dialogue choisi en entrée
 	yield($DialogueInterface, "dialogueFini")
+	combattantHarry.changerSprite()
+	combattantFlaux.changerSprite()
 	$DialogueInterface.hide()
 
+#fonction qui affiche le texte entré en paramètre avec une petite animation
 func narraText(text):
-	textTemp = ""
+	textTemp = "" #on vide la variable temporaire
 	
 	for c in text:
 		textTemp += c								#le texte temporaire concatène ce caractère avec lui même
 		nar.set_text(textTemp)						#On affiche ce texte temporaire
 		$TimerText.start()							#On attend un peu, puis on recommence jusqu'à la fin du string
 		yield($TimerText,"timeout")
-		if(c == "!" || c == "?" || c == "."):
-			$TimerText.set_wait_time(1.0)
-			$TimerText.start()
-			yield($TimerText,"timeout")
+		if(c == "!" || c == "?" || c == "."):		#Si on arrive à la fin d'une phrase
+			$TimerText.set_wait_time(1.0)			#On attend un peu plus avant de continuer
+			$TimerText.start()						#Cela permet de mettre une pause avant l'action
+			yield($TimerText,"timeout")				#Mais aussi avant la prochaine phrase s'il y en a une
 			$TimerText.set_wait_time(0.02)
 	
 	emit_signal("narraTextFini")
+
+#Tout ce dont on a besoin pour la lecture de fichier
+export(String, FILE, "*.json") var other_file	#variable qui contiendra le chemin du fichier
+var other_keys = []			#tableau des éléments du fichier, avec [i] le numéro de la ligne
+var other_text = ""			#text à transmettre
+var current = 0					#numéro de la ligne lu
+
+#Fonction qui dit quel fichier charger à load_dialogue et initialise dialogue_keys
+func index_others():
+	var other = load_others(other_file)		#Prend le fichier charger par load_dialogue
+	other_keys.clear()							#Efface le précédent tableau s'il existe
+	for key in other:							#Met chaque valeur du fichier dialogue
+		other_keys.append(other[key])			#dans le tableau dialogue_keys
+
+#Permet de charger le fichier dont le chemin est entré en paramètre
+func load_others(file_path):
+	var file = File.new()								#Créer une nouvelle variable de type fichier
+	if file.file_exists(file_path):						#Si le chemin entré en paramète existe
+		file.open(file_path, file.READ)					#Ouvre le fichier en lecture
+		var other = parse_json(file.get_as_text())	#Le stocke dans la variable dialogue
+		return other									#et le retourne
+
+func textHere(nl):
+	current == nl	#On passe à la ligne suivante pour prendre les nouvelles informations
+	other_text = other_keys[current].text
+
+const othersFR = "res://text/FR/Others.json"
+const othersEN = "res://text/EN/Others.json"
+
+func charger_others():
+	if(fr):
+		other_file = othersFR
+	elif(en):
+		other_file = othersEN
+	load_others(other_file)
+	index_others()
+	
+	textHere(0)
+	textPV0revive = other_text

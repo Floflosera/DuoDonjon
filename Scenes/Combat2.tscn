@@ -28,7 +28,6 @@ margin_right = 1279.0
 margin_bottom = 721.0
 
 [node name="DialogueInterface" parent="." instance=ExtResource( 5 )]
-visible = false
 
 [node name="TimerActions" type="Timer" parent="."]
 one_shot = true

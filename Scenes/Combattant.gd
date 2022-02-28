@@ -1,10 +1,13 @@
 extends Node
 
+#signal envoyé quand on a fini de recevoir des dégâts et l'animation blessure
 signal degatsTermine
+#signaux lorsque l'on lance une compétence
 signal skillCast
 signal skillFinished
 
-var ennemi
+#booléen qui dit si le combattant est un ennemi ou non
+var ennemi = false
 
 #Stockage du sprite dans une variable pour pouvoir modifier son animation plus rapidement (et intuitivement)
 var spriteAnim
@@ -21,12 +24,16 @@ onready var choixSkill = 0
 #Elle redevient fausse lorsque l'on lance une attaque prioritaire
 onready var priorite = false
 
+#variable utilisé pour les compétences qui ciblent des alliés
 onready var ciblage = false
+#contient un combattant actuellement ciblé par le combattant
 var cible
 
+#permet de changer de cible avec une méthode
 func cibler(c):
 	cible = c
 
+#définie si on lance un second texte après une action
 onready var secondText = false
 
 #Les statistiques
@@ -39,13 +46,16 @@ var barreVie #Barre de vie en textureProgress
 
 var textSkill = [] #tableau des textes affichés au lancement d'une attaque
 
+#tableau qui contient la description des actions lancées
 func skillTextAppend(skillsText):
 	textSkill.append(skillsText)
 
+#renvoie une chaîne de caractères qui est la description de l'action choisi lorsqu'elle est lancée
 func aTextSkill():
 	return textSkill[choixSkill]
 
 #Tout le monde pourrait l'avoir mais le texte est spécifique au combattant qui l'utilise
+#Cette méthode renvoie une chaîne de caractère spécifique au combattant
 func aTextSkill2():
 	pass
 
@@ -68,6 +78,8 @@ func degatsPris(degats):
 	changerSprite()							#Change le sprite des 2 persos
 	emit_signal("degatsTermine")
 
+#Méthode qui permet de déduire les dégâts à la défense du combattant
+#Est surchargé par les combattants en fonction des autres effets qui changent les dégâts
 func degatsPrisDef(degats):
 	degatsPris(degats-defense)
 
@@ -120,5 +132,6 @@ func castSkill():
 	emit_signal("skillFinished")
 
 #à surcharger en fonction du combattants
+#permet de mettre à jour les effets temporaires
 func clearThings():
 	pass

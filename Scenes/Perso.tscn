@@ -14,14 +14,14 @@ animations = [ {
 "speed": 3.0
 }, {
 "frames": [  ],
-"loop": true,
-"name": "Enerve",
-"speed": 3.0
-}, {
-"frames": [  ],
 "loop": false,
 "name": "Blesse",
 "speed": 6.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "Enerve",
+"speed": 3.0
 }, {
 "frames": [  ],
 "loop": true,
@@ -36,6 +36,16 @@ animations = [ {
 "frames": [  ],
 "loop": true,
 "name": "KO",
+"speed": 3.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "Triste",
+"speed": 3.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "Content",
 "speed": 3.0
 } ]
 

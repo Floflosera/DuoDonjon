@@ -1,9 +1,11 @@
 extends "res://Scenes/Perso.gd"
 
+#booléen des effets exclusif à Harry
 onready var bouclier = false
 onready var guard = false
 onready var launch = false
 
+#quand il apparaît, il prend en allié Flaux et récupère ses statistiques (qui ne changent pas)
 func _ready():
 	allie = get_node("../Flaux")
 	pvmax = 230
@@ -11,7 +13,7 @@ func _ready():
 	defense = 20
 	vitesse = 2
 
-#Surcharge pour les différents états d'Harry
+#Surcharge pour les différents états d'Harry lorsqu'il prend des dégâts
 func degatsPrisDef(degats):
 	if(bouclier):
 		degatsPris(int((degats-defense)*0.7))
@@ -49,14 +51,18 @@ func _on_Skill5_pressed():
 	ciblage = false
 	emit_signal("butPressed")
 
+#fonction qui permet à Harry d'infliger des dégâts et de montrer les dégâts qu'il fait
 func harryDegats(degats):
-	deg = cible.degatsPrisDef(degats)
+	deg = cible.degatsPrisDef(degats) #il ne peut pas augmenter sa puissance d'attaque
 	
+	#on attend un petit instant (un changement de frame) pour afficher les dégâts quand l'ennemi clignote
 	yield(cible.spriteAnim,"frame_changed")
+	#on change la couleur du texte de l'affichage des dégâts (parce que c'est cool)
 	cible.showDegats.add_color_override("default_color", Color(23.0/255.0,0,110.0/255.0,1))
+	#on concatène les dégâts effectués avec le richText actuel (pour garder les effets de textes)
 	cible.showDegats.set_bbcode(cible.showDegats.get_bbcode() + deg)
 
-#Surcharge des castSkill
+#Surcharge des castSkill avec l'effet des compétences
 func castSkill1():
 	bouclier = true
 	
@@ -75,7 +81,8 @@ func castSkill2():
 
 func castSkill3():
 	soinPV(100)
-	allie.soinPV(100)
+	if(allie.pv > 0):
+		allie.soinPV(100)
 	
 	yield(spriteAnim,"animation_finished")
 	emit_signal("skillCast")
@@ -96,6 +103,7 @@ func castSkill5():
 	yield(spriteAnim,"animation_finished")
 	emit_signal("skillCast")
 
+#met à jour les effets temporaires
 func clearThings():
 	bouclier = false
 	guard = false

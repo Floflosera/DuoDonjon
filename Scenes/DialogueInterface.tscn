@@ -1,155 +1,15 @@
-[gd_scene load_steps=69 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scenes/DialogueInterface.gd" type="Script" id=1]
 [ext_resource path="res://assets/MenuHarry.png" type="Texture" id=2]
-[ext_resource path="res://assets/Harry/HarryBlesse0_1.png" type="Texture" id=4]
-[ext_resource path="res://assets/Harry/HarryFatigue1.png" type="Texture" id=5]
-[ext_resource path="res://assets/Harry/HarryInquiet0.png" type="Texture" id=6]
-[ext_resource path="res://assets/Harry/HarryBlesse2_0.png" type="Texture" id=7]
-[ext_resource path="res://assets/Harry/HarryBlesse2_1.png" type="Texture" id=8]
-[ext_resource path="res://assets/Harry/HarryInquiet1.png" type="Texture" id=10]
 [ext_resource path="res://assets/MenuFlaux.png" type="Texture" id=11]
-[ext_resource path="res://assets/Flaux/FlauxBlessee0_0.png" type="Texture" id=12]
-[ext_resource path="res://assets/Flaux/FlauxBlessee1_0.png" type="Texture" id=13]
-[ext_resource path="res://assets/Flaux/FlauxBlessee1_1.png" type="Texture" id=14]
-[ext_resource path="res://assets/Flaux/FlauxBlessee0_1.png" type="Texture" id=15]
-[ext_resource path="res://assets/Flaux/FlauxBlessee2_0.png" type="Texture" id=16]
-[ext_resource path="res://assets/Flaux/FlauxKO1.png" type="Texture" id=17]
 [ext_resource path="res://Godot-Fontpack-d244bf6170b399a6d4d26a0d906058ddf2dafdf1/fonts/montreal/Montreal-Regular.ttf" type="DynamicFontData" id=18]
 [ext_resource path="res://Scenes/HarryDia.gd" type="Script" id=19]
 [ext_resource path="res://Scenes/FlauxDia.gd" type="Script" id=20]
-[ext_resource path="res://assets/Harry/HarryFatigue2.png" type="Texture" id=21]
-[ext_resource path="res://assets/Harry/HarryBlesse0_0.png" type="Texture" id=22]
-[ext_resource path="res://assets/Flaux/FlauxContente0.png" type="Texture" id=23]
-[ext_resource path="res://assets/Flaux/FlauxContente2.png" type="Texture" id=24]
-[ext_resource path="res://assets/Flaux/FlauxInquiete0.png" type="Texture" id=25]
-[ext_resource path="res://assets/Harry/HarryBlesse1_0.png" type="Texture" id=26]
-[ext_resource path="res://assets/Harry/HarryBlesse1_1.png" type="Texture" id=27]
-[ext_resource path="res://assets/Harry/HarryFatigue0.png" type="Texture" id=28]
-[ext_resource path="res://assets/Harry/HarryContent0.png" type="Texture" id=29]
-[ext_resource path="res://assets/Harry/HarryNeutre0.png" type="Texture" id=30]
-[ext_resource path="res://assets/Harry/HarryTriste0.png" type="Texture" id=31]
-[ext_resource path="res://assets/Harry/HarryKO2.png" type="Texture" id=32]
-[ext_resource path="res://assets/Harry/HarryKO0.png" type="Texture" id=33]
-[ext_resource path="res://assets/Harry/HarryEnerve2.png" type="Texture" id=34]
-[ext_resource path="res://assets/Harry/HarryInquiet2.png" type="Texture" id=35]
-[ext_resource path="res://assets/Harry/HarryNeutre1.png" type="Texture" id=36]
-[ext_resource path="res://assets/Harry/HarryKO1.png" type="Texture" id=37]
-[ext_resource path="res://assets/Harry/HarryNeutre2.png" type="Texture" id=38]
-[ext_resource path="res://assets/Harry/HarryContent2.png" type="Texture" id=39]
-[ext_resource path="res://assets/Harry/HarryTriste1.png" type="Texture" id=40]
-[ext_resource path="res://assets/Harry/HarryTriste2.png" type="Texture" id=41]
-[ext_resource path="res://assets/Harry/HarryEnerve1.png" type="Texture" id=42]
-[ext_resource path="res://assets/Harry/HarryContent1.png" type="Texture" id=43]
-[ext_resource path="res://assets/Harry/HarryEnerve0.png" type="Texture" id=44]
-[ext_resource path="res://assets/Flaux/FlauxInquiete1.png" type="Texture" id=45]
-[ext_resource path="res://assets/Flaux/FlauxTriste2.png" type="Texture" id=46]
-[ext_resource path="res://assets/Flaux/FlauxKO2.png" type="Texture" id=47]
-[ext_resource path="res://assets/Flaux/FlauxKO0.png" type="Texture" id=48]
-[ext_resource path="res://assets/Flaux/FlauxEnervee0.png" type="Texture" id=49]
-[ext_resource path="res://assets/Flaux/FlauxBlessee2_1.png" type="Texture" id=50]
-[ext_resource path="res://assets/Flaux/FlauxFatiguee1.png" type="Texture" id=51]
-[ext_resource path="res://assets/Flaux/FlauxEnervee2.png" type="Texture" id=52]
-[ext_resource path="res://assets/Flaux/FlauxNeutre0.png" type="Texture" id=53]
-[ext_resource path="res://assets/Flaux/FlauxNeutre1.png" type="Texture" id=54]
-[ext_resource path="res://assets/Flaux/FlauxNeutre2.png" type="Texture" id=55]
-[ext_resource path="res://assets/Flaux/FlauxInquiete2.png" type="Texture" id=56]
-[ext_resource path="res://assets/Flaux/FlauxTriste1.png" type="Texture" id=57]
-[ext_resource path="res://assets/Flaux/FlauxContente1.png" type="Texture" id=58]
-[ext_resource path="res://assets/Flaux/FlauxTriste0.png" type="Texture" id=59]
-[ext_resource path="res://assets/Flaux/FlauxFatiguee2.png" type="Texture" id=60]
-[ext_resource path="res://assets/Flaux/FlauxFatiguee0.png" type="Texture" id=61]
-[ext_resource path="res://assets/Flaux/FlauxEnervee1.png" type="Texture" id=62]
 
 [sub_resource type="DynamicFont" id=5]
 size = 20
 font_data = ExtResource( 18 )
-
-[sub_resource type="SpriteFrames" id=3]
-animations = [ {
-"frames": [ ExtResource( 29 ), ExtResource( 43 ), ExtResource( 39 ) ],
-"loop": true,
-"name": "Content",
-"speed": 3.0
-}, {
-"frames": [ ExtResource( 6 ), ExtResource( 10 ), ExtResource( 35 ) ],
-"loop": true,
-"name": "Inquiet",
-"speed": 3.0
-}, {
-"frames": [ ExtResource( 22 ), ExtResource( 4 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 7 ), ExtResource( 8 ) ],
-"loop": true,
-"name": "Blesse",
-"speed": 6.0
-}, {
-"frames": [ ExtResource( 28 ), ExtResource( 5 ), ExtResource( 21 ) ],
-"loop": true,
-"name": "Fatigue",
-"speed": 3.0
-}, {
-"frames": [ ExtResource( 44 ), ExtResource( 42 ), ExtResource( 34 ) ],
-"loop": true,
-"name": "Enerve",
-"speed": 3.0
-}, {
-"frames": [ ExtResource( 30 ), ExtResource( 36 ), ExtResource( 38 ) ],
-"loop": true,
-"name": "Neutre",
-"speed": 3.0
-}, {
-"frames": [ ExtResource( 33 ), ExtResource( 37 ), ExtResource( 32 ) ],
-"loop": true,
-"name": "KO",
-"speed": 3.0
-}, {
-"frames": [ ExtResource( 31 ), ExtResource( 40 ), ExtResource( 41 ) ],
-"loop": true,
-"name": "Triste",
-"speed": 3.0
-} ]
-
-[sub_resource type="SpriteFrames" id=4]
-animations = [ {
-"frames": [ ExtResource( 53 ), ExtResource( 54 ), ExtResource( 55 ) ],
-"loop": true,
-"name": "Neutre",
-"speed": 3.0
-}, {
-"frames": [ ExtResource( 48 ), ExtResource( 17 ), ExtResource( 47 ) ],
-"loop": true,
-"name": "KO",
-"speed": 3.0
-}, {
-"frames": [ ExtResource( 59 ), ExtResource( 57 ), ExtResource( 46 ) ],
-"loop": true,
-"name": "Triste",
-"speed": 3.0
-}, {
-"frames": [ ExtResource( 49 ), ExtResource( 62 ), ExtResource( 52 ) ],
-"loop": true,
-"name": "Enervee",
-"speed": 3.0
-}, {
-"frames": [ ExtResource( 23 ), ExtResource( 58 ), ExtResource( 24 ) ],
-"loop": true,
-"name": "Contente",
-"speed": 3.0
-}, {
-"frames": [ ExtResource( 61 ), ExtResource( 51 ), ExtResource( 60 ) ],
-"loop": true,
-"name": "Fatiguee",
-"speed": 3.0
-}, {
-"frames": [ ExtResource( 25 ), ExtResource( 45 ), ExtResource( 56 ) ],
-"loop": true,
-"name": "Inquiete",
-"speed": 3.0
-}, {
-"frames": [ ExtResource( 12 ), ExtResource( 15 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 16 ), ExtResource( 50 ) ],
-"loop": true,
-"name": "Blessee",
-"speed": 6.0
-} ]
 
 [sub_resource type="StyleBoxEmpty" id=7]
 
@@ -180,34 +40,25 @@ margin_left = 20.0
 margin_top = 20.0
 margin_right = 1260.0
 margin_bottom = 300.0
+custom_constants/separation = 525
 
-[node name="HarryDia" type="HBoxContainer" parent="HBoxContainer"]
-margin_right = 618.0
+[node name="HarryDia" type="MarginContainer" parent="HBoxContainer"]
+margin_right = 357.0
 margin_bottom = 280.0
 size_flags_horizontal = 3
-size_flags_vertical = 3
 script = ExtResource( 19 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HarryMenu" type="MarginContainer" parent="HBoxContainer/HarryDia"]
-margin_right = 364.0
-margin_bottom = 280.0
-size_flags_horizontal = 3
-custom_constants/margin_right = 5
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Background" type="NinePatchRect" parent="HBoxContainer/HarryDia/HarryMenu"]
-margin_right = 359.0
+[node name="Background" type="NinePatchRect" parent="HBoxContainer/HarryDia"]
+margin_right = 357.0
 margin_bottom = 280.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource( 2 )
 
-[node name="Menu" type="MarginContainer" parent="HBoxContainer/HarryDia/HarryMenu/Background"]
+[node name="Menu" type="MarginContainer" parent="HBoxContainer/HarryDia/Background"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_constants/margin_right = 5
@@ -218,7 +69,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/HarryDia/HarryMenu/Background/Menu"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/HarryDia/Background/Menu"]
 margin_left = 5.0
 margin_top = 5.0
 margin_right = 354.0
@@ -228,7 +79,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/HarryDia/HarryMenu/Background/Menu/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/HarryDia/Background/Menu/VBoxContainer"]
 margin_right = 349.0
 margin_bottom = 270.0
 rect_min_size = Vector2( 349, 65 )
@@ -239,7 +90,7 @@ custom_constants/margin_top = 5
 custom_constants/margin_left = 5
 custom_constants/margin_bottom = 5
 
-[node name="Dialogue" type="Label" parent="HBoxContainer/HarryDia/HarryMenu/Background/Menu/VBoxContainer/MarginContainer"]
+[node name="Dialogue" type="Label" parent="HBoxContainer/HarryDia/Background/Menu/VBoxContainer/MarginContainer"]
 margin_left = 5.0
 margin_top = 5.0
 margin_right = 344.0
@@ -250,83 +101,24 @@ text = "Harry qui parle genre hey !"
 autowrap = true
 clip_text = true
 
-[node name="HarryPortrait" type="MarginContainer" parent="HBoxContainer/HarryDia"]
-margin_left = 368.0
-margin_right = 618.0
-margin_bottom = 280.0
-custom_constants/margin_right = 5
-custom_constants/margin_left = 5
-
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/HarryDia/HarryPortrait"]
-margin_left = 5.0
-margin_right = 245.0
-margin_bottom = 280.0
-
-[node name="Cadre" type="Panel" parent="HBoxContainer/HarryDia/HarryPortrait/VBoxContainer"]
-margin_right = 240.0
-margin_bottom = 240.0
-rect_min_size = Vector2( 240, 240 )
-
-[node name="HarrySprite" type="AnimatedSprite" parent="HBoxContainer/HarryDia/HarryPortrait/VBoxContainer/Cadre"]
-position = Vector2( 120, 120 )
-frames = SubResource( 3 )
-animation = "Neutre"
-frame = 2
-playing = true
-
-[node name="FlauxDia" type="HBoxContainer" parent="HBoxContainer"]
-margin_left = 622.0
+[node name="FlauxDia" type="MarginContainer" parent="HBoxContainer"]
+margin_left = 882.0
 margin_right = 1240.0
 margin_bottom = 280.0
 size_flags_horizontal = 3
-size_flags_vertical = 3
 script = ExtResource( 20 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="FlauxPortrait" type="MarginContainer" parent="HBoxContainer/FlauxDia"]
-margin_right = 250.0
-margin_bottom = 280.0
-custom_constants/margin_right = 5
-custom_constants/margin_left = 5
-
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/FlauxDia/FlauxPortrait"]
-margin_left = 5.0
-margin_right = 245.0
-margin_bottom = 280.0
-
-[node name="Cadre" type="Panel" parent="HBoxContainer/FlauxDia/FlauxPortrait/VBoxContainer"]
-margin_right = 240.0
-margin_bottom = 240.0
-rect_min_size = Vector2( 240, 240 )
-
-[node name="FlauxSprite" type="AnimatedSprite" parent="HBoxContainer/FlauxDia/FlauxPortrait/VBoxContainer/Cadre"]
-position = Vector2( 120, 120 )
-frames = SubResource( 4 )
-animation = "Neutre"
-frame = 1
-playing = true
-
-[node name="FlauxMenu" type="MarginContainer" parent="HBoxContainer/FlauxDia"]
-margin_left = 254.0
-margin_right = 618.0
-margin_bottom = 280.0
-size_flags_horizontal = 3
-custom_constants/margin_left = 5
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Background" type="NinePatchRect" parent="HBoxContainer/FlauxDia/FlauxMenu"]
-margin_left = 5.0
-margin_right = 364.0
+[node name="Background" type="NinePatchRect" parent="HBoxContainer/FlauxDia"]
+margin_right = 358.0
 margin_bottom = 280.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource( 11 )
 
-[node name="Menu" type="MarginContainer" parent="HBoxContainer/FlauxDia/FlauxMenu/Background"]
+[node name="Menu" type="MarginContainer" parent="HBoxContainer/FlauxDia/Background"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_constants/margin_right = 5
@@ -337,7 +129,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/FlauxDia/FlauxMenu/Background/Menu"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/FlauxDia/Background/Menu"]
 margin_left = 5.0
 margin_top = 5.0
 margin_right = 354.0
@@ -347,7 +139,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/FlauxDia/FlauxMenu/Background/Menu/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/FlauxDia/Background/Menu/VBoxContainer"]
 margin_right = 349.0
 margin_bottom = 219.0
 rect_min_size = Vector2( 349, 65 )
@@ -358,7 +150,7 @@ custom_constants/margin_top = 5
 custom_constants/margin_left = 5
 custom_constants/margin_bottom = 5
 
-[node name="Dialogue" type="Label" parent="HBoxContainer/FlauxDia/FlauxMenu/Background/Menu/VBoxContainer/MarginContainer"]
+[node name="Dialogue" type="Label" parent="HBoxContainer/FlauxDia/Background/Menu/VBoxContainer/MarginContainer"]
 margin_left = 5.0
 margin_top = 5.0
 margin_right = 344.0
@@ -369,7 +161,7 @@ text = "Flaux qui parle genre hey !"
 autowrap = true
 clip_text = true
 
-[node name="Confirm" type="Button" parent="HBoxContainer/FlauxDia/FlauxMenu/Background/Menu/VBoxContainer"]
+[node name="Confirm" type="Button" parent="HBoxContainer/FlauxDia/Background/Menu/VBoxContainer"]
 margin_top = 225.0
 margin_right = 349.0
 margin_bottom = 270.0
@@ -387,4 +179,4 @@ button_mask = 0
 wait_time = 0.02
 one_shot = true
 
-[connection signal="pressed" from="HBoxContainer/FlauxDia/FlauxMenu/Background/Menu/VBoxContainer/Confirm" to="." method="_on_Confirm_pressed"]
+[connection signal="pressed" from="HBoxContainer/FlauxDia/Background/Menu/VBoxContainer/Confirm" to="." method="_on_Confirm_pressed"]

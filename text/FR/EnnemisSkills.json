@@ -8,7 +8,7 @@
   "ennemi2_skill2" : {	"nameSkill": "Préparation", "textSkill": "Moutou frotte le sol avec ses sabots."},
   "ennemi2_skill3" : {	"nameSkill": "Charge", "textSkill": "Moutou charge à toute vitesse !", 
                                                "textSkill2": "Moutou se cogne la tête contre le bouclier de Harry !\nMoutou est assommé !"},
-  "ennemi2_skill4" : {	"nameSkill": "Rien", "textSkill": "Moutou est assomé et ne fait rien."},
+  "ennemi2_skill4" : {	"nameSkill": "Rien", "textSkill": "Moutou est assommé et ne fait rien."},
 
   "ennemi3_skill1" : {	"nameSkill": "Tir magique", "textSkill": "Magidrone tire un projectile magique !"},
   "ennemi3_skill2" : {	"nameSkill": "Barrage", "textSkill": "Magidrone mitraille !"},
