@@ -74,8 +74,8 @@ func castSkill2():
 	emit_signal("skillCast")
 
 func castSkill3():
-	soinPV(50)
-	allie.soinPV(50)
+	soinPV(100)
+	allie.soinPV(100)
 	
 	yield(spriteAnim,"animation_finished")
 	emit_signal("skillCast")
