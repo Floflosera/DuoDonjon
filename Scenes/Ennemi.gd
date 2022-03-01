@@ -57,6 +57,10 @@ func _ready():
 	barreVie = $LifeBar
 	load_skills()
 
+#signal lorsqu'on appuie sur un bouton, il est envoyé au EnnemiGroup
+func _on_Selection_pressed():
+	emit_signal("butPressed")
+
 #efface le ciblage sur les ennemis
 func clearCible():
 	ciblePar[0] = false
@@ -113,3 +117,4 @@ func load_skills():
 	#Charge le fichier
 	load_fileSkills(skill_file)
 	index_skills()
+

@@ -20,7 +20,7 @@ script = ExtResource( 7 )
 position = Vector2( 640, 360 )
 texture = ExtResource( 1 )
 
-[node name="EnnemiGroup3" parent="." instance=ExtResource( 2 )]
+[node name="EnnemiGroup" parent="." instance=ExtResource( 2 )]
 script = ExtResource( 8 )
 
 [node name="GeneralInterface" parent="." instance=ExtResource( 5 )]
@@ -48,7 +48,7 @@ margin_top = 9.0
 margin_right = 561.0
 margin_bottom = 84.0
 custom_fonts/font = SubResource( 1 )
-text = "Bonsoir"
+text = "Bonsoir mais combat 3"
 autowrap = true
 clip_text = true
 __meta__ = {

@@ -12,6 +12,7 @@ func _ready():
 	pv = 230
 	defense = 20
 	vitesse = 2
+	nom = "Harry"
 
 #Surcharge pour les différents états d'Harry lorsqu'il prend des dégâts
 func degatsPrisDef(degats):

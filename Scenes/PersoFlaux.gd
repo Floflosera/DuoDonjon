@@ -11,6 +11,7 @@ func _ready():
 	pv = 177
 	defense = 10
 	vitesse = 4
+	nom = "Flaux"
 
 #Flaux utilise un _process(delta) pour que le joueur puisse annuler le choix du tour de Flaux pour le moment
 #et recommencer le choix du tour d'Harry

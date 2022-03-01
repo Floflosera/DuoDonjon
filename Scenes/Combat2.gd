@@ -1,8 +1,6 @@
 extends "res://Scenes/Combat.gd"
 
-onready var combattantEnnemi2 = $EnnemiGroup/Ennemi2
-
-onready var hintFlag = 0
+onready var combattantEnnemi = $EnnemiGroup/Ennemi2
 
 func _ready():
 	randomize() #à mettre dans le main
@@ -13,7 +11,7 @@ func _ready():
 	combattantFlaux.skill5.hide()
 	
 	#au début du combat on stocke tous les combattants dans un tableau
-	combattants = [combattantHarry, combattantFlaux, combattantEnnemi2]
+	combattants = [combattantHarry, combattantFlaux, combattantEnnemi]
 	
 	ordreTour() #définie l'ordre des tours au début du combat
 	
@@ -21,18 +19,18 @@ func _ready():
 	yield($DialogueInterface, "dialogueFini")
 	
 	#Exemple de boucle d'un combat
-	while((combattantHarry.pv > 0 || combattantFlaux.pv > 0) && combattantEnnemi2.pv > 0):
+	while((combattantHarry.pv > 0 || combattantFlaux.pv > 0) && combattantEnnemi.pv > 0):
 		nTour += 1 #chaque tour le numéro du tour augmente de 1
 		
-		if(nTour == 7):
+		if(nTour == 6):
 			litDialogue($DialogueInterface.dialogueMid())
 			yield($DialogueInterface, "dialogueFini")
 		
-		if(((combattantEnnemi2.choixSkill == 2) && not(combattantEnnemi2.assomme)) && hintFlag == 0):
+		if(((combattantEnnemi.choixSkill == 2) && not(combattantEnnemi.assomme)) && hintFlag == 0):
 			litDialogue($DialogueInterface.dialogueHint1())
 			yield($DialogueInterface, "dialogueFini")
 			hintFlag += 1
-		elif(((combattantEnnemi2.choixSkill == 2) && not(combattantEnnemi2.assomme)) && hintFlag == 1):
+		elif(((combattantEnnemi.choixSkill == 2) && not(combattantEnnemi.assomme)) && hintFlag == 1):
 			litDialogue($DialogueInterface.dialogueHint2())
 			yield($DialogueInterface, "dialogueFini")
 		
@@ -44,7 +42,7 @@ func _ready():
 		
 		nar.set_text("")
 	
-	if(combattantEnnemi2.pv == 0):
+	if(combattantEnnemi.pv == 0):
 		$EnnemiGroup.hide()
 		litDialogue($DialogueInterface.dialogueEnd())
 		yield($DialogueInterface, "dialogueFini")
@@ -52,4 +50,4 @@ func _ready():
 		nar.narraText("Game Over")
 
 func pvEnnemi(): #pour tester
-	nar.set_text(str(combattantEnnemi2.pv))
+	nar.set_text(str(combattantEnnemi.pv))

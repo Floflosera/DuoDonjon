@@ -36,21 +36,17 @@ func charge_skills():
 func aTextSkill2():
 	return textSkill[3]
 
-#signal lorsqu'on appuie sur un bouton, il est envoyé au EnnemiGroup
-func _on_Selection_pressed():
-	emit_signal("butPressed")
-
 #Surcharge pour prendre en compte les différents cas
 func degatsPrisDef(degats):
 	if(lacere && assomme > 0):
 		degatsPris(int((degats-defense)*2.25))
-		return str((degats-defense)*2.25)
+		return str(int((degats-defense)*2.25))
 	elif(assomme > 0):
 		degatsPris(int((degats-defense)*2))
-		return str((degats-defense)*2)
+		return str(int((degats-defense)*2))
 	elif(lacere):
 		degatsPris(int((degats-defense)*1.25))
-		return str((degats-defense)*1.25)
+		return str(int((degats-defense)*1.25))
 	else:
 		degatsPris(degats-defense)
 		return str(degats-defense)
@@ -64,9 +60,9 @@ func choixSkill():
 	#sinon il choisi une compétence aléatoire entre sa première compétence et sa préparation
 	if(assomme > 0):
 		choixSkill = 4
-	elif(combat.nTour <= 3):
+	elif(combat.nTour <= 2):
 		choixSkill = 0
-	elif(combat.nTour == 4):
+	elif(combat.nTour == 3):
 		choixSkill = 1
 	elif(prepare == true):
 		choixSkill = 2
@@ -89,7 +85,7 @@ func castSkill1():
 		elif(randi()%2 == 0):
 			cibler(allies[randi()%2])
 		else:
-			if(allies[0].pv<allies[1].pv):
+			if(aHarry.pv < aFlaux.pv):
 				cibler(aHarry)
 			else:
 				cibler(aFlaux)
@@ -126,7 +122,13 @@ func castSkill3():
 			secondText = false
 			cibler(aHarry)
 		else:
-			cibler(allies[randi()%2])
+			if(randi()%4 < 3):
+				if(aHarry.pv > aFlaux.pv):
+					cibler(aHarry)
+				else:
+					cibler(aFlaux)
+			else:
+				cibler(allies[randi()%2])
 			if(aHarry.guard && cible == aHarry):
 				assomme = 2
 				secondText = true

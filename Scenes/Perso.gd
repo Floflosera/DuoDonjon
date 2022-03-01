@@ -12,6 +12,8 @@ func _ready():
 #Stockage du label de vie pour pouvoir accéder à son contenu plus facilement
 onready var labelVie = get_node("CadreMenu/Background/Menu/VBoxContainer/GridContainer/PV")
 
+#Nom des personnages en chaîne de caractères
+var nom = ""
 #Stockage de la scène de l'allié dans une variable pour vérifier ses informations plus tard
 var allie
 #On stocke le groupe ennemis et les ennemis de ce groupe dans des variables, pour faciliter le ciblage ou autre

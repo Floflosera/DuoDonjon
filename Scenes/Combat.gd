@@ -34,18 +34,27 @@ onready var nTour = 0
 #Nombre de tour depuis qu'un des deux alliés est tombé KO
 onready var nTourPV0 = 0
 
+onready var hintFlag = 0
+
 func _ready():
 	nar.set_text("")
 	charger_others() #charger les textes "autres"
 
-#Définie l'ordre des tours avec un tri tournoi (le tableau est assez petit pour que ça soit court)
+#ordre des tours en tri par Extractions, combattants classés par vitesse du plus rapide au plus lent
 func ordreTour():
-	for i in range(combattants.size()-1):						#On parcourt le tableau combattants
-		for j in range(i+1, combattants.size()):				#avec i et j
-			if(combattants[i].vitesse < combattants[j].vitesse):#Lorsque la vitesse d'un combattant à gauche
-				temp = combattants[i]							#est inférieur à celle d'un autre à droite
-				combattants[i] = combattants[i+1]				#alors on modifie l'ordre des combattants
-				combattants[i+1] = temp							#dans le tableau
+	var k
+	for i in range(combattants.size()-1,0,-1):
+		k = i
+		for j in range(i-1):
+			if(combattants[j].vitesse < combattants[k].vitesse):
+				k = j
+		if(i-1 == 0):	#étrangement godot ne fait pas les boucle de 0 à 0, donc j'en ai fait un cas particulier
+			if(combattants[0].vitesse < combattants[k].vitesse):
+				k = 0
+		if(k != i):
+			temp = combattants[i]
+			combattants[i] = combattants[k]
+			combattants[k] = temp
 
 #Lance l'action choisie du combattant
 func actionCombattant(combattant):
@@ -96,11 +105,11 @@ func deroulementTour():
 	elif(nTourPV0 == 2):
 		if(combattantHarry.pv == 0 && combattantFlaux.pv > 0):
 			combattantHarry.soinPV(combattantHarry.pvmax*0.4)
-			narraText("Harry"+textPV0revive)
+			narraText(combattantHarry.nom+textPV0revive)
 			yield(self,"narraTextFini")
 		elif(combattantFlaux.pv == 0 && combattantHarry.pv > 0):
 			combattantFlaux.soinPV(combattantFlaux.pvmax*0.4)
-			narraText("Flaux"+textPV0revive)
+			narraText(combattantFlaux.nom+textPV0revive)
 			yield(self,"narraTextFini")
 		$TimerActions.start()					#Les timers permettent de voir les actions de manière plus clair
 		yield($TimerActions, "timeout")
