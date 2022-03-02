@@ -115,11 +115,8 @@ func castSkill3():
 	
 	if(aHarry.pv > 0 && aFlaux.pv > 0):
 		if(aHarry.guard && aFlaux.hide):
-			assomme = 2
-			secondText = true
 			cibler(aHarry)
 		elif(aFlaux.hide):
-			secondText = false
 			cibler(aHarry)
 		else:
 			if(randi()%4 < 3):
@@ -129,25 +126,21 @@ func castSkill3():
 					cibler(aFlaux)
 			else:
 				cibler(allies[randi()%2])
-			if(aHarry.guard && cible == aHarry):
-				assomme = 2
-				secondText = true
-			else:
-				secondText = false
 	elif(aHarry.pv > 0):
 		cibler(aHarry)
-		if(aHarry.guard):
-			assomme = 2
-			secondText = true
-		else:
-			secondText = false
 	else:
-		secondText= false
 		cibler(aFlaux)
 	
-	if(cible == aFlaux && aFlaux.hide):
+	if(cible == aHarry && aHarry.guard):
+		assomme = 2
+		secondText = true
+		cible.degatsPrisDef(150 + randi()%16)
+		yield(cible,"degatsTermine")
+	elif(cible == aFlaux && aFlaux.hide):
+		secondText = false
 		yield(spriteAnim,"animation_finished")
 	else:
+		secondText = false
 		cible.degatsPrisDef(150 + randi()%16)
 		yield(cible,"degatsTermine")
 	

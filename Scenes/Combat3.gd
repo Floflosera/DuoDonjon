@@ -3,7 +3,7 @@ extends "res://Scenes/Combat.gd"
 onready var combattantEnnemi = $EnnemiGroup/Ennemi3
 
 func _ready():
-	randomize()
+	randomize() #en mettre un seul dans le main
 	
 	#on cache le skill que Flaux n'a pas encore
 	combattantFlaux.skill5.hide()
@@ -45,6 +45,8 @@ func _ready():
 			combattantEnnemi.seclateAuSol()
 			narraText(combattantEnnemi.aTextSkill2())
 			yield(self,"narraTextFini")
+		
+		ordreTour()
 		
 		deroulementTour() #lance les actions choisies et celle(s) de ou des ennemi(s)
 		yield(self, "derouleTourFini")

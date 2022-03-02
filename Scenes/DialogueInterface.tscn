@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://Scenes/DialogueInterface.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Dialogue.gd" type="Script" id=1]
 [ext_resource path="res://assets/MenuHarry.png" type="Texture" id=2]
 [ext_resource path="res://assets/MenuFlaux.png" type="Texture" id=11]
 [ext_resource path="res://Godot-Fontpack-d244bf6170b399a6d4d26a0d906058ddf2dafdf1/fonts/montreal/Montreal-Regular.ttf" type="DynamicFontData" id=18]

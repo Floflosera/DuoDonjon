@@ -120,8 +120,8 @@ func deroulementTour():
 #Lit le dialogue entrée en paramètre (qui est une méthode de la scène DialogueInterface)
 func litDialogue(dialog):
 	$DialogueInterface.show()
-	dialog #dialog est la méthode du dialogue choisi en entrée
-	yield($DialogueInterface, "dialogueFini")
+	#le dialogue entré en paramètre va se lancer directement
+	yield($DialogueInterface, "dialogueFini") #on attend qu'il soit fini
 	combattantHarry.changerSprite()
 	combattantFlaux.changerSprite()
 	$DialogueInterface.hide()

@@ -115,7 +115,7 @@ func castSkill1():
 	if(cible == aFlaux && aFlaux.hide):
 		yield(spriteAnim,"animation_finished")
 	else:
-		cible.degatsPrisDef(cible.defense + 75 + randi()%8)
+		cible.degatsPrisDef(cible.defense + 70 + randi()%8)
 		yield(cible,"degatsTermine")
 	
 	emit_signal("skillCast")
@@ -173,16 +173,19 @@ func castSkill5():
 	if(cible == aFlaux && aFlaux.hide):
 		yield(spriteAnim,"animation_finished")
 	else:
-		cible.degatsPrisDef(cible.defense + randi()%51)
+		cible.degatsPrisDef(cible.defense + randi()%31)
 		yield(cible,"degatsTermine")
 	
 	emit_signal("skillCast")
 
 func seclateAuSol():
 	auSol = 2
+	vitesse = 1
 
 #Surcharge, met à jour les états
 func clearThings():
 	lacere = false
 	if(auSol > 0):
 		auSol -= 1
+	if(auSol == 0):
+		vitesse = 5
