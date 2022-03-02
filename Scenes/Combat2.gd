@@ -49,5 +49,5 @@ func _ready():
 	elif(combattantHarry.pv > 0 && combattantFlaux.pv > 0):
 		nar.narraText("Game Over")
 
-func pvEnnemi(): #pour tester
-	nar.set_text(str(combattantEnnemi.pv))
+
+

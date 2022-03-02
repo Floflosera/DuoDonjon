@@ -17,9 +17,17 @@
   "ennemi3_skill4" : {  "nameSkill": "Tir affaibli", "textSkill": "Magidrone tire du mieux qu'il peut."},
   "ennemi3_skill5" : {	"nameSkill": "Tombe", "textSkill": "Magidrone tombe au sol !"},
 
-  "ennemi4_skill1" : {	"nameSkill": "", "textSkill": ""},
-  "ennemi4_skill2" : {	"nameSkill": "", "textSkill": ""},
-  "ennemi4_skill3" : {	"nameSkill": "", "textSkill": ""},
+  "ennemi4-1_skill1" : {"nameSkill": "Se Soigne", "textSkill": "Mage Blanc se soigne."},
+  "ennemi4-1_skill2" : {"nameSkill": "Soigne son pote", "textSkill": "Mage Blanc soigne Mage Noir."},
+  "ennemi4-1_skill3" : {"nameSkill": "Attaque+", "textSkill": "Mage Blanc lance une incantation.\nLa puissance du Mage Noir augmente !"},
+  "ennemi4-1_skill4" : {"nameSkill": "Defense+", "textSkill": "Mage Blanc lance une incantation.\nLa résistance du Mage Noir augmente !"},
+
+  "ennemi4-2_skill1" : {"nameSkill": "Tonnerre", "textSkill": "Mage Noir lance un éclair !"},
+  "ennemi4-2_skill2" : {"nameSkill": "Grêle", "textSkill": "Mage Noir produit une pluie de grêle !"},
+  "ennemi4-2_skill3" : {"nameSkill": "Feu follet", "textSkill": "Mage Noir agace ", "textSkill2": " avec une nuée de feux follets !",
+										    "textSkill3": " veut attaquer Mage Noir."},
+  "ennemi4-2_skill4" : {"nameSkill": "Attrape", "textSkill": "Mage Noir emprisonne "},
+  "ennemi4-2_skill4" : {"nameSkill": "Relance", "textSkill": "Mage Noir jette "},
 
   "ennemi5_skill1" : {	"nameSkill": "", "textSkill": ""},
   "ennemi5_skill2" : {	"nameSkill": "", "textSkill": ""},

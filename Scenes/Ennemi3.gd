@@ -27,7 +27,7 @@ func _ready():
 	ligne_skills(11)
 	skillTextAppend(skills_text)
 
-#cas particulier avec la compétence de charge qui a deux textes
+#cas particulier avec la compétence de tir incapacitant
 func tirInc_skills():
 	skillTextAppend(skills_keys[9].textSkill)
 	skillTextAppend(skills_keys[9].textSkill2)
@@ -180,7 +180,38 @@ func castSkill5():
 
 func seclateAuSol():
 	auSol = 2
+	changerSprite()
 	vitesse = 1
+
+#Surcharge pour quand il est au sol
+func changerSprite():
+	if(auSol > 0):
+		spriteAnim.play("AuSol")
+	else:
+		spriteAnim.play("Neutre")
+
+#Surcharge pour quand il est au sol
+func degatsPris(degats):
+	if(auSol > 0):
+		spriteAnim.play("AuSolBlesse")
+	else:
+		spriteAnim.play("Blesse")
+	if(degats <= 1):
+		degats = 1
+	if(pv - degats <= 0):			#La condition fait en sorte de ne pas avoir des pv négatifs
+		pv = 0						#Si les pv sont inférieurs aux dégâts réçus, alors on tombe à 0pv
+		tourEffectue = true			#Si un allié n'a plus de pv, alors son tour sera compté comme déjà passé
+	else:
+		pv -= degats				#Sinon les dégâts sont soustraits aux pv du personnage
+	barreVie.value = pv
+	yield(spriteAnim,"animation_finished")	#Attend la fin de l'animation de blessure
+	changerSprite()							#Change le sprite des 2 persos
+	
+	#informations de base pour l'animation du richText qui montre les dégâts
+	#à concaténer avec le nombre des dégâts quand on inflige les dégâts avec un personnage
+	showDegats.set_bbcode("[center][wave freq=25]")
+	
+	emit_signal("degatsTermine")
 
 #Surcharge, met à jour les états
 func clearThings():
@@ -188,4 +219,5 @@ func clearThings():
 	if(auSol > 0):
 		auSol -= 1
 	if(auSol == 0):
+		changerSprite()
 		vitesse = 5

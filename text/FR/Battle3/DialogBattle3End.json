@@ -1,0 +1,5 @@
+{
+  "dialog_1" : {"textHarry": "Fini", "spHarry": "0", "textFlaux": "", "spFlaux": "0", "supOther": "true"},
+  "dialog_2" : {"textHarry": "", "spHarry": "0", "textFlaux": "T'es bizarre depuis tout à l'heure...", "spFlaux": "2", "supOther": ""},
+  "dialog_3" : {"textHarry": "Tais-toi.", "spHarry": "5", "textFlaux": "", "spFlaux": "3", "supOther": "true"},
+}

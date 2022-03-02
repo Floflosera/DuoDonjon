@@ -1,23 +1,35 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://assets/Ennemi2.png" type="Texture" id=1]
+[ext_resource path="res://assets/MagidroneNulTombe.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Ennemi.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Ennemi3.gd" type="Script" id=3]
+[ext_resource path="res://assets/MagidroneNul.png" type="Texture" id=4]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 1 ), null, ExtResource( 1 ), null, ExtResource( 1 ), null ],
+"frames": [ ExtResource( 4 ), ExtResource( 4 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "Neutre",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 4 ), null, ExtResource( 4 ), null, ExtResource( 4 ), null ],
 "loop": false,
 "name": "Blesse",
 "speed": 6.0
 }, {
 "frames": [ ExtResource( 1 ), ExtResource( 1 ), ExtResource( 1 ) ],
 "loop": true,
-"name": "Neutre",
+"name": "AuSol",
 "speed": 3.0
+}, {
+"frames": [ ExtResource( 1 ), null, ExtResource( 1 ), null, ExtResource( 1 ), null ],
+"loop": false,
+"name": "AuSolBlesse",
+"speed": 6.0
 } ]
 
 [node name="Ennemi3" instance=ExtResource( 2 )]
+position = Vector2( 647, 308 )
 frames = SubResource( 1 )
 script = ExtResource( 3 )
 

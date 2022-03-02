@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scenes/EnnemiGroup.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/EnnemiGroup4.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/Ennemi4-2.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Ennemi4-1.tscn" type="PackedScene" id=4]
+
+[node name="EnnemiGroup4" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="Ennemi4-1" parent="." index="0" instance=ExtResource( 4 )]
+position = Vector2( 515, 205 )
+
+[node name="Ennemi4-2" parent="." index="1" instance=ExtResource( 3 )]
+position = Vector2( 756, 205 )
+
+[connection signal="butPressed" from="Ennemi4-1" to="." method="_on_Ennemi41_butPressed"]
+[connection signal="butPressed" from="Ennemi4-2" to="." method="_on_Ennemi42_butPressed"]
