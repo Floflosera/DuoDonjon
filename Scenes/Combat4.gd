@@ -1,7 +1,7 @@
 extends "res://Scenes/Combat.gd"
 
-onready var combattantEnnemi1 = get_node("EnnemiGroup/Ennemi4-1")
-onready var combattantEnnemi2 = get_node("EnnemiGroup/Ennemi4-2")
+onready var combattantEnnemi1 = $EnnemiGroup/Ennemi4_1
+onready var combattantEnnemi2 = $EnnemiGroup/Ennemi4_2
 
 #faut revoir
 func _ready():
@@ -25,7 +25,7 @@ func _ready():
 			#litDialogue($DialogueInterface.dialogueHint1())
 			#yield($DialogueInterface, "dialogueFini")
 			#hintFlag += 1
-		#elif(((nTour == 8) && combattantEnnemi1.pv > 0) && hintFlag == 1):
+		#elif(((nTour >= 8 && nTour % 2 == 0) && combattantEnnemi1.pv > 0) && hintFlag == 1):
 			#litDialogue($DialogueInterface.dialogueHint2())
 			#yield($DialogueInterface, "dialogueFini")
 		

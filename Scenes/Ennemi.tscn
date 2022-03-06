@@ -56,7 +56,6 @@ __meta__ = {
 }
 
 [node name="Degats" type="RichTextLabel" parent="."]
-visible = false
 margin_left = -99.0
 margin_top = -153.0
 margin_right = 100.0

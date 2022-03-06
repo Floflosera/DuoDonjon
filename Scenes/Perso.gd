@@ -27,6 +27,9 @@ onready var tourChoisi = false
 #permet de vérifier si Flaux a annulé son tour (pour rendre la main à Harry)
 onready var annuleF = false
 
+#lorsque le personnage est prisonnier ou autre
+onready var horsCombat = false
+
 #on stocke les compétences dans des variables avec un nom plus simple
 onready var skill1 = $CadreMenu/Background/Menu/VBoxContainer/GridContainer/Skill1
 onready var skill2 = $CadreMenu/Background/Menu/VBoxContainer/GridContainer/Skill2

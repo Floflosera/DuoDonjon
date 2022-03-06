@@ -131,9 +131,12 @@ func choixTour():
 		kiCible = 0 #premier personnage qui cible, Harry (utilisé pour cibler les ennemis, entre autres)
 		
 		#On vérifie toujours si le personnage à assez de vie pour agir
-		if(cHarry.pv > 0):
+		if(cHarry.pv > 0 && not(cHarry.horsCombat)):
 			choixCharaTour(cHarry)
 			yield(self,"choixCharaTourFini")
+		else:
+			#pour être sûr que le tour dur au moins un petit temps et éviter d'envoyer un signal trop vite
+			yield(cHarry.spriteAnim,"frame_changed")
 		
 		
 		kiCible = 1 #premier personnage qui cible, Flaux
@@ -141,7 +144,7 @@ func choixTour():
 		#le joueur appuie sur "cancel" avant le tour de Flaux
 		cFlaux.annuleF = false
 		
-		if(cFlaux.pv > 0):
+		if(cFlaux.pv > 0 && not(cFlaux.horsCombat)):
 			cFlauxFait = true #s'il n'y a pas d'annulation alors ceci restera vrai
 			choixCharaTour(cFlaux)
 			yield(self,"choixCharaTourFini")

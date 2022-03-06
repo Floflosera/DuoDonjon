@@ -27,7 +27,7 @@
   "ennemi4-2_skill3" : {"nameSkill": "Feu follet", "textSkill": "Mage Noir agace ", "textSkill2": " avec une nuée de feux follets !",
 										    "textSkill3": " veut attaquer Mage Noir."},
   "ennemi4-2_skill4" : {"nameSkill": "Attrape", "textSkill": "Mage Noir emprisonne "},
-  "ennemi4-2_skill4" : {"nameSkill": "Relance", "textSkill": "Mage Noir jette "},
+  "ennemi4-2_skill5" : {"nameSkill": "Relance", "textSkill": "Mage Noir jette "},
 
   "ennemi5_skill1" : {	"nameSkill": "", "textSkill": ""},
   "ennemi5_skill2" : {	"nameSkill": "", "textSkill": ""},

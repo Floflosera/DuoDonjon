@@ -102,7 +102,9 @@ func castSkill3():#faut tout revoir
 	for ci in ennemis:
 		cibler(ci)
 		flauxDegats(50+randi()%6)
-		yield(cible,"degatsTermine")
+		yield(cible.spriteAnim,"frame_changed")
+		
+	yield(cible,"degatsTermine")
 	
 	emit_signal("skillCast")
 

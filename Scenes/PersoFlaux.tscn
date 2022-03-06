@@ -36,15 +36,15 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
+"frames": [ ExtResource( 28 ), ExtResource( 32 ), ExtResource( 29 ) ],
+"loop": true,
+"name": "Content",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 17 ), ExtResource( 5 ), ExtResource( 16 ) ],
 "loop": true,
 "name": "Inquiet",
 "speed": 3.0
-}, {
-"frames": [ ExtResource( 20 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 8 ), ExtResource( 11 ), ExtResource( 6 ) ],
-"loop": false,
-"name": "Blesse",
-"speed": 6.0
 }, {
 "frames": [ ExtResource( 12 ), ExtResource( 22 ), ExtResource( 9 ) ],
 "loop": true,
@@ -66,14 +66,14 @@ animations = [ {
 "name": "KO",
 "speed": 3.0
 }, {
+"frames": [ ExtResource( 20 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 8 ), ExtResource( 11 ), ExtResource( 6 ) ],
+"loop": false,
+"name": "Blesse",
+"speed": 6.0
+}, {
 "frames": [ ExtResource( 33 ), ExtResource( 31 ), ExtResource( 30 ) ],
 "loop": true,
 "name": "Triste",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 28 ), ExtResource( 32 ), ExtResource( 29 ) ],
-"loop": true,
-"name": "Content",
 "speed": 5.0
 } ]
 
@@ -125,6 +125,7 @@ rect_min_size = Vector2( 240, 240 )
 position = Vector2( 120, 120 )
 frames = SubResource( 1 )
 animation = "Neutre"
+frame = 1
 playing = true
 
 [node name="LifeBar" type="TextureProgress" parent="Portrait/VBoxContainer"]
@@ -197,6 +198,7 @@ focus_previous = NodePath(".")
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+custom_colors/font_color_focus = Color( 1, 0.329412, 0.207843, 1 )
 custom_fonts/font = SubResource( 2 )
 button_mask = 0
 text = "Skill1"
@@ -214,6 +216,7 @@ focus_previous = NodePath(".")
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+custom_colors/font_color_focus = Color( 1, 0.329412, 0.207843, 1 )
 custom_fonts/font = SubResource( 3 )
 button_mask = 0
 text = "Skill2"
@@ -231,6 +234,7 @@ focus_previous = NodePath(".")
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+custom_colors/font_color_focus = Color( 1, 0.329412, 0.207843, 1 )
 custom_fonts/font = SubResource( 4 )
 button_mask = 0
 text = "Skill3"
@@ -249,6 +253,7 @@ focus_previous = NodePath(".")
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+custom_colors/font_color_focus = Color( 1, 0.329412, 0.207843, 1 )
 custom_fonts/font = SubResource( 5 )
 button_mask = 0
 text = "Skill4"
@@ -277,6 +282,7 @@ focus_previous = NodePath(".")
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+custom_colors/font_color_focus = Color( 1, 0.329412, 0.207843, 1 )
 custom_fonts/font = SubResource( 6 )
 button_mask = 0
 text = "Skill5"
