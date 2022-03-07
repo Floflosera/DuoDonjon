@@ -36,14 +36,14 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 28 ), ExtResource( 32 ), ExtResource( 29 ) ],
-"loop": true,
-"name": "Content",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 17 ), ExtResource( 5 ), ExtResource( 16 ) ],
 "loop": true,
 "name": "Inquiet",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 10 ), ExtResource( 13 ), ExtResource( 18 ) ],
+"loop": true,
+"name": "Neutre",
 "speed": 3.0
 }, {
 "frames": [ ExtResource( 12 ), ExtResource( 22 ), ExtResource( 9 ) ],
@@ -56,24 +56,29 @@ animations = [ {
 "name": "Fatigue",
 "speed": 3.0
 }, {
-"frames": [ ExtResource( 10 ), ExtResource( 13 ), ExtResource( 18 ) ],
+"frames": [ ExtResource( 33 ), ExtResource( 31 ), ExtResource( 30 ) ],
 "loop": true,
-"name": "Neutre",
-"speed": 3.0
-}, {
-"frames": [ ExtResource( 21 ), ExtResource( 2 ), ExtResource( 7 ) ],
-"loop": true,
-"name": "KO",
-"speed": 3.0
+"name": "Triste",
+"speed": 5.0
 }, {
 "frames": [ ExtResource( 20 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 8 ), ExtResource( 11 ), ExtResource( 6 ) ],
 "loop": false,
 "name": "Blesse",
 "speed": 6.0
 }, {
-"frames": [ ExtResource( 33 ), ExtResource( 31 ), ExtResource( 30 ) ],
+"frames": [ ExtResource( 21 ), ExtResource( 2 ), ExtResource( 7 ) ],
 "loop": true,
-"name": "Triste",
+"name": "KO",
+"speed": 3.0
+}, {
+"frames": [ null, null, null ],
+"loop": true,
+"name": "Prisonnier",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 28 ), ExtResource( 32 ), ExtResource( 29 ) ],
+"loop": true,
+"name": "Content",
 "speed": 5.0
 } ]
 
@@ -125,7 +130,7 @@ rect_min_size = Vector2( 240, 240 )
 position = Vector2( 120, 120 )
 frames = SubResource( 1 )
 animation = "Neutre"
-frame = 1
+frame = 2
 playing = true
 
 [node name="LifeBar" type="TextureProgress" parent="Portrait/VBoxContainer"]

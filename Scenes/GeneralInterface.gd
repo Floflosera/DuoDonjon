@@ -16,6 +16,7 @@ onready var cHarry = $HBoxContainer/Harry
 onready var cFlaux = $HBoxContainer/Flaux
 #le groupe d'ennemi est stocké aussi
 onready var groupeEnnemi = get_node("../EnnemiGroup")
+onready var premiereCible = false
 
 #on initialise la variable qui informe qui est en train de cibler (si le personnage cible)
 onready var kiCible = 0
@@ -80,11 +81,16 @@ func choixCharaTour(chara):
 				#on nettoie les ciblages de l'ennemi pour éviter les problèmes si on annule l'action d'Harry
 				#après sa sélection
 				get_tree().call_group("EnnemiGroupe", "clearCible")
-				#on fait apparaître le bouton de ciblage et la barre de vie de l'ennemi
-				get_tree().call_group("EnnemiButton", "show")
-				get_tree().call_group("LifeBarEnnemi", "show")
-				#on prend le focus du bouton situé en bas de l'arbre de la scène des ennemis
-				get_tree().call_group("EnnemiButton", "grab_focus")
+				
+				premiereCible = false
+				
+				for enn in groupeEnnemi.ennemis:
+					if(enn.pv > 0):
+						enn.selection.show() #on fait apparaître le bouton de ciblage
+						if(not(premiereCible)):
+							enn.selection.grab_focus() #on prend le focus du bouton de l'ennemi
+							premiereCible = true
+				
 				#on attend une sélection ou une annulation
 				yield(groupeEnnemi,"selectionne")
 				#on enlève le focus et cache les infos précédemment afficher
@@ -125,6 +131,9 @@ func choixCharaTour(chara):
 func choixTour():
 	
 	cFlauxFait = false #booléen pour vérifier si Flaux annule l'action (donc faux de base)
+	
+	if(cFlaux.horsCombat):
+		cHarry.skills[4].disabled = true
 	
 	while(not(cFlauxFait)): #tant que Flaux n'a pas annulé l'action
 		

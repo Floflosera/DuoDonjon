@@ -92,6 +92,11 @@ func castSkill1():
 
 func castSkill2():
 	
+	if(cible.pv == 0):
+		for ci in ennemis:
+			if(ci.pv > 0):
+				cibler(ci)
+	
 	flauxDegats(77+randi()%8)
 	ciblage = false
 	
@@ -99,16 +104,23 @@ func castSkill2():
 	emit_signal("skillCast")
 
 func castSkill3():#faut tout revoir
+	
 	for ci in ennemis:
-		cibler(ci)
-		flauxDegats(50+randi()%6)
-		yield(cible.spriteAnim,"frame_changed")
-		
+		if(ci.pv > 0):
+			cibler(ci)
+			flauxDegats(50+randi()%6)
+			yield(cible.spriteAnim,"frame_changed")
+	
 	yield(cible,"degatsTermine")
 	
 	emit_signal("skillCast")
 
 func castSkill4():
+	
+	if(cible.pv == 0):
+		for ci in ennemis:
+			if(ci.pv > 0):
+				cibler(ci)
 	
 	flauxDegats(50+randi()%6)
 	ciblage = false

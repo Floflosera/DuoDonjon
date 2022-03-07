@@ -22,9 +22,9 @@ func _ready():
 func choixSkill():
 	if(pote.pv <= (pote.pvmax - 100)):
 		choixSkill = 1
-	elif(pv <= 100):
+	elif(pv <= 70):
 		choixSkill = 0
-	elif(pv <= (pvmax - 200)):
+	elif(pv <= (pvmax/2)):
 		if(randi()%4 == 0):
 			choixSkill = 0
 	elif(pote.pv == pote.pvmax):
@@ -45,7 +45,7 @@ func choixSkill():
 #pas de secondText = false parce qu'il n'a jamais de second texte donc sa variable reste en false
 func castSkill1():
 	
-	soinPV(100)
+	soinPV(70)
 	
 	yield(spriteAnim,"animation_finished")
 	

@@ -21,6 +21,20 @@ onready var ciblePar = [false,false]
 #booléen pour vérifier si Flaux a fait baisser la résistance de l'ennemi
 onready var lacere = false
 
+#chargement des variables de l'ennemis déjà définis + le chargement du texte des skills
+func _ready():
+	spriteAnim = self
+	ennemi = true
+	barreVie = $LifeBar
+	load_skills()
+
+func _process(delta):
+	
+	if(selection.has_focus()):
+		barreVie.show()
+	else:
+		barreVie.hide()
+
 #surcharge pour pouvoir afficher les dégâts reçus à côté de l'ennemi
 func degatsPris(degats):
 	spriteAnim.play("Blesse")		#Lance l'animation des dégâts pris
@@ -45,17 +59,10 @@ func degatsPris(degats):
 func degatsPrisDef(degats):
 	if(lacere):
 		degatsPris(int((degats-defense)*1.25))
-		return str((degats-defense)*1.25)
+		return str(int((degats-defense)*1.25))
 	else:
 		degatsPris(degats-defense)
 		return str(degats-defense)
-
-#chargement des variables de l'ennemis déjà définis + le chargement du texte des skills
-func _ready():
-	spriteAnim = self
-	ennemi = true
-	barreVie = $LifeBar
-	load_skills()
 
 #signal lorsqu'on appuie sur un bouton, il est envoyé au EnnemiGroup
 func _on_Selection_pressed():
@@ -117,4 +124,3 @@ func load_skills():
 	#Charge le fichier
 	load_fileSkills(skill_file)
 	index_skills()
-

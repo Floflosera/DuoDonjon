@@ -29,11 +29,19 @@ func _ready():
 	skillTextAppend(skills_text)
 	
 	feuFollet_skills() 	#suite du texte du skill 3
+	relance_skills()	#suite du texte du skill 5
 
 #cas particulier de feu follet qui a plusieurs textes
 func feuFollet_skills():
 	skillTextAppend(skills_keys[18].textSkill2)
 	skillTextAppend(skills_keys[18].textSkill3)
+
+#en fonction du prisonnier et de la cible
+func relance_skills():
+	skillTextAppend(skills_keys[20].textSkill2)
+	skillTextAppend(skills_keys[20].textSkill3)
+	skillTextAppend(skills_keys[20].textSkill4)
+	skillTextAppend(skills_keys[20].textSkill5)
 
 func aTextSkill():
 	if(choixSkill == 2):
@@ -47,7 +55,19 @@ func aTextSkill():
 
 #le 2e texte de ce skill est stocké comme l'affichage de texte de compétence 2
 func aTextSkill2():
-	return cible.nom + textSkill[6]
+	if(choixSkill == 2):
+		return cible.nom + textSkill[6]
+	elif(choixSkill == 4):
+		if(prisonnie == aHarry):
+			if(aFlaux.pv > 0 && (not(aFlaux.hide))):
+				return textSkill[7]
+			else:
+				return textSkill[9]
+		else:
+			if(aHarry.pv > 0):
+				return textSkill[8]
+			else:
+				return textSkill[10]
 
 #Surcharge pour prendre en compte les différents cas
 func degatsPrisDef(degats):
@@ -81,6 +101,8 @@ func choixSkill():
 		else:
 			choixSkill = randi() % 3
 	else:
+		if(choixSkill == 4):
+			prisonnie = null
 		if(prisonnie == aHarry || prisonnie == aFlaux):
 			if(priso2t == false):
 				if(randi() % 2 == 0):
@@ -109,11 +131,14 @@ func choixSkill():
 				choixSkill = 2
 	
 	
-	if(choixSkill == 2):
+	if(choixSkill == 2): #Feu follet
+		
+		priorite = true
+		
 		if(aHarry.pv > 0 && aFlaux.pv > 0):
 			if(aFlaux.choixSkill == 0):	#comme Flaux n'a pas encore fait son action, on regarde son choix
 				cibler(aHarry)
-			elif(randi()%4 <= 2):
+			elif(randi()%3 <= 1):		#il a plus de chance de viser Flaux, à nerf pour la version plus facile
 				cibler(aFlaux)
 			else:
 				cibler(aHarry)
@@ -122,7 +147,10 @@ func choixSkill():
 		else:
 			cibler(aFlaux)
 	
-	if(choixSkill == 3):
+	if(choixSkill == 3): #Attrape
+		
+		priorite = true
+		
 		if(aFlaux.choixSkill == 0):	#comme Flaux n'a pas encore fait son action, on regarde son choix
 			cibler(aHarry)
 		elif(randi()%2 == 0):
@@ -134,7 +162,7 @@ func choixSkill():
 
 func mageNoirDegats(degats):
 	if(attaqueUp):
-		cible.degatsPrisDef(int(degats * 1.5))
+		cible.degatsPrisDef(int(degats * 1.33))
 	else:
 		cible.degatsPrisDef(degats)
 
@@ -186,15 +214,64 @@ func castSkill2():
 
 #Feu follet, provoque un allié, cible dans choix
 func castSkill3():
-	pass
+	
+	secondText = true
+	priorite = false
+	
+	if(cible == aFlaux && aFlaux.hide):
+		yield(spriteAnim,"animation_finished")
+	else:
+		cible.cible = self
+		if(cible == aHarry && (cible.choixSkill >= 2)):
+			cible.choixSkill = 1
+		elif(cible == aFlaux && (cible.choixSkill == 0 && cible.choixSkill == 4)):
+			cible.choixSkill = 1 #pourrait se faire en un if mais ça serait moins lisible
+		mageNoirDegats(40 + randi()%5)
+		yield(cible,"degatsTermine")
+	
+	emit_signal("skillCast")
 
 #Attrape, prend un allié en tant que prisonnié, cible dans choix
 func castSkill4():
-	pass
+	
+	secondText = false
+	priorite = false
+	
+	prisonnie = cible
+	prisonnie.horsCombat = true
+	prisonnie.tourEffectue = true
+	prisonnie.changerSprite()
+	#faire apparaître un sprite à côté de lui du prisonnier
+	
+	yield(spriteAnim,"animation_finished")
+	
+	emit_signal("skillCast")
 
 #Relance, lance le prisonnié sur l'allié restant
 func castSkill5():
-	pass
+	
+	secondText = true
+	
+	if(prisonnie == aHarry):
+		cibler(aFlaux)
+	else:
+		cibler(aHarry)
+	
+	prisonnie.horsCombat = false
+	
+	if((cible == aFlaux && aFlaux.hide) || cible.pv == 0):
+		prisonnie.degatsPrisDef(40 + randi()%5)
+		yield(prisonnie,"degatsTermine")
+	else:
+		if(cible == aFlaux):
+			prisonnie.degatsPrisDef(30 + randi()%4)
+			cible.degatsPris(cible.pv - 1)
+		else:
+			prisonnie.degatsPrisDef(20 + randi()%3)
+			mageNoirDegats(20 + randi()%3)
+		yield(cible,"degatsTermine")
+	
+	emit_signal("skillCast")
 
 #Surcharge, met à jour les états
 func clearThings():

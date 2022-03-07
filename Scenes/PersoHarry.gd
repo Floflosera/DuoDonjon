@@ -61,6 +61,7 @@ func _on_Skill5_pressed():
 
 #fonction qui permet à Harry d'infliger des dégâts et de montrer les dégâts qu'il fait
 func harryDegats(degats):
+	
 	if(emotion == 3):
 		degats += 20
 	elif(emotion == 2):
@@ -79,6 +80,12 @@ func harryDegats(degats):
 
 #Surcharge des castSkill avec l'effet des compétences
 func castSkill1():
+	
+	if(cible.pv == 0):
+		for ci in ennemis:
+			if(ci.pv > 0):
+				cibler(ci)
+	
 	bouclier = true
 	
 	harryDegats(40+randi()%5)
@@ -88,6 +95,12 @@ func castSkill1():
 	emit_signal("skillCast")
 
 func castSkill2():
+	
+	if(cible.pv == 0):
+		for ci in ennemis:
+			if(ci.pv > 0):
+				cibler(ci)
+	
 	harryDegats(60+randi()%7)
 	ciblage = false
 	
@@ -95,8 +108,9 @@ func castSkill2():
 	emit_signal("skillCast")
 
 func castSkill3():
+	
 	soinPV(100)
-	if(allie.pv > 0):
+	if(allie.pv > 0 && not(allie.horsCombat)):
 		allie.soinPV(100)
 	
 	yield(spriteAnim,"animation_finished")

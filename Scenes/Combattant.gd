@@ -65,6 +65,7 @@ func changerSprite():
 
 #Méthode qui permet d'infliger "degats" points de degats au personnage visé
 func degatsPris(degats):
+	degats = int(degats)
 	spriteAnim.play("Blesse")		#Lance l'animation des dégâts pris
 	if(degats <= 1):
 		degats = 1
@@ -89,6 +90,7 @@ func soinPV(valeur):
 		pv = pvmax					#Comme pour les dégâts, on donne une valeur fixe auquel cas
 	else:
 		pv += valeur				#Sinon on se soigne de la valeur en question
+	barreVie.value = pv				#On met à jour l'affichage des pv de la barre
 
 #Chaque bouton permet de pouvoir lancer un sort plus tard durant la déroulement du tour
 #Ces sorts sont associés aux fonctions "castSkill" et ont chacun des effets différents
@@ -111,6 +113,7 @@ func castSkill5():
 #les compétences prioritaires remettent la variable priorite sur false une fois lancé
 #La fonction est un peu détaillée mais elle devra être surchargée
 func castSkill():
+	
 	match choixSkill:
 		0:
 			castSkill1()

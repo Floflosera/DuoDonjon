@@ -69,7 +69,7 @@ func deroulementTour():
 	
 	#Lance les choix de compétence de chaque ennemis du groupe ennemi
 	for i in range(combattants.size()):
-		if(combattants[i].ennemi):
+		if(combattants[i].ennemi && combattants[i].pv > 0):
 			combattants[i].choixSkill()
 	
 	$TimerActions.start()					#Les timers permettent de voir les actions de manière plus clair

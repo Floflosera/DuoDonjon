@@ -68,7 +68,9 @@ func changerSpriteDia(n):
 
 #Surcharge pour les persos
 func changerSprite():
-	if(pv == 0):						#Le personnage n'a plus assez de vie pour combattre
+	if(horsCombat):						#Le personnage est emprisonné par l'ennemi
+		spriteAnim.play("Prisonnier")
+	elif(pv == 0):						#Le personnage n'a plus assez de vie pour combattre
 		spriteAnim.play("KO")
 		emotion = -1
 	elif(allie.pv == 0):				#L'autre personnage n'a plus beaucoup de vie
@@ -93,7 +95,10 @@ func labelVieF():
 
 #Surcharge pour l'affichage de vie et changement allié
 func degatsPris(degats):
+	degats = int(degats)
 	spriteAnim.play("Blesse")		#Lance l'animation des dégâts pris
+	if(degats < 1):
+		degats = 0
 	if(pv - degats <= 0):			#La condition fait en sorte de ne pas avoir des pv négatifs
 		pv = 0						#Si les pv sont inférieurs aux dégâts réçus, alors on tombe à 0pv
 		tourEffectue = true			#Si un allié n'a plus de pv, alors son tour sera compté comme déjà passé
