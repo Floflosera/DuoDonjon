@@ -39,14 +39,14 @@ func aTextSkill2():
 #Surcharge pour prendre en compte les différents cas
 func degatsPrisDef(degats):
 	if(lacere && assomme > 0):
-		degatsPris(int((degats-defense)*2.25))
-		return str(int((degats-defense)*2.25))
+		degatsPris(int((degats-defense)*2.5))
+		return str(int((degats-defense)*2.5))
 	elif(assomme > 0):
 		degatsPris(int((degats-defense)*2))
 		return str(int((degats-defense)*2))
 	elif(lacere):
-		degatsPris(int((degats-defense)*1.25))
-		return str(int((degats-defense)*1.25))
+		degatsPris(int((degats-defense)*1.5))
+		return str(int((degats-defense)*1.5))
 	else:
 		degatsPris(degats-defense)
 		return str(degats-defense)
@@ -75,8 +75,6 @@ func choixSkill():
 #les différentes compétences qui cible aléatoirement ou non en fonction de la situtation
 func castSkill1():
 	
-	secondText = false
-	
 	if(aHarry.pv > 0 && aFlaux.pv > 0):
 		if(aFlaux.hide):
 			cibler(aHarry)
@@ -104,7 +102,6 @@ func castSkill1():
 
 func castSkill2():
 	
-	secondText = false
 	prepare = true
 	
 	yield(self,"animation_finished")
@@ -137,10 +134,8 @@ func castSkill3():
 		cible.degatsPrisDef(150 + randi()%16)
 		yield(cible,"degatsTermine")
 	elif(cible == aFlaux && aFlaux.hide):
-		secondText = false
 		yield(spriteAnim,"animation_finished")
 	else:
-		secondText = false
 		cible.degatsPrisDef(150 + randi()%16)
 		yield(cible,"degatsTermine")
 	
@@ -148,7 +143,6 @@ func castSkill3():
 
 #la compétence 5 est la compétence qui ne fait rien lorsque l'ennemi est assommé
 func castSkill5():
-	secondText = false
 	
 	yield(self,"animation_finished")
 	

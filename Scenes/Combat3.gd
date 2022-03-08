@@ -9,6 +9,7 @@ func _ready():
 	combattantFlaux.skill5.hide()
 	
 	combattants = [combattantHarry, combattantFlaux, combattantEnnemi]
+	combattantsBase = [combattantHarry, combattantFlaux, combattantEnnemi]
 	
 	ordreTour()
 	

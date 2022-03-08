@@ -30,6 +30,7 @@ func _ready():
 	
 	feuFollet_skills() 	#suite du texte du skill 3
 	relance_skills()	#suite du texte du skill 5
+	libere_skills()		#perso libéré
 
 #cas particulier de feu follet qui a plusieurs textes
 func feuFollet_skills():
@@ -42,6 +43,10 @@ func relance_skills():
 	skillTextAppend(skills_keys[20].textSkill3)
 	skillTextAppend(skills_keys[20].textSkill4)
 	skillTextAppend(skills_keys[20].textSkill5)
+	skillTextAppend(skills_keys[20].textSkill6)
+
+func libere_skills():
+	skillTextAppend(skills_keys[19].textSkill2)
 
 func aTextSkill():
 	if(choixSkill == 2):
@@ -49,7 +54,10 @@ func aTextSkill():
 	elif(choixSkill == 3):
 		return textSkill[choixSkill] + cible.nom + " !"
 	elif(choixSkill == 4):
-		return textSkill[choixSkill] + prisonnie.nom + " !"
+		if(prisonnie == null):
+			return textSkill[11]
+		else:
+			return textSkill[choixSkill] + prisonnie.nom + " !"
 	else:
 		return textSkill[choixSkill]
 
@@ -72,14 +80,27 @@ func aTextSkill2():
 #Surcharge pour prendre en compte les différents cas
 func degatsPrisDef(degats):
 	if(lacere && defenseUp):
-		degatsPris(int(degats*0.75))
-		return str(int(degats*0.75))
+		degatsPris(degats-defense)
+		return str(degats-defense)
 	elif(defenseUp):
-		degatsPris(int(degats*0.5))
-		return str(int(degats*0.5))
+		degatsPris(int((degats-defense)*0.5))
+		return str(int((degats-defense)*0.5))
 	elif(lacere):
-		degatsPris(int((degats-defense)*1.25))
-		return str(int((degats-defense)*1.25))
+		degatsPris(int((degats-defense)*1.5))
+		return str(int((degats-defense)*1.5))
+	elif((prisonnie == aHarry && aFlaux.choixSkill == 3) || (prisonnie == aFlaux && aHarry.choixSkill == 1)):
+		prisonnie.horsCombat = false
+		prisonnie.degatsPris(0)
+		if(prisonnie == aHarry):
+			aFlaux.aTextSkill2Put(textSkill[12] + "Harry !")
+			aFlaux.secondText = true
+		else:
+			aHarry.aTextSkill2Put(textSkill[12] + "Flaux !")
+			aHarry.secondText = true
+		prisonnie = null
+		choixSkill = 4
+		degatsPris(degats-defense)
+		return str(degats-defense)
 	else:
 		degatsPris(degats-defense)
 		return str(degats-defense)
@@ -161,17 +182,15 @@ func choixSkill():
 	tourEffectue = false
 
 func mageNoirDegats(degats):
-	if(attaqueUp):
-		cible.degatsPrisDef(int(degats * 1.33))
+	if(attaqueUp || pote.pv == 0):
+		cible.degatsPrisDef(int(degats * 1.5))
 	else:
 		cible.degatsPrisDef(degats)
 
 #Tonnerre, une cible
 func castSkill1():
 	
-	secondText = false
-	
-	if(aHarry.pv > 0 && aFlaux.pv > 0):
+	if((aHarry.pv > 0 && aFlaux.pv > 0) && (not(aHarry.horsCombat) && not(aFlaux.horsCombat))):
 		if(aFlaux.hide):
 			cibler(aHarry)
 		elif(randi()%3 <= 1):
@@ -181,7 +200,7 @@ func castSkill1():
 				cibler(aHarry)
 			else:
 				cibler(aFlaux)
-	elif(aHarry.pv > 0):
+	elif(aHarry.pv > 0 && not(aHarry.horsCombat)):
 		cibler(aHarry)
 	else:
 		cibler(aFlaux)
@@ -196,8 +215,6 @@ func castSkill1():
 
 #Grêle, vise tous les alliés
 func castSkill2():
-	
-	secondText = false
 	
 	if(aHarry.pv>0):
 		cibler(aHarry)
@@ -224,8 +241,12 @@ func castSkill3():
 		cible.cible = self
 		if(cible == aHarry && (cible.choixSkill >= 2)):
 			cible.choixSkill = 1
-		elif(cible == aFlaux && (cible.choixSkill == 0 && cible.choixSkill == 4)):
+			cible.abled()
+			cible.skills[1].disabled = true
+		elif(cible == aFlaux && (cible.choixSkill == 0 || cible.choixSkill == 2 || cible.choixSkill == 4)):
 			cible.choixSkill = 1 #pourrait se faire en un if mais ça serait moins lisible
+			cible.abled()
+			cible.skills[1].disabled = true
 		mageNoirDegats(40 + randi()%5)
 		yield(cible,"degatsTermine")
 	
@@ -234,7 +255,6 @@ func castSkill3():
 #Attrape, prend un allié en tant que prisonnié, cible dans choix
 func castSkill4():
 	
-	secondText = false
 	priorite = false
 	
 	prisonnie = cible
@@ -250,26 +270,31 @@ func castSkill4():
 #Relance, lance le prisonnié sur l'allié restant
 func castSkill5():
 	
-	secondText = true
-	
-	if(prisonnie == aHarry):
-		cibler(aFlaux)
-	else:
-		cibler(aHarry)
-	
-	prisonnie.horsCombat = false
-	
-	if((cible == aFlaux && aFlaux.hide) || cible.pv == 0):
-		prisonnie.degatsPrisDef(40 + randi()%5)
-		yield(prisonnie,"degatsTermine")
-	else:
-		if(cible == aFlaux):
-			prisonnie.degatsPrisDef(30 + randi()%4)
-			cible.degatsPris(cible.pv - 1)
+	if(prisonnie != null):
+		
+		secondText = true
+		
+		if(prisonnie == aHarry):
+			cibler(aFlaux)
 		else:
-			prisonnie.degatsPrisDef(20 + randi()%3)
-			mageNoirDegats(20 + randi()%3)
-		yield(cible,"degatsTermine")
+			cibler(aHarry)
+		
+		prisonnie.horsCombat = false
+		
+		if((cible == aFlaux && aFlaux.hide) || cible.pv == 0):
+			prisonnie.degatsPrisDef(40 + randi()%5)
+			yield(prisonnie,"degatsTermine")
+		else:
+			if(cible == aFlaux):
+				prisonnie.degatsPrisDef(30 + randi()%4)
+				cible.degatsPris(cible.pv - 1)
+			else:
+				prisonnie.degatsPrisDef(20 + randi()%3)
+				mageNoirDegats(20 + randi()%3)
+			yield(cible,"degatsTermine")
+		
+	else:
+		yield(spriteAnim,"animation_finished")
 	
 	emit_signal("skillCast")
 

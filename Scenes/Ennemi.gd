@@ -58,8 +58,8 @@ func degatsPris(degats):
 #surcharge pour prendre en compte l'état "lacere"
 func degatsPrisDef(degats):
 	if(lacere):
-		degatsPris(int((degats-defense)*1.25))
-		return str(int((degats-defense)*1.25))
+		degatsPris(int((degats-defense)*1.5))
+		return str(int((degats-defense)*1.5))
 	else:
 		degatsPris(degats-defense)
 		return str(degats-defense)

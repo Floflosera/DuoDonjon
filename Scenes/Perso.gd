@@ -46,6 +46,15 @@ onready var emotion = 0
 func modifDesc(text):
 	$CadreMenu/Background/Menu/VBoxContainer/MarginContainer/Description.set_text(text)
 
+#s'il faut un 2e texte de skill
+onready var textSkill2 = ""
+
+func aTextSkill2Put(text):
+	textSkill2 = text
+
+func aTextSkill2():
+	return textSkill2
+
 #Change le sprite en fonction du nombre entré en paramètre
 func changerSpriteDia(n):
 	match n:

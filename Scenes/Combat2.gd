@@ -12,6 +12,8 @@ func _ready():
 	
 	#au début du combat on stocke tous les combattants dans un tableau
 	combattants = [combattantHarry, combattantFlaux, combattantEnnemi]
+	#on les stocke aussi dans un autre tableau pour utiliser cette ordre lors de la priorité
+	combattantsBase = [combattantHarry, combattantFlaux, combattantEnnemi]
 	
 	ordreTour() #définie l'ordre des tours au début du combat
 	

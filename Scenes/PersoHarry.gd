@@ -127,6 +127,7 @@ func castSkill4():
 func castSkill5():
 	
 	launch = true
+	allie.priorite = true
 	priorite = false
 	
 	yield(spriteAnim,"animation_finished")

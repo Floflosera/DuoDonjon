@@ -3,7 +3,7 @@
 [ext_resource path="res://Scenes/Ennemi.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Ennemi4_2.gd" type="Script" id=2]
 [ext_resource path="res://assets/MageNoirNulKO.png" type="Texture" id=3]
-[ext_resource path="res://assets/MageNoirNul.png" type="Texture" id=4]
+[ext_resource path="res://assets/MageNoir.png" type="Texture" id=4]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -12,15 +12,15 @@ animations = [ {
 "name": "Blesse",
 "speed": 6.0
 }, {
-"frames": [ ExtResource( 3 ), ExtResource( 3 ), ExtResource( 3 ) ],
-"loop": true,
-"name": "KO",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 4 ), ExtResource( 4 ), ExtResource( 4 ) ],
 "loop": true,
 "name": "Neutre",
 "speed": 3.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 3 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "KO",
+"speed": 5.0
 } ]
 
 [node name="Ennemi4_2" instance=ExtResource( 1 )]

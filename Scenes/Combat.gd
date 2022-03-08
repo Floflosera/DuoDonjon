@@ -18,6 +18,8 @@ onready var combattantFlaux = $GeneralInterface/HBoxContainer/Flaux
 
 #On stocke chaque combattant dans un tableau pour pouvoir gérer leur tour
 onready var combattants
+#On stocke l'ordre initial des combattants
+onready var combattantsBase
 #On définie une variable pour le label de narration
 onready var nar = $CadreNarrateur/DescriptionAction
 
@@ -75,15 +77,16 @@ func deroulementTour():
 	$TimerActions.start()					#Les timers permettent de voir les actions de manière plus clair
 	yield($TimerActions, "timeout")
 	#Boucle pour lancer le tour des personnages qui utilisent une action prioritaire
-	for i in range(combattants.size()):
-		if(combattants[i].priorite && combattants[i].tourEffectue == false):
-			narraText(combattants[i].aTextSkill()) #les narraText() permettent d'afficher l'action effectuée
+	for i in range(combattantsBase.size()):
+		if(combattantsBase[i].priorite && combattantsBase[i].tourEffectue == false):
+			narraText(combattantsBase[i].aTextSkill()) #les narraText() permettent d'afficher l'action effectuée
 			yield(self,"narraTextFini")
-			actionCombattant(combattants[i]) #lance l'action choisie
+			actionCombattant(combattantsBase[i]) #lance l'action choisie
 			yield(self,"actionFinie")
-			if(combattants[i].secondText): #si l'action a un texte après son utilisation, alors...
-				narraText(combattants[i].aTextSkill2()) #on affiche son 2e affichage de texte
+			if(combattantsBase[i].secondText): #si l'action a un texte après son utilisation, alors...
+				narraText(combattantsBase[i].aTextSkill2()) #on affiche son 2e affichage de texte
 				yield(self,"narraTextFini")
+				combattantsBase[i].secondText = false
 	
 	for i in range(combattants.size()):		#On parcourt le tableau des combattants
 		if(combattants[i].tourEffectue == false):#Si le tour du combattant n'a pas encore eu lieu (via attaque prio)
@@ -94,6 +97,7 @@ func deroulementTour():
 			if(combattants[i].secondText):
 				narraText(combattants[i].aTextSkill2())
 				yield(self,"narraTextFini")
+				combattants[i].secondText = false
 	
 	get_tree().call_group("EnnemiGroupe", "clearCible") #on fait oublié aux ennemis par qui ils ont été ciblés
 	get_tree().call_group("CombattantGroupe", "clearThings") #on actualise les effets qui affaiblissent ou boost

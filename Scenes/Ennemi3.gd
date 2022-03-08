@@ -48,14 +48,14 @@ func aTextSkill2():
 #Surcharge pour prendre en compte les différents cas
 func degatsPrisDef(degats):
 	if(lacere && auSol > 0):
-		degatsPris(int(degats*2.25))
-		return str(int(degats*2.25))
+		degatsPris(int(degats*2.5))
+		return str(int(degats*2.5))
 	elif(auSol > 0):
 		degatsPris(int(degats*2))
 		return str(int(degats*2))
 	elif(lacere):
-		degatsPris(int((degats-defense)*1.25))
-		return str(int((degats-defense)*1.25))
+		degatsPris(int((degats-defense)*1.5))
+		return str(int((degats-defense)*1.5))
 	else:
 		degatsPris(degats-defense)
 		return str(degats-defense)
@@ -95,7 +95,6 @@ func choixSkill():
 #Tir magique (une cible)
 func castSkill1():
 	
-	secondText = false
 	
 	if(aHarry.pv > 0 && aFlaux.pv > 0):
 		if(aFlaux.hide):
@@ -122,8 +121,6 @@ func castSkill1():
 
 #Barrage (touche tout le monde)
 func castSkill2():
-	
-	secondText = false
 	
 	if(aHarry.pv>0):
 		cibler(aHarry)
@@ -157,8 +154,6 @@ func castSkill3():
 
 #Tir affaibli (toujours au hasard)
 func castSkill5():
-	
-	secondText = false
 	
 	if(aHarry.pv > 0 && aFlaux.pv > 0):
 		if(not(aFlaux.hide)):

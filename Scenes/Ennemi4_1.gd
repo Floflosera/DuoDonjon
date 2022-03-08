@@ -20,9 +20,9 @@ func _ready():
 	skillTextAppend(skills_text)
 
 func choixSkill():
-	if(pote.pv <= (pote.pvmax - 100)):
+	if(pote.pv <= (pote.pvmax - 100) && pote.pv != 0):
 		choixSkill = 1
-	elif(pv <= 70):
+	elif(pv <= 100):
 		choixSkill = 0
 	elif(pv <= (pvmax/2)):
 		if(randi()%4 == 0):

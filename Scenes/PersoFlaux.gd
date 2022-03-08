@@ -2,7 +2,7 @@ extends "res://Scenes/Perso.gd"
 
 #variables spécifiques à Flaux si elle se cache ou affute son arme
 onready var hide = false
-onready var affute = 0
+onready var affute = false
 
 #quand elle apparaît, elle prend en allié Harry et récupère ses statistiques (qui ne changent pas)
 func _ready():
@@ -65,9 +65,9 @@ func flauxDegats(degats):
 	elif(emotion == 1):
 		degats += 10
 	
-	if(affute > 0 && allie.launch):
+	if(affute && allie.launch):
 		deg = cible.degatsPrisDef(int(degats*3.5))
-	elif(affute > 0):
+	elif(affute):
 		deg = cible.degatsPrisDef(int(degats*2.5))
 	elif(allie.launch):
 		deg = cible.degatsPrisDef(int(degats*1.5))
@@ -99,6 +99,8 @@ func castSkill2():
 	
 	flauxDegats(77+randi()%8)
 	ciblage = false
+	priorite = false
+	affute = false
 	
 	yield(cible,"degatsTermine")
 	emit_signal("skillCast")
@@ -110,6 +112,9 @@ func castSkill3():#faut tout revoir
 			cibler(ci)
 			flauxDegats(50+randi()%6)
 			yield(cible.spriteAnim,"frame_changed")
+	
+	priorite = false
+	affute = false
 	
 	yield(cible,"degatsTermine")
 	
@@ -124,6 +129,8 @@ func castSkill4():
 	
 	flauxDegats(50+randi()%6)
 	ciblage = false
+	priorite = false
+	affute = false
 	
 	cible.lacere = true
 	
@@ -132,7 +139,8 @@ func castSkill4():
 
 func castSkill5():
 	
-	affute = 2
+	priorite = false
+	affute = true
 	
 	yield(spriteAnim,"animation_finished")
 	emit_signal("skillCast")
@@ -140,5 +148,3 @@ func castSkill5():
 #met à jour les effets temporaires
 func clearThings():
 	hide = false
-	if(affute > 0):
-		affute -= 1
