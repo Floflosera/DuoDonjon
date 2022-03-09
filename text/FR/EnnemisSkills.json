@@ -1,4 +1,4 @@
-{
+  {
   "ennemi1_skill1" : {	"nameSkill": "Coup de boulet", "textSkill": "Robot Gardien donne un coup de boulet !"},
   "ennemi1_skill2" : {	"nameSkill": "Commotion", "textSkill": "Robot Gardien bondit sur ", 
                                                   "textSkill2": " perd en puissance !"},
@@ -39,7 +39,7 @@
   "ennemi5_skill4" : {	"nameSkill": "Bouclier", "textSkill": "Lucy se protège et en profite pour récupérer."},
   "ennemi5_skill5" : {	"nameSkill": "Poing de feu", "textSkill": "Lucy donne un coup de poing enflammé !"},
   "ennemi5_skill6" : {	"nameSkill": "Pied volant", "textSkill": "Lucy bondit et donne un coup de pied rapide comme l'éclair !"},
-  "ennemi5_skill7" : {	"nameSkill": "Coup de boule", "textSkill": "Lucy se sert de sa tête "},
-  "ennemi5_skill8" : {	"nameSkill": "Balayette", "textSkill": "Zone + étourdi"},
-  "ennemi5_skill9" : {	"nameSkill": "Contre", "textSkill": "Prioritaire, à chaque attaque pris, riposte contre l'attaquant"},
+  "ennemi5_skill7" : {	"nameSkill": "Coup de boule", "textSkill": "Lucy se sert de sa tête !"},
+  "ennemi5_skill8" : {	"nameSkill": "Balayette", "textSkill": "Lucy donne un coup de pied circulaire !", "textSkill2": "Le groupe tombe par terre !"},
+  "ennemi5_skill9" : {	"nameSkill": "Contre", "textSkill": "Lucy se prépare à riposter.", "textSkill2": "Lucy contre l'attaque !"},
 }
