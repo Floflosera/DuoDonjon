@@ -13,3 +13,6 @@ func _on_Ennemi2_butPressed():
 	ennemi.ciblePar[interfaceGeneral.kiCible] = true
 	#et on envoie le signal "selectionne" pour passer à la suite dans la fonction choixTour
 	emit_signal("selectionne")
+
+func _on_Ennemi2_butPressedF():
+	ennemi.ciblePar[1] = true

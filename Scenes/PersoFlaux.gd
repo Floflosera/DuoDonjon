@@ -1,8 +1,22 @@
 extends "res://Scenes/Perso.gd"
 
+signal multiFait
+
 #variables spécifiques à Flaux si elle se cache ou affute son arme
 onready var hide = false
 onready var affute = false
+
+onready var multi = false
+onready var skill1y = false
+onready var skill2y = false
+onready var skill3y = false
+onready var skill4y = false
+onready var skill5y = false
+
+onready var fFait = false
+onready var premiereCible = false
+onready var ciblageF = false
+onready var i = 0
 
 #quand elle apparaît, elle prend en allié Harry et récupère ses statistiques (qui ne changent pas)
 func _ready():
@@ -21,6 +35,135 @@ func _process(delta):
 		if(Input.is_action_just_pressed("ui_cancel")):	#lorsqu'on appuie sur cancel
 			annuleF = true								#on informe qu'on veut annuler le tour
 			emit_signal("butPressed")					#et on envoie le signal pour que choixTour continue
+	
+	if(multi && pv>0):
+		if(skill1y):
+			skill1.set("custom_colors/font_color", Color(1.0, 84.0/255.0, 53.0/255.0))
+			if((Input.is_action_just_pressed("ui_right") || Input.is_action_just_pressed("ui_left")) && not(skill2.disabled)):
+				skill2y = true
+				skill1y = false
+				skill1.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
+				yield(spriteAnim,"frame_changed")
+			elif((Input.is_action_just_pressed("ui_down") || Input.is_action_just_pressed("ui_up")) && not(skill3.disabled)):
+				skill3y = true
+				skill1y = false
+				skill1.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
+				yield(spriteAnim,"frame_changed")
+			elif(Input.is_action_just_pressed("ui_multi_select")):
+				_on_Skill1_pressed()
+				skill1y = false
+				skill1.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
+				fFait = true
+				emit_signal("multiFait")
+		if(skill2y):
+			skill2.set("custom_colors/font_color", Color(1.0, 84.0/255.0, 53.0/255.0))
+			if((Input.is_action_just_pressed("ui_right") || Input.is_action_just_pressed("ui_left")) && not(skill1.disabled)):
+				skill1y = true
+				skill2y = false
+				skill2.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
+				yield(spriteAnim,"frame_changed")
+			elif((Input.is_action_just_pressed("ui_down")) && not(skill4.disabled)):
+				skill4y = true
+				skill2y = false
+				skill2.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
+				yield(spriteAnim,"frame_changed")
+			elif((Input.is_action_just_pressed("ui_up")) && not(skill5.disabled)):
+				skill5y = true
+				skill2y = false
+				skill2.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
+				yield(spriteAnim,"frame_changed")
+			elif(Input.is_action_just_pressed("ui_multi_select")):
+				_on_Skill2_pressed()
+				skill2y = false
+				skill2.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
+				ciblageF = true
+				yield(spriteAnim,"frame_changed")
+		if(skill3y):
+			skill3.set("custom_colors/font_color", Color(1.0, 84.0/255.0, 53.0/255.0))
+			if((Input.is_action_just_pressed("ui_right") || Input.is_action_just_pressed("ui_left")) && not(skill4.disabled)):
+				skill4y = true
+				skill3y = false
+				skill3.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
+				yield(spriteAnim,"frame_changed")
+			elif((Input.is_action_just_pressed("ui_down") || Input.is_action_just_pressed("ui_up")) && not(skill1.disabled)):
+				skill1y = true
+				skill3y = false
+				skill3.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
+				yield(spriteAnim,"frame_changed")
+			elif(Input.is_action_just_pressed("ui_multi_select")):
+				_on_Skill3_pressed()
+				skill3y = false
+				skill3.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
+				fFait = true
+				emit_signal("multiFait")
+		if(skill4y):
+			skill4.set("custom_colors/font_color", Color(1.0, 84.0/255.0, 53.0/255.0))
+			if((Input.is_action_just_pressed("ui_right") || Input.is_action_just_pressed("ui_left")) && not(skill3.disabled)):
+				skill3y = true
+				skill4y = false
+				skill4.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
+				yield(spriteAnim,"frame_changed")
+			elif((Input.is_action_just_pressed("ui_down")) && not(skill5.disabled)):
+				skill5y = true
+				skill4y = false
+				skill4.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
+				yield(spriteAnim,"frame_changed")
+			elif((Input.is_action_just_pressed("ui_up")) && not(skill2.disabled)):
+				skill2y = true
+				skill4y = false
+				skill4.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
+				yield(spriteAnim,"frame_changed")
+			elif(Input.is_action_just_pressed("ui_multi_select")):
+				_on_Skill4_pressed()
+				skill4y = false
+				skill4.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
+				ciblageF = true
+				yield(spriteAnim,"frame_changed")
+		if(skill5y):
+			skill5.set("custom_colors/font_color", Color(1.0, 84.0/255.0, 53.0/255.0))
+			if((Input.is_action_just_pressed("ui_up")) && not(skill4.disabled)):
+				skill4y = true
+				skill5y = false
+				skill5.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
+				yield(spriteAnim,"frame_changed")
+			elif((Input.is_action_just_pressed("ui_down")) && not(skill2.disabled)):
+				skill2y = true
+				skill5y = false
+				skill5.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
+				yield(spriteAnim,"frame_changed")
+			elif(Input.is_action_just_pressed("ui_multi_select")):
+				_on_Skill5_pressed()
+				skill5y = false
+				skill5.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
+				fFait = true
+				emit_signal("multiFait")
+		if(ciblageF):
+			if(ennemis[i].pv > 0):
+				ennemis[i].selectionF.show()
+			else:
+				if(i < ennemis.size()-1):
+					i += 1
+				else:
+					i = 0
+			if(Input.is_action_just_pressed("ui_right")):
+				ennemis[i].selectionF.hide()
+				if(i < ennemis.size()-1):
+					i += 1
+				else:
+					i = 0
+			if(Input.is_action_just_pressed("ui_left")):
+				ennemis[i].selectionF.hide()
+				if(i >= 0):
+					i -= 1
+				else:
+					i = 0
+			if(Input.is_action_just_pressed("ui_multi_select")):
+				ciblageF = false
+				ennemis[i]._on_SelectionFlaux_pressed()
+				ennemis[i].selectionF.hide()
+				cibler(ennemis[i])
+				fFait = true
+				emit_signal("multiFait")
 
 #Surcharge pour les compétences prioritaires et qui ciblent
 func _on_Skill1_pressed():
@@ -28,6 +171,8 @@ func _on_Skill1_pressed():
 	
 	priorite = true
 	ciblage = false
+	
+	tourEffectue = false
 	emit_signal("butPressed")
 
 func _on_Skill2_pressed():
@@ -35,6 +180,8 @@ func _on_Skill2_pressed():
 	
 	priorite = false
 	ciblage = true
+	
+	tourEffectue = false
 	emit_signal("butPressed")
 
 func _on_Skill4_pressed():
@@ -42,6 +189,8 @@ func _on_Skill4_pressed():
 	
 	priorite = false
 	ciblage = true
+	
+	tourEffectue = false
 	emit_signal("butPressed")
 
 func degatsPrisDef(degats):

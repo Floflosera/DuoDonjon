@@ -36,6 +36,8 @@ func _on_Skill1_pressed():
 	
 	priorite = false
 	ciblage = true
+	
+	tourEffectue = false
 	emit_signal("butPressed")
 
 func _on_Skill2_pressed():
@@ -43,6 +45,8 @@ func _on_Skill2_pressed():
 	
 	priorite = false
 	ciblage = true
+	
+	tourEffectue = false
 	emit_signal("butPressed")
 
 func _on_Skill4_pressed():
@@ -50,6 +54,8 @@ func _on_Skill4_pressed():
 	
 	priorite = true
 	ciblage = false
+	
+	tourEffectue = false
 	emit_signal("butPressed")
 
 func _on_Skill5_pressed():
@@ -57,6 +63,8 @@ func _on_Skill5_pressed():
 	
 	priorite = true
 	ciblage = false
+	
+	tourEffectue = false
 	emit_signal("butPressed")
 
 #fonction qui permet à Harry d'infliger des dégâts et de montrer les dégâts qu'il fait

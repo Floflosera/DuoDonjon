@@ -2,6 +2,7 @@ extends "res://Scenes/Combattant.gd"
 
 #signal qui permet de savoir si un ennemi est ciblé grâce à son bouton
 signal butPressed
+signal butPressedF
 
 #langue du jeu pour savoir quoi lire pour les compétences ennemis
 onready var fr = true
@@ -14,6 +15,8 @@ onready var combat = get_node("../..")
 onready var selection = $Selection
 #stocke le label d'affichage des dégâts dans une variable
 onready var showDegats = $Degats
+
+onready var selectionF = $SelectionFlaux
 
 #tableau qui permet de rechercher par qui l'ennemi est ciblé
 onready var ciblePar = [false,false]
@@ -124,3 +127,7 @@ func load_skills():
 	#Charge le fichier
 	load_fileSkills(skill_file)
 	index_skills()
+
+
+func _on_SelectionFlaux_pressed():
+	emit_signal("butPressedF")

@@ -13,3 +13,9 @@ func _on_Ennemi4_1_butPressed():
 func _on_Ennemi4_2_butPressed():
 	ennemi2.ciblePar[interfaceGeneral.kiCible] = true
 	emit_signal("selectionne")
+
+func _on_Ennemi4_1_butPressedF():
+	ennemi1.ciblePar[1] = true
+
+func _on_Ennemi4_2_butPressedF():
+	ennemi2.ciblePar[1] = true

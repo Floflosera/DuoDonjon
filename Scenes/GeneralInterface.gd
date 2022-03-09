@@ -78,9 +78,10 @@ func choixCharaTour(chara):
 			
 			#si le personnage cible avec son attaque, alors
 			if(chara.ciblage):
-				#on nettoie les ciblages de l'ennemi pour éviter les problèmes si on annule l'action d'Harry
-				#après sa sélection
-				get_tree().call_group("EnnemiGroupe", "clearCible")
+				if(not(cFlaux.multi)):
+					#on nettoie les ciblages de l'ennemi pour éviter les problèmes si on annule l'action d'Harry
+					#après sa sélection
+					get_tree().call_group("EnnemiGroupe", "clearCible")
 				
 				premiereCible = false
 				
@@ -117,10 +118,7 @@ func choixCharaTour(chara):
 	chara.modifDesc("") #Une fois l'action choisie, on vide la description des actions
 	
 	#quand on sort de la boucle, on vérifie si c'est parce que Flaux a annulé son tour
-	if(not(chara.annuleF)):
-		#on n'a pas annulé le tour donc pas de soucis, on prépare l'action a lancé plus tard
-		chara.tourEffectue = false
-	else:
+	if(chara.annuleF):
 		#Le tour venant d'être choisi n'est pas encore effectué
 		#donc on bouclera dans la fonction choixTour en disant que Flaux n'a pas fait son tour
 		cFlauxFait = false
@@ -131,6 +129,13 @@ func choixCharaTour(chara):
 func choixTour():
 	
 	cFlauxFait = false #booléen pour vérifier si Flaux annule l'action (donc faux de base)
+	
+	if(cFlaux.multi && cFlaux.pv > 0):
+		cFlaux.fFait = false
+		if(not(cFlaux.skill1.disabled)):
+			cFlaux.skill1y = true
+		else:
+			cFlaux.skill2y = true
 	
 	if(cFlaux.horsCombat):
 		cHarry.skills[4].disabled = true
@@ -153,7 +158,7 @@ func choixTour():
 		#le joueur appuie sur "cancel" avant le tour de Flaux
 		cFlaux.annuleF = false
 		
-		if(cFlaux.pv > 0 && not(cFlaux.horsCombat)):
+		if(cFlaux.pv > 0 && not(cFlaux.horsCombat) && not(cFlaux.multi)):
 			cFlauxFait = true #s'il n'y a pas d'annulation alors ceci restera vrai
 			choixCharaTour(cFlaux)
 			yield(self,"choixCharaTourFini")
@@ -161,6 +166,10 @@ func choixTour():
 			#si Flaux n'a pas de vie alors on ne pourra pas annuler son tour
 			#donc on sortira de la boucle directement
 			cFlauxFait = true
+			
+			if(cFlaux.multi && cFlaux.pv > 0):
+				if(not(cFlaux.fFait)):
+					yield(cFlaux,"multiFait")
 	
 	#permet de rendre toutes les compétences réutilisables puis d'empêcher l'utilisation
 	#de la compétence choisie ce tour pendant un tour
