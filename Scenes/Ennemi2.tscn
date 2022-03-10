@@ -6,20 +6,28 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 3 ), null, ExtResource( 3 ), null, ExtResource( 3 ), null ],
-"loop": false,
-"name": "Blesse",
-"speed": 6.0
-}, {
 "frames": [ ExtResource( 3 ), ExtResource( 3 ), ExtResource( 3 ) ],
 "loop": true,
 "name": "Neutre",
 "speed": 3.0
+}, {
+"frames": [ ExtResource( 3 ), null, ExtResource( 3 ), null, ExtResource( 3 ), null ],
+"loop": false,
+"name": "Blesse",
+"speed": 6.0
 } ]
 
 [node name="Ennemi2" instance=ExtResource( 1 )]
 frames = SubResource( 1 )
 script = ExtResource( 2 )
+
+[node name="Selection" parent="." index="0"]
+focus_neighbour_left = NodePath(".")
+focus_neighbour_top = NodePath(".")
+focus_neighbour_right = NodePath(".")
+focus_neighbour_bottom = NodePath(".")
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
 
 [node name="LifeBar" parent="." index="1"]
 max_value = 800.0

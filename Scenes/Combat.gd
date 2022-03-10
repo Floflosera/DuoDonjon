@@ -88,6 +88,8 @@ func deroulementTour():
 				yield(self,"narraTextFini")
 				combattantsBase[i].secondText = false
 	
+	ordreTour()
+	
 	for i in range(combattants.size()):		#On parcourt le tableau des combattants
 		if(combattants[i].tourEffectue == false):#Si le tour du combattant n'a pas encore eu lieu (via attaque prio)
 			narraText(combattants[i].aTextSkill())

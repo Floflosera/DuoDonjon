@@ -7,11 +7,6 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 4 ), null, ExtResource( 4 ), null, ExtResource( 4 ), null ],
-"loop": false,
-"name": "Blesse",
-"speed": 6.0
-}, {
 "frames": [ ExtResource( 4 ), ExtResource( 4 ), ExtResource( 4 ) ],
 "loop": true,
 "name": "Neutre",
@@ -21,15 +16,24 @@ animations = [ {
 "loop": true,
 "name": "KO",
 "speed": 3.0
+}, {
+"frames": [ ExtResource( 4 ), null, ExtResource( 4 ), null, ExtResource( 4 ), null ],
+"loop": false,
+"name": "Blesse",
+"speed": 6.0
 } ]
 
 [node name="Ennemi4_1" instance=ExtResource( 1 )]
 frames = SubResource( 1 )
+frame = 2
 playing = true
 script = ExtResource( 2 )
 
 [node name="LifeBar" parent="." index="1"]
 max_value = 500.0
 value = 500.0
+
+[node name="SelectionFlaux" parent="." index="3"]
+focus_mode = 0
 
 [connection signal="pressed" from="Selection" to="." method="_on_Selection_pressed"]

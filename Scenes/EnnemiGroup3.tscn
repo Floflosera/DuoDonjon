@@ -8,6 +8,6 @@
 script = ExtResource( 3 )
 
 [node name="Ennemi3" parent="." index="0" instance=ExtResource( 1 )]
-position = Vector2( 641, 161 )
+position = Vector2( 641, 171 )
 
 [connection signal="butPressed" from="Ennemi3" to="." method="_on_Ennemi3_butPressed"]

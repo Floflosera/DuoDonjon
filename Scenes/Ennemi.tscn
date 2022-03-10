@@ -14,29 +14,29 @@
 [ext_resource path="res://assets/selectionVvide2.png" type="Texture" id=12]
 [ext_resource path="res://assets/selectionVvide3.png" type="Texture" id=13]
 [ext_resource path="res://assets/selectionRpressed.png" type="Texture" id=14]
-[ext_resource path="res://assets/selectionRnot3.png" type="Texture" id=15]
+[ext_resource path="res://assets/selectionR3.png" type="Texture" id=15]
 [ext_resource path="res://assets/selectionRfocus3.png" type="Texture" id=16]
-[ext_resource path="res://assets/selectionRnot2.png" type="Texture" id=17]
+[ext_resource path="res://assets/selectionR.png" type="Texture" id=17]
 [ext_resource path="res://assets/selectionRpressed2.png" type="Texture" id=18]
 [ext_resource path="res://assets/selectionRfocus2.png" type="Texture" id=19]
 [ext_resource path="res://assets/selectionRpressed3.png" type="Texture" id=20]
-[ext_resource path="res://assets/selectionRnot.png" type="Texture" id=21]
+[ext_resource path="res://assets/selectionR2.png" type="Texture" id=21]
 [ext_resource path="res://assets/selectionRfocus.png" type="Texture" id=22]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [  ],
-"loop": true,
-"name": "Neutre",
-"speed": 3.0
-}, {
-"frames": [  ],
 "loop": false,
 "name": "Blesse",
 "speed": 6.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "Neutre",
+"speed": 3.0
 } ]
 
-[sub_resource type="AnimatedTexture" id=3]
+[sub_resource type="AnimatedTexture" id=9]
 flags = 4
 frames = 4
 fps = 3.0
@@ -82,12 +82,12 @@ font_data = ExtResource( 5 )
 flags = 4
 frames = 4
 fps = 3.0
-frame_0/texture = ExtResource( 21 )
-frame_1/texture = ExtResource( 17 )
+frame_0/texture = ExtResource( 17 )
+frame_1/texture = ExtResource( 21 )
 frame_1/delay_sec = 0.0
 frame_2/texture = ExtResource( 15 )
 frame_2/delay_sec = 0.0
-frame_3/texture = ExtResource( 17 )
+frame_3/texture = ExtResource( 21 )
 frame_3/delay_sec = 0.0
 
 [sub_resource type="AnimatedTexture" id=7]
@@ -122,12 +122,12 @@ script = ExtResource( 2 )
 
 [node name="Selection" type="TextureButton" parent="." groups=["EnnemiButton"]]
 visible = false
-margin_left = -11.0
+margin_left = -21.0
 margin_top = -164.0
-margin_right = 11.0
+margin_right = 1.0
 margin_bottom = -142.0
 mouse_filter = 2
-texture_normal = SubResource( 3 )
+texture_normal = SubResource( 9 )
 texture_pressed = SubResource( 4 )
 texture_focused = SubResource( 5 )
 __meta__ = {
@@ -164,10 +164,11 @@ __meta__ = {
 
 [node name="SelectionFlaux" type="TextureButton" parent="." groups=["EnnemiButtonF"]]
 visible = false
-margin_left = -11.0
+margin_left = 5.0
 margin_top = -164.0
-margin_right = 11.0
+margin_right = 27.0
 margin_bottom = -142.0
+focus_mode = 0
 mouse_filter = 2
 texture_normal = SubResource( 6 )
 texture_pressed = SubResource( 7 )
@@ -176,4 +177,5 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[connection signal="pressed" from="Selection" to="." method="_on_Selection_pressed"]
 [connection signal="pressed" from="SelectionFlaux" to="." method="_on_SelectionFlaux_pressed"]

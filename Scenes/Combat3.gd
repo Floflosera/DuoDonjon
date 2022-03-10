@@ -34,21 +34,6 @@ func _ready():
 		$GeneralInterface.choixTour() #lance le choix du tour
 		yield($GeneralInterface, "choixTourFini")
 		
-		if(combattantHarry.choixSkill == 4 && combattantFlaux.choixSkill == 1):
-			narraText(combattantHarry.aTextSkill())
-			yield(self,"narraTextFini")
-			actionCombattant(combattantHarry)
-			yield(self,"actionFinie")
-			narraText(combattantFlaux.aTextSkill())
-			yield(self,"narraTextFini")
-			actionCombattant(combattantFlaux)
-			yield(self,"actionFinie")
-			combattantEnnemi.seclateAuSol()
-			narraText(combattantEnnemi.aTextSkill2())
-			yield(self,"narraTextFini")
-		
-		ordreTour()
-		
 		deroulementTour() #lance les actions choisies et celle(s) de ou des ennemi(s)
 		yield(self, "derouleTourFini")
 		

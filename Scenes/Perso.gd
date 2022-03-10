@@ -20,6 +20,8 @@ var allie
 onready var ennemiGroup = get_node("../../../EnnemiGroup")
 onready var ennemis =  ennemiGroup.ennemis
 
+onready var interfaceGeneral = get_node("../..")
+
 #permet l'affichage des dégâts ennemis
 onready var deg = ""
 #permet de vérifier si le tour a été choisi
@@ -97,7 +99,7 @@ func changerSprite():
 
 #Pour afficher la vie en fonction de la langue
 func labelVieF():
-	if(get_node("../..").fr):
+	if(interfaceGeneral.fr):
 		labelVie.set_text("PV : " + str(pv) + "/" + str(pvmax))	#Avec PV
 	else:
 		labelVie.set_text("HP : " + str(pv) + "/" + str(pvmax))	#Ou HP

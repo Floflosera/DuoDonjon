@@ -56,9 +56,19 @@ func degatsPrisDef(degats):
 	elif(lacere):
 		degatsPris(int((degats-defense)*1.5))
 		return str(int((degats-defense)*1.5))
+	elif(aHarry.choixSkill == 4 && aFlaux.choixSkill == 1):
+		vaSeclateAuSol()
+		degatsPris(degats-defense)
+		return str(degats-defense)
 	else:
 		degatsPris(degats-defense)
 		return str(degats-defense)
+
+func vaSeclateAuSol():
+		seclateAuSol()
+		choixSkill = 4
+		get_node("../..").narraText(aTextSkill2())
+		yield(get_node("../.."),"narraTextFini")
 
 func choixSkill():
 	
@@ -175,7 +185,6 @@ func castSkill5():
 
 func seclateAuSol():
 	auSol = 2
-	changerSprite()
 	vitesse = 1
 
 #Surcharge pour quand il est au sol
