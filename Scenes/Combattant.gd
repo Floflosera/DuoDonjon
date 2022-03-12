@@ -15,7 +15,7 @@ var spriteAnim
 #La variable qui permet de savoir si une action a été effectué
 #Elle est false de base, et devient true lorsqu'on effectue une action (ou que le personnage n'a plus de pv)
 #Elle redevient false lorsque l'on choisit sa nouvelle action
-onready var tourEffectue = false
+onready var tourEffectue = true
 
 #Stocke le choix d'action du joueur
 onready var choixSkill = 0

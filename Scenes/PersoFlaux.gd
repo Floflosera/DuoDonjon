@@ -72,10 +72,11 @@ func _process(delta):
 						skill2.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
 						yield(spriteAnim,"frame_changed")
 					else:
-						skill5y = true
-						skill2y = false
-						skill2.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
-						yield(spriteAnim,"frame_changed")
+						if(skill5.visible):
+							skill5y = true
+							skill2y = false
+							skill2.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
+							yield(spriteAnim,"frame_changed")
 			elif((Input.is_action_just_pressed("ui_multi_up")) && not(skill5.disabled)):
 				if(skill5.visible):
 					skill5y = true
@@ -178,10 +179,10 @@ func _process(delta):
 			if(Input.is_action_just_pressed("ui_multi_left")):
 				ennemis[i].selectionF.hide()
 				ennemis[i].barreVie.hide()
-				if(i >= 0):
+				if(i > 0):
 					i -= 1
 				else:
-					i = 0
+					i = ennemis.size()-1
 			if(Input.is_action_just_pressed("ui_multi_cancel")):
 				ciblageF = false
 				ennemis[i].selectionF.hide()

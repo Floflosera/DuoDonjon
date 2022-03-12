@@ -67,6 +67,7 @@ func degatsPrisDef(degats):
 func vaSeclateAuSol():
 		seclateAuSol()
 		choixSkill = 4
+		secondText = false
 		get_node("../..").narraText(aTextSkill2())
 		yield(get_node("../.."),"narraTextFini")
 
@@ -157,6 +158,7 @@ func castSkill3():
 		yield(spriteAnim,"animation_finished")
 	else:
 		cible.tourEffectue = true
+		cible.abled()
 		cible.degatsPrisDef(70 + randi()%8)
 		yield(cible,"degatsTermine")
 	

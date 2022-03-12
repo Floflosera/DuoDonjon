@@ -2,10 +2,16 @@ extends Node
 
 #Signal qui permet d'alerter de la fin d'un dialogue
 signal dialogueFini
+signal dialogueSuivant
+
+signal confirmHpro
+signal confirmFpro
 
 #Variable qui indique la langue du jeu (qui sera choisi par le joueur)
 onready var fr = true
 onready var en = false
+
+onready var multi = true
 
 onready var HarryDia = get_node("../GeneralInterface/HBoxContainer/Harry")
 onready var FlauxDia = get_node("../GeneralInterface/HBoxContainer/Flaux")
@@ -15,7 +21,10 @@ var tempTextH
 var tempTextF
 
 #Stockage du bouton de confirmation dans une variable
-onready var confirmation = get_node("HBoxContainer/FlauxDia/Background/Menu/VBoxContainer/Confirm")
+onready var confirmation = get_node("HBoxContainer/FlauxDia/Background/Menu/VBoxContainer/HBoxContainer/Confirm")
+
+onready var confirmH = get_node("HBoxContainer/HarryDia/Background/Menu/VBoxContainer/HBoxContainer/ConfirmH")
+onready var confirmF = get_node("HBoxContainer/FlauxDia/Background/Menu/VBoxContainer/HBoxContainer/ConfirmF")
 
 #Tout ce dont on a besoin pour la lecture de fichier
 export(String, FILE, "*.json") var dialogue_file	#variable qui contiendra le chemin du fichier
@@ -72,8 +81,13 @@ func boiteDeDia(textHarry,spHarry,textFlaux,spFlaux):
 
 #Fonction similaire mais qui permet un affichage progressif des textes
 func boiteDeDiaAnim(textHarry,spHarry,textFlaux,spFlaux,supOther):
+	
 	#On commence par empêcher le joueur d'appuyer sur le bouton tout de suite
-	confirmation.release_focus()
+	confirmH.release_focus()
+	confirmH.hide()
+	confirmF.release_focus()
+	confirmF.hide()
+	
 	#On change les sprites
 	HarryDia.changerSpriteDia(spHarry)
 	FlauxDia.changerSpriteDia(spFlaux)
@@ -99,6 +113,8 @@ func boiteDeDiaAnim(textHarry,spHarry,textFlaux,spFlaux,supOther):
 			yield($TimerDia,"timeout")
 			if Input.is_action_pressed("ui_select"):		#Si le joueur appuie sur une touche de validation
 				$HBoxContainer/HarryDia.modifDia(textHarry)	#Alors on affiche tout le texte directement
+				if(multi):
+					yield(HarryDia.spriteAnim,"frame_changed")
 				break										#Puis on termine la boucle
 	else:
 		if(supOther): #même supOther mais pour Harry
@@ -112,13 +128,54 @@ func boiteDeDiaAnim(textHarry,spHarry,textFlaux,spFlaux,supOther):
 			$HBoxContainer/FlauxDia.modifDia(tempTextF)
 			$TimerDia.start()
 			yield($TimerDia,"timeout")
-			if Input.is_action_pressed("ui_select"):
+			if ((not(multi) && Input.is_action_pressed("ui_select")) || (multi && Input.is_action_pressed("ui_multi_select"))):
 				$HBoxContainer/FlauxDia.modifDia(textFlaux)
+				if(multi):
+					yield(HarryDia.spriteAnim,"frame_changed")
 				break
 	
-	#À la fin, on redonne le focus du bouton de confirmation au joueur, pour qu'il puisse valider
-	confirmation.grab_focus()
+	if(textHarry != ""):
+		if(not(multi)):
+			confirmH.show()
+			confirmH.grab_focus()
+			yield(confirmH, "pressed")
+		else:
+			confirmH.show()
+			yield(self, "confirmHpro")
+	elif(textFlaux != ""):
+		if(not(multi)):
+			confirmF.show()
+			confirmF.grab_focus()
+			yield(confirmF, "pressed")
+		else:
+			confirmF.show()
+			yield(self, "confirmFpro")
+	
+	emit_signal("dialogueSuivant")
 
+func _process(delta):
+	
+	if(multi):
+		
+		if Input.is_action_just_pressed("ui_select") && confirmH.visible:
+			confirmH.toggle_mode = true
+			confirmH.pressed = true
+		
+		if Input.is_action_just_pressed("ui_multi_select") && confirmF.visible:
+			confirmF.toggle_mode = true
+			confirmF.pressed = true
+		
+		if(confirmH.toggle_mode):
+			if not(Input.is_action_pressed("ui_select")):
+				confirmH.pressed = false
+				confirmH.toggle_mode = false
+				emit_signal("confirmHpro")
+		
+		if(confirmF.toggle_mode):
+			if not(Input.is_action_pressed("ui_multi_select")):
+				confirmH.pressed = false
+				confirmF.toggle_mode = false
+				emit_signal("confirmFpro")
 
 #Vide les boites initiales
 func _ready():
@@ -133,12 +190,12 @@ func dialogueRead():
 	#On affiche la première boite de dialogue (avec ou sans anim, pourrait varier par rapport à un choix (if))
 	#boiteDeDia(dialogue_textHarry,dialogue_spHarry,dialogue_textFlaux,dialogue_spFlaux)	#sans anim
 	boiteDeDiaAnim(dialogue_textHarry,dialogue_spHarry,dialogue_textFlaux,dialogue_spFlaux,dialogue_supOther)
-	yield(confirmation, "pressed") #appuyer sur le bouton pour continuer
+	yield(self, "dialogueSuivant")
 	
 	while(current < dialogue_keys.size()-1): #tant qu'on n'est pas à la fin du fichier
 		next_dialogue() #on passe on dialogue suivant
 		#boiteDeDia(dialogue_textHarry,dialogue_spHarry,dialogue_textFlaux,dialogue_spFlaux)	#sans anim
 		boiteDeDiaAnim(dialogue_textHarry,dialogue_spHarry,dialogue_textFlaux,dialogue_spFlaux,dialogue_supOther)
-		yield(confirmation, "pressed") #appuyer sur le bouton pour continuer
+		yield(self, "dialogueSuivant")
+	
 	emit_signal("dialogueFini") #quand cette fonction se termine, émet le signal "dialogueFini"
-

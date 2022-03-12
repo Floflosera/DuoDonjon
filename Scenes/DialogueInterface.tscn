@@ -1,8 +1,20 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Scenes/Dialogue.gd" type="Script" id=1]
 [ext_resource path="res://assets/MenuHarry.png" type="Texture" id=2]
+[ext_resource path="res://assets/selectionV2.png" type="Texture" id=3]
+[ext_resource path="res://assets/selectionV.png" type="Texture" id=4]
+[ext_resource path="res://assets/selectionVpressed.png" type="Texture" id=5]
+[ext_resource path="res://assets/selectionVpressed2.png" type="Texture" id=6]
+[ext_resource path="res://assets/selectionR.png" type="Texture" id=7]
+[ext_resource path="res://assets/selectionR2.png" type="Texture" id=8]
+[ext_resource path="res://assets/selectionB.png" type="Texture" id=9]
+[ext_resource path="res://assets/selectionB2.png" type="Texture" id=10]
 [ext_resource path="res://assets/MenuFlaux.png" type="Texture" id=11]
+[ext_resource path="res://assets/selectionRpressed.png" type="Texture" id=12]
+[ext_resource path="res://assets/selectionRpressed2.png" type="Texture" id=13]
+[ext_resource path="res://assets/selectionBpressed.png" type="Texture" id=14]
+[ext_resource path="res://assets/selectionBpressed2.png" type="Texture" id=15]
 [ext_resource path="res://Godot-Fontpack-d244bf6170b399a6d4d26a0d906058ddf2dafdf1/fonts/montreal/Montreal-Regular.ttf" type="DynamicFontData" id=18]
 [ext_resource path="res://Scenes/HarryDia.gd" type="Script" id=19]
 [ext_resource path="res://Scenes/FlauxDia.gd" type="Script" id=20]
@@ -11,15 +23,53 @@
 size = 20
 font_data = ExtResource( 18 )
 
-[sub_resource type="StyleBoxEmpty" id=7]
+[sub_resource type="AnimatedTexture" id=14]
+flags = 4
+frames = 2
+fps = 3.0
+frame_0/texture = ExtResource( 9 )
+frame_1/texture = ExtResource( 10 )
+frame_1/delay_sec = 0.0
 
-[sub_resource type="StyleBoxEmpty" id=8]
+[sub_resource type="AnimatedTexture" id=16]
+flags = 4
+frames = 2
+fps = 3.0
+frame_0/texture = ExtResource( 14 )
+frame_1/texture = ExtResource( 15 )
+frame_1/delay_sec = 0.0
 
-[sub_resource type="StyleBoxEmpty" id=9]
+[sub_resource type="AnimatedTexture" id=11]
+flags = 4
+frames = 2
+fps = 3.0
+frame_0/texture = ExtResource( 4 )
+frame_1/texture = ExtResource( 3 )
+frame_1/delay_sec = 0.0
 
-[sub_resource type="StyleBoxEmpty" id=10]
+[sub_resource type="AnimatedTexture" id=12]
+flags = 4
+frames = 2
+fps = 3.0
+frame_0/texture = ExtResource( 5 )
+frame_1/texture = ExtResource( 6 )
+frame_1/delay_sec = 0.0
 
-[sub_resource type="StyleBoxEmpty" id=6]
+[sub_resource type="AnimatedTexture" id=13]
+flags = 4
+frames = 2
+fps = 3.0
+frame_0/texture = ExtResource( 7 )
+frame_1/texture = ExtResource( 8 )
+frame_1/delay_sec = 0.0
+
+[sub_resource type="AnimatedTexture" id=15]
+flags = 4
+frames = 2
+fps = 3.0
+frame_0/texture = ExtResource( 12 )
+frame_1/texture = ExtResource( 13 )
+frame_1/delay_sec = 0.0
 
 [node name="DialogueInterface" type="MarginContainer"]
 anchor_right = 1.0
@@ -81,7 +131,7 @@ __meta__ = {
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/HarryDia/Background/Menu/VBoxContainer"]
 margin_right = 349.0
-margin_bottom = 270.0
+margin_bottom = 264.0
 rect_min_size = Vector2( 349, 65 )
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
@@ -94,12 +144,30 @@ custom_constants/margin_bottom = 5
 margin_left = 5.0
 margin_top = 5.0
 margin_right = 344.0
-margin_bottom = 265.0
+margin_bottom = 259.0
 size_flags_vertical = 1
 custom_fonts/font = SubResource( 5 )
 text = "Harry qui parle genre hey !"
 autowrap = true
 clip_text = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/HarryDia/Background/Menu/VBoxContainer"]
+margin_top = 270.0
+margin_right = 349.0
+margin_bottom = 270.0
+alignment = 2
+
+[node name="ConfirmH" type="TextureButton" parent="HBoxContainer/HarryDia/Background/Menu/VBoxContainer/HBoxContainer"]
+visible = false
+margin_left = 327.0
+margin_right = 349.0
+margin_bottom = 22.0
+mouse_filter = 2
+texture_normal = SubResource( 14 )
+texture_pressed = SubResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="FlauxDia" type="MarginContainer" parent="HBoxContainer"]
 margin_left = 882.0
@@ -141,7 +209,7 @@ __meta__ = {
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/FlauxDia/Background/Menu/VBoxContainer"]
 margin_right = 349.0
-margin_bottom = 219.0
+margin_bottom = 264.0
 rect_min_size = Vector2( 349, 65 )
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
@@ -154,29 +222,44 @@ custom_constants/margin_bottom = 5
 margin_left = 5.0
 margin_top = 5.0
 margin_right = 344.0
-margin_bottom = 214.0
+margin_bottom = 259.0
 size_flags_vertical = 1
 custom_fonts/font = SubResource( 5 )
 text = "Flaux qui parle genre hey !"
 autowrap = true
 clip_text = true
 
-[node name="Confirm" type="Button" parent="HBoxContainer/FlauxDia/Background/Menu/VBoxContainer"]
-margin_top = 225.0
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/FlauxDia/Background/Menu/VBoxContainer"]
+margin_top = 270.0
 margin_right = 349.0
 margin_bottom = 270.0
+alignment = 2
+
+[node name="Confirm" type="TextureButton" parent="HBoxContainer/FlauxDia/Background/Menu/VBoxContainer/HBoxContainer"]
+visible = false
+margin_left = 301.0
+margin_right = 323.0
+margin_bottom = 22.0
 mouse_filter = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.4
-custom_styles/hover = SubResource( 7 )
-custom_styles/pressed = SubResource( 8 )
-custom_styles/focus = SubResource( 9 )
-custom_styles/disabled = SubResource( 10 )
-custom_styles/normal = SubResource( 6 )
-button_mask = 0
+texture_normal = SubResource( 11 )
+texture_pressed = SubResource( 12 )
+
+[node name="ConfirmF" type="TextureButton" parent="HBoxContainer/FlauxDia/Background/Menu/VBoxContainer/HBoxContainer"]
+visible = false
+margin_left = 327.0
+margin_right = 349.0
+margin_bottom = 22.0
+mouse_filter = 2
+texture_normal = SubResource( 13 )
+texture_pressed = SubResource( 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="TimerDia" type="Timer" parent="."]
-wait_time = 0.02
+wait_time = 0.01
 one_shot = true
 
-[connection signal="pressed" from="HBoxContainer/FlauxDia/Background/Menu/VBoxContainer/Confirm" to="." method="_on_Confirm_pressed"]
+[connection signal="pressed" from="HBoxContainer/HarryDia/Background/Menu/VBoxContainer/HBoxContainer/ConfirmH" to="." method="_on_ConfirmH_pressed"]
+[connection signal="pressed" from="HBoxContainer/FlauxDia/Background/Menu/VBoxContainer/HBoxContainer/Confirm" to="." method="_on_Confirm_pressed"]
+[connection signal="pressed" from="HBoxContainer/FlauxDia/Background/Menu/VBoxContainer/HBoxContainer/ConfirmF" to="." method="_on_ConfirmF_pressed"]

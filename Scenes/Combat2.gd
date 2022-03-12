@@ -17,6 +17,9 @@ func _ready():
 	
 	ordreTour() #définie l'ordre des tours au début du combat
 	
+	litDialogue($DialogueInterface.dialogueTest())
+	yield($DialogueInterface, "dialogueFini")
+	
 	litDialogue($DialogueInterface.dialogueIntro()) #lancement du premier dialogue
 	yield($DialogueInterface, "dialogueFini")
 	
@@ -48,7 +51,7 @@ func _ready():
 		$EnnemiGroup.hide()
 		litDialogue($DialogueInterface.dialogueEnd())
 		yield($DialogueInterface, "dialogueFini")
-	elif(combattantHarry.pv > 0 && combattantFlaux.pv > 0):
+	elif(combattantHarry.pv == 0 && combattantFlaux.pv == 0):
 		nar.narraText("Game Over")
 
 

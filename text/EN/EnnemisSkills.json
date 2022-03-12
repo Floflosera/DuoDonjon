@@ -1,4 +1,4 @@
-{
+  {
   "ennemi1_skill1" : {	"nameSkill": "Coup de boulet", "textSkill": "Robot Gardien donne un coup de boulet !"},
   "ennemi1_skill2" : {	"nameSkill": "Commotion", "textSkill": "Robot Gardien bondit sur ", 
                                                   "textSkill2": " perd en puissance !"},
@@ -26,10 +26,20 @@
   "ennemi4-2_skill2" : {"nameSkill": "Grêle", "textSkill": "Mage Noir produit une pluie de grêle !"},
   "ennemi4-2_skill3" : {"nameSkill": "Feu follet", "textSkill": "Mage Noir agace ", "textSkill2": " avec une nuée de feux follets !",
 										    "textSkill3": " veut attaquer Mage Noir."},
-  "ennemi4-2_skill4" : {"nameSkill": "Attrape", "textSkill": "Mage Noir emprisonne "},
-  "ennemi4-2_skill5" : {"nameSkill": "Relance", "textSkill": "Mage Noir jette "},
+  "ennemi4-2_skill4" : {"nameSkill": "Attrape", "textSkill": "Mage Noir emprisonne ", "textSkill2": "Le coup a perturbé l'ennemi et lui a fait relâcher "},
+  "ennemi4-2_skill5" : {"nameSkill": "Relance", "textSkill": "Mage Noir jette ", "textSkill2": "Harry s'écrase sur Flaux !\nFlaux est mal en point.",
+										 "textSkill3": "Flaux se fait rattraper par Harry !\nIls subissent peu de dégâts.",
+										 "textSkill4": "Harry s'écrase au sol !",
+										 "textSkill5": "Flaux s'écrase au sol !",
+										 "textSkill6": "Mage Noir est agacé et ne fait rien."},
 
-  "ennemi5_skill1" : {	"nameSkill": "", "textSkill": ""},
-  "ennemi5_skill2" : {	"nameSkill": "", "textSkill": ""},
-  "ennemi5_skill3" : {	"nameSkill": "", "textSkill": ""},
+  "ennemi5_skill1" : {	"nameSkill": "Faux Lacération/Affutage", "textSkill": "Lucy attaque avec sa faux !", "textSkill2": "Lucy se prépare à enchaîner !"},
+  "ennemi5_skill2" : {	"nameSkill": "Faux Labourage", "textSkill": "Lucy fauche le groupe !"},
+  "ennemi5_skill3" : {	"nameSkill": "Bouclier Coup de bouclier", "textSkill": "Lucy donne un coup avec son plateau !", "textSkill2": "Lucy se cache derrière son plateau."},
+  "ennemi5_skill4" : {	"nameSkill": "Bouclier", "textSkill": "Lucy se protège et en profite pour récupérer."},
+  "ennemi5_skill5" : {	"nameSkill": "Poing de feu", "textSkill": "Lucy donne un coup de poing enflammé !"},
+  "ennemi5_skill6" : {	"nameSkill": "Pied volant", "textSkill": "Lucy bondit et donne un coup de pied rapide comme l'éclair !"},
+  "ennemi5_skill7" : {	"nameSkill": "Coup de boule", "textSkill": "Lucy se sert de sa tête !"},
+  "ennemi5_skill8" : {	"nameSkill": "Balayette", "textSkill": "Lucy donne un coup de pied circulaire !", "textSkill2": "Le groupe tombe par terre !"},
+  "ennemi5_skill9" : {	"nameSkill": "Contre", "textSkill": "Lucy se prépare à riposter.", "textSkill2": "Lucy contre l'attaque !"},
 }

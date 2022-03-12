@@ -43,7 +43,7 @@ func _ready():
 		$EnnemiGroup.hide()
 		#litDialogue($DialogueInterface.dialogueEnd())
 		#yield($DialogueInterface, "dialogueFini")
-	elif(combattantHarry.pv > 0 && combattantFlaux.pv > 0):
+	elif(combattantHarry.pv == 0 && combattantFlaux.pv == 0):
 		nar.narraText("Game Over")
 	
 	

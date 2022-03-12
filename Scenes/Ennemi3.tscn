@@ -33,16 +33,6 @@ position = Vector2( 647, 308 )
 frames = SubResource( 1 )
 script = ExtResource( 3 )
 
-[node name="Selection" parent="." index="0"]
-focus_neighbour_left = NodePath(".")
-focus_neighbour_top = NodePath(".")
-focus_neighbour_right = NodePath(".")
-focus_neighbour_bottom = NodePath(".")
-focus_next = NodePath(".")
-focus_previous = NodePath(".")
-
 [node name="LifeBar" parent="." index="1"]
 max_value = 700.0
 value = 700.0
-
-[connection signal="pressed" from="Selection" to="." method="_on_Selection_pressed"]

@@ -260,6 +260,7 @@ func castSkill4():
 	prisonnie = cible
 	prisonnie.horsCombat = true
 	prisonnie.tourEffectue = true
+	prisonnie.abled()
 	prisonnie.changerSprite()
 	#faire apparaître un sprite à côté de lui du prisonnier
 	
