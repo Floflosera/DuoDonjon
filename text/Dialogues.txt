@@ -28,8 +28,6 @@ Pendant combat 3 :
 - Première fois que l'ennemi agit avant Flaux
 - Ne pas faire tomber l'ennemi avant un certain nombre de tours (2 versions)
 - Première fois que l'ennemi tombe
-- Première fois que Harry se fait étourdir
-- Première fois que Flaux se fait étourdir
 
 Après combat 3 :
 
@@ -39,7 +37,7 @@ Avant combat 4 :
 
 Pendant combat 4 : 
 - Deuxième fois que le Mage Blanc soigne le Mage Noir
-- Ne pas battre le Mage Blanc après un certain nombre de tours (2 versions)
+- Ne pas battre le Mage Blanc après un certain nombre de tours
 - Première fois que Harry est affecté par Feux Follets
 - Première fois que Flaux est affectée par Feux Follets
 - Mage Blanc battu en premier et changement de phase
