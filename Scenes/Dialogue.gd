@@ -17,14 +17,17 @@ onready var HarryDia = get_node("../GeneralInterface/HBoxContainer/Harry")
 onready var FlauxDia = get_node("../GeneralInterface/HBoxContainer/Flaux")
 
 #Texte temporaire pour l'affichage progressif des textes
-var tempTextH
-var tempTextF
+var tempTextH = ""
+var tempTextF = ""
+var tempNar = ""
 
 #Stockage du bouton de confirmation dans une variable
-onready var confirmation = get_node("HBoxContainer/FlauxDia/Background/Menu/VBoxContainer/HBoxContainer/Confirm")
+onready var confirmation = get_node("HBoxContainer/HarryDia/Background/Menu/VBoxContainer/HBoxContainer/Confirm")
 
 onready var confirmH = get_node("HBoxContainer/HarryDia/Background/Menu/VBoxContainer/HBoxContainer/ConfirmH")
 onready var confirmF = get_node("HBoxContainer/FlauxDia/Background/Menu/VBoxContainer/HBoxContainer/ConfirmF")
+
+onready var cadreN = get_node("../CadreNarrateur/DescriptionAction")
 
 #Tout ce dont on a besoin pour la lecture de fichier
 export(String, FILE, "*.json") var dialogue_file	#variable qui contiendra le chemin du fichier
@@ -33,7 +36,9 @@ var dialogue_textHarry = ""		#variable qui va récupérer les "textHarry" du fic
 var dialogue_spHarry = 0		#variable qui va récupérer les "spHarry" du fichier
 var dialogue_textFlaux = ""		#variable qui va récupérer les "textFlaux" du fichier
 var dialogue_spFlaux = 0		#variable qui va récupérer les "spFlaux" du fichier
+var dialogue_cadreN = ""		#variable qui va récupérer les "cadreN" du fichier
 var dialogue_supOther = false	#variable qui va récupérer l'info "supOther" du fichier
+var dialogue_devent = 0			#variable qui va récupérer l'info "devent" du fichier
 var current = 0					#numéro de la ligne lu
 
 #Fonction qui débute un dialogue
@@ -44,7 +49,9 @@ func start_dialogue():
 	dialogue_spHarry = int(dialogue_keys[current].spHarry)	#à la ligne "current", pareil pour "textFlaux"
 	dialogue_textFlaux = dialogue_keys[current].textFlaux	#pour le numéro des sprites on tranforme le string
 	dialogue_spFlaux = int(dialogue_keys[current].spFlaux)	#en entier avec int()
+	dialogue_cadreN = dialogue_keys[current].cadreN
 	dialogue_supOther = bool(dialogue_keys[current].supOther)
+	dialogue_devent = int(dialogue_keys[current].devent)
 	
 
 #Fonction qui permet de passer à la ligne suivante, lit de la même façon sans indexer le fichier
@@ -54,7 +61,9 @@ func next_dialogue():
 	dialogue_spHarry = int(dialogue_keys[current].spHarry)
 	dialogue_textFlaux = dialogue_keys[current].textFlaux
 	dialogue_spFlaux = int(dialogue_keys[current].spFlaux)
+	dialogue_cadreN = dialogue_keys[current].cadreN
 	dialogue_supOther = bool(dialogue_keys[current].supOther)
+	dialogue_devent = int(dialogue_keys[current].devent)
 
 #Fonction qui dit quel fichier charger à load_dialogue et initialise dialogue_keys
 func index_dialogue():
@@ -82,11 +91,7 @@ func boiteDeDia(textHarry,spHarry,textFlaux,spFlaux):
 #Fonction similaire mais qui permet un affichage progressif des textes
 func boiteDeDiaAnim(textHarry,spHarry,textFlaux,spFlaux,supOther):
 	
-	#On commence par empêcher le joueur d'appuyer sur le bouton tout de suite
-	confirmH.release_focus()
-	confirmH.hide()
-	confirmF.release_focus()
-	confirmF.hide()
+	cadreN.set_text("")
 	
 	#On change les sprites
 	HarryDia.changerSpriteDia(spHarry)
@@ -151,6 +156,11 @@ func boiteDeDiaAnim(textHarry,spHarry,textFlaux,spFlaux,supOther):
 			confirmF.show()
 			yield(self, "confirmFpro")
 	
+	confirmH.release_focus()
+	confirmH.hide()
+	confirmF.release_focus()
+	confirmF.hide()
+	
 	emit_signal("dialogueSuivant")
 
 func _process(delta):
@@ -187,15 +197,51 @@ func dialogueRead():
 	load_dialogue(dialogue_file)	#On prépare la lecture
 	start_dialogue()				#On commence le dialogue
 	
-	#On affiche la première boite de dialogue (avec ou sans anim, pourrait varier par rapport à un choix (if))
-	#boiteDeDia(dialogue_textHarry,dialogue_spHarry,dialogue_textFlaux,dialogue_spFlaux)	#sans anim
-	boiteDeDiaAnim(dialogue_textHarry,dialogue_spHarry,dialogue_textFlaux,dialogue_spFlaux,dialogue_supOther)
+	if(dialogue_cadreN == ""):
+		boiteDeDiaAnim(dialogue_textHarry,dialogue_spHarry,dialogue_textFlaux,dialogue_spFlaux,dialogue_supOther)
+	else:
+		narraRead(dialogue_spHarry, dialogue_spFlaux, dialogue_cadreN)
 	yield(self, "dialogueSuivant")
 	
 	while(current < dialogue_keys.size()-1): #tant qu'on n'est pas à la fin du fichier
 		next_dialogue() #on passe on dialogue suivant
-		#boiteDeDia(dialogue_textHarry,dialogue_spHarry,dialogue_textFlaux,dialogue_spFlaux)	#sans anim
-		boiteDeDiaAnim(dialogue_textHarry,dialogue_spHarry,dialogue_textFlaux,dialogue_spFlaux,dialogue_supOther)
-		yield(self, "dialogueSuivant")
+		
+		if(dialogue_devent != 0):
+			if(dialogue_devent == 1):
+				get_node("../EnnemiGroup").show()
+		elif(dialogue_cadreN == ""):
+			boiteDeDiaAnim(dialogue_textHarry,dialogue_spHarry,dialogue_textFlaux,dialogue_spFlaux,dialogue_supOther)
+			yield(self, "dialogueSuivant")
+		else:
+			narraRead(dialogue_spHarry, dialogue_spFlaux, dialogue_cadreN)
+			yield(self, "dialogueSuivant")
 	
 	emit_signal("dialogueFini") #quand cette fonction se termine, émet le signal "dialogueFini"
+
+func narraRead(spHarry, spFlaux, textNar):
+	
+	$HBoxContainer/HarryDia.modifDia("")
+	$HBoxContainer/FlauxDia.modifDia("")
+	HarryDia.changerSpriteDia(spHarry)
+	FlauxDia.changerSpriteDia(spFlaux)
+	
+	tempNar = ""
+	
+	cadreN.set_text("")
+	
+	for c in textNar:
+		tempNar += c
+		cadreN.set_text(tempNar)
+		$TimerDia.start()
+		yield($TimerDia,"timeout")
+		if Input.is_action_pressed("ui_select"):
+			cadreN.set_text(textNar)
+			break
+	
+	confirmation.show()
+	confirmation.grab_focus()
+	yield(confirmation,"pressed")
+	confirmation.release_focus()
+	confirmation.hide()
+	
+	emit_signal("dialogueSuivant")

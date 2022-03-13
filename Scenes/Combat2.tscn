@@ -21,6 +21,7 @@ position = Vector2( 640, 360 )
 texture = ExtResource( 6 )
 
 [node name="EnnemiGroup" parent="." instance=ExtResource( 2 )]
+visible = false
 
 [node name="GeneralInterface" parent="." instance=ExtResource( 1 )]
 anchor_right = 0.0

@@ -169,6 +169,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Confirm" type="TextureButton" parent="HBoxContainer/HarryDia/Background/Menu/VBoxContainer/HBoxContainer"]
+visible = false
+margin_left = 327.0
+margin_right = 349.0
+margin_bottom = 22.0
+mouse_filter = 2
+texture_normal = SubResource( 11 )
+texture_pressed = SubResource( 12 )
+
 [node name="FlauxDia" type="MarginContainer" parent="HBoxContainer"]
 margin_left = 882.0
 margin_right = 1240.0
@@ -235,15 +244,6 @@ margin_right = 349.0
 margin_bottom = 270.0
 alignment = 2
 
-[node name="Confirm" type="TextureButton" parent="HBoxContainer/FlauxDia/Background/Menu/VBoxContainer/HBoxContainer"]
-visible = false
-margin_left = 301.0
-margin_right = 323.0
-margin_bottom = 22.0
-mouse_filter = 2
-texture_normal = SubResource( 11 )
-texture_pressed = SubResource( 12 )
-
 [node name="ConfirmF" type="TextureButton" parent="HBoxContainer/FlauxDia/Background/Menu/VBoxContainer/HBoxContainer"]
 visible = false
 margin_left = 327.0
@@ -261,5 +261,5 @@ wait_time = 0.01
 one_shot = true
 
 [connection signal="pressed" from="HBoxContainer/HarryDia/Background/Menu/VBoxContainer/HBoxContainer/ConfirmH" to="." method="_on_ConfirmH_pressed"]
-[connection signal="pressed" from="HBoxContainer/FlauxDia/Background/Menu/VBoxContainer/HBoxContainer/Confirm" to="." method="_on_Confirm_pressed"]
+[connection signal="pressed" from="HBoxContainer/HarryDia/Background/Menu/VBoxContainer/HBoxContainer/Confirm" to="." method="_on_Confirm_pressed"]
 [connection signal="pressed" from="HBoxContainer/FlauxDia/Background/Menu/VBoxContainer/HBoxContainer/ConfirmF" to="." method="_on_ConfirmF_pressed"]

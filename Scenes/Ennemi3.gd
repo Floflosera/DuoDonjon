@@ -56,20 +56,9 @@ func degatsPrisDef(degats):
 	elif(lacere):
 		degatsPris(int((degats-defense)*1.5))
 		return str(int((degats-defense)*1.5))
-	elif(aHarry.choixSkill == 4 && aFlaux.choixSkill == 1):
-		vaSeclateAuSol()
-		degatsPris(degats-defense)
-		return str(degats-defense)
 	else:
 		degatsPris(degats-defense)
 		return str(degats-defense)
-
-func vaSeclateAuSol():
-		seclateAuSol()
-		choixSkill = 4
-		secondText = false
-		get_node("../..").narraText(aTextSkill2())
-		yield(get_node("../.."),"narraTextFini")
 
 func choixSkill():
 	
@@ -216,6 +205,14 @@ func degatsPris(degats):
 	#informations de base pour l'animation du richText qui montre les dégâts
 	#à concaténer avec le nombre des dégâts quand on inflige les dégâts avec un personnage
 	showDegats.set_bbcode("[center][wave freq=25]")
+	
+	if(aHarry.choixSkill == 4 && aFlaux.choixSkill == 1):
+		seclateAuSol()
+		changerSprite()
+		choixSkill = 4
+		secondText = false
+		combat.narraText(aTextSkill2())
+		yield(combat,"narraTextFini")
 	
 	emit_signal("degatsTermine")
 

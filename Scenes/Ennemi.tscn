@@ -118,6 +118,7 @@ frame_3/delay_sec = 0.0
 position = Vector2( 647, 302 )
 frames = SubResource( 1 )
 animation = "Neutre"
+playing = true
 script = ExtResource( 2 )
 
 [node name="Selection" type="TextureButton" parent="." groups=["EnnemiButton"]]
@@ -153,7 +154,7 @@ margin_left = -99.0
 margin_top = -153.0
 margin_right = 100.0
 margin_bottom = -83.0
-custom_colors/default_color = Color( 0.913725, 0.0588235, 0.0588235, 1 )
+custom_colors/default_color = Color( 0.564706, 0.109804, 0.854902, 1 )
 custom_fonts/normal_font = SubResource( 2 )
 bbcode_enabled = true
 bbcode_text = "[center][wave freq=25]"

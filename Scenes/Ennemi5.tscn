@@ -6,7 +6,7 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [  ],
+"frames": [ ExtResource( 3 ), ExtResource( 3 ), ExtResource( 3 ) ],
 "loop": true,
 "name": "Neutre",
 "speed": 3.0
@@ -19,6 +19,8 @@ animations = [ {
 
 [node name="Ennemi5" instance=ExtResource( 1 )]
 frames = SubResource( 1 )
+frame = 1
+playing = true
 script = ExtResource( 2 )
 
 [node name="LifeBar" parent="." index="1"]

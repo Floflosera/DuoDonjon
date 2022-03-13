@@ -80,7 +80,7 @@ func choixCharaTour(chara):
 			if(chara.ciblage):
 				if(not(cFlaux.multi)):
 					#on nettoie les ciblages de l'ennemi pour éviter les problèmes si on annule l'action d'Harry
-					#après sa sélection
+					#après sa sélection, seulement en solo car le soucis a lieu quand on annule avec Flaux
 					get_tree().call_group("EnnemiGroupe", "clearCible")
 				
 				premiereCible = false

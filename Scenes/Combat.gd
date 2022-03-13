@@ -31,6 +31,9 @@ var textTemp = ""
 #texte affiché lorsqu'un personnage revient au combat
 var textPV0revive = ""
 
+#utilisé par le boss final pour savoir qui tappe et pour contre-attaquer
+var iActuel
+
 #Numéro du tour
 onready var nTour = 0
 #Nombre de tour depuis qu'un des deux alliés est tombé KO
@@ -79,6 +82,7 @@ func deroulementTour():
 	#Boucle pour lancer le tour des personnages qui utilisent une action prioritaire
 	for i in range(combattantsBase.size()):
 		if(combattantsBase[i].priorite && combattantsBase[i].tourEffectue == false):
+			iActuel = i
 			narraText(combattantsBase[i].aTextSkill()) #les narraText() permettent d'afficher l'action effectuée
 			yield(self,"narraTextFini")
 			actionCombattant(combattantsBase[i]) #lance l'action choisie
@@ -92,6 +96,7 @@ func deroulementTour():
 	
 	for i in range(combattants.size()):		#On parcourt le tableau des combattants
 		if(combattants[i].tourEffectue == false):#Si le tour du combattant n'a pas encore eu lieu (via attaque prio)
+			iActuel = i
 			narraText(combattants[i].aTextSkill())
 			yield(self,"narraTextFini")
 			actionCombattant(combattants[i])

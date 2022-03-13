@@ -9,6 +9,16 @@ onready var armeB = get_node("../Ennemi5B")
 onready var armeF = get_node("../Ennemi5F")
 onready var armes = [armeB,armeF]
 
+onready var choixSkillPre = -1
+
+onready var phase1 = true
+
+onready var affutage = false
+onready var bouclier = false
+onready var guard = false
+
+onready var contre = false
+
 func _ready():
 
 	pvmax = 1000
@@ -16,7 +26,9 @@ func _ready():
 	defense = 25
 	vitesse = 3
 	
-	for i in range(21,29):
+	choixSkill = -1
+	
+	for i in range(21,30):
 		ligne_skills(i)
 		skillTextAppend(skills_text)
 	text2_skills()
@@ -41,43 +53,262 @@ func aTextSkill2():
 func changerSprite():
 	spriteAnim.play("Neutre")
 
+#surcharge pour le contre
+func degatsPris(degats):
+	spriteAnim.play("Blesse")		#Lance l'animation des dégâts pris
+	if(degats <= 1):
+		degats = 1
+	if(pv - degats <= 0):			#La condition fait en sorte de ne pas avoir des pv négatifs
+		pv = 0						#Si les pv sont inférieurs aux dégâts réçus, alors on tombe à 0pv
+		tourEffectue = true			#Si un allié n'a plus de pv, alors son tour sera compté comme déjà passé
+	else:
+		pv -= degats				#Sinon les dégâts sont soustraits aux pv du personnage
+	barreVie.value = pv
+	yield(spriteAnim,"animation_finished")	#Attend la fin de l'animation de blessure
+	changerSprite()							#Change le sprite des 2 persos
+	
+	#informations de base pour l'animation du richText qui montre les dégâts
+	#à concaténer avec le nombre des dégâts quand on inflige les dégâts avec un personnage
+	showDegats.set_bbcode("[center][wave freq=25]")
+	
+	if(contre):
+		cibler(combat.combattants[combat.iActuel])
+		combat.narraText(aTextSkill2())
+		yield(combat,"narraTextFini")
+		lucyDegats(1 + randi()%2)
+		yield(cible,"degatsTermine")
+	
+	emit_signal("degatsTermine")
+
 func degatsPrisDef(degats):
-	if(lacere):
+	if(armeB.pv > 0 && lacere && guard):
+		degatsPris(int((degats-defense)*0.9))
+		return str(int((degats-defense)*0.9))
+	elif(armeB.pv > 0 && lacere && bouclier):
+		degatsPris(int((degats-defense)*1.2))
+		return str(int((degats-defense)*1.2))
+	elif(armeB.pv > 0 && guard):
+		degatsPris(int((degats-defense)*0.4))
+		return str(int((degats-defense)*0.4))
+	elif(armeB.pv > 0 && bouclier):
+		degatsPris(int((degats-defense)*0.7))
+		return str(int((degats-defense)*0.7))
+	elif(lacere):
 		degatsPris(int((degats-defense)*1.5))
 		return str(int((degats-defense)*1.5))
 	else:
 		degatsPris(degats-defense)
 		return str(degats-defense)
 
+func lucyDegats(degats):
+	if(armeF.pv > 0 && affutage):
+		cible.degatsPrisDef(int(degats * 1.5))
+	else:
+		cible.degatsPrisDef(degats)
+
 func choixSkill():
-	pass
+	
+	choixSkillPre = choixSkill
+	
+	while (choixSkillPre == choixSkill):
+		
+		if(phase1):
+			if(armeB.pv > 0 && armeF.pv > 0):
+				choixSkill = randi() % 4
+			elif(armeB.pv > 0):
+				choixSkill = randi() % 2
+			else:
+				choixSkill = (randi() % 2) + 2
+			
+		else:
+			choixSkill = (randi() % 5) + 4
+			
+	
+	if(choixSkill == 3 || choixSkill == 5 || choixSkill == 7 || choixSkill == 8):
+		priorite = true
+	
+	tourEffectue = false
 
+#Lacération/Affutage (une cible, augmente sa puissance)
 func castSkill1():
-	pass
+	
+	secondText = true
+	
+	if(aHarry.pv > 0 && aFlaux.pv > 0):
+		if(aFlaux.hide):
+			cibler(aHarry)
+		else:
+			cibler(allies[randi()%2])
+	elif(aHarry.pv > 0):
+		cibler(aHarry)
+	else:
+		cibler(aFlaux)
+	
+	if(cible == aFlaux && aFlaux.hide):
+		yield(spriteAnim,"animation_finished")
+	else:
+		lucyDegats(1 + randi()%2)
+		yield(cible,"degatsTermine")
+	
+	affutage = true
+	
+	emit_signal("skillCast")
 
+#Labourage (multi cible)
 func castSkill2():
-	pass
+	
+	if(aHarry.pv > 0 && aFlaux.pv > 0):
+		if(not(aFlaux.hide)):
+			cibler(aFlaux)
+			lucyDegats(1 + randi()%2)
+		cibler(aHarry)
+		lucyDegats(1 + randi()%2)
+		yield(cible,"degatsTermine")
+	elif(aHarry.pv > 0):
+		cibler(aHarry)
+		lucyDegats(1 + randi()%2)
+		yield(cible,"degatsTermine")
+	else:
+		if(not(aFlaux.hide)):
+			cibler(aFlaux)
+			lucyDegats(1 + randi()%2)
+			yield(cible,"degatsTermine")
+		else:
+			yield(spriteAnim,"animation_finished")
+	
+	affutage = false
+	
+	emit_signal("skillCast")
 
+#Coup de bouclier (une cible, augmente sa défense)
 func castSkill3():
-	pass
 
+	secondText = true
+	
+	if(aHarry.pv > 0 && aFlaux.pv > 0):
+		if(aFlaux.hide):
+			cibler(aHarry)
+		else:
+			cibler(allies[randi()%2])
+	elif(aHarry.pv > 0):
+		cibler(aHarry)
+	else:
+		cibler(aFlaux)
+	
+	if(cible == aFlaux && aFlaux.hide):
+		yield(spriteAnim,"animation_finished")
+	else:
+		lucyDegats(1 + randi()%2)
+		yield(cible,"degatsTermine")
+	
+	affutage = false
+	bouclier = true
+	
+	emit_signal("skillCast")
+
+#Défense (prioritaire, augmente sa défense)
 func castSkill4():
-	pass
+	
+	guard = true
+	soinPV(100)
+	yield(spriteAnim,"animation_finished")
+	
+	affutage = false
+	priorite = false
+	
+	emit_signal("skillCast")
 
+#Poing de feu (une cible)
 func castSkill5():
-	pass
+	
+	if(aHarry.pv > 0 && aFlaux.pv > 0):
+		if(aFlaux.hide):
+			cibler(aHarry)
+		else:
+			cibler(allies[randi()%2])
+	elif(aHarry.pv > 0):
+		cibler(aHarry)
+	else:
+		cibler(aFlaux)
+	
+	if(cible == aFlaux && aFlaux.hide):
+		yield(spriteAnim,"animation_finished")
+	else:
+		lucyDegats(1 + randi()%2)
+		yield(cible,"degatsTermine")
+	
+	emit_signal("skillCast")
 
+#Pied Volant (une cible, attaque prioritaire)
 func castSkill6():
-	pass
+	
+	priorite = false
+	
+	if(aHarry.pv > 0 && aFlaux.pv > 0):
+		cibler(allies[randi()%2])
+	elif(aHarry.pv > 0):
+		cibler(aHarry)
+	else:
+		cibler(aFlaux)
+	
+	lucyDegats(1 + randi()%2)
+	yield(cible,"degatsTermine")
+	
+	emit_signal("skillCast")
 
+#Coup de boule (une cible, prend des dégâts de recul)
 func castSkill7():
-	pass
+	
+	if(aHarry.pv > 0 && aFlaux.pv > 0):
+		if(aFlaux.hide):
+			cibler(aHarry)
+		else:
+			cibler(allies[randi()%2])
+	elif(aHarry.pv > 0):
+		cibler(aHarry)
+	else:
+		cibler(aFlaux)
+	
+	if(cible == aFlaux && aFlaux.hide):
+		yield(spriteAnim,"animation_finished")
+	else:
+		showDegats.add_color_override("default_color", Color(144.0/255.0,28.0/255.0,218.0/255.0,1))
+		showDegats.set_bbcode(showDegats.get_bbcode() + degatsPrisDef(25))
+		lucyDegats(1 + randi()%2)
+		yield(cible,"degatsTermine")
+	
+	emit_signal("skillCast")
 
+#Baleyette (multi cible, attaque prioritaire, fait perdre un tour aux alliés)
 func castSkill8():
-	pass
+	
+	secondText = true
+	priorite = false
+	
+	if(aHarry.pv > 0):
+		cibler(aHarry)
+		lucyDegats(1 + randi()%2)
+		cible.abled()
+		cible.tourEffectue = true
+	if(aFlaux.pv > 0):
+		cibler(aFlaux)
+		lucyDegats(1 + randi()%2)
+		cible.abled()
+		cible.tourEffectue = true
+	yield(cible,"degatsTermine")
+	
+	emit_signal("skillCast")
 
+#Contre (prioritaire, active un booléen qui fait qu'elle attaque à chaque coup reçu)
 func castSkill9():
-	pass
+	
+	priorite = false
+	
+	contre = true
+	
+	yield(spriteAnim,"animation_finished")
+	
+	emit_signal("skillCast")
 
 #surcharge car plus de skills
 func castSkill():
@@ -116,3 +347,18 @@ func castSkill():
 
 func clearThings():
 	lacere = false
+	bouclier = false
+	guard = false
+	contre = false
+	
+	if(phase1 && armeF.pv == 0):
+		affutage == false
+	
+	if(phase1 && ((armeB.pv == 0 && armeF.pv == 0) || (pv <= pvmax/2))):
+		armeB.hide()
+		armeF.hide()
+		changerSprite()
+		phase1 = false
+		pv = pvmax
+		defense = 15
+		vitesse = 5
