@@ -2,6 +2,8 @@ extends "res://Scenes/Combat.gd"
 
 onready var combattantEnnemi = $EnnemiGroup/Ennemi2
 
+onready var flagAssomme = false
+
 func _ready():
 	randomize() #à mettre dans le main
 	
@@ -34,6 +36,10 @@ func _ready():
 		elif(((combattantEnnemi.choixSkill == 2) && not(combattantEnnemi.assomme)) && hintFlag):
 			litDialogue($DialogueInterface.dialogueHint2())
 			yield($DialogueInterface, "dialogueFini")
+		elif(not(flagAssomme) && combattantEnnemi.assomme):																#DIALOGUE
+			litDialogue($DialogueInterface.dialogueStun())
+			yield($DialogueInterface, "dialogueFini")
+			flagAssomme = true
 		
 		$GeneralInterface.choixTour() #lance le choix du tour
 		yield($GeneralInterface, "choixTourFini")
@@ -49,6 +55,8 @@ func _ready():
 		yield($DialogueInterface, "dialogueFini")
 	elif(combattantHarry.pv == 0 && combattantFlaux.pv == 0):
 		nar.narraText("Game Over")
+	
+	self.queue_free()
 
 
 

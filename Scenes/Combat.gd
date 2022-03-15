@@ -150,7 +150,7 @@ func narraText(text):
 			$TimerText.set_wait_time(1.0)			#On attend un peu plus avant de continuer
 			$TimerText.start()						#Cela permet de mettre une pause avant l'action
 			yield($TimerText,"timeout")				#Mais aussi avant la prochaine phrase s'il y en a une
-			$TimerText.set_wait_time(0.02)
+			$TimerText.set_wait_time(0.01)
 	
 	emit_signal("narraTextFini")
 

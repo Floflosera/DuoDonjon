@@ -11,9 +11,6 @@ onready var allies = [aHarry,aFlaux]
 onready var prepare = false
 onready var assomme = 0
 
-#pour les dialogues
-onready var flagAssome = false
-
 func _ready():
 	#Statistiques de l'ennemi
 	pvmax = 800
@@ -136,10 +133,7 @@ func castSkill3():
 		secondText = true
 		cible.degatsPrisDef(150 + randi()%16)
 		
-		if(not(flagAssome)):																#DIALOGUE
-			#combat.litDialogue(dialogueI.dialogueStun())
-			#yield(dialogueI, "dialogueFini")
-			flagAssome = true
+		changerSprite()
 		
 		yield(cible,"degatsTermine")
 	elif(cible == aFlaux && aFlaux.hide):
@@ -157,8 +151,38 @@ func castSkill5():
 	
 	emit_signal("skillCast")
 
+func changerSprite():
+	if(assomme > 0):
+		spriteAnim.play("Assomme")
+	else:
+		spriteAnim.play("Neutre")
+
+#surcharge pour pouvoir afficher les dégâts reçus à côté de l'ennemi
+func degatsPris(degats):
+	if(assomme > 0):
+		spriteAnim.play("BlesseAssomme")
+	else:
+		spriteAnim.play("Blesse")		#Lance l'animation des dégâts pris
+	if(degats <= 1):
+		degats = 1
+	if(pv - degats <= 0):			#La condition fait en sorte de ne pas avoir des pv négatifs
+		pv = 0						#Si les pv sont inférieurs aux dégâts réçus, alors on tombe à 0pv
+		tourEffectue = true			#Si un allié n'a plus de pv, alors son tour sera compté comme déjà passé
+	else:
+		pv -= degats				#Sinon les dégâts sont soustraits aux pv du personnage
+	barreVie.value = pv
+	yield(spriteAnim,"animation_finished")	#Attend la fin de l'animation de blessure
+	changerSprite()							#Change le sprite des 2 persos
+	
+	#informations de base pour l'animation du richText qui montre les dégâts
+	#à concaténer avec le nombre des dégâts quand on inflige les dégâts avec un personnage
+	showDegats.set_bbcode("[center][wave freq=25]")
+	
+	emit_signal("degatsTermine")
+
 #Surcharge, met à jour les états
 func clearThings():
 	lacere = false
 	if(assomme > 0):
 		assomme -= 1
+		changerSprite()
