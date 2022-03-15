@@ -1,3 +1,6 @@
 {
-  "dialog_1" : {"textHarry": "Ça fonctionne ?", "spHarry": "0", "textFlaux": "", "spFlaux": "0", "cadreN": "", "supOther": "true", "devent": "0"},
+    "dialog_1" : {"textHarry": "Zut, je n'ai pas réussi à le bloquer...", "spHarry": "5", "textFlaux": "", "spFlaux": "0", "cadreN": "", "supOther": "true", "devent": "0"},
+    "dialog_2" : {"textHarry": "", "spHarry": "5", "textFlaux": "Faux garder ta garde pour le moment où il se prépare à charger ! Si tu veux, je peux me cacher pour qu'il ne fonce que sur toi.", "spFlaux": "0", "cadreN": "", "supOther": "true", "devent": "0"},
+    "dialog_3" : {"textHarry": "Tu aurais pu le dire plus tôt !", "spHarry": "4", "textFlaux": "", "spFlaux": "0", "cadreN": "", "supOther": "true", "devent": "0"},
+    "dialog_4" : {"textHarry": "(... \"Faux\" ? Encore...)", "spHarry": "0", "textFlaux": "", "spFlaux": "0", "cadreN": "", "supOther": "true", "devent": "0"},
 }

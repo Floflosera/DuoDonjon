@@ -1,0 +1,15 @@
+{
+	"dialog_1" : {"textHarry": "Qu'est-ce que… Un donjon, ici ?", "spHarry": "0", "textFlaux": "", "spFlaux": "8", "cadreN": "", "supOther": "true", "devent": "0"},
+	"dialog_2" : {"textHarry": "C'est donc là que ces escaliers menaient, en fin de compte. Je ferais mieux de rester sur mes gardes.", "spHarry": "0", "textFlaux": "", "spFlaux": "8", "cadreN": "", "supOther": "true", "devent": "0"},
+	"dialog_3" : {"textHarry": "", "spHarry": "0", "textFlaux": "", "spFlaux": "8", "cadreN": "*CLUNK*", "supOther": "true", "devent": "0"},
+	"dialog_4" : {"textHarry": "", "spHarry": "0", "textFlaux": "Hé ! Hééé ! Par ici !", "spFlaux": "8", "cadreN": "", "supOther": "true", "devent": "0"},
+	"dialog_5" : {"textHarry": "Qui est là ?!", "spHarry": "4", "textFlaux": "", "spFlaux": "8", "cadreN": "", "supOther": "true", "devent": "0"},
+	"dialog_6" : {"textHarry": "", "spHarry": "4", "textFlaux": "C'est moi, dans la cage !", "spFlaux": "8", "cadreN": "", "supOther": "true", "devent": "0"},
+	"dialog_7" : {"textHarry": "… Oh.", "spHarry": "0", "textFlaux": "", "spFlaux": "0", "cadreN": "", "supOther": "true", "devent": "0"},
+	"dialog_8" : {"textHarry": "", "spHarry": "0", "textFlaux": "Écoute, faux que tu me sortes de là ! Avant que l'autre bonhomme de métal revienne !", "spFlaux": "2", "cadreN": "", "supOther": "true", "devent": "0"},
+	"dialog_9" : {"textHarry": "(\"faux\" ?)", "spHarry": "0", "textFlaux": "", "spFlaux": "2", "cadreN": "", "supOther": "true", "devent": "0"},
+	"dialog_10" : {"textHarry": "… Avant que *quoi* revienne ?", "spHarry": "0", "textFlaux": "", "spFlaux": "2", "cadreN": "", "supOther": "true", "devent": "0"},
+	"dialog_11" : {"textHarry": "", "spHarry": "0", "textFlaux": "Oh non, il est là !", "spFlaux": "4", "cadreN": "", "supOther": "true", "devent": "0"},
+	"dialog_12" : {"textHarry": "", "spHarry": "4", "textFlaux": "J'espère que tu sais te battre !", "spFlaux": "0", "cadreN": "", "supOther": "true", "devent": "1"},
+	"dialog_13" : {"textHarry": "Je m'en occupe !", "spHarry": "2", "textFlaux": "", "spFlaux": "0", "cadreN": "", "supOther": "true", "devent": "1"},
+}

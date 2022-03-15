@@ -1,3 +1,9 @@
 {
-  "dialog_1" : {"textHarry": "Ça fonctionne ?", "spHarry": "0", "textFlaux": "", "spFlaux": "0", "cadreN": "", "supOther": "true", "devent": "0"},
+  "dialog_1" : {"textHarry": "", "spHarry": "0", "textFlaux": "Donc, euh, je me rends compte que tu m'as pas dit ton nom...", "spFlaux": "0", "cadreN": "", "supOther": "true", "devent": "0"},
+  "dialog_2" : {"textHarry": "(Chut !)", "spHarry": "2", "textFlaux": "", "spFlaux": "0", "cadreN": "", "supOther": "true", "devent": "0"},
+  "dialog_3" : {"textHarry": "", "spHarry": "2", "textFlaux": "Comment ça, \"chut\" ? Je t'ai posé une question !", "spFlaux": "2", "cadreN": "", "supOther": "true", "devent": "0"},
+  "dialog_4" : {"textHarry": "(Mais tais-toi, enfin ! Tu vas le réveiller !)", "spHarry": "2", "textFlaux": "", "spFlaux": "2", "cadreN": "", "supOther": "true", "devent": "0"},
+  "dialog_5" : {"textHarry": "", "spHarry": "2", "textFlaux": "Réveiller quo- AHH !", "spFlaux": "4", "cadreN": "", "supOther": "true", "devent": "0"},
+  "dialog_6" : {"textHarry": "Trop tard. Prépare toi !", "spHarry": "2", "textFlaux": "", "spFlaux": "4", "cadreN": "", "supOther": "true", "devent": "1"},
+  "dialog_7" : {"textHarry": "", "spHarry": "2", "textFlaux": "Euh, OK !", "spFlaux": "2", "cadreN": "", "supOther": "true", "devent": "0"},
 }

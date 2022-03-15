@@ -76,6 +76,8 @@ func changerSpriteDia(n):
 			spriteAnim.play("Blesse")
 		7:
 			spriteAnim.play("KO")
+		8:
+			spriteAnim.play("Prisonnier")
 
 #Surcharge pour les persos
 func changerSprite():

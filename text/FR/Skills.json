@@ -1,7 +1,7 @@
 {
   "skill_1" : {	"nameSkill": "Coup de bouclier", "descSkill": "Harry attaque avec son bouclier, et subit moins de dégâts pour le reste du tour.",
 		"textSkill": "Harry donne un coup de bouclier !"},
-  "skill_2" : {	"nameSkill": "Lancer de bouclier", "descSkill": "Harry exécute une attaque au bouclier plus puissante.",
+  "skill_2" : {	"nameSkill": "Lancer de bouclier", "descSkill": "Harry lance son bouclier avec force.",
 		"textSkill": "Harry lance son bouclier !"},
   "skill_3" : {	"nameSkill": "Soin", "descSkill": "Harry soigne le groupe.",
 		"textSkill": "Le groupe est soigné."},
@@ -12,11 +12,11 @@
 
   "skill_6" : {	"nameSkill": "Se cacher", "descSkill": "Agit en premier. Flaux ne peut pas être ciblée ou touchée pour le reste du tour.",
 		"textSkill": "Flaux se camoufle dans l'ombre."},
-  "skill_7" : {	"nameSkill": "Coup plongeant", "descSkill": "Flaux attaque avec sa faux. Trop drôle !",
+  "skill_7" : {	"nameSkill": "Coup plongeant", "descSkill": "Flaux attaque verticalement avec sa faux.",
 		"textSkill": "Flaux bondit et donne un coup vertical !"},
-  "skill_8" : {	"nameSkill": "Labourage", "descSkill": "Flaux fauche tous les ennemis d'un seul coup. Trop forte !",
+  "skill_8" : {	"nameSkill": "Labourage", "descSkill": "Flaux fauche tous les ennemis d'un seul coup.",
 		"textSkill": "Flaux balaye les ennemis !"},
-  "skill_9" : {	"nameSkill": "Lacération", "descSkill": "Flaux vise un point faible pour augmenter les dégâts que subit l'ennemi pour le reste du tour. Trop cool !",
+  "skill_9" : {	"nameSkill": "Lacération", "descSkill": "Flaux vise un point faible pour augmenter les dégâts que subit l'ennemi pour le reste du tour.",
 		"textSkill": "Flaux découpe les protections de l'ennemi !"},
   "skill_10" : {"nameSkill": "Affûtage", "descSkill": "Flaux prend un peu de temps pour grandement augmenter les dégâts de sa prochaine attaque.",
 		"textSkill": "Flaux aiguise sa faux."},

@@ -130,7 +130,7 @@ func choixTour():
 	
 	cFlauxFait = false #booléen pour vérifier si Flaux annule l'action (donc faux de base)
 	
-	if(cFlaux.multi && cFlaux.pv > 0):
+	if(cFlaux.multi && cFlaux.pv > 0 && not(cFlaux.horsCombat)):
 		cFlaux.fFait = false
 		if(not(cFlaux.skill1.disabled)):
 			cFlaux.skill1y = true
@@ -167,7 +167,7 @@ func choixTour():
 			#donc on sortira de la boucle directement
 			cFlauxFait = true
 			
-			if(cFlaux.multi && cFlaux.pv > 0):
+			if(cFlaux.multi && cFlaux.pv > 0 && not(cFlaux.horsCombat)):
 				if(not(cFlaux.fFait)):
 					yield(cFlaux,"multiFait")
 	

@@ -39,17 +39,22 @@ animations = [ {
 "frames": [ ExtResource( 28 ), ExtResource( 32 ), ExtResource( 29 ) ],
 "loop": true,
 "name": "Content",
-"speed": 5.0
+"speed": 3.0
 }, {
 "frames": [ ExtResource( 17 ), ExtResource( 5 ), ExtResource( 16 ) ],
 "loop": true,
 "name": "Inquiet",
 "speed": 3.0
 }, {
-"frames": [ ExtResource( 15 ), ExtResource( 19 ), ExtResource( 14 ) ],
+"frames": [ ExtResource( 21 ), ExtResource( 2 ), ExtResource( 7 ) ],
 "loop": true,
-"name": "Fatigue",
+"name": "KO",
 "speed": 3.0
+}, {
+"frames": [ ExtResource( 20 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 8 ), ExtResource( 11 ), ExtResource( 6 ) ],
+"loop": false,
+"name": "Blesse",
+"speed": 6.0
 }, {
 "frames": [ null, null, null ],
 "loop": true,
@@ -59,11 +64,6 @@ animations = [ {
 "frames": [ ExtResource( 33 ), ExtResource( 31 ), ExtResource( 30 ) ],
 "loop": true,
 "name": "Triste",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 12 ), ExtResource( 22 ), ExtResource( 9 ) ],
-"loop": true,
-"name": "Enerve",
 "speed": 3.0
 }, {
 "frames": [ ExtResource( 10 ), ExtResource( 13 ), ExtResource( 18 ) ],
@@ -71,14 +71,14 @@ animations = [ {
 "name": "Neutre",
 "speed": 3.0
 }, {
-"frames": [ ExtResource( 20 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 8 ), ExtResource( 11 ), ExtResource( 6 ) ],
-"loop": false,
-"name": "Blesse",
-"speed": 6.0
-}, {
-"frames": [ ExtResource( 21 ), ExtResource( 2 ), ExtResource( 7 ) ],
+"frames": [ ExtResource( 15 ), ExtResource( 19 ), ExtResource( 14 ) ],
 "loop": true,
-"name": "KO",
+"name": "Fatigue",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 22 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "Enerve",
 "speed": 3.0
 } ]
 
@@ -292,7 +292,7 @@ custom_fonts/font = SubResource( 6 )
 button_mask = 0
 text = "Skill5"
 
-[node name="Séparation" type="ColorRect" parent="CadreMenu/Background/Menu/VBoxContainer"]
+[node name="Separation" type="ColorRect" parent="CadreMenu/Background/Menu/VBoxContainer"]
 margin_top = 158.0
 margin_right = 349.0
 margin_bottom = 162.0

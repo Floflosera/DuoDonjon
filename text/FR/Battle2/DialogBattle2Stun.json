@@ -1,0 +1,5 @@
+{
+  "dialog_1" : {"textHarry": "", "spHarry": "0", "textFlaux": "OUAIS ! Bien joué !", "spFlaux": "1", "cadreN": "", "supOther": "true", "devent": "0"},
+  "dialog_2" : {"textHarry": "Maintenant ! Il faut attaquer tant qu'il est étourdi !", "spHarry": "2", "textFlaux": "", "spFlaux": "1", "cadreN": "", "supOther": "true", "devent": "0"},
+  "dialog_3" : {"textHarry": "", "spHarry": "2", "textFlaux": "Compris !", "spFlaux": "1", "cadreN": "", "supOther": "true", "devent": "0"},
+}

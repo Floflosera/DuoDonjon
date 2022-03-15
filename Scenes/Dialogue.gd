@@ -11,7 +11,7 @@ signal confirmFpro
 onready var fr = true
 onready var en = false
 
-onready var multi = true
+onready var multi = false
 
 onready var HarryDia = get_node("../GeneralInterface/HBoxContainer/Harry")
 onready var FlauxDia = get_node("../GeneralInterface/HBoxContainer/Flaux")
@@ -209,7 +209,7 @@ func dialogueRead():
 		if(dialogue_devent != 0):
 			if(dialogue_devent == 1):
 				get_node("../EnnemiGroup").show()
-		elif(dialogue_cadreN == ""):
+		if(dialogue_cadreN == ""):
 			boiteDeDiaAnim(dialogue_textHarry,dialogue_spHarry,dialogue_textFlaux,dialogue_spFlaux,dialogue_supOther)
 			yield(self, "dialogueSuivant")
 		else:

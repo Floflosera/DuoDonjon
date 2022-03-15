@@ -32,9 +32,34 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
+"frames": [ ExtResource( 24 ), ExtResource( 29 ), ExtResource( 26 ) ],
+"loop": true,
+"name": "Content",
+"speed": 3.0
+}, {
 "frames": [ ExtResource( 14 ), ExtResource( 17 ), ExtResource( 8 ) ],
 "loop": true,
 "name": "Inquiet",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 10 ), ExtResource( 20 ) ],
+"loop": true,
+"name": "KO",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 19 ), ExtResource( 13 ), ExtResource( 11 ), ExtResource( 7 ), ExtResource( 16 ), ExtResource( 12 ) ],
+"loop": false,
+"name": "Blesse",
+"speed": 6.0
+}, {
+"frames": [ null, null, null ],
+"loop": true,
+"name": "Prisonnier",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 25 ), ExtResource( 27 ), ExtResource( 28 ) ],
+"loop": true,
+"name": "Triste",
 "speed": 3.0
 }, {
 "frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ],
@@ -42,40 +67,15 @@ animations = [ {
 "name": "Neutre",
 "speed": 3.0
 }, {
-"frames": [ ExtResource( 22 ), ExtResource( 9 ), ExtResource( 5 ) ],
-"loop": true,
-"name": "Enerve",
-"speed": 3.0
-}, {
 "frames": [ ExtResource( 21 ), ExtResource( 15 ), ExtResource( 18 ) ],
 "loop": true,
 "name": "Fatigue",
 "speed": 3.0
 }, {
-"frames": [ ExtResource( 25 ), ExtResource( 27 ), ExtResource( 28 ) ],
+"frames": [ ExtResource( 22 ), ExtResource( 9 ), ExtResource( 5 ) ],
 "loop": true,
-"name": "Triste",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 19 ), ExtResource( 13 ), ExtResource( 11 ), ExtResource( 7 ), ExtResource( 16 ), ExtResource( 12 ) ],
-"loop": false,
-"name": "Blesse",
-"speed": 6.0
-}, {
-"frames": [ ExtResource( 6 ), ExtResource( 10 ), ExtResource( 20 ) ],
-"loop": true,
-"name": "KO",
+"name": "Enerve",
 "speed": 3.0
-}, {
-"frames": [ null, null, null ],
-"loop": true,
-"name": "Prisonnier",
-"speed": 3.0
-}, {
-"frames": [ ExtResource( 24 ), ExtResource( 29 ), ExtResource( 26 ) ],
-"loop": true,
-"name": "Content",
-"speed": 5.0
 } ]
 
 [node name="PersoHarry" instance=ExtResource( 1 )]

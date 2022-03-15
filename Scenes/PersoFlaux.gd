@@ -6,7 +6,7 @@ signal multiFait
 onready var hide = false
 onready var affute = false
 
-onready var multi = true
+onready var multi = false
 onready var skill1y = false
 onready var skill2y = false
 onready var skill3y = false
@@ -36,7 +36,7 @@ func _process(delta):
 			annuleF = true								#on informe qu'on veut annuler le tour
 			emit_signal("butPressed")					#et on envoie le signal pour que choixTour continue
 	
-	if(multi && pv>0):
+	if(multi && pv>0 && not(horsCombat)):
 		if(skill1y):
 			skill1.set("custom_colors/font_color", Color(1.0, 84.0/255.0, 53.0/255.0))
 			modifDesc(interfaceGeneral.seCacherDesc)

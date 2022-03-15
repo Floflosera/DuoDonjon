@@ -1,3 +1,9 @@
 {
-  "dialog_1" : {"textHarry": "Ça fonctionne ?", "spHarry": "0", "textFlaux": "", "spFlaux": "0", "cadreN": "", "supOther": "true", "devent": "0"},
+  "dialog_1" : {"textHarry": "", "spHarry": "0", "textFlaux": "(Planque-toi !)", "spFlaux": "0", "cadreN": "", "supOther": "true", "devent": "0"},
+  "dialog_2" : {"textHarry": "(Super, tu prends l'initiative, maintenant.)", "spHarry": "1", "textFlaux": "", "spFlaux": "0", "cadreN": "", "supOther": "true", "devent": "0"},
+  "dialog_3" : {"textHarry": "", "spHarry": "1", "textFlaux": "(Oh, tais-toi. Comment on se fait ce truc ?)", "spFlaux": "2", "cadreN": "", "supOther": "true", "devent": "0"},
+  "dialog_4" : {"textHarry": "(Il vole... Je pense que notre meilleure chance serait d'arriver à le faire tomber, mais comment ?)", "spHarry": "3", "textFlaux": "", "spFlaux": "2", "cadreN": "", "supOther": "true", "devent": "0"},
+  "dialog_5" : {"textHarry": "", "spHarry": "3", "textFlaux": "(Bah, on verra bien.) YAAAAH !!! J'VAIS LE FAUCHER !", "spFlaux": "2", "cadreN": "", "supOther": "true", "devent": "0"},
+  "dialog_6" : {"textHarry": "Flaux !", "spHarry": "4", "textFlaux": "", "spFlaux": "2", "cadreN": "", "supOther": "true", "devent": "0"},
+  "dialog_7" : {"textHarry": "Cette fille, je vous jure…", "spHarry": "3", "textFlaux": "", "spFlaux": "2", "cadreN": "", "supOther": "true", "devent": "0"},
 }

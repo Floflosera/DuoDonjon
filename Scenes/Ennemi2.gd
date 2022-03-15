@@ -137,7 +137,7 @@ func castSkill3():
 		cible.degatsPrisDef(150 + randi()%16)
 		
 		if(not(flagAssome)):																#DIALOGUE
-			#combat.litDialogue(dialogueI.nomDialogue())
+			#combat.litDialogue(dialogueI.dialogueStun())
 			#yield(dialogueI, "dialogueFini")
 			flagAssome = true
 		

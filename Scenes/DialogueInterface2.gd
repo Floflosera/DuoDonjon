@@ -9,14 +9,14 @@ const dialogueTesten = "res://text/EN/Battle1/DialogBattle1Test.json"
 const dialogue2IntroFR = "res://text/FR/Battle2/DialogBattle2Intro.json"
 const dialogue2Hint1FR = "res://text/FR/Battle2/DialogBattle2Hint1.json"
 const dialogue2Hint2FR = "res://text/FR/Battle2/DialogBattle2Hint2.json"
-const dialogue2MidFR = "res://text/FR/Battle2/DialogBattle2Mid.json"
+const dialogue2StunFR = "res://text/FR/Battle2/DialogBattle2Stun.json"
 const dialogue2EndFR = "res://text/FR/Battle2/DialogBattle2End.json"
 
 #En anglais
 const dialogue2IntroEN = "res://text/EN/Battle2/DialogBattle2Intro.json"
 const dialogue2Hint1EN = "res://text/EN/Battle2/DialogBattle2Hint1.json"
 const dialogue2Hint2EN = "res://text/EN/Battle2/DialogBattle2Hint2.json"
-const dialogue2MidEN = "res://text/EN/Battle2/DialogBattle2Mid.json"
+const dialogue2StunEN = "res://text/EN/Battle2/DialogBattle2Stun.json"
 const dialogue2EndEN = "res://text/EN/Battle2/DialogBattle2End.json"
 
 #Dialogue pour tester
@@ -49,11 +49,11 @@ func dialogueHint2():
 		dialogue_file = dialogue2Hint2EN
 	dialogueRead()
 
-func dialogueMid():
+func dialogueStun():
 	if(fr):
-		dialogue_file = dialogue2MidFR
+		dialogue_file = dialogue2StunFR
 	elif(en):
-		dialogue_file = dialogue2MidEN
+		dialogue_file = dialogue2StunEN
 	dialogueRead()
 
 func dialogueEnd():
