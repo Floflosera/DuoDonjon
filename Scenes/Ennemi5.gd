@@ -19,6 +19,8 @@ onready var guard = false
 
 onready var contre = false
 
+onready var affaibli = 0
+
 func _ready():
 
 	pvmax = 1000
@@ -51,7 +53,10 @@ func aTextSkill2():
 		return textSkill[12]
 
 func changerSprite():
-	spriteAnim.play("Neutre")
+	if(phase1):
+		spriteAnim.play("Neutre")
+	else:
+		spriteAnim.play("Neutre")
 
 #surcharge pour le contre
 func degatsPris(degats):
@@ -78,19 +83,30 @@ func degatsPris(degats):
 		lucyDegats(1 + randi()%2)
 		yield(cible,"degatsTermine")
 	
+	if(aHarry.launch && aFlaux.affutage && aFlaux.choixSkill == 1 && combat.combattants[combat.iActuel] == aFlaux):
+		affaibli = 2
+		vitesse = 1 #peut-être 3
+		#faut rajouter des textes et potentiellement un skill de lucy affaiblie
+	
 	emit_signal("degatsTermine")
 
 func degatsPrisDef(degats):
-	if(armeB.pv > 0 && lacere && guard):
+	if(affaibli > 0 && lacere):
+		degatsPris(int((degats-defense)*2.5))
+		return str(int((degats-defense)*2.5))
+	elif(affaibli > 0):
+		degatsPris(int((degats-defense)*2))
+		return str(int((degats-defense)*2))
+	elif(lacere && guard):
 		degatsPris(int((degats-defense)*0.9))
 		return str(int((degats-defense)*0.9))
-	elif(armeB.pv > 0 && lacere && bouclier):
+	elif(lacere && bouclier):
 		degatsPris(int((degats-defense)*1.2))
 		return str(int((degats-defense)*1.2))
-	elif(armeB.pv > 0 && guard):
+	elif(guard):
 		degatsPris(int((degats-defense)*0.4))
 		return str(int((degats-defense)*0.4))
-	elif(armeB.pv > 0 && bouclier):
+	elif(bouclier):
 		degatsPris(int((degats-defense)*0.7))
 		return str(int((degats-defense)*0.7))
 	elif(lacere):
@@ -351,8 +367,10 @@ func clearThings():
 	guard = false
 	contre = false
 	
-	if(phase1 && armeF.pv == 0):
-		affutage == false
+	if(affaibli > 0):
+		affaibli -= 1
+	else:
+		vitesse = 5
 	
 	if(phase1 && ((armeB.pv == 0 && armeF.pv == 0) || (pv <= pvmax/2))):
 		armeB.hide()

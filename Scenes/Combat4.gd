@@ -19,17 +19,16 @@ func _ready():
 	while((combattantHarry.pv > 0 || combattantFlaux.pv > 0) && (combattantEnnemi1.pv > 0 || combattantEnnemi2.pv > 0)):
 		nTour += 1
 		
-		#if(nTour == 6):
-			#litDialogue($DialogueInterface.dialogueMid())
-			#yield($DialogueInterface, "dialogueFini")
-		
-		#if(((nTour == 5) && combattantEnnemi1.pv > 0) && hintFlag == 0):
+		if(((nTour == 5) && combattantEnnemi1.pv > 0) && not(hintFlag)):
 			#litDialogue($DialogueInterface.dialogueHint1())
 			#yield($DialogueInterface, "dialogueFini")
-			#hintFlag += 1
-		#elif(((nTour >= 8 && nTour % 2 == 0) && combattantEnnemi1.pv > 0) && hintFlag == 1):
+			hintFlag = true
+		elif(((nTour >= 9 && nTour % 3 == 0) && combattantEnnemi1.pv > 0) && hintFlag):
 			#litDialogue($DialogueInterface.dialogueHint2())
 			#yield($DialogueInterface, "dialogueFini")
+			pass
+		
+		
 		
 		$GeneralInterface.choixTour() #lance le choix du tour
 		yield($GeneralInterface, "choixTourFini")

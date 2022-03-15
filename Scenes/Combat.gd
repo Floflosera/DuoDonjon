@@ -39,7 +39,7 @@ onready var nTour = 0
 #Nombre de tour depuis qu'un des deux alliés est tombé KO
 onready var nTourPV0 = 0
 
-onready var hintFlag = 0
+onready var hintFlag = false
 
 func _ready():
 	nar.set_text("")

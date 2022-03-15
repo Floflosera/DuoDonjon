@@ -10,6 +10,8 @@ onready var en = false
 
 #permet de récupérer les informations sur le combat actuel
 onready var combat = get_node("../..")
+#Chemin vers les dialogues
+onready var dialogueI = get_node("../../DialogueInterface")
 
 #stocke le bouton de selection dans une variable
 onready var selection = $Selection

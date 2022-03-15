@@ -11,6 +11,9 @@ onready var allies = [aHarry,aFlaux]
 onready var prepare = false
 onready var assomme = 0
 
+#pour les dialogues
+onready var flagAssome = false
+
 func _ready():
 	#Statistiques de l'ennemi
 	pvmax = 800
@@ -132,6 +135,12 @@ func castSkill3():
 		assomme = 2
 		secondText = true
 		cible.degatsPrisDef(150 + randi()%16)
+		
+		if(not(flagAssome)):																#DIALOGUE
+			#combat.litDialogue(dialogueI.nomDialogue())
+			#yield(dialogueI, "dialogueFini")
+			flagAssome = true
+		
 		yield(cible,"degatsTermine")
 	elif(cible == aFlaux && aFlaux.hide):
 		yield(spriteAnim,"animation_finished")

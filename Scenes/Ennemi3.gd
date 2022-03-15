@@ -9,6 +9,9 @@ onready var allies = [aHarry,aFlaux]
 
 onready var auSol = 0
 
+#flag dialogue
+onready var flagAuSol = false
+
 func _ready():
 	#Statistiques de l'ennemi
 	pvmax = 700
@@ -213,6 +216,11 @@ func degatsPris(degats):
 		secondText = false
 		combat.narraText(aTextSkill2())
 		yield(combat,"narraTextFini")
+		
+		if(not(flagAuSol)):														#DIALOGUE
+			#combat.litDialogue(dialogueI.nomDialogue())
+			#yield(dialogueI, "dialogueFini")
+			flagAuSol = true
 	
 	emit_signal("degatsTermine")
 

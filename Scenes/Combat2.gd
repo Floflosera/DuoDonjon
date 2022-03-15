@@ -27,15 +27,11 @@ func _ready():
 	while((combattantHarry.pv > 0 || combattantFlaux.pv > 0) && combattantEnnemi.pv > 0):
 		nTour += 1 #chaque tour le numéro du tour augmente de 1
 		
-		if(nTour == 6):
-			litDialogue($DialogueInterface.dialogueMid())
-			yield($DialogueInterface, "dialogueFini")
-		
-		if(((combattantEnnemi.choixSkill == 2) && not(combattantEnnemi.assomme)) && hintFlag == 0):
+		if(((combattantEnnemi.choixSkill == 2) && not(combattantEnnemi.assomme)) && not(hintFlag)):
 			litDialogue($DialogueInterface.dialogueHint1())
 			yield($DialogueInterface, "dialogueFini")
-			hintFlag += 1
-		elif(((combattantEnnemi.choixSkill == 2) && not(combattantEnnemi.assomme)) && hintFlag == 1):
+			hintFlag = true
+		elif(((combattantEnnemi.choixSkill == 2) && not(combattantEnnemi.assomme)) && hintFlag):
 			litDialogue($DialogueInterface.dialogueHint2())
 			yield($DialogueInterface, "dialogueFini")
 		

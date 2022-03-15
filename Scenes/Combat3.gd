@@ -2,6 +2,9 @@ extends "res://Scenes/Combat.gd"
 
 onready var combattantEnnemi = $EnnemiGroup/Ennemi3
 
+#booléen pour dialogue
+onready var flagAgitAvant = false
+
 func _ready():
 	randomize() #en mettre un seul dans le main
 	
@@ -19,17 +22,19 @@ func _ready():
 	while((combattantHarry.pv > 0 || combattantFlaux.pv > 0) && combattantEnnemi.pv > 0):
 		nTour += 1
 		
-		#if(nTour == 6):
-			#litDialogue($DialogueInterface.dialogueMid())
-			#yield($DialogueInterface, "dialogueFini")
-		
-		#if((((nTour-1) % 4 == 3) && not(combattantEnnemi.auSol)) && hintFlag == 0):
+		if((((nTour-1) % 4 == 3) && not(combattantEnnemi.auSol)) && not(hintFlag)):
 			#litDialogue($DialogueInterface.dialogueHint1())
 			#yield($DialogueInterface, "dialogueFini")
-			#hintFlag += 1
-		#elif((((nTour-1) % 4 == 3) && not(combattantEnnemi.auSol)) && hintFlag == 1):
+			hintFlag = true
+		elif((((nTour-1) % 4 == 3) && not(combattantEnnemi.auSol)) && hintFlag):
 			#litDialogue($DialogueInterface.dialogueHint2())
 			#yield($DialogueInterface, "dialogueFini")
+			pass
+		
+		if(nTour > 1 && combattantFlaux.choixSkill !=0 && not(flagAgitAvant)):
+			#litDialogue($DialogueInterface.nomDuDialogue())
+			#yield($DialogueInterface, "dialogueFini")
+			flagAgitAvant = true
 		
 		$GeneralInterface.choixTour() #lance le choix du tour
 		yield($GeneralInterface, "choixTourFini")
