@@ -11,14 +11,14 @@ script = ExtResource( 5 )
 
 [node name="Ennemi1_1" parent="." index="0" instance=ExtResource( 4 )]
 position = Vector2( 631, 198 )
+frame = 0
 
 [node name="Ennemi1_2" parent="." index="1" instance=ExtResource( 2 )]
 position = Vector2( 549, 197 )
-frame = 2
 
 [node name="Ennemi1_3" parent="." index="2" instance=ExtResource( 3 )]
 position = Vector2( 736, 200 )
-frame = 1
+frame = 0
 
 [connection signal="butPressed" from="Ennemi1_1" to="." method="_on_Ennemi1_1_butPressed"]
 [connection signal="butPressed" from="Ennemi1_2" to="." method="_on_Ennemi1_2_butPressed"]

@@ -16,23 +16,22 @@ func _ready():
 	
 	ordreTour()
 	
-	#litDialogue($DialogueInterface.dialogueIntro()) #lancement du premier dialogue
-	#yield($DialogueInterface, "dialogueFini")
+	litDialogue($DialogueInterface.dialogueIntro()) #lancement du premier dialogue
+	yield($DialogueInterface, "dialogueFini")
 	
 	while((combattantHarry.pv > 0 || combattantFlaux.pv > 0) && combattantEnnemi.pv > 0):
 		nTour += 1
 		
 		if((((nTour-1) % 4 == 3) && not(combattantEnnemi.auSol)) && not(hintFlag)):
-			#litDialogue($DialogueInterface.dialogueHint1())
-			#yield($DialogueInterface, "dialogueFini")
+			litDialogue($DialogueInterface.dialogueHint1())
+			yield($DialogueInterface, "dialogueFini")
 			hintFlag = true
 		elif((((nTour-1) % 4 == 3) && not(combattantEnnemi.auSol)) && hintFlag):
-			#litDialogue($DialogueInterface.dialogueHint2())
-			#yield($DialogueInterface, "dialogueFini")
-			pass
+			litDialogue($DialogueInterface.dialogueHint2())
+			yield($DialogueInterface, "dialogueFini")
 		
 		if(nTour > 1 && combattantFlaux.choixSkill !=0 && not(flagAgitAvant)):
-			#litDialogue($DialogueInterface.nomDuDialogue())
+			#litDialogue($DialogueInterface.dialogueName())
 			#yield($DialogueInterface, "dialogueFini")
 			flagAgitAvant = true
 		
@@ -46,8 +45,8 @@ func _ready():
 	
 	if(combattantEnnemi.pv == 0):
 		$EnnemiGroup.hide()
-		#litDialogue($DialogueInterface.dialogueEnd())
-		#yield($DialogueInterface, "dialogueFini")
+		litDialogue($DialogueInterface.dialogueEnd())
+		yield($DialogueInterface, "dialogueFini")
 	elif(combattantHarry.pv == 0 && combattantFlaux.pv == 0):
 		nar.narraText("Game Over")
 	

@@ -218,7 +218,7 @@ func degatsPris(degats):
 		yield(combat,"narraTextFini")
 		
 		if(not(flagAuSol)):														#DIALOGUE
-			#combat.litDialogue(dialogueI.nomDialogue())
+			#combat.litDialogue(dialogueI.dialogueName())
 			#yield(dialogueI, "dialogueFini")
 			flagAuSol = true
 	

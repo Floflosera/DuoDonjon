@@ -17,7 +17,7 @@ var spriteAnim
 #Elle redevient false lorsque l'on choisit sa nouvelle action
 onready var tourEffectue = true
 
-#Stocke le choix d'action du joueur
+#Stocke le choix d'action du joueur et des ennemis
 onready var choixSkill = 0
 #Variable qui permet de vérifier si une action est prioritaire ou non
 #Elle devient vrai lorsque l'on choisit une attaque prioritaire

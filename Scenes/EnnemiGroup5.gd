@@ -5,7 +5,7 @@ onready var ennemib = $Ennemi5B
 onready var ennemif = $Ennemi5F
 
 func _ready():
-	ennemis = [ennemi, ennemif, ennemib]
+	ennemis = [ennemi, ennemib, ennemif]
 
 func _on_Ennemi5_butPressed():
 

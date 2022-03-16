@@ -32,6 +32,8 @@ func _ready():
 	ennemi = true
 	barreVie = $LifeBar
 	load_skills()
+	
+	choixSkill = -1
 
 func _process(delta):
 	

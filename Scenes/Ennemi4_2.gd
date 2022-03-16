@@ -7,6 +7,12 @@ onready var dejaPriso = false
 onready var attaqueUp = false
 onready var defenseUp = false
 
+#dialogue
+onready var feuFolletH = false
+onready var feuFolletF = false
+onready var flagPrisoH = false
+onready var flagPrisoF = false
+
 func _ready():
 	#Statistiques de l'ennemi
 	pvmax = 900
@@ -229,7 +235,7 @@ func castSkill2():
 	
 	emit_signal("skillCast")
 
-#Feu follet, provoque un allié, cible dans choix
+#Feux follets, provoque un allié, cible dans choix
 func castSkill3():
 	
 	secondText = true
@@ -249,6 +255,17 @@ func castSkill3():
 			cible.skills[1].disabled = true
 		mageNoirDegats(40 + randi()%5)
 		yield(cible,"degatsTermine")
+		
+		if(cible == aHarry):
+			if(not(feuFolletH)):
+				#combat.litDialogue(dialogueI.dialogueName())
+				#yield(dialogueI, "dialogueFini")
+				feuFolletF = true
+		if(cible == aFlaux):
+			if(not(feuFolletF)):
+				#combat.litDialogue(dialogueI.dialogueName())
+				#yield(dialogueI, "dialogueFini")
+				feuFolletF = true
 	
 	emit_signal("skillCast")
 
@@ -263,6 +280,17 @@ func castSkill4():
 	prisonnie.abled()
 	prisonnie.changerSprite()
 	#faire apparaître un sprite à côté de lui du prisonnier
+	
+	if(prisonnie == aHarry):
+		if(not(flagPrisoH)):
+				#combat.litDialogue(dialogueI.dialogueName())
+				#yield(dialogueI, "dialogueFini")
+				flagPrisoH = true
+	if(prisonnie == aFlaux):
+		if(not(flagPrisoF)):
+				#combat.litDialogue(dialogueI.dialogueName())
+				#yield(dialogueI, "dialogueFini")
+				flagPrisoF = true
 	
 	yield(spriteAnim,"animation_finished")
 	

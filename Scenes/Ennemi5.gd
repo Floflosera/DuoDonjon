@@ -28,12 +28,12 @@ func _ready():
 	defense = 25
 	vitesse = 3
 	
-	choixSkill = -1
-	
 	for i in range(21,30):
 		ligne_skills(i)
 		skillTextAppend(skills_text)
 	text2_skills()
+	ligne_skills(30)
+	skillTextAppend(skills_text)
 	
 
 func text2_skills():
@@ -41,6 +41,10 @@ func text2_skills():
 	skillTextAppend(skills_keys[23].textSkill2)
 	skillTextAppend(skills_keys[28].textSkill2)
 	skillTextAppend(skills_keys[29].textSkill2)
+
+func aTextSkill():
+	if(choixSkill == 9):
+		return textSkill[13]
 
 func aTextSkill2():
 	if(choixSkill == 0):
@@ -326,6 +330,13 @@ func castSkill9():
 	
 	emit_signal("skillCast")
 
+#Rien
+func castSkill0():
+	
+	yield(spriteAnim,"animation_finished")
+	
+	emit_signal("skillCast")
+
 #surcharge car plus de skills
 func castSkill():
 	
@@ -356,6 +367,9 @@ func castSkill():
 			yield(self,"skillCast")
 		8:
 			castSkill9()
+			yield(self,"skillCast")
+		9:
+			castSkill0()
 			yield(self,"skillCast")
 		
 	tourEffectue = true

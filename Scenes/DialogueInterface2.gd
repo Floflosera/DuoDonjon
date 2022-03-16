@@ -6,18 +6,18 @@ const dialogueTest = "res://text/FR/DialogueTest.json"
 const dialogueTesten = "res://text/EN/Battle1/DialogBattle1Test.json"
 
 #En français
-const dialogue2IntroFR = "res://text/FR/Battle2/DialogBattle2Intro.json"
-const dialogue2Hint1FR = "res://text/FR/Battle2/DialogBattle2Hint1.json"
-const dialogue2Hint2FR = "res://text/FR/Battle2/DialogBattle2Hint2.json"
-const dialogue2StunFR = "res://text/FR/Battle2/DialogBattle2Stun.json"
-const dialogue2EndFR = "res://text/FR/Battle2/DialogBattle2End.json"
+const dialogueIntroFR = "res://text/FR/Battle2/DialogBattleIntro.json"
+const dialogueHint1FR = "res://text/FR/Battle2/DialogBattleHint1.json"
+const dialogueHint2FR = "res://text/FR/Battle2/DialogBattleHint2.json"
+const dialogueStunFR = "res://text/FR/Battle2/DialogBattleStun.json"
+const dialogueEndFR = "res://text/FR/Battle2/DialogBattleEnd.json"
 
 #En anglais
-const dialogue2IntroEN = "res://text/EN/Battle2/DialogBattle2Intro.json"
-const dialogue2Hint1EN = "res://text/EN/Battle2/DialogBattle2Hint1.json"
-const dialogue2Hint2EN = "res://text/EN/Battle2/DialogBattle2Hint2.json"
-const dialogue2StunEN = "res://text/EN/Battle2/DialogBattle2Stun.json"
-const dialogue2EndEN = "res://text/EN/Battle2/DialogBattle2End.json"
+const dialogueIntroEN = "res://text/EN/Battle2/DialogBattleIntro.json"
+const dialogueHint1EN = "res://text/EN/Battle2/DialogBattleHint1.json"
+const dialogueHint2EN = "res://text/EN/Battle2/DialogBattleHint2.json"
+const dialogueStunEN = "res://text/EN/Battle2/DialogBattleStun.json"
+const dialogueEndEN = "res://text/EN/Battle2/DialogBattleEnd.json"
 
 #Dialogue pour tester
 func dialogueTest():
@@ -30,35 +30,35 @@ func dialogueTest():
 
 func dialogueIntro():
 	if(fr):
-		dialogue_file = dialogue2IntroFR
+		dialogue_file = dialogueIntroFR
 	elif(en):
-		dialogue_file = dialogue2IntroEN
+		dialogue_file = dialogueIntroEN
 	dialogueRead()
 
 func dialogueHint1():
 	if(fr):
-		dialogue_file = dialogue2Hint1FR
+		dialogue_file = dialogueHint1FR
 	elif(en):
-		dialogue_file = dialogue2Hint1EN
+		dialogue_file = dialogueHint1EN
 	dialogueRead()
 
 func dialogueHint2():
 	if(fr):
-		dialogue_file = dialogue2Hint2FR
+		dialogue_file = dialogueHint2FR
 	elif(en):
-		dialogue_file = dialogue2Hint2EN
+		dialogue_file = dialogueHint2EN
 	dialogueRead()
 
 func dialogueStun():
 	if(fr):
-		dialogue_file = dialogue2StunFR
+		dialogue_file = dialogueStunFR
 	elif(en):
-		dialogue_file = dialogue2StunEN
+		dialogue_file = dialogueStunEN
 	dialogueRead()
 
 func dialogueEnd():
 	if(fr):
-		dialogue_file = dialogue2EndFR
+		dialogue_file = dialogueEndFR
 	elif(en):
-		dialogue_file = dialogue2EndEN
+		dialogue_file = dialogueEndEN
 	dialogueRead()

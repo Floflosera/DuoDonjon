@@ -11,15 +11,11 @@ func _ready():
 	
 	ordreTour()
 	
-	#litDialogue($DialogueInterface.dialogueIntro()) #lancement du premier dialogue
-	#yield($DialogueInterface, "dialogueFini")
+	litDialogue($DialogueInterface.dialogueIntro()) #lancement du premier dialogue
+	yield($DialogueInterface, "dialogueFini")
 	
 	while((combattantHarry.pv > 0 || combattantFlaux.pv > 0) && combattantEnnemi.pv > 0):
 		nTour += 1
-		
-		#if(nTour == 6):
-			#litDialogue($DialogueInterface.dialogueMid())
-			#yield($DialogueInterface, "dialogueFini")
 		
 		$GeneralInterface.choixTour() #lance le choix du tour
 		yield($GeneralInterface, "choixTourFini")
@@ -31,8 +27,8 @@ func _ready():
 	
 	if(combattantEnnemi.pv == 0):
 		$EnnemiGroup.hide()
-		#litDialogue($DialogueInterface.dialogueEnd())
-		#yield($DialogueInterface, "dialogueFini")
+		litDialogue($DialogueInterface.dialogueEnd())
+		yield($DialogueInterface, "dialogueFini")
 	elif(combattantHarry.pv == 0 && combattantFlaux.pv == 0):
 		nar.narraText("Game Over")
 	

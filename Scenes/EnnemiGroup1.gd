@@ -7,7 +7,7 @@ onready var ennemid = $Ennemi1_2
 func _ready():
 	ennemis = [ennemi, ennemig, ennemid]
 
-func _on_Ennemi1_butPressed():
+func _on_Ennemi1_1_butPressed():
 
 	ennemi.ciblePar[interfaceGeneral.kiCible] = true
 	emit_signal("selectionne")
@@ -30,7 +30,3 @@ func _on_Ennemi1_2_butPressed():
 
 func _on_Ennemi1_2_butPressedF():
 	ennemid.ciblePar[1] = true
-
-
-func _on_Ennemi1_1_butPressed():
-	pass # Replace with function body.

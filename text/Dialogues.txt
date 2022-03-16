@@ -44,7 +44,6 @@ Pendant combat 4 :
 - (secret) Mage Noir battu en premier
 - Première fois que Harry est capturé
 - Première fois que Flaux est capturée
-- Si Harry ou Flaux ne sont pas libérés par le joueur
 
 Après combat 4 :
 
