@@ -6,7 +6,7 @@ signal multiFait
 onready var hide = false
 onready var affute = false
 
-onready var multi = false
+onready var multi = main.multi
 onready var skill1y = false
 onready var skill2y = false
 onready var skill3y = false
@@ -292,7 +292,7 @@ func castSkill2():
 	yield(cible,"degatsTermine")
 	emit_signal("skillCast")
 
-func castSkill3():#faut tout revoir
+func castSkill3():
 	
 	for ci in ennemis:
 		if(ci.pv > 0):

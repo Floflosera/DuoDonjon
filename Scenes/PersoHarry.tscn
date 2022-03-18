@@ -32,14 +32,19 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 24 ), ExtResource( 29 ), ExtResource( 26 ) ],
-"loop": true,
-"name": "Content",
-"speed": 3.0
-}, {
 "frames": [ ExtResource( 14 ), ExtResource( 17 ), ExtResource( 8 ) ],
 "loop": true,
 "name": "Inquiet",
+"speed": 3.0
+}, {
+"frames": [ null, null, null ],
+"loop": true,
+"name": "Prisonnier",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 22 ), ExtResource( 9 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "Enerve",
 "speed": 3.0
 }, {
 "frames": [ ExtResource( 6 ), ExtResource( 10 ), ExtResource( 20 ) ],
@@ -47,14 +52,9 @@ animations = [ {
 "name": "KO",
 "speed": 3.0
 }, {
-"frames": [ ExtResource( 19 ), ExtResource( 13 ), ExtResource( 11 ), ExtResource( 7 ), ExtResource( 16 ), ExtResource( 12 ) ],
-"loop": false,
-"name": "Blesse",
-"speed": 6.0
-}, {
-"frames": [ null, null, null ],
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ],
 "loop": true,
-"name": "Prisonnier",
+"name": "Neutre",
 "speed": 3.0
 }, {
 "frames": [ ExtResource( 25 ), ExtResource( 27 ), ExtResource( 28 ) ],
@@ -62,19 +62,19 @@ animations = [ {
 "name": "Triste",
 "speed": 3.0
 }, {
-"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ],
-"loop": true,
-"name": "Neutre",
-"speed": 3.0
-}, {
 "frames": [ ExtResource( 21 ), ExtResource( 15 ), ExtResource( 18 ) ],
 "loop": true,
 "name": "Fatigue",
 "speed": 3.0
 }, {
-"frames": [ ExtResource( 22 ), ExtResource( 9 ), ExtResource( 5 ) ],
+"frames": [ ExtResource( 19 ), ExtResource( 13 ), ExtResource( 11 ), ExtResource( 7 ), ExtResource( 16 ), ExtResource( 12 ) ],
+"loop": false,
+"name": "Blesse",
+"speed": 6.0
+}, {
+"frames": [ ExtResource( 24 ), ExtResource( 29 ), ExtResource( 26 ) ],
 "loop": true,
-"name": "Enerve",
+"name": "Content",
 "speed": 3.0
 } ]
 
@@ -115,7 +115,6 @@ text = "Harry, explorateur qui s'est retrouvé dans le donjon par chance. Calme 
 [node name="Sprite" parent="Portrait/VBoxContainer/Cadre" index="0"]
 frames = SubResource( 1 )
 animation = "Neutre"
-frame = 2
 
 [node name="LifeBar" parent="Portrait/VBoxContainer" index="1"]
 max_value = 230.0

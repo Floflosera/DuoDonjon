@@ -48,7 +48,9 @@ func _ready():
 		litDialogue($DialogueInterface.dialogueEnd())
 		yield($DialogueInterface, "dialogueFini")
 	elif(combattantHarry.pv == 0 && combattantFlaux.pv == 0):
+		gameover = true
 		nar.narraText("Game Over")
+		yield(nar,"narraTextFini")
 	
-	
+	emit_signal("finCombat")
 	

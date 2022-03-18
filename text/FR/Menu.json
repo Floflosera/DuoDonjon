@@ -1,0 +1,15 @@
+{
+  "start" : {		"text": "Commencer"},
+  "chapSelect" : {	"text": "Sélection du chapitre"},
+  "settings" : {	"text": "Paramètres"},
+  "exit" : {		"text": "Quitter le jeu"},
+
+  "battleButton" : {	"text": "Combat "},
+
+  "multi" : {		"text": "Multijoueur"},
+  "yes" : {		"text": "Oui"},
+  "no" : {		"text": "Non"},
+  "language" : {	"text": "Langage"},
+  "french" : {		"text": "Français"},
+  "english" : {		"text": "Anglais"},
+}

@@ -7,9 +7,11 @@ onready var i = 0
 signal choixTourFini
 signal choixCharaTourFini
 
+onready var main = get_node("../..")
+
 #Les variables qui informe de si le jeu est en français ou anglais
-onready var fr = true
-onready var en = false
+onready var fr = main.fr
+onready var en = main.en
 
 #les personnages sont stockés dans des variables pour y accéder plus facilement
 onready var cHarry = $HBoxContainer/Harry

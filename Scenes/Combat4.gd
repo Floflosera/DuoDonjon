@@ -17,15 +17,15 @@ func _ready():
 	
 	ordreTour()
 	
-	litDialogue($DialogueInterface.dialogueIntro()) #lancement du premier dialogue
-	yield($DialogueInterface, "dialogueFini")
+	#litDialogue($DialogueInterface.dialogueIntro()) #lancement du premier dialogue
+	#yield($DialogueInterface, "dialogueFini")
 	
 	while((combattantHarry.pv > 0 || combattantFlaux.pv > 0) && (combattantEnnemi1.pv > 0 || combattantEnnemi2.pv > 0)):
 		nTour += 1
 		
 		if(((nTour == 5) && combattantEnnemi1.pv > 0) && not(hintFlag)):
-			litDialogue($DialogueInterface.dialogueHint1())
-			yield($DialogueInterface, "dialogueFini")
+			#litDialogue($DialogueInterface.dialogueHint1())
+			#yield($DialogueInterface, "dialogueFini")
 			hintFlag = true
 		
 		if(combattantEnnemi1.choixSkill == 0 && flagComptSoin < 2):
@@ -56,10 +56,12 @@ func _ready():
 	
 	if(combattantEnnemi1.pv == 0 && combattantEnnemi2.pv == 0):
 		$EnnemiGroup.hide()
-		litDialogue($DialogueInterface.dialogueEnd())
-		yield($DialogueInterface, "dialogueFini")
+		#litDialogue($DialogueInterface.dialogueEnd())
+		#yield($DialogueInterface, "dialogueFini")
 	elif(combattantHarry.pv == 0 && combattantFlaux.pv == 0):
+		gameover = true
 		nar.narraText("Game Over")
+		yield(nar,"narraTextFini")
 	
-	
+	emit_signal("finCombat")
 	

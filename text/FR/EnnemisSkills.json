@@ -42,5 +42,5 @@
   "ennemi5_skill7" : {	"nameSkill": "Coup de boule", "textSkill": "Lucy se sert de sa tête !"},
   "ennemi5_skill8" : {	"nameSkill": "Balayette", "textSkill": "Lucy donne un coup de pied circulaire !", "textSkill2": "Le groupe tombe par terre !"},
   "ennemi5_skill9" : {	"nameSkill": "Contre", "textSkill": "Lucy se prépare à riposter.", "textSkill2": "Lucy contre l'attaque !"},
-  "ennemi5_skill0" : {  "nameSkill": "J'vous laisse une chance.", "textSkill": "Lucy est à terre."},
+  "ennemi5_skill0" : {  "nameSkill": "J'vous laisse une chance.", "textSkill": "Lucy est à terre.", "textSkill2": "Lucy tombe à terre."},
 }

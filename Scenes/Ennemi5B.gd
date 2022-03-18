@@ -40,7 +40,11 @@ func degatsPris(degats):
 	#à concaténer avec le nombre des dégâts quand on inflige les dégâts avec un personnage
 	showDegats.set_bbcode("[center][wave freq=25]")
 	
-	if(pv == 0 && (aLucy.choixSkill == 2 || aLucy.choixSkill == 3)):
+	if(pv == 0 && aLucy.armeF.pv == 0):
+		aLucy.guard = false
+		aLucy.bouclier = false
+		aLucy.tourEffectue = true
+	elif(pv == 0):
 		aLucy.guard = false
 		aLucy.bouclier = false
 		aLucy.choixSkill = randi() % 2

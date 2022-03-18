@@ -19,7 +19,12 @@ onready var guard = false
 
 onready var contre = false
 
-onready var affaibli = 0
+onready var affaibli = false
+onready var aTerre = false
+
+#dialogue
+onready var flagGetReal = false
+onready var flagContre = false
 
 func _ready():
 
@@ -34,6 +39,7 @@ func _ready():
 	text2_skills()
 	ligne_skills(30)
 	skillTextAppend(skills_text)
+	skillTextAppend(skills_keys[30].textSkill2)
 	
 
 func text2_skills():
@@ -45,6 +51,8 @@ func text2_skills():
 func aTextSkill():
 	if(choixSkill == 9):
 		return textSkill[13]
+	else:
+		return textSkill[choixSkill]
 
 func aTextSkill2():
 	if(choixSkill == 0):
@@ -55,6 +63,8 @@ func aTextSkill2():
 		return textSkill[11]
 	elif(choixSkill == 8):
 		return textSkill[12]
+	elif(affaibli):
+		return textSkill[14]
 
 func changerSprite():
 	if(phase1):
@@ -88,17 +98,20 @@ func degatsPris(degats):
 		yield(cible,"degatsTermine")
 	
 	if(aHarry.launch && aFlaux.affutage && aFlaux.choixSkill == 1 && combat.combattants[combat.iActuel] == aFlaux):
-		affaibli = 2
-		vitesse = 1 #peut-être 3
-		#faut rajouter des textes et potentiellement un skill de lucy affaiblie
+		affaibli = true
+		aTerre = true
+		tourEffectue = true
+		
+		combat.narraText(aTextSkill2())
+		yield(combat,"narraTextFini")
 	
 	emit_signal("degatsTermine")
 
 func degatsPrisDef(degats):
-	if(affaibli > 0 && lacere):
+	if(affaibli && lacere):
 		degatsPris(int((degats-defense)*2.5))
 		return str(int((degats-defense)*2.5))
-	elif(affaibli > 0):
+	elif(affaibli):
 		degatsPris(int((degats-defense)*2))
 		return str(int((degats-defense)*2))
 	elif(lacere && guard):
@@ -141,7 +154,15 @@ func choixSkill():
 				choixSkill = (randi() % 2) + 2
 			
 		else:
-			choixSkill = (randi() % 5) + 4
+			if(affaibli && aTerre):
+				choixSkill = 9
+			elif(affaibli):
+				choixSkill = 5
+			else:
+				choixSkill = (randi() % 5) + 4
+				if(choixSkill == 5):
+					choixSkill = 4
+					
 			
 	
 	if(choixSkill == 3 || choixSkill == 5 || choixSkill == 7 || choixSkill == 8):
@@ -259,10 +280,11 @@ func castSkill5():
 	
 	emit_signal("skillCast")
 
-#Pied Volant (une cible, attaque prioritaire)
+#Pied Volant (une cible, attaque prioritaire, seulement quand elle se relève)
 func castSkill6():
 	
 	priorite = false
+	affaibli = false
 	
 	if(aHarry.pv > 0 && aFlaux.pv > 0):
 		cibler(allies[randi()%2])
@@ -297,6 +319,11 @@ func castSkill7():
 		lucyDegats(1 + randi()%2)
 		yield(cible,"degatsTermine")
 	
+	if(not(flagGetReal)):														#DIALOGUE
+		#combat.litDialogue(dialogueI.dialogueName())
+		#yield(dialogueI, "dialogueFini")
+		flagGetReal = true
+	
 	emit_signal("skillCast")
 
 #Baleyette (multi cible, attaque prioritaire, fait perdre un tour aux alliés)
@@ -328,10 +355,17 @@ func castSkill9():
 	
 	yield(spriteAnim,"animation_finished")
 	
+	if(not(flagContre)):														#DIALOGUE
+		#combat.litDialogue(dialogueI.dialogueName())
+		#yield(dialogueI, "dialogueFini")
+		flagContre = true
+	
 	emit_signal("skillCast")
 
 #Rien
 func castSkill0():
+	
+	aTerre = false
 	
 	yield(spriteAnim,"animation_finished")
 	
@@ -380,17 +414,3 @@ func clearThings():
 	bouclier = false
 	guard = false
 	contre = false
-	
-	if(affaibli > 0):
-		affaibli -= 1
-	else:
-		vitesse = 5
-	
-	if(phase1 && ((armeB.pv == 0 && armeF.pv == 0) || (pv <= pvmax/2))):
-		armeB.hide()
-		armeF.hide()
-		changerSprite()
-		phase1 = false
-		pv = pvmax
-		defense = 15
-		vitesse = 5

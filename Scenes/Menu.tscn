@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Godot-Fontpack-d244bf6170b399a6d4d26a0d906058ddf2dafdf1/fonts/montreal/Montreal-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/FondNormal.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/Menu.gd" type="Script" id=3]
+[ext_resource path="res://assets/MenuFlaux.png" type="Texture" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 28
@@ -25,9 +27,18 @@ outline_size = 3
 outline_color = Color( 0.494118, 0.164706, 0.505882, 1 )
 font_data = ExtResource( 1 )
 
+[sub_resource type="DynamicFont" id=6]
+size = 30
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 30
+font_data = ExtResource( 1 )
+
 [node name="Menu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -57,7 +68,14 @@ custom_constants/separation = 10
 [node name="StartButton" type="Button" parent="MarginContainer/VBoxContainer"]
 margin_right = 430.0
 margin_bottom = 65.0
+focus_neighbour_left = NodePath(".")
+focus_neighbour_top = NodePath("../ExitButton")
+focus_neighbour_right = NodePath(".")
+focus_neighbour_bottom = NodePath("../ChapSelectButton")
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
 size_flags_vertical = 3
+custom_colors/font_color_focus = Color( 0.682353, 0.0588235, 0.733333, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "Commencer"
 
@@ -65,7 +83,14 @@ text = "Commencer"
 margin_top = 75.0
 margin_right = 430.0
 margin_bottom = 140.0
+focus_neighbour_left = NodePath(".")
+focus_neighbour_top = NodePath("../StartButton")
+focus_neighbour_right = NodePath(".")
+focus_neighbour_bottom = NodePath("../SettingsButton")
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
 size_flags_vertical = 3
+custom_colors/font_color_focus = Color( 0.682353, 0.0588235, 0.733333, 1 )
 custom_fonts/font = SubResource( 2 )
 text = "Sélection du chapitre"
 
@@ -73,7 +98,14 @@ text = "Sélection du chapitre"
 margin_top = 150.0
 margin_right = 430.0
 margin_bottom = 215.0
+focus_neighbour_left = NodePath(".")
+focus_neighbour_top = NodePath("../ChapSelectButton")
+focus_neighbour_right = NodePath(".")
+focus_neighbour_bottom = NodePath("../ExitButton")
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
 size_flags_vertical = 3
+custom_colors/font_color_focus = Color( 0.682353, 0.0588235, 0.733333, 1 )
 custom_fonts/font = SubResource( 3 )
 text = "Paramètres"
 
@@ -81,7 +113,14 @@ text = "Paramètres"
 margin_top = 225.0
 margin_right = 430.0
 margin_bottom = 290.0
+focus_neighbour_left = NodePath(".")
+focus_neighbour_top = NodePath("../SettingsButton")
+focus_neighbour_right = NodePath(".")
+focus_neighbour_bottom = NodePath("../StartButton")
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
 size_flags_vertical = 3
+custom_colors/font_color_focus = Color( 0.682353, 0.0588235, 0.733333, 1 )
 custom_fonts/font = SubResource( 4 )
 text = "Quitter le jeu"
 
@@ -98,3 +137,291 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="SousMenu" type="MarginContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -275.0
+margin_top = -318.5
+margin_right = 275.0
+margin_bottom = 318.5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ChapSelectMenu" type="NinePatchRect" parent="SousMenu" groups=["SousMenu"]]
+visible = false
+margin_right = 550.0
+margin_bottom = 637.0
+texture = ExtResource( 4 )
+
+[node name="MarginContainer" type="MarginContainer" parent="SousMenu/ChapSelectMenu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -204.0
+margin_top = -268.0
+margin_right = 205.0
+margin_bottom = 269.0
+custom_constants/margin_right = 25
+custom_constants/margin_top = 50
+custom_constants/margin_left = 25
+custom_constants/margin_bottom = 50
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SousMenu/ChapSelectMenu/MarginContainer"]
+margin_left = 25.0
+margin_top = 50.0
+margin_right = 384.0
+margin_bottom = 487.0
+custom_constants/separation = 30
+
+[node name="Battle1" type="Button" parent="SousMenu/ChapSelectMenu/MarginContainer/VBoxContainer" groups=["SousMenuB"]]
+margin_right = 359.0
+margin_bottom = 63.0
+focus_neighbour_left = NodePath(".")
+focus_neighbour_top = NodePath("../Battle5")
+focus_neighbour_right = NodePath(".")
+focus_neighbour_bottom = NodePath("../Battle2")
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
+mouse_filter = 2
+size_flags_vertical = 3
+custom_colors/font_color_focus = Color( 0.682353, 0.0588235, 0.733333, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "Combat 1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Battle2" type="Button" parent="SousMenu/ChapSelectMenu/MarginContainer/VBoxContainer" groups=["SousMenuB"]]
+margin_top = 93.0
+margin_right = 359.0
+margin_bottom = 156.0
+focus_neighbour_left = NodePath(".")
+focus_neighbour_top = NodePath("../Battle1")
+focus_neighbour_right = NodePath(".")
+focus_neighbour_bottom = NodePath("../Battle3")
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
+mouse_filter = 2
+size_flags_vertical = 3
+custom_colors/font_color_focus = Color( 0.682353, 0.0588235, 0.733333, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "Combat 2"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Battle3" type="Button" parent="SousMenu/ChapSelectMenu/MarginContainer/VBoxContainer" groups=["SousMenuB"]]
+margin_top = 186.0
+margin_right = 359.0
+margin_bottom = 250.0
+focus_neighbour_left = NodePath(".")
+focus_neighbour_top = NodePath("../Battle2")
+focus_neighbour_right = NodePath(".")
+focus_neighbour_bottom = NodePath("../Battle4")
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
+mouse_filter = 2
+size_flags_vertical = 3
+custom_colors/font_color_focus = Color( 0.682353, 0.0588235, 0.733333, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "Combat 3"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Battle4" type="Button" parent="SousMenu/ChapSelectMenu/MarginContainer/VBoxContainer" groups=["SousMenuB"]]
+margin_top = 280.0
+margin_right = 359.0
+margin_bottom = 343.0
+focus_neighbour_left = NodePath(".")
+focus_neighbour_top = NodePath("../Battle3")
+focus_neighbour_right = NodePath(".")
+focus_neighbour_bottom = NodePath("../Battle5")
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
+mouse_filter = 2
+size_flags_vertical = 3
+custom_colors/font_color_focus = Color( 0.682353, 0.0588235, 0.733333, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "Combat 4"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Battle5" type="Button" parent="SousMenu/ChapSelectMenu/MarginContainer/VBoxContainer" groups=["SousMenuB"]]
+margin_top = 373.0
+margin_right = 359.0
+margin_bottom = 437.0
+focus_neighbour_left = NodePath(".")
+focus_neighbour_top = NodePath("../Battle4")
+focus_neighbour_right = NodePath(".")
+focus_neighbour_bottom = NodePath("../Battle1")
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
+mouse_filter = 2
+size_flags_vertical = 3
+custom_colors/font_color_focus = Color( 0.682353, 0.0588235, 0.733333, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "Combat 5"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SettingsMenu" type="NinePatchRect" parent="SousMenu" groups=["SousMenu"]]
+visible = false
+margin_right = 550.0
+margin_bottom = 637.0
+texture = ExtResource( 4 )
+
+[node name="MarginContainer" type="MarginContainer" parent="SousMenu/SettingsMenu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -204.0
+margin_top = -268.0
+margin_right = 205.0
+margin_bottom = 269.0
+custom_constants/margin_right = 25
+custom_constants/margin_top = 50
+custom_constants/margin_left = 25
+custom_constants/margin_bottom = 50
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SousMenu/SettingsMenu/MarginContainer"]
+margin_left = 25.0
+margin_top = 50.0
+margin_right = 384.0
+margin_bottom = 487.0
+custom_constants/separation = 30
+
+[node name="Multi" type="Label" parent="SousMenu/SettingsMenu/MarginContainer/VBoxContainer"]
+margin_right = 359.0
+margin_bottom = 38.0
+custom_fonts/font = SubResource( 7 )
+text = "Multijoueur"
+align = 1
+
+[node name="MultiChoix" type="HBoxContainer" parent="SousMenu/SettingsMenu/MarginContainer/VBoxContainer"]
+margin_top = 68.0
+margin_right = 359.0
+margin_bottom = 112.0
+custom_constants/separation = 80
+alignment = 1
+
+[node name="YesMulti" type="Button" parent="SousMenu/SettingsMenu/MarginContainer/VBoxContainer/MultiChoix" groups=["SousMenuB"]]
+margin_right = 139.0
+margin_bottom = 44.0
+focus_neighbour_left = NodePath("../NoMulti")
+focus_neighbour_top = NodePath("../../Lang/French")
+focus_neighbour_right = NodePath("../NoMulti")
+focus_neighbour_bottom = NodePath("../../Lang/French")
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_colors/font_color_focus = Color( 0.682353, 0.0588235, 0.733333, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "Oui"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NoMulti" type="Button" parent="SousMenu/SettingsMenu/MarginContainer/VBoxContainer/MultiChoix" groups=["SousMenuB"]]
+margin_left = 219.0
+margin_right = 359.0
+margin_bottom = 44.0
+focus_neighbour_left = NodePath("../YesMulti")
+focus_neighbour_top = NodePath("../../Lang/English")
+focus_neighbour_right = NodePath("../YesMulti")
+focus_neighbour_bottom = NodePath("../../Lang/English")
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_colors/font_color_focus = Color( 0.682353, 0.0588235, 0.733333, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "Non"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Language" type="Label" parent="SousMenu/SettingsMenu/MarginContainer/VBoxContainer"]
+margin_top = 142.0
+margin_right = 359.0
+margin_bottom = 180.0
+custom_fonts/font = SubResource( 7 )
+text = "Langage"
+align = 1
+
+[node name="Lang" type="HBoxContainer" parent="SousMenu/SettingsMenu/MarginContainer/VBoxContainer"]
+margin_top = 210.0
+margin_right = 359.0
+margin_bottom = 254.0
+custom_constants/separation = 80
+alignment = 1
+
+[node name="French" type="Button" parent="SousMenu/SettingsMenu/MarginContainer/VBoxContainer/Lang" groups=["SousMenuB"]]
+margin_right = 139.0
+margin_bottom = 44.0
+focus_neighbour_left = NodePath("../English")
+focus_neighbour_top = NodePath("../../MultiChoix/YesMulti")
+focus_neighbour_right = NodePath("../English")
+focus_neighbour_bottom = NodePath("../../MultiChoix/YesMulti")
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_colors/font_color_focus = Color( 0.682353, 0.0588235, 0.733333, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "Français"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="English" type="Button" parent="SousMenu/SettingsMenu/MarginContainer/VBoxContainer/Lang" groups=["SousMenuB"]]
+margin_left = 219.0
+margin_right = 359.0
+margin_bottom = 44.0
+focus_neighbour_left = NodePath("../French")
+focus_neighbour_top = NodePath("../../MultiChoix/NoMulti")
+focus_neighbour_right = NodePath("../French")
+focus_neighbour_bottom = NodePath("../../MultiChoix/NoMulti")
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_colors/font_color_focus = Color( 0.682353, 0.0588235, 0.733333, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "English"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/StartButton" to="." method="_on_StartButton_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ChapSelectButton" to="." method="_on_ChapSelectButton_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/SettingsButton" to="." method="_on_SettingsButton_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ExitButton" to="." method="_on_ExitButton_pressed"]
+[connection signal="pressed" from="SousMenu/ChapSelectMenu/MarginContainer/VBoxContainer/Battle1" to="." method="_on_Battle1_pressed"]
+[connection signal="pressed" from="SousMenu/ChapSelectMenu/MarginContainer/VBoxContainer/Battle2" to="." method="_on_Battle2_pressed"]
+[connection signal="pressed" from="SousMenu/ChapSelectMenu/MarginContainer/VBoxContainer/Battle3" to="." method="_on_Battle3_pressed"]
+[connection signal="pressed" from="SousMenu/ChapSelectMenu/MarginContainer/VBoxContainer/Battle4" to="." method="_on_Battle4_pressed"]
+[connection signal="pressed" from="SousMenu/ChapSelectMenu/MarginContainer/VBoxContainer/Battle5" to="." method="_on_Battle5_pressed"]
+[connection signal="pressed" from="SousMenu/SettingsMenu/MarginContainer/VBoxContainer/MultiChoix/YesMulti" to="." method="_on_YesMulti_pressed"]
+[connection signal="pressed" from="SousMenu/SettingsMenu/MarginContainer/VBoxContainer/MultiChoix/NoMulti" to="." method="_on_NoMulti_pressed"]
+[connection signal="pressed" from="SousMenu/SettingsMenu/MarginContainer/VBoxContainer/Lang/French" to="." method="_on_French_pressed"]
+[connection signal="pressed" from="SousMenu/SettingsMenu/MarginContainer/VBoxContainer/Lang/English" to="." method="_on_English_pressed"]

@@ -8,6 +8,8 @@ signal skillFinished
 
 #booléen qui dit si le combattant est un ennemi ou non
 var ennemi = false
+#accès au noeud principal (défini en fonction du type de combattant)
+onready var main = get_node("../../..") #chemin pour ennemi
 
 #Stockage du sprite dans une variable pour pouvoir modifier son animation plus rapidement (et intuitivement)
 var spriteAnim

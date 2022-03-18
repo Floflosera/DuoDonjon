@@ -5,8 +5,8 @@ signal butPressed
 signal butPressedF
 
 #langue du jeu pour savoir quoi lire pour les compétences ennemis
-onready var fr = true
-onready var en = false
+onready var fr = main.fr
+onready var en = main.en
 
 #permet de récupérer les informations sur le combat actuel
 onready var combat = get_node("../..")
@@ -27,7 +27,7 @@ onready var ciblePar = [false,false]
 onready var lacere = false
 
 #chargement des variables de l'ennemis déjà définis + le chargement du texte des skills
-func _ready():
+func _ready():	
 	spriteAnim = self
 	ennemi = true
 	barreVie = $LifeBar

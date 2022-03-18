@@ -6,11 +6,15 @@ signal derouleTourFini
 signal actionFinie
 #Signal annonçant la fin de l'affichage du texte en haut de l'écran
 signal narraTextFini
+#Signal annonçant la fin du combat
+signal finCombat
 
 #Les variables de langues devront être mises sur le script principal et transférer dans les scènes suivantes
 #qui en ont besoin, pour l'instant la transmission n'est pas instantanné donc ça n'est pas directement possible
 onready var fr = true
 onready var en = false
+
+onready var gameover = false
 
 #On stocke chaque combattant dans des variables pour accéder plus facilement à leur informations et méthode
 onready var combattantHarry = $GeneralInterface/HBoxContainer/Harry
@@ -91,6 +95,20 @@ func deroulementTour():
 				narraText(combattantsBase[i].aTextSkill2()) #on affiche son 2e affichage de texte
 				yield(self,"narraTextFini")
 				combattantsBase[i].secondText = false
+	
+	if(combattantHarry.launch && combattantFlaux.hide):
+		#litDialogue($DialogueInterface.dialogueName())
+		#yield($DialogueInterface, "dialogueFini")
+		combattantFlaux.hide = false
+		for co in combattantsBase:
+			co.cibler(combattantFlaux)
+		#elle va pas forcément être cibler par tous comme les ennemis ciblent souvent après leur choix
+		#mais elle ne sera plus cachée et sera cibler par les attaques qui ciblent au choixSkill
+	
+	if(combattantHarry.launch && combattantFlaux.affutage):
+		#litDialogue($DialogueInterface.dialogueName())
+		#yield($DialogueInterface, "dialogueFini")
+		pass
 	
 	ordreTour()
 	

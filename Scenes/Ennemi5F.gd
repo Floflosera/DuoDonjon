@@ -20,9 +20,9 @@ func degatsPrisDef(degats):
 	if(combat.combattants[combat.iActuel] == aHarry):
 		match compteurSept:
 			0:
-				degatsPris(7)
+				degatsPris(70)
 				compteurSept += 1
-				return str(7)
+				return str(70)
 			1:
 				degatsPris(77)
 				compteurSept += 1
@@ -52,8 +52,12 @@ func degatsPris(degats):
 	#à concaténer avec le nombre des dégâts quand on inflige les dégâts avec un personnage
 	showDegats.set_bbcode("[center][wave freq=25]")
 	
-	if(pv == 0 && (aLucy.choixSkill == 0 || aLucy.choixSkill == 1)):
+	if(pv == 0 && aLucy.armeB.pv == 0):
+		aLucy.tourEffectue = true
 		aLucy.affutage = false
-		aLucy.choixSkill = randi() % 2 + 2
+	elif(pv == 0):
+		aLucy.affutage = false
+		if(choixSkill != 3):
+			aLucy.choixSkill = 2
 	
 	emit_signal("degatsTermine")

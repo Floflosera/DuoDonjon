@@ -12,7 +12,7 @@ config_version=4
 
 config/name="Duo d'un Donjon"
 config/description="On a un vrai nom maintenant"
-run/main_scene="res://Scenes/Combat2.tscn"
+run/main_scene="res://Scenes/Main.tscn"
 config/icon="res://assets/Icone.png"
 
 [display]

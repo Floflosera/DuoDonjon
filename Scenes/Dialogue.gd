@@ -1,5 +1,7 @@
 extends Node
 
+onready var main = get_node("../..")
+
 #Signal qui permet d'alerter de la fin d'un dialogue
 signal dialogueFini
 signal dialogueSuivant
@@ -8,10 +10,10 @@ signal confirmHpro
 signal confirmFpro
 
 #Variable qui indique la langue du jeu (qui sera choisi par le joueur)
-onready var fr = true
-onready var en = false
+onready var fr = main.fr
+onready var en = main.en
 
-onready var multi = false
+onready var multi = main.multi
 
 onready var HarryDia = get_node("../GeneralInterface/HBoxContainer/Harry")
 onready var FlauxDia = get_node("../GeneralInterface/HBoxContainer/Flaux")
