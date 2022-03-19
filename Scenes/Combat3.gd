@@ -51,6 +51,8 @@ func _ready():
 		gameover = true
 		nar.narraText("Game Over")
 		yield(nar,"narraTextFini")
+		$TimerActions.start()
+		yield($TimerActions, "timeout")
 	
 	emit_signal("finCombat")
 	

@@ -1,3 +1,6 @@
+#Ceci aide à faire des chargements avec barre de progression
+#Mais c'est plus compliqué d'utiliser ça et nos chargements sont assez courts
+
 var thread
 var mutex
 var sem

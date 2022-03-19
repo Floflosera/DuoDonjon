@@ -94,7 +94,7 @@ func degatsPris(degats):
 		cibler(combat.combattants[combat.iActuel])
 		combat.narraText(aTextSkill2())
 		yield(combat,"narraTextFini")
-		lucyDegats(1 + randi()%2)
+		lucyDegats(75 + randi()%2)
 		yield(cible,"degatsTermine")
 	
 	if(aHarry.launch && aFlaux.affutage && aFlaux.choixSkill == 1 && combat.combattants[combat.iActuel] == aFlaux):
@@ -147,7 +147,12 @@ func choixSkill():
 		
 		if(phase1):
 			if(armeB.pv > 0 && armeF.pv > 0):
-				choixSkill = randi() % 4
+				if(choixSkill == 0 || choixSkill == 1):
+					choixSkill = (randi() % 2) + 2
+				elif(choixSkill == 2 || choixSkill == 3):
+					choixSkill = randi() % 2
+				else:
+					choixSkill = randi() % 4
 			elif(armeB.pv > 0):
 				choixSkill = randi() % 2
 			else:
@@ -159,7 +164,23 @@ func choixSkill():
 			elif(affaibli):
 				choixSkill = 5
 			else:
-				choixSkill = (randi() % 5) + 4
+				if(combat.nTour - combat.nTourDebutPhase2 == 0):
+					choixSkill = 7
+				elif(combat.nTour - combat.nTourDebutPhase2 == 1):
+					choixSkill = 6
+				elif(combat.nTour - combat.nTourDebutPhase2 == 2):
+					choixSkill = 4
+				elif(combat.nTour - combat.nTourDebutPhase2 == 3):
+					choixSkill = 8
+				elif((aHarry.pv == aHarry.pvmax || aFlaux.pv == aFlaux.pvmax) && choixSkill != 7):
+					choixSkill = 7
+				elif((aHarry.pv + aFlaux.pv >= 350) && choixSkill != 6):
+					choixSkill = 6
+				elif(randi()%2):
+					choixSkill = 4 + (4 * (randi()%2))
+				else:
+					choixSkill = (randi() % 5) + 4
+				
 				if(choixSkill == 5):
 					choixSkill = 4
 					
@@ -179,7 +200,10 @@ func castSkill1():
 		if(aFlaux.hide):
 			cibler(aHarry)
 		else:
-			cibler(allies[randi()%2])
+			if(randi()%2):
+				cibler(aHarry)
+			else:
+				cibler(allies[randi()%2])
 	elif(aHarry.pv > 0):
 		cibler(aHarry)
 	else:
@@ -188,7 +212,7 @@ func castSkill1():
 	if(cible == aFlaux && aFlaux.hide):
 		yield(spriteAnim,"animation_finished")
 	else:
-		lucyDegats(1 + randi()%2)
+		lucyDegats(75 + randi()%9)
 		yield(cible,"degatsTermine")
 	
 	affutage = true
@@ -198,24 +222,16 @@ func castSkill1():
 #Labourage (multi cible)
 func castSkill2():
 	
-	if(aHarry.pv > 0 && aFlaux.pv > 0):
-		if(not(aFlaux.hide)):
-			cibler(aFlaux)
-			lucyDegats(1 + randi()%2)
-		cibler(aHarry)
-		lucyDegats(1 + randi()%2)
-		yield(cible,"degatsTermine")
-	elif(aHarry.pv > 0):
-		cibler(aHarry)
-		lucyDegats(1 + randi()%2)
-		yield(cible,"degatsTermine")
+	if(aHarry.pv == 0 && aFlaux.hide):
+		yield(spriteAnim,"animation_finished")
 	else:
-		if(not(aFlaux.hide)):
+		if(aHarry.pv > 0):
+			cibler(aHarry)
+			lucyDegats(60 + randi()%8)
+		if(aFlaux.pv > 0 && not(aFlaux.hide)):
 			cibler(aFlaux)
-			lucyDegats(1 + randi()%2)
-			yield(cible,"degatsTermine")
-		else:
-			yield(spriteAnim,"animation_finished")
+			lucyDegats(60 + randi()%8)
+		yield(cible,"degatsTermine")
 	
 	affutage = false
 	
@@ -230,7 +246,10 @@ func castSkill3():
 		if(aFlaux.hide):
 			cibler(aHarry)
 		else:
-			cibler(allies[randi()%2])
+			if(randi()%2):
+				cibler(aFlaux)
+			else:
+				cibler(allies[randi()%2])
 	elif(aHarry.pv > 0):
 		cibler(aHarry)
 	else:
@@ -239,7 +258,7 @@ func castSkill3():
 	if(cible == aFlaux && aFlaux.hide):
 		yield(spriteAnim,"animation_finished")
 	else:
-		lucyDegats(1 + randi()%2)
+		lucyDegats(50 + randi()%6)
 		yield(cible,"degatsTermine")
 	
 	affutage = false
@@ -275,7 +294,7 @@ func castSkill5():
 	if(cible == aFlaux && aFlaux.hide):
 		yield(spriteAnim,"animation_finished")
 	else:
-		lucyDegats(1 + randi()%2)
+		lucyDegats(cible.defense - 5 + 80 + randi()%10)
 		yield(cible,"degatsTermine")
 	
 	emit_signal("skillCast")
@@ -287,13 +306,19 @@ func castSkill6():
 	affaibli = false
 	
 	if(aHarry.pv > 0 && aFlaux.pv > 0):
-		cibler(allies[randi()%2])
+		if(randi()%3):
+			if(aHarry.pv > aFlaux.pv):
+				cibler(aHarry)
+			else:
+				cibler(aFlaux)
+		else:
+			cibler(allies[randi()%2])
 	elif(aHarry.pv > 0):
 		cibler(aHarry)
 	else:
 		cibler(aFlaux)
 	
-	lucyDegats(1 + randi()%2)
+	lucyDegats(120 + randi()%13)
 	yield(cible,"degatsTermine")
 	
 	emit_signal("skillCast")
@@ -305,7 +330,10 @@ func castSkill7():
 		if(aFlaux.hide):
 			cibler(aHarry)
 		else:
-			cibler(allies[randi()%2])
+			if(randi()%2):
+				cibler(aHarry)
+			else:
+				cibler(allies[randi()%2])
 	elif(aHarry.pv > 0):
 		cibler(aHarry)
 	else:
@@ -315,8 +343,11 @@ func castSkill7():
 		yield(spriteAnim,"animation_finished")
 	else:
 		showDegats.add_color_override("default_color", Color(144.0/255.0,28.0/255.0,218.0/255.0,1))
-		showDegats.set_bbcode(showDegats.get_bbcode() + degatsPrisDef(25))
-		lucyDegats(1 + randi()%2)
+		if(cible == aHarry):
+			showDegats.set_bbcode(showDegats.get_bbcode() + degatsPrisDef(45))
+		else:
+			showDegats.set_bbcode(showDegats.get_bbcode() + degatsPrisDef(25))
+		lucyDegats(100 + randi()%11)
 		yield(cible,"degatsTermine")
 	
 	if(not(flagGetReal)):														#DIALOGUE
@@ -334,12 +365,12 @@ func castSkill8():
 	
 	if(aHarry.pv > 0):
 		cibler(aHarry)
-		lucyDegats(1 + randi()%2)
+		lucyDegats(40 + randi()%5)
 		cible.abled()
 		cible.tourEffectue = true
-	if(aFlaux.pv > 0):
+	if(aFlaux.pv > 0 && not(aFlaux.hide)):
 		cibler(aFlaux)
-		lucyDegats(1 + randi()%2)
+		lucyDegats(40 + randi()%5)
 		cible.abled()
 		cible.tourEffectue = true
 	yield(cible,"degatsTermine")
