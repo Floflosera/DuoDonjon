@@ -1,0 +1,5 @@
+{
+  "dialog_1" : {"textHarry": "", "spHarry": "0", "textFlaux": "YEAH! Great work!", "spFlaux": "1", "cadreN": "", "supOther": "true", "devent": "0"},
+  "dialog_2" : {"textHarry": "Now! We have to attack while it’s stunned!", "spHarry": "2", "textFlaux": "", "spFlaux": "1", "cadreN": "", "supOther": "true", "devent": "0"},
+  "dialog_3" : {"textHarry": "", "spHarry": "2", "textFlaux": "Got it!", "spFlaux": "1", "cadreN": "", "supOther": "true", "devent": "0"},
+}

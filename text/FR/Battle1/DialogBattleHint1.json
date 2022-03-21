@@ -1,0 +1,5 @@
+{
+	"dialog_1" : {"textHarry": "Ses attaques de boulets font mal...", "spHarry": "5", "textFlaux": "", "spFlaux": "0", "cadreN": "", "supOther": "true", "devent": "0"},
+	"dialog_2" : {"textHarry": "", "spHarry": "5", "textFlaux": "Ses articulations ont l'air d'être en bois ! Tu penses que tu pourrais casser ses bras ?", "spFlaux": "0", "cadreN": "", "supOther": "true", "devent": "0"},
+	"dialog_3" : {"textHarry": "Un bon coup ou deux devraient faire l'affaire.", "spHarry": "5", "textFlaux": "", "spFlaux": "0", "cadreN": "", "supOther": "true", "devent": "0"},
+}

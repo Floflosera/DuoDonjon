@@ -31,21 +31,21 @@ func _ready():
 		nTour += 1 #chaque tour le numéro du tour augmente de 1
 		
 		if((nTour == 4) && (combattantEnnemi.aBD.pv > 0 && combattantEnnemi.aBG.pv > 0)):
-			#litDialogue($DialogueInterface.dialogueHint1())
-			#yield($DialogueInterface, "dialogueFini")
+			litDialogue($DialogueInterface.dialogueHint1())
+			yield($DialogueInterface, "dialogueFini")
 			hintFlag = true
 		elif((nTour > 4 && nTour % 4 == 0) && (combattantEnnemi.aBD.pv > 0 && combattantEnnemi.aBG.pv > 0) && hintFlag):
-			#litDialogue($DialogueInterface.dialogueHint2())
-			#yield($DialogueInterface, "dialogueFini")
+			litDialogue($DialogueInterface.dialogueHint2())
+			yield($DialogueInterface, "dialogueFini")
 			pass
 		
 		if((combattantEnnemi.aBD.pv == 0 || combattantEnnemi.aBG.pv == 0) && not(flagBras1)):
-			#litDialogue($DialogueInterface.dialogueName())
-			#yield($DialogueInterface, "dialogueFini")
+			litDialogue($DialogueInterface.dialogueBroken1())
+			yield($DialogueInterface, "dialogueFini")
 			flagBras1 = true
 		elif((combattantEnnemi.aBD.pv == 0 && combattantEnnemi.aBG.pv == 0) && not(flagBras2)):
-			#litDialogue($DialogueInterface.dialogueName())
-			#yield($DialogueInterface, "dialogueFini")
+			litDialogue($DialogueInterface.dialogueBroken2())
+			yield($DialogueInterface, "dialogueFini")
 			flagBras2 = true
 		
 		$GeneralInterface.choixTour() #lance le choix du tour
@@ -58,8 +58,8 @@ func _ready():
 	
 	if(combattantEnnemi.pv == 0):
 		$EnnemiGroup.hide()
-		#litDialogue($DialogueInterface.dialogueEnd())
-		#yield($DialogueInterface, "dialogueFini")
+		litDialogue($DialogueInterface.dialogueEnd())
+		yield($DialogueInterface, "dialogueFini")
 	elif(combattantHarry.pv == 0 && combattantFlaux.pv == 0):
 		gameover = true
 		nar.narraText("Game Over")

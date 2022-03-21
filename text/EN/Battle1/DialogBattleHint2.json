@@ -1,0 +1,4 @@
+{
+	"dialog_1" : {"textHarry": "", "spHarry": "5", "textFlaux": "What are you doing?! It’s gonna get you if you don’t hurry and BREAK ITS ARMS!!!", "spFlaux": "2", "cadreN": "", "supOther": "true", "devent": "0"},
+	"dialog_2" : {"textHarry": "I’m doing what I can! Oof...", "spHarry": "5", "textFlaux": "", "spFlaux": "2", "cadreN": "", "supOther": "true", "devent": "0"},
+}

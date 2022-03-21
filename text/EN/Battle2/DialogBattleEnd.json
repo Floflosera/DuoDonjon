@@ -1,0 +1,10 @@
+{
+  "dialog_1" : {"textHarry": "It’s over.", "spHarry": "1", "textFlaux": "", "spFlaux": "0", "cadreN": "", "supOther": "true", "devent": "0"},
+  "dialog_2" : {"textHarry": "", "spHarry": "1", "textFlaux": "Not bad. You’re pretty okay with that shield of yours, actually.", "spFlaux": "0", "cadreN": "", "supOther": "true", "devent": "0"},
+  "dialog_3" : {"textHarry": "Thank you. You’re not so bad with your scythe yourself.", "spHarry": "1", "textFlaux": "", "spFlaux": "0", "cadreN": "", "supOther": "true", "devent": "0"},
+  "dialog_4" : {"textHarry": "To answer your question from earlier, my name is Harry. Sorry for not telling you.", "spHarry": "1", "textFlaux": "", "spFlaux": "0", "cadreN": "", "supOther": "true", "devent": "0"},
+  "dialog_5" : {"textHarry": "", "spHarry": "1", "textFlaux": "Eh, it’s okay.", "spFlaux": "0", "cadreN": "", "supOther": "true", "devent": "0"},
+  "dialog_6" : {"textHarry": "", "spHarry": "1", "textFlaux": "I’m counting on you for the rest, Harry.", "spFlaux": "0", "cadreN": "", "supOther": "true", "devent": "0"},
+  "dialog_7" : {"textHarry": "And I do too, Flaux. Let’s advance further.", "spHarry": "1", "textFlaux": "", "spFlaux": "0", "cadreN": "", "supOther": "true", "devent": "0"},
+  "dialog_8" : {"textHarry": "", "spHarry": "1", "textFlaux": "Yeah, let’s.", "spFlaux": "0", "cadreN": "", "supOther": "true", "devent": "0"},
+}

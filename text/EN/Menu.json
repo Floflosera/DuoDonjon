@@ -2,7 +2,7 @@
   "start" : {		"text": "Start"},
   "chapSelect" : {	"text": "Select chapter"},
   "settings" : {	"text": "Settings"},
-  "exit" : {		"text": "Exit the game"},
+  "exit" : {		"text": "Exit"},
 
   "battleButton" : {	"text": "Battle "},
 
@@ -10,6 +10,6 @@
   "yes" : {		"text": "Yes"},
   "no" : {		"text": "No"},
   "language" : {	"text": "Language"},
-  "french" : {		"text": "French"},
+  "french" : {		"text": "Français"},
   "english" : {		"text": "English"},
 }

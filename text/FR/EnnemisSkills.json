@@ -2,7 +2,7 @@
   "ennemi1_skill1" : {	"nameSkill": "Coup de boulet", "textSkill": "Robot Gardien donne un coup de boulet !"},
   "ennemi1_skill2" : {	"nameSkill": "Commotion", "textSkill": "Robot Gardien bondit sur Harry !", 
                                                   "textSkill2": "Harry perd en puissance !"},
-  "ennemi1_skill3" : {	"nameSkill": "Coup de boule", "textSkill": "Robot Gardien donne un coup de... boule."},
+  "ennemi1_skill3" : {	"nameSkill": "Coup de boule", "textSkill": "Robot Gardien donne un coup de… boule."},
 
   "ennemi2_skill1" : {	"nameSkill": "Coup de cornes", "textSkill": "Moutou frappe avec ses cornes !"},
   "ennemi2_skill2" : {	"nameSkill": "Préparation", "textSkill": "Moutou frotte le sol avec ses sabots."},

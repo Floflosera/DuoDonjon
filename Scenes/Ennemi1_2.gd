@@ -27,7 +27,7 @@ func degatsPris(degats):
 	#à concaténer avec le nombre des dégâts quand on inflige les dégâts avec un personnage
 	showDegats.set_bbcode("[center][wave freq=25]")
 	
-	if(pv == 0 && aRobotGardien.BG.pv == 0):
+	if(pv == 0 && aRobotGardien.aBG.pv == 0):
 		aRobotGardien.choixSkill = 2
 	elif(pv == 0):
 		aRobotGardien.choixSkill = 0

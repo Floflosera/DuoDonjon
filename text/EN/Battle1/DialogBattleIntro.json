@@ -1,0 +1,14 @@
+{
+	"dialog_1" : {"textHarry": "Is that... Is this a dungeon?", "spHarry": "0", "textFlaux": "", "spFlaux": "8", "cadreN": "", "supOther": "true", "devent": "0"},
+	"dialog_2" : {"textHarry": "So that's where these stairs led. I should stay vigilant.", "spHarry": "0", "textFlaux": "", "spFlaux": "8", "cadreN": "", "supOther": "true", "devent": "0"},
+	"dialog_3" : {"textHarry": "", "spHarry": "0", "textFlaux": "", "spFlaux": "8", "cadreN": "*CLUNK*", "supOther": "true", "devent": "0"},
+	"dialog_4" : {"textHarry": "", "spHarry": "0", "textFlaux": "Hey! Heeeey! Over there!", "spFlaux": "8", "cadreN": "", "supOther": "true", "devent": "0"},
+	"dialog_5" : {"textHarry": "Who's there?!", "spHarry": "4", "textFlaux": "", "spFlaux": "8", "cadreN": "", "supOther": "true", "devent": "0"},
+	"dialog_6" : {"textHarry": "", "spHarry": "4", "textFlaux": "Me, in the cage!", "spFlaux": "8", "cadreN": "", "supOther": "true", "devent": "0"},
+	"dialog_7" : {"textHarry": "... Oh.", "spHarry": "0", "textFlaux": "", "spFlaux": "0", "cadreN": "", "supOther": "true", "devent": "0"},
+	"dialog_8" : {"textHarry": "", "spHarry": "0", "textFlaux": "Listen, you gotta get me out of here! Before that metal guy comes back!", "spFlaux": "2", "cadreN": "", "supOther": "true", "devent": "0"},
+	"dialog_9" : {"textHarry": "... Before *what* comes back?", "spHarry": "0", "textFlaux": "", "spFlaux": "2", "cadreN": "", "supOther": "true", "devent": "0"},
+	"dialog_10" : {"textHarry": "", "spHarry": "0", "textFlaux": "Oh no, there it is!", "spFlaux": "4", "cadreN": "", "supOther": "true", "devent": "0"},
+	"dialog_11" : {"textHarry": "", "spHarry": "4", "textFlaux": "I hope you can fight!", "spFlaux": "0", "cadreN": "", "supOther": "true", "devent": "1"},
+	"dialog_12" : {"textHarry": "I’ll take care of it!", "spHarry": "2", "textFlaux": "", "spFlaux": "0", "cadreN": "", "supOther": "true", "devent": "0"},
+}

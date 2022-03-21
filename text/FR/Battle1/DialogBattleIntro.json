@@ -11,5 +11,5 @@
 	"dialog_10" : {"textHarry": "… Avant que *quoi* revienne ?", "spHarry": "0", "textFlaux": "", "spFlaux": "2", "cadreN": "", "supOther": "true", "devent": "0"},
 	"dialog_11" : {"textHarry": "", "spHarry": "0", "textFlaux": "Oh non, il est là !", "spFlaux": "4", "cadreN": "", "supOther": "true", "devent": "0"},
 	"dialog_12" : {"textHarry": "", "spHarry": "4", "textFlaux": "J'espère que tu sais te battre !", "spFlaux": "0", "cadreN": "", "supOther": "true", "devent": "1"},
-	"dialog_13" : {"textHarry": "Je m'en occupe !", "spHarry": "2", "textFlaux": "", "spFlaux": "0", "cadreN": "", "supOther": "true", "devent": "1"},
+	"dialog_13" : {"textHarry": "Je m'en occupe !", "spHarry": "2", "textFlaux": "", "spFlaux": "0", "cadreN": "", "supOther": "true", "devent": "0"},
 }
