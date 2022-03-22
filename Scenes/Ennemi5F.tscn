@@ -18,6 +18,7 @@ animations = [ {
 
 [node name="Ennemi5F" instance=ExtResource( 1 )]
 frames = SubResource( 1 )
+frame = 1
 script = ExtResource( 2 )
 
 [node name="LifeBar" parent="." index="1"]

@@ -117,6 +117,7 @@ func degatsPris(degats):
 	if(pv - degats <= 0):			#La condition fait en sorte de ne pas avoir des pv négatifs
 		pv = 0						#Si les pv sont inférieurs aux dégâts réçus, alors on tombe à 0pv
 		tourEffectue = true			#Si un allié n'a plus de pv, alors son tour sera compté comme déjà passé
+		abled()
 	else:
 		pv -= degats				#Sinon les dégâts sont soustraits aux pv du personnage
 	barreVie.value = pv				#On met à jour l'affichage des pv de la barre

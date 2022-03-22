@@ -29,7 +29,9 @@ func degatsPris(degats):
 	
 	if(pv == 0 && aRobotGardien.aBD.pv == 0):
 		aRobotGardien.choixSkill = 2
+		spriteAnim.hide()
 	elif(pv == 0):
 		aRobotGardien.choixSkill = 0
+		spriteAnim.hide()
 	
 	emit_signal("degatsTermine")

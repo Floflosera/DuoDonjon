@@ -11,7 +11,7 @@ onready var armes = [armeB,armeF]
 
 onready var choixSkillPre = -1
 
-onready var phase1 = true
+onready var phase1 = true #changement de phase possible pour test direct
 
 onready var affutage = false
 onready var bouclier = false
@@ -68,13 +68,43 @@ func aTextSkill2():
 
 func changerSprite():
 	if(phase1):
-		spriteAnim.play("Neutre")
+		if(armeF.pv > 0 && armeB.pv > 0):
+			spriteAnim.play("ArmesConfiante")
+		elif(armeF.pv > 0):
+			spriteAnim.play("FauxConfiante")
+		elif(armeB.pv > 0):
+			spriteAnim.play("BouclierConfiante")
+		else:
+			spriteAnim.play("MainsVides")
 	else:
-		spriteAnim.play("Neutre")
+		if(affaibli):
+			spriteAnim.play("AuSolTriste")
+		else:
+			spriteAnim.play("GardeColere")
 
 #surcharge pour le contre
 func degatsPris(degats):
-	spriteAnim.play("Blesse")		#Lance l'animation des dégâts pris
+	if(phase1):
+		if(armeF.pv > 0 && armeB.pv > 0):
+			if(combat.combattants[combat.iActuel] == aFlaux && aFlaux.choixSkill == 2):
+				spriteAnim.play("ArmesBlesseeTout")
+			else:
+				spriteAnim.play("ArmesBlesseeLucy")
+		elif(armeF.pv > 0):
+			if(combat.combattants[combat.iActuel] == aFlaux && aFlaux.choixSkill == 2):
+				spriteAnim.play("FauxBlesseeTout")
+			else:
+				spriteAnim.play("FauxBlesseeLucy")
+		else:
+			if(combat.combattants[combat.iActuel] == aFlaux && aFlaux.choixSkill == 2):
+				spriteAnim.play("BouclierBlesseeTout")
+			else:
+				spriteAnim.play("BouclierBlesseeLucy")
+	else:
+		if(affaibli):
+			spriteAnim.play("AuSolBlessee")
+		else:
+			spriteAnim.play("GardeBlessee")
 	if(degats <= 1):
 		degats = 1
 	if(pv - degats <= 0):			#La condition fait en sorte de ne pas avoir des pv négatifs
@@ -97,10 +127,12 @@ func degatsPris(degats):
 		lucyDegats(75 + randi()%2)
 		yield(cible,"degatsTermine")
 	
-	if(aHarry.launch && aFlaux.affutage && aFlaux.choixSkill == 1 && combat.combattants[combat.iActuel] == aFlaux):
+	if(aHarry.launch && aFlaux.affute && aFlaux.choixSkill == 1 && combat.combattantsBase[combat.iActuel] == aFlaux):
 		affaibli = true
 		aTerre = true
 		tourEffectue = true
+		
+		changerSprite()
 		
 		combat.narraText(aTextSkill2())
 		yield(combat,"narraTextFini")
@@ -153,7 +185,7 @@ func choixSkill():
 					choixSkill = randi() % 2
 				else:
 					choixSkill = randi() % 4
-			elif(armeB.pv > 0):
+			elif(armeF.pv > 0):
 				choixSkill = randi() % 2
 			else:
 				choixSkill = (randi() % 2) + 2
@@ -304,6 +336,7 @@ func castSkill6():
 	
 	priorite = false
 	affaibli = false
+	changerSprite()
 	
 	if(aHarry.pv > 0 && aFlaux.pv > 0):
 		if(randi()%3):

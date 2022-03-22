@@ -24,7 +24,13 @@ func degatsPrisDef(degats):
 
 #surcharge pour envoyer des infos à Lucy
 func degatsPris(degats):
-	spriteAnim.play("Blesse")		#Lance l'animation des dégâts pris
+	if(combat.combattants[combat.iActuel] == aFlaux && aFlaux.choixSkill == 2):
+		pass #Lucy gère
+	else:
+		if(aLucy.armeF.pv > 0):
+			aLucy.spriteAnim.play("ArmesBlesseeBouclier")
+		else:
+			aLucy.spriteAnim.play("BouclierBlesseeBouclier")
 	if(degats <= 1):
 		degats = 1
 	if(pv - degats <= 0):			#La condition fait en sorte de ne pas avoir des pv négatifs
@@ -33,8 +39,8 @@ func degatsPris(degats):
 	else:
 		pv -= degats				#Sinon les dégâts sont soustraits aux pv du personnage
 	barreVie.value = pv
-	yield(spriteAnim,"animation_finished")	#Attend la fin de l'animation de blessure
-	changerSprite()							#Change le sprite des 2 persos
+	yield(aLucy.spriteAnim,"animation_finished")	#Attend la fin de l'animation de blessure
+	aLucy.changerSprite()							#Change le sprite des 2 persos
 	
 	#informations de base pour l'animation du richText qui montre les dégâts
 	#à concaténer avec le nombre des dégâts quand on inflige les dégâts avec un personnage

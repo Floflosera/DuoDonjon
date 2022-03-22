@@ -12,7 +12,7 @@ func _ready():
 	pvmax = 200
 	pv = 200
 	defense = 30
-	vitesse = 3
+	vitesse = 1
 	
 	#Ne cible que Harry, car il est le seul à participer au combat
 	cibler(aHarry)

@@ -287,9 +287,11 @@ func castSkill2():
 	flauxDegats(77+randi()%8)
 	ciblage = false
 	priorite = false
-	affute = false
 	
 	yield(cible,"degatsTermine")
+	
+	affute = false				#Après le yield car l'ennemi5 doit vérifier si Flaux était en affutage
+	
 	emit_signal("skillCast")
 
 func castSkill3():

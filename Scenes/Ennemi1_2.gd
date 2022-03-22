@@ -5,7 +5,7 @@ onready var aRobotGardien = get_node("../Ennemi1_1")
 func _ready():
 	#Statistiques de l'ennemi
 	pvmax = 70
-	pv = 70
+	pv =70
 	defense = 0
 	vitesse = 0
 
@@ -29,7 +29,10 @@ func degatsPris(degats):
 	
 	if(pv == 0 && aRobotGardien.aBG.pv == 0):
 		aRobotGardien.choixSkill = 2
+		spriteAnim.hide()
 	elif(pv == 0):
 		aRobotGardien.choixSkill = 0
+		spriteAnim.hide()
+		
 	
 	emit_signal("degatsTermine")
