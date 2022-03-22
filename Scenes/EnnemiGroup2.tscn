@@ -9,5 +9,6 @@ script = ExtResource( 3 )
 
 [node name="Ennemi2" parent="." index="0" instance=ExtResource( 2 )]
 position = Vector2( 649, 214 )
+frame = 0
 
 [connection signal="butPressed" from="Ennemi2" to="." method="_on_Ennemi2_butPressed"]

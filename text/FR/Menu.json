@@ -9,7 +9,7 @@
   "multi" : {		"text": "Multijoueur"},
   "yes" : {		"text": "Oui"},
   "no" : {		"text": "Non"},
-  "language" : {	"text": "Langage"},
+  "language" : {	"text": "Langue"},
   "french" : {		"text": "Français"},
   "english" : {		"text": "Anglais"},
 }

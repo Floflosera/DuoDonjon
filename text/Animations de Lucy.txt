@@ -1,0 +1,52 @@
+Animations de combat :
+- ArmesBlesseeBouclier
+- ArmesBlesseeFaux
+- ArmesBlesseeLucy
+- ArmesBlesseeTout
+- ArmesConfiante
+- AuSolBlessee
+- AuSolTriste
+- BouclierBlesseeBouclier
+- BouclierBlesseeLucy
+- BouclierBlesseeTout
+- BouclierConfiante
+- FauxBlesseeFaux
+- FauxBlesseeLucy
+- FauxBlesseeTout
+- FauxConfiante
+- GardeBlessee
+- GardeColere
+
+Animations de dialogue :
+- ArmesColere
+- ArmesConfiante
+- ArmesEbahie
+- ArmesNeutre
+- ArmesSurprise
+- ArmesTriste
+- AuSolSurprise
+- BouclierConfiante
+- BouclierSurprise
+- FauxConfiante
+- FauxSurprise
+- GardeColere
+- GardeContente
+- MainsVides
+- NormaleContente
+- NormaleNeutre
+- NormalePasConfiante
+- NormaleTriste
+- Vide
+
+(Tout est dans l'ordre des animations dans Godot, t'as pas à chercher)
+
+---------------------------------
+
+"Armes" au début : Lucy porte les deux armes.
+"Bouclier" ou "Faux" au début : Lucy porte l'arme en question.
+"Garde" au début : Lucy est en phase 2.
+"AuSol" au début : Lucy est à terre pendant la phase 2.
+
+Le mot après "Blessee" dans les animations qui le comportent indique les cibles de l'attaque reçue ("Tout" est uniquement pour quand Flaux utilise Labourage).
+
+ArmesConfiante, BouclierConfiante, FauxConfiante, AuSolTriste, GardeColere sont les animations de base de chaque état.

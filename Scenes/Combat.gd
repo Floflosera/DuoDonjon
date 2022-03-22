@@ -105,7 +105,7 @@ func deroulementTour():
 		#elle va pas forcément être cibler par tous comme les ennemis ciblent souvent après leur choix
 		#mais elle ne sera plus cachée et sera cibler par les attaques qui ciblent au choixSkill
 	
-	if(combattantHarry.launch && combattantFlaux.affutage):
+	if(combattantHarry.launch && combattantFlaux.affute):
 		#litDialogue($DialogueInterface.dialogueName())
 		#yield($DialogueInterface, "dialogueFini")
 		pass

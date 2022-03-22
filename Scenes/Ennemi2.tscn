@@ -8,8 +8,13 @@
 animations = [ {
 "frames": [ ExtResource( 3 ), null, ExtResource( 3 ), null, ExtResource( 3 ), null ],
 "loop": false,
-"name": "Blesse",
+"name": "BlesseAssomme",
 "speed": 6.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 3 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "Assomme",
+"speed": 3.0
 }, {
 "frames": [ ExtResource( 3 ), ExtResource( 3 ), ExtResource( 3 ) ],
 "loop": true,
@@ -18,18 +23,12 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 3 ), null, ExtResource( 3 ), null, ExtResource( 3 ), null ],
 "loop": false,
-"name": "BlesseAssomme",
+"name": "Blesse",
 "speed": 6.0
-}, {
-"frames": [ ExtResource( 3 ), ExtResource( 3 ), ExtResource( 3 ) ],
-"loop": true,
-"name": "Assomme",
-"speed": 3.0
 } ]
 
 [node name="Ennemi2" instance=ExtResource( 1 )]
 frames = SubResource( 1 )
-frame = 1
 script = ExtResource( 2 )
 
 [node name="LifeBar" parent="." index="1"]
