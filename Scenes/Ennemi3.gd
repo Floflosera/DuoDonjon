@@ -29,6 +29,9 @@ func _ready():
 	skillTextAppend(skills_text)
 	ligne_skills(11)
 	skillTextAppend(skills_text)
+	
+	if(en): #on lit une chaîne de caractères en plus en anglais car le nom de la cible apparaît avant la fin
+		skillTextAppend(skills_keys[9].textSkill3)
 
 #cas particulier avec la compétence de tir incapacitant
 func tirInc_skills():
@@ -37,7 +40,10 @@ func tirInc_skills():
 
 func aTextSkill():
 	if(choixSkill == 2):
-		return textSkill[choixSkill] + cible.nom + " !"
+		if(fr):
+			return textSkill[choixSkill] + cible.nom + " !"
+		elif(en):
+			return textSkill[choixSkill] + cible.nom + textSkill[6]
 	else:
 		return textSkill[choixSkill]
 

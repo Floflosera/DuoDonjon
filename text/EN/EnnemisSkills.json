@@ -12,8 +12,9 @@
 
   "ennemi3_skill1" : {	"nameSkill": "Tir magique", "textSkill": "Magidrone fires a magic bullet!"},
   "ennemi3_skill2" : {	"nameSkill": "Barrage", "textSkill": "Magidrone fires a burst of bullets!"},
-  "ennemi3_skill3" : {	"nameSkill": "Tir incapacitant", "textSkill": "Magidrone aims at ___'s legs",
-                                                         "textSkill2": " falls to the ground!"},
+  "ennemi3_skill3" : {	"nameSkill": "Tir incapacitant", "textSkill": "Magidrone aims at ",
+                                                         "textSkill2": " falls to the ground!",
+							 "textSkill3": "'s legs!"},
   "ennemi3_skill4" : {  "nameSkill": "Tir affaibli", "textSkill": "Magidrone does as well as it can."},
   "ennemi3_skill5" : {	"nameSkill": "Tombe", "textSkill": "Magidrone falls to the ground!"},
 

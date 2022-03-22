@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/selectionV.png-20853d5e1b40a5c2b5cafe3a5de75b5e.stex"
+path="res://.import/Lucy_placeholder.png-322894d2a7d6b69f45baccfb5262a7fa.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/selectionV.png"
-dest_files=[ "res://.import/selectionV.png-20853d5e1b40a5c2b5cafe3a5de75b5e.stex" ]
+source_file="res://assets/Lucy_placeholder.png"
+dest_files=[ "res://.import/Lucy_placeholder.png-322894d2a7d6b69f45baccfb5262a7fa.stex" ]
 
 [params]
 

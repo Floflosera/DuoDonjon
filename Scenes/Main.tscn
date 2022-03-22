@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scenes/Main.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Menu.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/Loading.png" type="Texture" id=3]
+[ext_resource path="res://Scenes/Transition.tscn" type="PackedScene" id=4]
 
 [node name="Main" type="Node"]
 script = ExtResource( 1 )
@@ -12,3 +13,5 @@ position = Vector2( 640, 360 )
 texture = ExtResource( 3 )
 
 [node name="Menu" parent="." instance=ExtResource( 2 )]
+
+[node name="Transition" parent="." instance=ExtResource( 4 )]

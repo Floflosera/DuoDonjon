@@ -10,13 +10,16 @@
 script = ExtResource( 2 )
 
 [node name="Ennemi5" parent="." index="0" instance=ExtResource( 3 )]
-position = Vector2( 622, 221 )
+position = Vector2( 557, 179 )
+frame = 2
 
 [node name="Ennemi5B" parent="." index="1" instance=ExtResource( 4 )]
-position = Vector2( 902, 201 )
+position = Vector2( 763, 234 )
+frame = 2
 
 [node name="Ennemi5F" parent="." index="2" instance=ExtResource( 5 )]
-position = Vector2( 351, 199 )
+position = Vector2( 355, 273 )
+frame = 2
 
 [connection signal="butPressed" from="Ennemi5" to="." method="_on_Ennemi5_butPressed"]
 [connection signal="butPressedF" from="Ennemi5" to="." method="_on_Ennemi5_butPressedF"]

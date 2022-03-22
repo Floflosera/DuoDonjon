@@ -6,7 +6,7 @@ var instance
 onready var win = false
 
 func _ready():
-	
+
 	menuC.startB.grab_focus()
 
 func startStory():
