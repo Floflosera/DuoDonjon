@@ -26,6 +26,7 @@ func dialogueTest():
 		dialogue_file = dialogueTest #déclaré au dessus: const dialogueTest = "res://text/FR/DialogueTest.json"
 	elif(en):
 		dialogue_file = dialogueTesten
+	yield(main,"finiTransition")
 	dialogueRead() #puis on lance la lecture du dialogue
 
 func dialogueIntro():

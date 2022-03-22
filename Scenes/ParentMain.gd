@@ -1,6 +1,10 @@
 extends Node
 
-onready var menuC = $Menu
+onready var calqueS = $CalqueScene
+
+onready var transitionS = $CalqueTransition/Transition
+
+onready var menuC = $CalqueScene/Menu
 
 onready var fr = true
 onready var en = false

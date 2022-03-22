@@ -53,6 +53,9 @@ func _ready():
 		$EnnemiGroup.hide()
 		litDialogue($DialogueInterface.dialogueEnd())
 		yield($DialogueInterface, "dialogueFini")
+		combattantHarry.changerSpriteDia(0)
+		combattantFlaux.changerSpriteDia(0)
+		$DialogueInterface.show()
 	elif(combattantHarry.pv == 0 && combattantFlaux.pv == 0):
 		gameover = true
 		nar.narraText("Game Over")

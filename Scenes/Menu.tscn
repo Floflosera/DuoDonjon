@@ -65,7 +65,7 @@ margin_right = 855.0
 margin_bottom = 290.0
 custom_constants/separation = 10
 
-[node name="StartButton" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="StartButton" type="Button" parent="MarginContainer/VBoxContainer" groups=["MenuB"]]
 margin_right = 430.0
 margin_bottom = 65.0
 focus_neighbour_left = NodePath(".")
@@ -79,7 +79,7 @@ custom_colors/font_color_focus = Color( 0.682353, 0.0588235, 0.733333, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "Commencer"
 
-[node name="ChapSelectButton" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="ChapSelectButton" type="Button" parent="MarginContainer/VBoxContainer" groups=["MenuB"]]
 margin_top = 75.0
 margin_right = 430.0
 margin_bottom = 140.0
@@ -94,7 +94,7 @@ custom_colors/font_color_focus = Color( 0.682353, 0.0588235, 0.733333, 1 )
 custom_fonts/font = SubResource( 2 )
 text = "Sélection du chapitre"
 
-[node name="SettingsButton" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="SettingsButton" type="Button" parent="MarginContainer/VBoxContainer" groups=["MenuB"]]
 margin_top = 150.0
 margin_right = 430.0
 margin_bottom = 215.0
@@ -109,7 +109,7 @@ custom_colors/font_color_focus = Color( 0.682353, 0.0588235, 0.733333, 1 )
 custom_fonts/font = SubResource( 3 )
 text = "Paramètres"
 
-[node name="ExitButton" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="ExitButton" type="Button" parent="MarginContainer/VBoxContainer" groups=["MenuB"]]
 margin_top = 225.0
 margin_right = 430.0
 margin_bottom = 290.0

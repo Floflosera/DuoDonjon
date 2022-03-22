@@ -1,6 +1,6 @@
 extends Node
 
-onready var main = get_node("../..")
+onready var main = get_node("../../..")
 
 #Signal qui permet d'alerter de la fin d'un dialogue
 signal dialogueFini

@@ -1,6 +1,6 @@
 extends Control
 
-onready var main = get_node("..")
+onready var main = get_node("../..")
 
 onready var startB = $MarginContainer/VBoxContainer/StartButton
 onready var chapSelectB = $MarginContainer/VBoxContainer/ChapSelectButton
@@ -37,26 +37,32 @@ func _on_ChapSelectButton_pressed():
 	battle1B.grab_focus()
 
 func _on_Battle1_pressed():
+	get_tree().call_group("SousMenuB", "release_focus")
 	sel = 1
 	main.selectBattle()
 
 func _on_Battle2_pressed():
+	get_tree().call_group("SousMenuB", "release_focus")
 	sel = 2
 	main.selectBattle()
 
 func _on_Battle3_pressed():
+	get_tree().call_group("SousMenuB", "release_focus")
 	sel = 3
 	main.selectBattle()
 
 func _on_Battle4_pressed():
+	get_tree().call_group("SousMenuB", "release_focus")
 	sel = 4
 	main.selectBattle()
 
 func _on_Battle5_pressed():
+	get_tree().call_group("SousMenuB", "release_focus")
 	sel = 5
 	main.selectBattle()
 
 func _on_StartButton_pressed():
+	get_tree().call_group("MenuB", "release_focus")
 	main.startStory()
 
 func _on_SettingsButton_pressed():

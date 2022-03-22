@@ -15,6 +15,7 @@ func dialogueIntro():
 		dialogue_file = dialogueIntroFR
 	elif(en):
 		dialogue_file = dialogueIntroEN
+	yield(main,"finiTransition")
 	dialogueRead()
 
 func dialogueHint1():

@@ -21,6 +21,8 @@ func dialogueIntro():
 		dialogue_file = dialogueIntroFR
 	elif(en):
 		dialogue_file = dialogueIntroEN
+	FlauxDia.changerSpriteDia(8)
+	yield(main,"finiTransition")
 	dialogueRead()
 
 func dialogueHint1():

@@ -5,7 +5,7 @@ signal butPressed
 
 #à l'apparition du personnage, on lui donne ses caractèristiques qui ne changent pas
 func _ready():
-	main = get_node("../../../..")
+	main = get_node("../../../../..")
 	
 	ennemi = false
 	spriteAnim = get_node("Portrait/VBoxContainer/Cadre/Sprite")

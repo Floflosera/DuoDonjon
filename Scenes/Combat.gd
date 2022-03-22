@@ -9,10 +9,10 @@ signal narraTextFini
 #Signal annonçant la fin du combat
 signal finCombat
 
-#Les variables de langues devront être mises sur le script principal et transférer dans les scènes suivantes
-#qui en ont besoin, pour l'instant la transmission n'est pas instantanné donc ça n'est pas directement possible
-onready var fr = true
-onready var en = false
+onready var main = get_node("../..")
+
+onready var fr = main.fr
+onready var en = main.en
 
 onready var gameover = false
 

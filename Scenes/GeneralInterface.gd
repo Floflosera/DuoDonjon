@@ -7,7 +7,7 @@ onready var i = 0
 signal choixTourFini
 signal choixCharaTourFini
 
-onready var main = get_node("../..")
+onready var main = get_node("../../..")
 
 #Les variables qui informe de si le jeu est en français ou anglais
 onready var fr = main.fr

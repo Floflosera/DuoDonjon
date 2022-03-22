@@ -96,7 +96,7 @@ func castSkill1():
 	
 	bouclier = true
 	
-	harryDegats(40+randi()%5)
+	harryDegats(40000+randi()%5)
 	ciblage = false
 	
 	yield(cible,"degatsTermine")
