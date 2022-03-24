@@ -86,8 +86,8 @@ func _ready():
 		$DialogueInterface.show()
 	elif(combattantHarry.pv == 0 && combattantFlaux.pv == 0):
 		gameover = true
-		nar.narraText("Game Over")
-		yield(nar,"narraTextFini")
+		narraText("Game Over")
+		yield(self,"narraTextFini")
 		$TimerActions.start()
 		yield($TimerActions, "timeout")
 	

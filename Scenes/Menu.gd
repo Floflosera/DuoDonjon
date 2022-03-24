@@ -23,13 +23,16 @@ onready var settingsMultiNo = $SousMenu/SettingsMenu/MarginContainer/VBoxContain
 onready var settingsLang = $SousMenu/SettingsMenu/MarginContainer/VBoxContainer/Language
 onready var settingsLangfr = $SousMenu/SettingsMenu/MarginContainer/VBoxContainer/Lang/French
 onready var settingsLangen = $SousMenu/SettingsMenu/MarginContainer/VBoxContainer/Lang/English
+onready var settingsControl = $SousMenu/SettingsMenu/MarginContainer/VBoxContainer/Control
+onready var settingsQuitSet = $SousMenu/SettingsMenu/MarginContainer/VBoxContainer/QuitSet
 
 func _process(delta):
 	
-	if(Input.is_action_just_pressed("ui_cancel")):
-		get_tree().call_group("SousMenuB", "release_focus")
-		get_tree().call_group("SousMenu", "hide")
-		startB.grab_focus()
+	if(main.intro):
+		if(Input.is_action_just_pressed("ui_cancel")):
+			get_tree().call_group("SousMenuB", "release_focus")
+			get_tree().call_group("SousMenu", "hide")
+			startB.grab_focus()
 
 func _on_ChapSelectButton_pressed():
 	chapSelectB.release_focus()
@@ -72,9 +75,17 @@ func _on_SettingsButton_pressed():
 
 func _on_YesMulti_pressed():
 	main.multi = true
+	main.ligne_menu(5)
+	settingsMulti.set_text(main.menu_text)
+	main.ligne_menu(6)
+	settingsMulti.set_text(settingsMulti.get_text() + " (" + main.menu_text + ")")
 
 func _on_NoMulti_pressed():
 	main.multi = false
+	main.ligne_menu(5)
+	settingsMulti.set_text(main.menu_text)
+	main.ligne_menu(7)
+	settingsMulti.set_text(settingsMulti.get_text() + " (" + main.menu_text + ")")
 
 func _on_French_pressed():
 	main.fr = true
@@ -91,3 +102,9 @@ func _on_English_pressed():
 
 func _on_ExitButton_pressed():
 	get_tree().quit()
+
+
+func _on_QuitSet_pressed():
+	get_tree().call_group("SousMenuB", "release_focus")
+	get_tree().call_group("SousMenu", "hide")
+	startB.grab_focus()

@@ -27,7 +27,7 @@ func _ready():
 	yield($DialogueInterface, "dialogueFini")
 	
 	#Exemple de boucle d'un combat
-	while((combattantHarry.pv > 0 || combattantFlaux.pv > 0) && combattantEnnemi.pv > 0):
+	while(combattantHarry.pv > 0 && combattantEnnemi.pv > 0):
 		nTour += 1 #chaque tour le numéro du tour augmente de 1
 		
 		if((nTour == 4) && (combattantEnnemi.aBD.pv > 0 && combattantEnnemi.aBG.pv > 0)):
@@ -63,10 +63,10 @@ func _ready():
 		combattantHarry.changerSpriteDia(0)
 		combattantFlaux.changerSpriteDia(0)
 		$DialogueInterface.show()
-	elif(combattantHarry.pv == 0 && combattantFlaux.pv == 0):
+	elif(combattantHarry.pv == 0):
 		gameover = true
-		nar.narraText("Game Over")
-		yield(nar,"narraTextFini")
+		narraText("Game Over")
+		yield(self,"narraTextFini")
 		$TimerActions.start()
 		yield($TimerActions, "timeout")
 	

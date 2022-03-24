@@ -66,6 +66,12 @@ func load_menuText():
 	
 	ligne_menu(5)
 	menuC.settingsMulti.set_text(menu_text)
+	if(multi):
+		ligne_menu(6)
+		menuC.settingsMulti.set_text(menuC.settingsMulti.get_text() + " (" + menu_text + ")")
+	else:
+		ligne_menu(7)
+		menuC.settingsMulti.set_text(menuC.settingsMulti.get_text() + " (" + menu_text + ")")
 	ligne_menu(6)
 	menuC.settingsMultiYes.set_text(menu_text)
 	ligne_menu(7)
@@ -77,3 +83,7 @@ func load_menuText():
 	menuC.settingsLangfr.set_text(menu_text)
 	ligne_menu(10)
 	menuC.settingsLangen.set_text(menu_text)
+	ligne_menu(11)
+	menuC.settingsControl.set_text(menu_text)
+	ligne_menu(12)
+	menuC.settingsQuitSet.set_text(menu_text)

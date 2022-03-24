@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Godot-Fontpack-d244bf6170b399a6d4d26a0d906058ddf2dafdf1/fonts/montreal/Montreal-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/FondNormal.png" type="Texture" id=2]
@@ -33,6 +33,10 @@ font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=7]
 size = 30
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 20
 font_data = ExtResource( 1 )
 
 [node name="Menu" type="Control"]
@@ -302,7 +306,7 @@ __meta__ = {
 margin_left = 25.0
 margin_top = 50.0
 margin_right = 384.0
-margin_bottom = 487.0
+margin_bottom = 521.0
 custom_constants/separation = 30
 
 [node name="Multi" type="Label" parent="SousMenu/SettingsMenu/MarginContainer/VBoxContainer"]
@@ -323,7 +327,7 @@ alignment = 1
 margin_right = 139.0
 margin_bottom = 44.0
 focus_neighbour_left = NodePath("../NoMulti")
-focus_neighbour_top = NodePath("../../Lang/French")
+focus_neighbour_top = NodePath("../../QuitSet")
 focus_neighbour_right = NodePath("../NoMulti")
 focus_neighbour_bottom = NodePath("../../Lang/French")
 focus_next = NodePath(".")
@@ -343,7 +347,7 @@ margin_left = 219.0
 margin_right = 359.0
 margin_bottom = 44.0
 focus_neighbour_left = NodePath("../YesMulti")
-focus_neighbour_top = NodePath("../../Lang/English")
+focus_neighbour_top = NodePath("../../QuitSet")
 focus_neighbour_right = NodePath("../YesMulti")
 focus_neighbour_bottom = NodePath("../../Lang/English")
 focus_next = NodePath(".")
@@ -379,7 +383,7 @@ margin_bottom = 44.0
 focus_neighbour_left = NodePath("../English")
 focus_neighbour_top = NodePath("../../MultiChoix/YesMulti")
 focus_neighbour_right = NodePath("../English")
-focus_neighbour_bottom = NodePath("../../MultiChoix/YesMulti")
+focus_neighbour_bottom = NodePath("../../QuitSet")
 focus_next = NodePath(".")
 focus_previous = NodePath(".")
 mouse_filter = 2
@@ -399,7 +403,7 @@ margin_bottom = 44.0
 focus_neighbour_left = NodePath("../French")
 focus_neighbour_top = NodePath("../../MultiChoix/NoMulti")
 focus_neighbour_right = NodePath("../French")
-focus_neighbour_bottom = NodePath("../../MultiChoix/NoMulti")
+focus_neighbour_bottom = NodePath("../../QuitSet")
 focus_next = NodePath(".")
 focus_previous = NodePath(".")
 mouse_filter = 2
@@ -408,6 +412,37 @@ size_flags_vertical = 3
 custom_colors/font_color_focus = Color( 0.682353, 0.0588235, 0.733333, 1 )
 custom_fonts/font = SubResource( 6 )
 text = "English"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Label" parent="SousMenu/SettingsMenu/MarginContainer/VBoxContainer"]
+margin_top = 284.0
+margin_right = 359.0
+margin_bottom = 397.0
+custom_fonts/font = SubResource( 8 )
+text = "Flèches directionnelles
+J1: Z/Q/S/D J2:flèches
+Valider/Annuler
+J1:C/X J2:Entrée/Retour Arr."
+align = 1
+
+[node name="QuitSet" type="Button" parent="SousMenu/SettingsMenu/MarginContainer/VBoxContainer" groups=["SousMenuB"]]
+margin_top = 427.0
+margin_right = 359.0
+margin_bottom = 471.0
+focus_neighbour_left = NodePath(".")
+focus_neighbour_top = NodePath("../Lang/French")
+focus_neighbour_right = NodePath(".")
+focus_neighbour_bottom = NodePath("../MultiChoix/YesMulti")
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_colors/font_color_focus = Color( 0.682353, 0.0588235, 0.733333, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "Valider"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -425,3 +460,4 @@ __meta__ = {
 [connection signal="pressed" from="SousMenu/SettingsMenu/MarginContainer/VBoxContainer/MultiChoix/NoMulti" to="." method="_on_NoMulti_pressed"]
 [connection signal="pressed" from="SousMenu/SettingsMenu/MarginContainer/VBoxContainer/Lang/French" to="." method="_on_French_pressed"]
 [connection signal="pressed" from="SousMenu/SettingsMenu/MarginContainer/VBoxContainer/Lang/English" to="." method="_on_English_pressed"]
+[connection signal="pressed" from="SousMenu/SettingsMenu/MarginContainer/VBoxContainer/QuitSet" to="." method="_on_QuitSet_pressed"]

@@ -3,20 +3,35 @@ extends "res://Scenes/ParentMain.gd"
 signal finiTransition
 
 var scene
+var scene2
 var instance
 
 onready var win = false
 
+onready var intro = false
+
 func _ready():
 	
-	#OUBLIE PAS CES DEUX PARAMETRES SI TU CHANGES, MÊME SI TU CHANGES PAS EN FAIT, OUAIS
-	#oof quelle idée d'écrire en maj, après je vais voir que ça, wait...
-	transitionS.offset.x = -1280
-	transitionS.modulate.a8 = 0
-
-	menuC.startB.grab_focus()
+	transitionS.show()
+	langageMenu()
+	menuC.settingsM.show()
+	
+	$TimerTransi.set_wait_time(1.0)
+	$TimerTransi.start()
+	yield($TimerTransi, "timeout")
+	$TimerTransi.set_wait_time(0.01)
+	
+	transition()
+	menuC.settingsMultiYes.grab_focus()
+	yield(self, "finiTransition")
+	
+	yield(menuC.settingsQuitSet, "pressed") #Valider pressé
+	
+	intro = true
+	#menuC.startB.grab_focus()
 
 func startStory():
+	scene = preload("res://Scenes/Combat1.tscn")
 	transition()
 	yield(self,"finiTransition")
 	menuC.queue_free()
@@ -24,7 +39,7 @@ func startStory():
 	while(not(win)):
 		win = false
 		
-		scene = preload("res://Scenes/Combat1.tscn")
+		#scene = preload("res://Scenes/Combat1.tscn")
 		instance = scene.instance()
 		calqueS.add_child(instance)
 		
@@ -35,6 +50,9 @@ func startStory():
 		
 		if(not(instance.gameover)):
 			win = true
+			scene = preload("res://Scenes/Combat2.tscn")
+		else:
+			scene = preload("res://Scenes/Combat1.tscn")
 		
 		transition()
 		yield(self,"finiTransition")
@@ -46,7 +64,7 @@ func startStory():
 	while(not(win)):
 		win = false
 		
-		scene = preload("res://Scenes/Combat2.tscn")
+		#scene = preload("res://Scenes/Combat2.tscn")
 		instance = scene.instance()
 		calqueS.add_child(instance)
 		
@@ -57,6 +75,9 @@ func startStory():
 		
 		if(not(instance.gameover)):
 			win = true
+			scene = preload("res://Scenes/Combat3.tscn")
+		else:
+			scene = preload("res://Scenes/Combat2.tscn")
 		
 		transition()
 		yield(self,"finiTransition")
@@ -68,7 +89,7 @@ func startStory():
 	while(not(win)):
 		win = false
 		
-		scene = preload("res://Scenes/Combat3.tscn")
+		#scene = preload("res://Scenes/Combat3.tscn")
 		instance = scene.instance()
 		calqueS.add_child(instance)
 		
@@ -79,6 +100,9 @@ func startStory():
 		
 		if(not(instance.gameover)):
 			win = true
+			scene = preload("res://Scenes/Combat4.tscn")
+		else:
+			scene = preload("res://Scenes/Combat3.tscn")
 		
 		transition()
 		yield(self,"finiTransition")
@@ -90,7 +114,7 @@ func startStory():
 	while(not(win)):
 		win = false
 		
-		scene = preload("res://Scenes/Combat4.tscn")
+		#scene = preload("res://Scenes/Combat4.tscn")
 		instance = scene.instance()
 		calqueS.add_child(instance)
 		
@@ -101,6 +125,9 @@ func startStory():
 		
 		if(not(instance.gameover)):
 			win = true
+			scene = preload("res://Scenes/Combat5.tscn")
+		else:
+			scene = preload("res://Scenes/Combat4.tscn")
 		
 		instance.queue_free()
 	
@@ -109,7 +136,7 @@ func startStory():
 	while(not(win)):
 		win = false
 		
-		scene = preload("res://Scenes/Combat5.tscn")
+		#scene = preload("res://Scenes/Combat5.tscn")
 		instance = scene.instance()
 		calqueS.add_child(instance)
 		
@@ -120,13 +147,16 @@ func startStory():
 		
 		if(not(instance.gameover)):
 			win = true
+			scene = preload("res://Scenes/Menu.tscn")
+		else:
+			scene = preload("res://Scenes/Combat5.tscn")
 		
 		transition()
 		yield(self,"finiTransition")
 		
 		instance.queue_free()
 	
-	scene = preload("res://Scenes/Menu.tscn")
+	#scene = preload("res://Scenes/Menu.tscn")
 	instance = scene.instance()
 	calqueS.add_child(instance)
 	menuC = instance
@@ -137,10 +167,6 @@ func startStory():
 	menuC.startB.grab_focus()
 
 func selectBattle():
-	
-	transition()
-	yield(self,"finiTransition")
-	menuC.queue_free()
 	
 	match menuC.sel:
 		1:
@@ -154,6 +180,10 @@ func selectBattle():
 		5:
 			scene = preload("res://Scenes/Combat5.tscn")
 	
+	transition()
+	yield(self,"finiTransition")
+	menuC.queue_free()
+	
 	instance = scene.instance()
 	calqueS.add_child(instance)
 	
@@ -162,12 +192,13 @@ func selectBattle():
 	
 	yield(instance,"finCombat")
 	
+	scene = preload("res://Scenes/Menu.tscn")
+	
 	transition()
 	yield(self,"finiTransition")
 	
 	instance.queue_free()
 	
-	scene = preload("res://Scenes/Menu.tscn")
 	instance = scene.instance()
 	
 	menuC = instance
@@ -183,9 +214,12 @@ func langageMenu():
 
 func transitionS():
 	
+	#transitionS.offset.x = 1280
+	#transitionS.modulate.a8 = 255
+	
 	if(transitionS.offset.x == 0):
 		transitionS.playing = true
-		while(transitionS.offset.x > -1280):
+		while(transitionS.offset.x > 0):
 			transitionS.offset.x -= 40
 			$TimerTransi.start()
 			yield($TimerTransi, "timeout")
@@ -194,7 +228,7 @@ func transitionS():
 		yield($TimerTransi, "timeout")
 		$TimerTransi.set_wait_time(0.01)
 	else:
-		while(transitionS.offset.x > -2560):
+		while(transitionS.offset.x > -1280):
 			transitionS.offset.x -= 40
 			$TimerTransi.start()
 			yield($TimerTransi, "timeout")
@@ -211,10 +245,10 @@ func transition():
 			transitionS.modulate.a8 += 5
 			$TimerTransi.start()
 			yield($TimerTransi, "timeout")
-		$TimerTransi.set_wait_time(1.0)
-		$TimerTransi.start()
-		yield($TimerTransi, "timeout")
-		$TimerTransi.set_wait_time(0.01)
+		#$TimerTransi.set_wait_time(1.0)
+		#$TimerTransi.start()
+		#yield($TimerTransi, "timeout")
+		#$TimerTransi.set_wait_time(0.01)
 	else:
 		while(transitionS.modulate.a8 > 0):
 			transitionS.modulate.a8 -= 5

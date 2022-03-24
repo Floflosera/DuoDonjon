@@ -12,4 +12,6 @@
   "language" : {	"text": "Language"},
   "french" : {		"text": "Français"},
   "english" : {		"text": "English"},
+  "control" : {		"text": "Directional arrows\nP1:W/A/S/D P2:arrows\nAccept/Cancel\nP1:C/X P2:Enter/Backspace"},
+  "quitSet" : {		"text": "Accept"},
 }

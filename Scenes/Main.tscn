@@ -18,3 +18,4 @@ one_shot = true
 [node name="CalqueTransition" type="CanvasLayer" parent="."]
 
 [node name="Transition" parent="CalqueTransition" instance=ExtResource( 4 )]
+visible = false
