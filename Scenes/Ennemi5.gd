@@ -66,6 +66,56 @@ func aTextSkill2():
 	elif(affaibli):
 		return textSkill[14]
 
+func changerSpriteDia(n):
+	match n:
+		0:
+			spriteAnim.play("ArmesColere")
+		1:
+			spriteAnim.play("ArmesConfiante")
+		2:
+			spriteAnim.play("ArmesEbahie")
+		3:
+			spriteAnim.play("ArmesNeutre")
+		4:
+			spriteAnim.play("ArmesSurprise")
+		5:
+			spriteAnim.play("ArmesTriste")
+		6:
+			spriteAnim.play("AuSolSurprise")
+		7:
+			spriteAnim.play("AuSolTriste")
+		8:
+			spriteAnim.play("BouclierConfiante")
+		9:
+			if(armeB.pv > 0):
+				spriteAnim.play("BouclierSurprise")
+			else:
+				spriteAnim.play("FauxSurprise")
+		10:
+			spriteAnim.play("FauxConfiante")
+		11:
+			if(armeF.pv > 0):
+				spriteAnim.play("FauxSurprise")
+			else:
+				spriteAnim.play("BouclierSurprise")
+		12:
+			spriteAnim.play("GardeColere")
+		13:
+			spriteAnim.play("GardeContente")
+		14:
+			spriteAnim.play("MainsVides")
+		15:
+			spriteAnim.play("NormaleContente")
+		16:
+			spriteAnim.play("NormaleNeutre")
+		17:
+			spriteAnim.play("NormalePasConfiante")
+		18:
+			spriteAnim.play("NormaleTriste")
+		19:
+			spriteAnim.play("Vide")
+		
+
 func changerSprite():
 	if(phase1):
 		if(armeF.pv > 0 && armeB.pv > 0):
