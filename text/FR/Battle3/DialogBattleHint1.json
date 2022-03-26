@@ -1,3 +1,5 @@
 {
-  "dialog_1" : {"textHarry": "Ça fonctionne ?", "spHarry": "0", "textFlaux": "", "spFlaux": "0", "cadreN": "", "supOther": "true", "devent": "0"},
+  "dialog_1" : {"textHarry": "", "spHarry": "0", "textFlaux": "Harry ! Alors, t'as une idée ?", "spFlaux": "0", "cadreN": "", "supOther": "true", "devent": "0"},
+  "dialog_2" : {"textHarry": "Peut-être, oui ! On ne peut pas espérer briser le cristal qui le fait voler, alors je pense qu'on devrait essayer de le plaquer au sol !", "spHarry": "0", "textFlaux": "", "spFlaux": "0", "cadreN": "", "supOther": "true", "devent": "0"},
+  "dialog_3" : {"textHarry": "", "spHarry": "0", "textFlaux": "Ça, je sais faire !", "spFlaux": "1", "cadreN": "", "supOther": "true", "devent": "0"},
 }

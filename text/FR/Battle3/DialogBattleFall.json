@@ -1,0 +1,6 @@
+{
+  "dialog_1" : {"textHarry": "C'est le moment d'attaquer ! Bien joué, partenaire.", "spHarry": "1", "textFlaux": "", "spFlaux": "0", "cadreN": "", "supOther": "true", "devent": "0"},
+  "dialog_2" : {"textHarry": "", "spHarry": "1", "textFlaux": "\"Partenaire\" ? D'où tu sors ça, toi ?", "spFlaux": "2", "cadreN": "", "supOther": "true", "devent": "0"},
+  "dialog_3" : {"textHarry": "Euh...", "spHarry": "4", "textFlaux": "", "spFlaux": "2", "cadreN": "", "supOther": "true", "devent": "0"},
+  "dialog_4" : {"textHarry": "", "spHarry": "4", "textFlaux": "... Bref. Je vais exploser cette foutue machine !", "spFlaux": "2", "cadreN": "", "supOther": "true", "devent": "0"},
+}
