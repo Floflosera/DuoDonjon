@@ -1,3 +1,5 @@
 {
-  "dialog_1" : {"textHarry": "Ça fonctionne ?", "spHarry": "0", "textFlaux": "", "spFlaux": "0", "cadreN": "", "supOther": "true", "devent": "0"},
+  "dialog_1" : {"textHarry": "", "spHarry": "0", "textFlaux": "Harry! You got an idea?", "spFlaux": "0", "cadreN": "", "supOther": "true", "devent": "0"},
+  "dialog_2" : {"textHarry": "Maybe! We can’t hope to break that crystal that allows it to fly, so we should probably try to slam it to the ground!", "spHarry": "0", "textFlaux": "", "spFlaux": "0", "cadreN": "", "supOther": "true", "devent": "0"},
+  "dialog_3" : {"textHarry": "", "spHarry": "0", "textFlaux": "I can do that!", "spFlaux": "1", "cadreN": "", "supOther": "true", "devent": "0"},
 }

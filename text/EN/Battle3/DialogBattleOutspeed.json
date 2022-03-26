@@ -1,0 +1,6 @@
+{
+  "dialog_1" : {"textHarry": "", "spHarry": "0", "textFlaux": "Wha-?! This thing’s faster than me?!", "spFlaux": "4", "cadreN": "", "supOther": "true", "devent": "0"},
+  "dialog_2" : {"textHarry": "That’s a problem... We should knock it down as quick as possible. It would be best if we both participated.", "spHarry": "2", "textFlaux": "", "spFlaux": "4", "cadreN": "", "supOther": "true", "devent": "0"},
+  "dialog_3" : {"textHarry": "", "spHarry": "2", "textFlaux": "But how exactly?", "spFlaux": "3", "cadreN": "", "supOther": "true", "devent": "0"},
+  "dialog_4" : {"textHarry": "Let me think...", "spHarry": "0", "textFlaux": "", "spFlaux": "3", "cadreN": "", "supOther": "true", "devent": "0"},
+}

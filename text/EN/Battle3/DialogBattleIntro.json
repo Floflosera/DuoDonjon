@@ -1,9 +1,9 @@
 {
-  "dialog_1" : {"textHarry": "", "spHarry": "0", "textFlaux": "(Planque-toi !)", "spFlaux": "0", "cadreN": "", "supOther": "true", "devent": "0"},
-  "dialog_2" : {"textHarry": "(Super, tu prends l'initiative, maintenant.)", "spHarry": "1", "textFlaux": "", "spFlaux": "0", "cadreN": "", "supOther": "true", "devent": "0"},
-  "dialog_3" : {"textHarry": "", "spHarry": "1", "textFlaux": "(Oh, tais-toi. Comment on se fait ce truc ?)", "spFlaux": "2", "cadreN": "", "supOther": "true", "devent": "0"},
-  "dialog_4" : {"textHarry": "(Il vole... Je pense que notre meilleure chance serait d'arriver à le faire tomber, mais comment ?)", "spHarry": "3", "textFlaux": "", "spFlaux": "2", "cadreN": "", "supOther": "true", "devent": "0"},
-  "dialog_5" : {"textHarry": "", "spHarry": "3", "textFlaux": "(Bah, on verra bien.) YAAAAH !!! J'VAIS LE FAUCHER !", "spFlaux": "2", "cadreN": "", "supOther": "true", "devent": "0"},
+  "dialog_1" : {"textHarry": "", "spHarry": "0", "textFlaux": "(Hide!)", "spFlaux": "0", "cadreN": "", "supOther": "true", "devent": "0"},
+  "dialog_2" : {"textHarry": "(Neat, you’re taking the initiative now.)", "spHarry": "1", "textFlaux": "", "spFlaux": "0", "cadreN": "", "supOther": "true", "devent": "0"},
+  "dialog_3" : {"textHarry": "", "spHarry": "1", "textFlaux": "(Oh, shut up. How do we deal with that thing?)", "spFlaux": "2", "cadreN": "", "supOther": "true", "devent": "0"},
+  "dialog_4" : {"textHarry": "(It’s flying... I think our best chance would be to make it fall down, but how?)", "spHarry": "3", "textFlaux": "", "spFlaux": "2", "cadreN": "", "supOther": "true", "devent": "0"},
+  "dialog_5" : {"textHarry": "", "spHarry": "3", "textFlaux": "(Eh, we’ll see.) YAAAAH!!! PREPARE TO MEET MY SCYTHE!", "spFlaux": "2", "cadreN": "", "supOther": "true", "devent": "0"},
   "dialog_6" : {"textHarry": "Flaux !", "spHarry": "4", "textFlaux": "", "spFlaux": "2", "cadreN": "", "supOther": "true", "devent": "0"},
-  "dialog_7" : {"textHarry": "Cette fille, je vous jure…", "spHarry": "3", "textFlaux": "", "spFlaux": "2", "cadreN": "", "supOther": "true", "devent": "0"},
+  "dialog_7" : {"textHarry": "This girl is going to be the end of me...", "spHarry": "3", "textFlaux": "", "spFlaux": "2", "cadreN": "", "supOther": "true", "devent": "0"},
 }

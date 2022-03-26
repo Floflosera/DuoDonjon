@@ -1,3 +1,10 @@
 {
-  "dialog_1" : {"textHarry": "Ça fonctionne ?", "spHarry": "0", "textFlaux": "", "spFlaux": "0", "cadreN": "", "supOther": "true", "devent": "0"},
+  "dialog_1" : {"textHarry": "Robots, an animal... What kind of dungeon is this?", "spHarry": "5", "textFlaux": "", "spFlaux": "0", "cadreN": "", "supOther": "true", "devent": "0"},
+  "dialog_2" : {"textHarry": "", "spHarry": "5", "textFlaux": "Oh, I’ve seen worse scythes. People are creative when it comes to protecting their treasure.", "spFlaux": "0", "cadreN": "", "supOther": "true", "devent": "0"},
+  "dialog_3" : {"textHarry": "... \"Scythes\"? Don’t you mean \"sites\"? You’ve been saying stuff like that for a while now. How do you do it?", "spHarry": "0", "textFlaux": "", "spFlaux": "0", "cadreN": "", "supOther": "true", "devent": "0"},
+  "dialog_4" : {"textHarry": "", "spHarry": "0", "textFlaux": "Oh, you noticed? Hehe, well...", "spFlaux": "0", "cadreN": "", "supOther": "true", "devent": "0"},
+  "dialog_5" : {"textHarry": "", "spHarry": "0", "textFlaux": "That’s my little secret!", "spFlaux": "1", "cadreN": "", "supOther": "true", "devent": "0"},
+  "dialog_6" : {"textHarry": "What the-", "spHarry": "4", "textFlaux": "", "spFlaux": "1", "cadreN": "", "supOther": "true", "devent": "0"},
+  "dialog_7" : {"textHarry": "", "spHarry": "4", "textFlaux": "Come on, I’m gonna leave you behind!", "spFlaux": "1", "cadreN": "", "supOther": "true", "devent": "0"},
+  "dialog_8" : {"textHarry": "I-I’m coming!", "spHarry": "4", "textFlaux": "", "spFlaux": "1", "cadreN": "", "supOther": "true", "devent": "0"},
 }
