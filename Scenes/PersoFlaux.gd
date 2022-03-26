@@ -29,7 +29,7 @@ func _ready():
 
 #Flaux utilise un _process(delta) pour que le joueur puisse annuler le choix du tour de Flaux pour le moment
 #et recommencer le choix du tour d'Harry
-func _process(delta):
+func _process(_delta):
 	#si on n'est pas en train de cibler avec Flaux (auquel cas "cancel" renvoie au menu de Flaux)
 	if(not(ciblage)):
 		if(Input.is_action_just_pressed("ui_cancel")):	#lorsqu'on appuie sur cancel

@@ -1,4 +1,5 @@
 {
-	"dialog_1" : {"textHarry": "", "spHarry": "5", "textFlaux": "Qu'est-ce que tu fais ?! Il va finir par t'avoir si tu te dépêches pas de CASSER SES BRAS !!!", "spFlaux": "2", "cadreN": "", "supOther": "true", "devent": "0"},
+	"dialog_1" : {"textHarry": "", "spHarry": "5", "textFlaux": "Qu'est-ce que tu fais ?! Il va finir par t'avoir si tu te dépêches pas de CASSER SES BRAS !!!", "spFlaux": "2", "cadreN": "", "supOther": "true", "devent": "2"},
 	"dialog_2" : {"textHarry": "Je fais ce que je peux ! Oof...", "spHarry": "5", "textFlaux": "", "spFlaux": "2", "cadreN": "", "supOther": "true", "devent": "0"},
+	"dialog_3" : {"textHarry": "", "spHarry": "5", "textFlaux": "", "spFlaux": "2", "cadreN": "", "supOther": "true", "devent": "2"},
 }

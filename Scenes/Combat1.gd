@@ -70,4 +70,4 @@ func _ready():
 		$TimerActions.start()
 		yield($TimerActions, "timeout")
 	
-	emit_signal("finCombat")
+	fini()

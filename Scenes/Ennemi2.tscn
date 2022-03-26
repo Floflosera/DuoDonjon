@@ -1,34 +1,36 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/Ennemi.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Ennemi2.gd" type="Script" id=2]
-[ext_resource path="res://assets/Ennemi2.png" type="Texture" id=3]
+[ext_resource path="res://assets/Moutou.png" type="Texture" id=3]
+[ext_resource path="res://assets/MoutouAssomme.png" type="Texture" id=4]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 3 ), null, ExtResource( 3 ), null, ExtResource( 3 ), null ],
-"loop": false,
-"name": "BlesseAssomme",
-"speed": 6.0
-}, {
-"frames": [ ExtResource( 3 ), ExtResource( 3 ), ExtResource( 3 ) ],
-"loop": true,
-"name": "Assomme",
-"speed": 3.0
-}, {
 "frames": [ ExtResource( 3 ), ExtResource( 3 ), ExtResource( 3 ) ],
 "loop": true,
 "name": "Neutre",
 "speed": 3.0
 }, {
-"frames": [ ExtResource( 3 ), null, ExtResource( 3 ), null, ExtResource( 3 ), null ],
+"frames": [ null, ExtResource( 3 ), null, ExtResource( 3 ), null, ExtResource( 3 ) ],
 "loop": false,
 "name": "Blesse",
 "speed": 6.0
+}, {
+"frames": [ null, ExtResource( 4 ), null, ExtResource( 4 ), null, ExtResource( 4 ) ],
+"loop": false,
+"name": "BlesseAssomme",
+"speed": 6.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 4 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "Assomme",
+"speed": 3.0
 } ]
 
 [node name="Ennemi2" instance=ExtResource( 1 )]
 frames = SubResource( 1 )
+frame = 2
 script = ExtResource( 2 )
 
 [node name="LifeBar" parent="." index="1"]

@@ -16,7 +16,7 @@ func _ready():
 	defense = 0
 	vitesse = 0
 
-func degatsPrisDef(degats):
+func degatsPrisDef(_degats):
 	if(combat.combattants[combat.iActuel] == aHarry):
 		match compteurSept:
 			0:

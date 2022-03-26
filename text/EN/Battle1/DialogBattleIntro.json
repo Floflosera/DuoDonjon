@@ -11,4 +11,5 @@
 	"dialog_10" : {"textHarry": "", "spHarry": "0", "textFlaux": "Oh no, there it is!", "spFlaux": "4", "cadreN": "", "supOther": "true", "devent": "0"},
 	"dialog_11" : {"textHarry": "", "spHarry": "4", "textFlaux": "I hope you can fight!", "spFlaux": "0", "cadreN": "", "supOther": "true", "devent": "1"},
 	"dialog_12" : {"textHarry": "I’ll take care of it!", "spHarry": "2", "textFlaux": "", "spFlaux": "0", "cadreN": "", "supOther": "true", "devent": "0"},
+	"dialog_13" : {"textHarry": "", "spHarry": "2", "textFlaux": "", "spFlaux": "0", "cadreN": "", "supOther": "true", "devent": "2"},
 }

@@ -35,7 +35,7 @@ func _ready():
 	
 	choixSkill = -1
 
-func _process(delta):
+func _process(_delta):
 	
 	if(selection.has_focus()):
 		barreVie.show()

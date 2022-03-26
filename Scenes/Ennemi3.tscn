@@ -12,12 +12,12 @@ animations = [ {
 "name": "Neutre",
 "speed": 3.0
 }, {
-"frames": [ ExtResource( 4 ), null, ExtResource( 4 ), null, ExtResource( 4 ), null ],
+"frames": [ null, ExtResource( 4 ), null, ExtResource( 4 ), null, ExtResource( 4 ) ],
 "loop": false,
 "name": "Blesse",
 "speed": 6.0
 }, {
-"frames": [ ExtResource( 1 ), null, ExtResource( 1 ), null, ExtResource( 1 ), null ],
+"frames": [ null, ExtResource( 1 ), null, ExtResource( 1 ), null, ExtResource( 1 ) ],
 "loop": false,
 "name": "AuSolBlesse",
 "speed": 6.0
@@ -31,6 +31,7 @@ animations = [ {
 [node name="Ennemi3" instance=ExtResource( 2 )]
 position = Vector2( 647, 308 )
 frames = SubResource( 1 )
+frame = 2
 script = ExtResource( 3 )
 
 [node name="LifeBar" parent="." index="1"]

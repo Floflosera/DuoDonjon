@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://assets/FondNormal.png" type="Texture" id=1]
+[ext_resource path="res://assets/FondTresor.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/EnnemiGroup5.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/GeneralInterface.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/DialogueInterface.tscn" type="PackedScene" id=4]

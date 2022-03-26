@@ -97,19 +97,19 @@ func soinPV(valeur):
 #Chaque bouton permet de pouvoir lancer un sort plus tard durant la déroulement du tour
 #Ces sorts sont associés aux fonctions "castSkill" et ont chacun des effets différents
 func castSkill1():
-	pass
+	emit_signal("skillCast")
 
 func castSkill2():
-	pass
+	emit_signal("skillCast")
 
 func castSkill3():
-	pass
+	emit_signal("skillCast")
 
 func castSkill4():
-	pass
+	emit_signal("skillCast")
 
 func castSkill5():
-	pass
+	emit_signal("skillCast")
 
 #castSkill() est la fonction qui lance une compétence en fonction du choix effectué précédemment
 #les compétences prioritaires remettent la variable priorite sur false une fois lancé

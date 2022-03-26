@@ -14,7 +14,7 @@ func _ready():
 	defense = 999
 	vitesse = 0
 
-func degatsPrisDef(degats):
+func degatsPrisDef(_degats):
 	if(combat.combattants[combat.iActuel] == aFlaux):
 		degatsPris(333)
 		return str(333)

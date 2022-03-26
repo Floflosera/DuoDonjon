@@ -183,7 +183,7 @@ func choixTour():
 	emit_signal("choixTourFini") #Permet d'avertir la scène de combat que le tour est terminé
 
 #Fonction qui boucle à l'infini, elle est toujours actif tant que la scène est présente
-func _process(delta):
+func _process(_delta):
 	#En fonction d'où se situe le focus, on affiche un texte différent dans la description du personnage concerné
 	if(cHarry.skill1.has_focus()):
 		cHarry.modifDesc(coupBouclierDesc)

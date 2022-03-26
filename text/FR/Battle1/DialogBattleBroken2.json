@@ -1,4 +1,5 @@
 {
-	"dialog_1" : {"textHarry": "Ça fera l'affaire. Finissons-en !", "spHarry": "2", "textFlaux": "", "spFlaux": "0", "cadreN": "", "supOther": "true", "devent": "0"},
+	"dialog_1" : {"textHarry": "Ça fera l'affaire. Finissons-en !", "spHarry": "2", "textFlaux": "", "spFlaux": "0", "cadreN": "", "supOther": "true", "devent": "2"},
 	"dialog_2" : {"textHarry": "", "spHarry": "2", "textFlaux": "Ouaiiiiis ! Allez, vite, je veux sortir de là ! ", "spFlaux": "1", "cadreN": "", "supOther": "true", "devent": "0"},
+	"dialog_3" : {"textHarry": "", "spHarry": "2", "textFlaux": "", "spFlaux": "0", "cadreN": "", "supOther": "true", "devent": "2"},
 }

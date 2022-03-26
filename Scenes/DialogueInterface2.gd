@@ -20,7 +20,7 @@ const dialogueStunEN = "res://text/EN/Battle2/DialogBattleStun.json"
 const dialogueEndEN = "res://text/EN/Battle2/DialogBattleEnd.json"
 
 #Dialogue pour tester
-func dialogueTest():
+func dialogueDeTest():
 	#En fonction du booléen de la langue on charge un chemin différent
 	if(fr):
 		dialogue_file = dialogueTest #déclaré au dessus: const dialogueTest = "res://text/FR/DialogueTest.json"

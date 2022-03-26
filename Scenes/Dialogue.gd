@@ -165,7 +165,7 @@ func boiteDeDiaAnim(textHarry,spHarry,textFlaux,spFlaux,supOther):
 	
 	emit_signal("dialogueSuivant")
 
-func _process(delta):
+func _process(_delta):
 	
 	if(multi):
 		
@@ -211,10 +211,16 @@ func dialogueRead():
 		if(dialogue_devent != 0):
 			if(dialogue_devent == 1):
 				get_node("../EnnemiGroup").show()
-		if(dialogue_cadreN == ""):
+			elif(dialogue_devent == 2):
+				if(get_node("../Barreaux") != null):
+					if(get_node("../Barreaux").visible):
+						get_node("../Barreaux").hide()
+					else:
+						get_node("../Barreaux").show()
+		if(dialogue_textHarry != "" || dialogue_textFlaux != ""):
 			boiteDeDiaAnim(dialogue_textHarry,dialogue_spHarry,dialogue_textFlaux,dialogue_spFlaux,dialogue_supOther)
 			yield(self, "dialogueSuivant")
-		else:
+		elif(dialogue_cadreN != ""):
 			narraRead(dialogue_spHarry, dialogue_spFlaux, dialogue_cadreN)
 			yield(self, "dialogueSuivant")
 	

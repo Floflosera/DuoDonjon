@@ -95,11 +95,13 @@ func degatsPris(degats):
 				spriteAnim.play("FauxBlesseeTout")
 			else:
 				spriteAnim.play("FauxBlesseeLucy")
-		else:
+		elif(armeB.pv > 0):
 			if(combat.combattants[combat.iActuel] == aFlaux && aFlaux.choixSkill == 2):
 				spriteAnim.play("BouclierBlesseeTout")
 			else:
 				spriteAnim.play("BouclierBlesseeLucy")
+		else:
+			spriteAnim.play("MainsVidesBlessee")
 	else:
 		if(affaibli):
 			spriteAnim.play("AuSolBlessee")

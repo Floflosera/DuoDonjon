@@ -26,7 +26,7 @@ onready var settingsLangen = $SousMenu/SettingsMenu/MarginContainer/VBoxContaine
 onready var settingsControl = $SousMenu/SettingsMenu/MarginContainer/VBoxContainer/Control
 onready var settingsQuitSet = $SousMenu/SettingsMenu/MarginContainer/VBoxContainer/QuitSet
 
-func _process(delta):
+func _process(_delta):
 	
 	if(main.intro):
 		if(Input.is_action_just_pressed("ui_cancel")):

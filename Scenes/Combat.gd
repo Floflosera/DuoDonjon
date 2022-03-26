@@ -147,7 +147,7 @@ func deroulementTour():
 	emit_signal("derouleTourFini")					#Informe de la fin du déroulement des actions
 
 #Lit le dialogue entrée en paramètre (qui est une méthode de la scène DialogueInterface)
-func litDialogue(dialog):
+func litDialogue(_dialog):
 	$DialogueInterface.show()
 	#le dialogue entré en paramètre va se lancer directement
 	yield($DialogueInterface, "dialogueFini") #on attend qu'il soit fini
@@ -194,7 +194,7 @@ func load_others(file_path):
 		return other									#et le retourne
 
 func textHere(nl):
-	current == nl	#On passe à la ligne suivante pour prendre les nouvelles informations
+	current = nl	#On passe à la ligne suivante pour prendre les nouvelles informations
 	other_text = other_keys[current].text
 
 const othersFR = "res://text/FR/Others.json"
@@ -210,3 +210,6 @@ func charger_others():
 	
 	textHere(0)
 	textPV0revive = other_text
+
+func fini():
+	emit_signal("finCombat")

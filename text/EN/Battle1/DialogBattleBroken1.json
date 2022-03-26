@@ -1,4 +1,5 @@
 {
-	"dialog_1" : {"textHarry": "That should make it easier.", "spHarry": "1", "textFlaux": "", "spFlaux": "0", "cadreN": "", "supOther": "true", "devent": "0"},
+	"dialog_1" : {"textHarry": "That should make it easier.", "spHarry": "1", "textFlaux": "", "spFlaux": "0", "cadreN": "", "supOther": "true", "devent": "2"},
 	"dialog_2" : {"textHarry": "", "spHarry": "1", "textFlaux": "Keep it up!", "spFlaux": "1", "cadreN": "", "supOther": "true", "devent": "0"},
+	"dialog_3" : {"textHarry": "", "spHarry": "1", "textFlaux": "", "spFlaux": "1", "cadreN": "", "supOther": "true", "devent": "2"},
 }
