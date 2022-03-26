@@ -1,3 +1,4 @@
 {
-  "dialog_1" : {"textHarry": "Ça fonctionne ?", "spHarry": "0", "textFlaux": "", "spFlaux": "0", "cadreN": "", "supOther": "true", "devent": "0"},
+  "dialog_1" : {"textHarry": "J’ai compris ! Le mage en blanc soigne le mage en noir dès qu’il en a besoin. Il faut qu’on se concentre sur le blanc !", "spHarry": "0", "textFlaux": "", "spFlaux": "0", "cadreN": "", "supOther": "true", "devent": "0"},
+  "dialog_2" : {"textHarry": "", "spHarry": "0", "textFlaux": "OK !", "spFlaux": "0", "cadreN": "", "supOther": "true", "devent": "0"},
 }

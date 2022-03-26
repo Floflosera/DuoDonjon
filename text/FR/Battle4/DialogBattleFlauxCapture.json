@@ -1,0 +1,5 @@
+{
+  "dialog_1" : {"textHarry": "", "spHarry": "4", "textFlaux": "Aaaaaaahhhh ! À l'aiiiiiide !", "spFlaux": "8", "cadreN": "", "supOther": "true", "devent": "0"},
+  "dialog_1" : {"textHarry": "Flaux ! Espèce de... Fais redescendre mon amie !", "spHarry": "2", "textFlaux": "", "spFlaux": "8", "cadreN": "", "supOther": "true", "devent": "0"},
+  "dialog_1" : {"textHarry": "Réfléchis, Harry, réfléchis... Tu as forcément quelque chose pour l'aider...", "spHarry": "4", "textFlaux": "", "spFlaux": "8", "cadreN": "", "supOther": "true", "devent": "0"},
+}

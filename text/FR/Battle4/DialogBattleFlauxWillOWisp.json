@@ -1,0 +1,4 @@
+{
+  "dialog_1" : {"textHarry": "", "spHarry": "0", "textFlaux": "RAAHHH ! Faux pas me chercher !", "spFlaux": "2", "cadreN": "", "supOther": "true", "devent": "0"},
+  "dialog_2" : {"textHarry": "Flaux ! Calme toi ! C'est juste une ruse ! Argh...", "spHarry": "4", "textFlaux": "", "spFlaux": "2", "cadreN": "", "supOther": "true", "devent": "0"},
+}

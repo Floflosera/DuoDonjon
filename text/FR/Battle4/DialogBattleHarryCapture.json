@@ -1,0 +1,5 @@
+{
+  "dialog_1" : {"textHarry": "Wooh oh ohhh ! J-Je vole ?!", "spHarry": "8", "textFlaux": "", "spFlaux": "4", "cadreN": "", "supOther": "true", "devent": "0"},
+  "dialog_2" : {"textHarry": "", "spHarry": "8", "textFlaux": "Hé, rends moi mon ami !", "spFlaux": "2", "cadreN": "", "supOther": "true", "devent": "0"},
+  "dialog_3" : {"textHarry": "", "spHarry": "8", "textFlaux": "Tiens bon, Harry, je vais te sortir de là ! Je dois bien avoir une technique qui fera l'affaire...", "spFlaux": "4", "cadreN": "", "supOther": "true", "devent": "0"},
+}

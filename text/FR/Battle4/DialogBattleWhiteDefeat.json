@@ -1,0 +1,6 @@
+{
+  "dialog_1" : {"textHarry": "", "spHarry": "0", "textFlaux": "Et voilà le travail ! Au suivant !", "spFlaux": "1", "cadreN": "", "supOther": "true", "devent": "0"},
+  "dialog_2" : {"textHarry": "Je ferais attention, si j'étais toi... L'autre n'a pas l'air content.", "spHarry": "2", "textFlaux": "", "spFlaux": "1", "cadreN": "", "supOther": "true", "devent": "0"},
+  "dialog_3" : {"textHarry": "", "spHarry": "2", "textFlaux": "Oula ! Pas faux, ça. D'accord !", "spFlaux": "4", "cadreN": "", "supOther": "true", "devent": "0"},
+  "dialog_4" : {"textHarry": "(Elle l'a bien dit, pour une fois...)", "spHarry": "0", "textFlaux": "", "spFlaux": "4", "cadreN": "", "supOther": "true", "devent": "0"},
+}
