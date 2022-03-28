@@ -69,7 +69,7 @@ func aTextSkill2():
 func changerSpriteDia(n):
 	match n:
 		0:
-			if(phase1):
+			if(armeF.pv > 0 && armeB.pv > 0):
 				spriteAnim.play("ArmesColere")
 			else:
 				spriteAnim.play("GardeColere")

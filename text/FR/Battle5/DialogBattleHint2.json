@@ -1,3 +1,4 @@
 {
-  "dialog_1" : {"textHarry": "Ça fonctionne ?", "spHarry": "0", "textFlaux": "", "spFlaux": "0", "cadreN": "", "spLucy": "0", "supOther": "true", "devent": "0"},
+  "dialog_1" : {"textHarry": "Grimpe encore sur mon bouclier ! Et prépare ta faux avant !", "spHarry": "0", "textFlaux": "", "spFlaux": "0", "cadreN": "", "spLucy": "0", "supOther": "true", "devent": "0"},
+  "dialog_2" : {"textHarry": "", "spHarry": "0", "textFlaux": "J'essaie, j'essaie !", "spFlaux": "2", "cadreN": "", "spLucy": "0", "supOther": "true", "devent": "0"},
 }

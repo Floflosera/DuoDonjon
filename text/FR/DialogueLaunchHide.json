@@ -1,0 +1,6 @@
+{
+	"dialog_1" : {"textHarry": "Flaux ?", "spHarry": "4", "textFlaux": "Harry ?", "spFlaux": "4", "cadreN": "", "supOther": "true", "devent": "0"},
+	"dialog_2" : {"textHarry": "", "spHarry": "4", "textFlaux": "Qu'est-ce que tu fais ?!", "spFlaux": "2", "cadreN": "", "supOther": "true", "devent": "0"},
+	"dialog_3" : {"textHarry": "Toi, Qu'est-ce que tu fais ?! Tu n'es même plus cachée !", "spHarry": "4", "textFlaux": "", "spFlaux": "2", "cadreN": "", "supOther": "true", "devent": "0"},
+	"dialog_4" : {"textHarry": "", "spHarry": "4", "textFlaux": "Oh ZUT !", "spFlaux": "4", "cadreN": "", "supOther": "true", "devent": "0"},
+}

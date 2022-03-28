@@ -1,0 +1,9 @@
+{
+  "dialog_1" : {"textHarry": "", "spHarry": "0", "textFlaux": "", "spFlaux": "0", "cadreN": "Je comprends pas comment vous faites pour vous servir de ça. Bah ! J'en ai pas besoin !", "spLucy": "7", "supOther": "true", "devent": "0"},
+  "dialog_2" : {"textHarry": "", "spHarry": "0", "textFlaux": "", "spFlaux": "0", "cadreN": "Tout ce qu'il me faut, c'est un peu de magie de feu... et mes poings !", "spLucy": "7", "supOther": "true", "devent": "0"},
+  "dialog_3" : {"textHarry": "", "spHarry": "0", "textFlaux": "", "spFlaux": "0", "cadreN": "Assez joué ! Ce trésor est à moi !", "spLucy": "0", "supOther": "true", "devent": "0"},
+  "dialog_4" : {"textHarry": "", "spHarry": "0", "textFlaux": "Je crois qu'elle est pas contente.", "spFlaux": "4", "cadreN": "", "spLucy": "0", "supOther": "true", "devent": "0"},
+  "dialog_5" : {"textHarry": "Oh que non. Elle est *très* contente.", "spHarry": "2", "textFlaux": "", "spFlaux": "4", "cadreN": "", "spLucy": "0", "supOther": "true", "devent": "0"},
+  "dialog_6" : {"textHarry": "", "spHarry": "2", "textFlaux": "Flippant. Bon, t'es prêt, \"partenaire\" ?", "spFlaux": "2", "cadreN": "", "spLucy": "0", "supOther": "true", "devent": "0"},
+  "dialog_7" : {"textHarry": "... Plus que jamais.", "spHarry": "1", "textFlaux": "", "spFlaux": "2", "cadreN": "", "spLucy": "0", "supOther": "true", "devent": "0"},
+}
