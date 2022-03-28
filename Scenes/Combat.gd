@@ -133,11 +133,11 @@ func deroulementTour():
 		nTourPV0 +=1
 	elif(nTourPV0 == 2):
 		if(combattantHarry.pv == 0 && combattantFlaux.pv > 0):
-			combattantHarry.soinPV(combattantHarry.pvmax*0.4)
+			combattantHarry.soinPV(int(combattantHarry.pvmax*0.4))
 			narraText(combattantHarry.nom+textPV0revive)
 			yield(self,"narraTextFini")
 		elif(combattantFlaux.pv == 0 && combattantHarry.pv > 0):
-			combattantFlaux.soinPV(combattantFlaux.pvmax*0.4)
+			combattantFlaux.soinPV(int(combattantFlaux.pvmax*0.4))
 			narraText(combattantFlaux.nom+textPV0revive)
 			yield(self,"narraTextFini")
 		$TimerActions.start()					#Les timers permettent de voir les actions de manière plus clair

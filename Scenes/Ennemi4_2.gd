@@ -96,6 +96,7 @@ func degatsPrisDef(degats):
 		return str(int((degats-defense)*1.5))
 	elif((prisonnie == aHarry && aFlaux.choixSkill == 3) || (prisonnie == aFlaux && aHarry.choixSkill == 1)):
 		prisonnie.horsCombat = false
+		$Capture.hide()
 		prisonnie.degatsPris(0)
 		if(prisonnie == aHarry):
 			aFlaux.aTextSkill2Put(textSkill[12] + "Harry !")
@@ -258,13 +259,13 @@ func castSkill3():
 		
 		if(cible == aHarry):
 			if(not(feuFolletH)):
-				#combat.litDialogue(dialogueI.dialogueName())
-				#yield(dialogueI, "dialogueFini")
-				feuFolletF = true
+				combat.litDialogue(dialogueI.dialogueHarryWillOWisp())
+				yield(dialogueI, "dialogueFini")
+				feuFolletH = true
 		if(cible == aFlaux):
 			if(not(feuFolletF)):
-				#combat.litDialogue(dialogueI.dialogueName())
-				#yield(dialogueI, "dialogueFini")
+				combat.litDialogue(dialogueI.dialogueFlauxWillOWisp())
+				yield(dialogueI, "dialogueFini")
 				feuFolletF = true
 	
 	emit_signal("skillCast")
@@ -282,14 +283,18 @@ func castSkill4():
 	#faire apparaître un sprite à côté de lui du prisonnier
 	
 	if(prisonnie == aHarry):
+		$Capture.play("Harry")
+		$Capture.show()
 		if(not(flagPrisoH)):
-				#combat.litDialogue(dialogueI.dialogueName())
-				#yield(dialogueI, "dialogueFini")
+				combat.litDialogue(dialogueI.dialogueHarryCapture())
+				yield(dialogueI, "dialogueFini")
 				flagPrisoH = true
 	if(prisonnie == aFlaux):
+		$Capture.play("Flaux")
+		$Capture.show()
 		if(not(flagPrisoF)):
-				#combat.litDialogue(dialogueI.dialogueName())
-				#yield(dialogueI, "dialogueFini")
+				combat.litDialogue(dialogueI.dialogueFlauxCapture())
+				yield(dialogueI, "dialogueFini")
 				flagPrisoF = true
 	
 	yield(spriteAnim,"animation_finished")
@@ -311,13 +316,16 @@ func castSkill5():
 		prisonnie.horsCombat = false
 		
 		if((cible == aFlaux && aFlaux.hide) || cible.pv == 0):
+			$Capture.hide()
 			prisonnie.degatsPrisDef(40 + randi()%5)
 			yield(prisonnie,"degatsTermine")
 		else:
 			if(cible == aFlaux):
+				$Capture.hide()
 				prisonnie.degatsPrisDef(30 + randi()%4)
 				cible.degatsPris(cible.pv - 1)
 			else:
+				$Capture.hide()
 				prisonnie.degatsPrisDef(20 + randi()%3)
 				mageNoirDegats(20 + randi()%3)
 			yield(cible,"degatsTermine")
@@ -332,3 +340,26 @@ func clearThings():
 	lacere = false
 	attaqueUp = false
 	defenseUp = false
+
+#surcharge pour le moment où on le bat avant mage blanc
+func degatsPris(degats):
+	spriteAnim.play("Blesse")		#Lance l'animation des dégâts pris
+	if(degats <= 1):
+		degats = 1
+	if(pv - degats <= 0):			#La condition fait en sorte de ne pas avoir des pv négatifs
+		pv = 0						#Si les pv sont inférieurs aux dégâts réçus, alors on tombe à 0pv
+		tourEffectue = true			#Si un allié n'a plus de pv, alors son tour sera compté comme déjà passé
+	else:
+		pv -= degats				#Sinon les dégâts sont soustraits aux pv du personnage
+	barreVie.value = pv
+	yield(spriteAnim,"animation_finished")	#Attend la fin de l'animation de blessure
+	changerSprite()							#Change le sprite des 2 persos
+	
+	#informations de base pour l'animation du richText qui montre les dégâts
+	#à concaténer avec le nombre des dégâts quand on inflige les dégâts avec un personnage
+	showDegats.set_bbcode("[center][wave freq=25]")
+	
+	if(pv == 0 && pote.pv > 0):
+		pote.choixSkill = 0
+	
+	emit_signal("degatsTermine")

@@ -69,52 +69,52 @@ func aTextSkill2():
 func changerSpriteDia(n):
 	match n:
 		0:
-			spriteAnim.play("ArmesColere")
+			if(phase1):
+				spriteAnim.play("ArmesColere")
+			else:
+				spriteAnim.play("GardeColere")
 		1:
-			spriteAnim.play("ArmesConfiante")
+			if(armeF.pv > 0 && armeB.pv > 0):
+				spriteAnim.play("ArmesConfiante")
+			elif(armeB.pv > 0):
+				spriteAnim.play("BouclierConfiante")
+			else:
+				spriteAnim.play("FauxConfiante")
 		2:
 			spriteAnim.play("ArmesEbahie")
 		3:
-			spriteAnim.play("ArmesNeutre")
+			if(phase1):
+				spriteAnim.play("ArmesNeutre")
+			else:
+				spriteAnim.play("NormaleNeutre")
 		4:
-			spriteAnim.play("ArmesSurprise")
+			if(armeF.pv > 0 && armeB.pv > 0):
+				spriteAnim.play("ArmesSurprise")
+			elif(armeB.pv > 0):
+				spriteAnim.play("BouclierSurprise")
+			elif(armeF.pv > 0):
+				spriteAnim.play("FauxSurprise")
+			else:
+				spriteAnim.play("AuSolSurprise")
 		5:
-			spriteAnim.play("ArmesTriste")
+			if(phase1):
+				spriteAnim.play("ArmesTriste")
+			elif(affaibli && pv > 0):
+				spriteAnim.play("AuSolTriste")
+			else:
+				spriteAnim.play("NormaleTriste")
 		6:
-			spriteAnim.play("AuSolSurprise")
+			if(pv > 0):
+				spriteAnim.play("GardeContente")
+			else:
+				spriteAnim.play("NormaleContente")
 		7:
-			spriteAnim.play("AuSolTriste")
-		8:
-			spriteAnim.play("BouclierConfiante")
-		9:
-			if(armeB.pv > 0):
-				spriteAnim.play("BouclierSurprise")
-			else:
-				spriteAnim.play("FauxSurprise")
-		10:
-			spriteAnim.play("FauxConfiante")
-		11:
-			if(armeF.pv > 0):
-				spriteAnim.play("FauxSurprise")
-			else:
-				spriteAnim.play("BouclierSurprise")
-		12:
-			spriteAnim.play("GardeColere")
-		13:
-			spriteAnim.play("GardeContente")
-		14:
 			spriteAnim.play("MainsVides")
-		15:
-			spriteAnim.play("NormaleContente")
-		16:
-			spriteAnim.play("NormaleNeutre")
-		17:
+		8:
 			spriteAnim.play("NormalePasConfiante")
-		18:
-			spriteAnim.play("NormaleTriste")
-		19:
+		9:
 			spriteAnim.play("Vide")
-		
+
 
 func changerSprite():
 	if(phase1):

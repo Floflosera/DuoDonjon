@@ -224,8 +224,8 @@ func degatsPris(degats):
 		yield(combat,"narraTextFini")
 		
 		if(not(flagAuSol)):														#DIALOGUE
-			#combat.litDialogue(dialogueI.dialogueName())
-			#yield(dialogueI, "dialogueFini")
+			combat.litDialogue(dialogueI.dialogueFall())
+			yield(dialogueI, "dialogueFini")
 			flagAuSol = true
 	
 	emit_signal("degatsTermine")

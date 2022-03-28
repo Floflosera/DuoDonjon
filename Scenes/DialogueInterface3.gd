@@ -5,12 +5,16 @@ const dialogueIntroFR = "res://text/FR/Battle3/DialogBattleIntro.json"
 const dialogueHint1FR = "res://text/FR/Battle3/DialogBattleHint1.json"
 const dialogueHint2FR = "res://text/FR/Battle3/DialogBattleHint2.json"
 const dialogueEndFR = "res://text/FR/Battle3/DialogBattleEnd.json"
+const dialogueFallFR = "res://text/FR/Battle3/DialogBattleFall.json"
+const dialogueOutspeedFR = "res://text/FR/Battle3/DialogBattleOutspeed.json"
 
 #En anglais
 const dialogueIntroEN = "res://text/EN/Battle3/DialogBattleIntro.json"
 const dialogueHint1EN = "res://text/EN/Battle3/DialogBattleHint1.json"
 const dialogueHint2EN = "res://text/EN/Battle3/DialogBattleHint2.json"
 const dialogueEndEN = "res://text/EN/Battle3/DialogBattleEnd.json"
+const dialogueFallEN = "res://text/EN/Battle3/DialogBattleFall.json"
+const dialogueOutspeedEN = "res://text/EN/Battle3/DialogBattleOutspeed.json"
 
 func dialogueIntro():
 	if(fr):
@@ -39,4 +43,18 @@ func dialogueEnd():
 		dialogue_file = dialogueEndFR
 	elif(en):
 		dialogue_file = dialogueEndEN
+	dialogueRead()
+
+func dialogueFall():
+	if(fr):
+		dialogue_file = dialogueFallFR
+	elif(en):
+		dialogue_file = dialogueFallEN
+	dialogueRead()
+
+func dialogueOutspeed():
+	if(fr):
+		dialogue_file = dialogueOutspeedFR
+	elif(en):
+		dialogue_file = dialogueOutspeedEN
 	dialogueRead()

@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scenes/Ennemi.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Ennemi4_2.gd" type="Script" id=2]
 [ext_resource path="res://assets/MageNoirKO.png" type="Texture" id=3]
 [ext_resource path="res://assets/MageNoir.png" type="Texture" id=4]
+[ext_resource path="res://assets/Harry/HarryCapture.png" type="Texture" id=5]
+[ext_resource path="res://assets/Flaux/FlauxCapture.png" type="Texture" id=6]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -23,6 +25,19 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "Flaux",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": false,
+"name": "Harry",
+"speed": 1.0
+} ]
+
 [node name="Ennemi4_2" instance=ExtResource( 1 )]
 frames = SubResource( 1 )
 frame = 1
@@ -31,3 +46,9 @@ script = ExtResource( 2 )
 [node name="LifeBar" parent="." index="1"]
 max_value = 900.0
 value = 900.0
+
+[node name="Capture" type="AnimatedSprite" parent="." index="4"]
+visible = false
+position = Vector2( -296, -40 )
+frames = SubResource( 2 )
+animation = "Harry"

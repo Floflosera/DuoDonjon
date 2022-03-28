@@ -17,32 +17,31 @@ func _ready():
 	
 	ordreTour()
 	
-	#litDialogue($DialogueInterface.dialogueIntro()) #lancement du premier dialogue
-	#yield($DialogueInterface, "dialogueFini")
+	litDialogue($DialogueInterface.dialogueIntro()) #lancement du premier dialogue
+	yield($DialogueInterface, "dialogueFini")
 	
 	while((combattantHarry.pv > 0 || combattantFlaux.pv > 0) && (combattantEnnemi1.pv > 0 || combattantEnnemi2.pv > 0)):
 		nTour += 1
 		
-		if(((nTour == 5) && combattantEnnemi1.pv > 0) && not(hintFlag)):
-			#litDialogue($DialogueInterface.dialogueHint1())
-			#yield($DialogueInterface, "dialogueFini")
-			hintFlag = true
-		
-		if(combattantEnnemi1.choixSkill == 0 && flagComptSoin < 2):
+		if(combattantEnnemi1.choixSkill == 1 && flagComptSoin < 2):
 			flagComptSoin += 1
 			if(flagComptSoin == 2):
-				#litDialogue($DialogueInterface.dialogueName())
-				#yield($DialogueInterface, "dialogueFini")
-				pass
+				litDialogue($DialogueInterface.dialogueHint1())
+				yield($DialogueInterface, "dialogueFini")
+				hintFlag = true
+		elif(((nTour >= 5) && combattantEnnemi1.pv > 0) && hintFlag):
+			litDialogue($DialogueInterface.dialogueHint2())
+			yield($DialogueInterface, "dialogueFini")
+			hintFlag = false
 		
 		if(combattantEnnemi1.pv == 0 && combattantEnnemi2.pv > 0) && not(flagMageBlancD):
-			#litDialogue($DialogueInterface.dialogueName())
-			#yield($DialogueInterface, "dialogueFini")
+			litDialogue($DialogueInterface.dialogueWhiteDefeat())
+			yield($DialogueInterface, "dialogueFini")
 			flagMageBlancD = true
 		
 		if(combattantEnnemi2.pv == 0 && combattantEnnemi1.pv > 0) && not(flagMageNoirD): #secret
-			#litDialogue($DialogueInterface.dialogueName())
-			#yield($DialogueInterface, "dialogueFini")
+			litDialogue($DialogueInterface.dialogueBlackDefeat())
+			yield($DialogueInterface, "dialogueFini")
 			flagMageNoirD = true
 		
 		
@@ -56,8 +55,8 @@ func _ready():
 	
 	if(combattantEnnemi1.pv == 0 && combattantEnnemi2.pv == 0):
 		$EnnemiGroup.hide()
-		#litDialogue($DialogueInterface.dialogueEnd())
-		#yield($DialogueInterface, "dialogueFini")
+		litDialogue($DialogueInterface.dialogueEnd())
+		yield($DialogueInterface, "dialogueFini")
 		combattantHarry.changerSpriteDia(0)
 		combattantFlaux.changerSpriteDia(0)
 		$DialogueInterface.show()

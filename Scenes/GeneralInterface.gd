@@ -175,10 +175,12 @@ func choixTour():
 	
 	#permet de rendre toutes les compétences réutilisables puis d'empêcher l'utilisation
 	#de la compétence choisie ce tour pendant un tour
-	cHarry.abled()
-	cHarry.skills[cHarry.choixSkill].disabled = true
-	cFlaux.abled()
-	cFlaux.skills[cFlaux.choixSkill].disabled = true
+	if(not(cHarry.horsCombat) && (cHarry.pv > 0)):
+		cHarry.abled()
+		cHarry.skills[cHarry.choixSkill].disabled = true
+	if(not(cFlaux.horsCombat) && (cFlaux.pv > 0)):
+		cFlaux.abled()
+		cFlaux.skills[cFlaux.choixSkill].disabled = true
 	
 	emit_signal("choixTourFini") #Permet d'avertir la scène de combat que le tour est terminé
 
