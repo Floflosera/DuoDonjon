@@ -39,6 +39,7 @@ var dialogue_spHarry = 0		#variable qui va récupérer les "spHarry" du fichier
 var dialogue_textFlaux = ""		#variable qui va récupérer les "textFlaux" du fichier
 var dialogue_spFlaux = 0		#variable qui va récupérer les "spFlaux" du fichier
 var dialogue_cadreN = ""		#variable qui va récupérer les "cadreN" du fichier
+var dialogue_spLucy = 0			#variable qui va récupérer les "spLucy" du fichier (pour combat5)
 var dialogue_supOther = false	#variable qui va récupérer l'info "supOther" du fichier
 var dialogue_devent = 0			#variable qui va récupérer l'info "devent" du fichier
 var current = 0					#numéro de la ligne lu
@@ -54,6 +55,18 @@ func start_dialogue():
 	dialogue_cadreN = dialogue_keys[current].cadreN
 	dialogue_supOther = bool(dialogue_keys[current].supOther)
 	dialogue_devent = int(dialogue_keys[current].devent)
+
+func start_dialogueL():
+	current = 0												#Numéro de la première ligne
+	index_dialogue()										#Lance la fonction qui charge les paramètres
+	dialogue_textHarry = dialogue_keys[current].textHarry	#Stocke le string associer à "textHarry" dans le fichier
+	dialogue_spHarry = int(dialogue_keys[current].spHarry)	#à la ligne "current", pareil pour "textFlaux"
+	dialogue_textFlaux = dialogue_keys[current].textFlaux	#pour le numéro des sprites on tranforme le string
+	dialogue_spFlaux = int(dialogue_keys[current].spFlaux)	#en entier avec int()
+	dialogue_cadreN = dialogue_keys[current].cadreN
+	dialogue_spLucy = int(dialogue_keys[current].spLucy)
+	dialogue_supOther = bool(dialogue_keys[current].supOther)
+	dialogue_devent = int(dialogue_keys[current].devent)
 	
 
 #Fonction qui permet de passer à la ligne suivante, lit de la même façon sans indexer le fichier
@@ -64,6 +77,17 @@ func next_dialogue():
 	dialogue_textFlaux = dialogue_keys[current].textFlaux
 	dialogue_spFlaux = int(dialogue_keys[current].spFlaux)
 	dialogue_cadreN = dialogue_keys[current].cadreN
+	dialogue_supOther = bool(dialogue_keys[current].supOther)
+	dialogue_devent = int(dialogue_keys[current].devent)
+
+func next_dialogueL():
+	current += 1	#On passe à la ligne suivante pour prendre les nouvelles informations
+	dialogue_textHarry = dialogue_keys[current].textHarry
+	dialogue_spHarry = int(dialogue_keys[current].spHarry)
+	dialogue_textFlaux = dialogue_keys[current].textFlaux
+	dialogue_spFlaux = int(dialogue_keys[current].spFlaux)
+	dialogue_cadreN = dialogue_keys[current].cadreN
+	dialogue_spLucy = int(dialogue_keys[current].spLucy)
 	dialogue_supOther = bool(dialogue_keys[current].supOther)
 	dialogue_devent = int(dialogue_keys[current].devent)
 

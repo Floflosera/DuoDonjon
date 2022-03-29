@@ -25,6 +25,7 @@ onready var aTerre = false
 #dialogue
 onready var flagGetReal = false
 onready var flagContre = false
+onready var flagFall = false
 
 func _ready():
 
@@ -179,7 +180,8 @@ func degatsPris(degats):
 		lucyDegats(75 + randi()%2)
 		yield(cible,"degatsTermine")
 	
-	if(aHarry.launch && aFlaux.affute && aFlaux.choixSkill == 1 && combat.combattantsBase[combat.iActuel] == aFlaux):
+	if(aHarry.launch && aFlaux.affute && aFlaux.choixSkill == 1 \
+	 && combat.combattantsBase[combat.iActuel] == aFlaux && not(phase1)):
 		affaibli = true
 		aTerre = true
 		tourEffectue = true
@@ -188,6 +190,11 @@ func degatsPris(degats):
 		
 		combat.narraText(aTextSkill2())
 		yield(combat,"narraTextFini")
+		
+		if(not(flagFall)):
+			combat.litDialogue(dialogueI.dialogueFall())
+			yield(dialogueI, "dialogueFini")
+			flagFall = true
 	
 	emit_signal("degatsTermine")
 
@@ -436,8 +443,8 @@ func castSkill7():
 		yield(cible,"degatsTermine")
 	
 	if(not(flagGetReal)):														#DIALOGUE
-		#combat.litDialogue(dialogueI.dialogueName())
-		#yield(dialogueI, "dialogueFini")
+		combat.litDialogue(dialogueI.dialogueGetReal())
+		yield(dialogueI, "dialogueFini")
 		flagGetReal = true
 	
 	emit_signal("skillCast")
@@ -472,8 +479,8 @@ func castSkill9():
 	yield(spriteAnim,"animation_finished")
 	
 	if(not(flagContre)):														#DIALOGUE
-		#combat.litDialogue(dialogueI.dialogueName())
-		#yield(dialogueI, "dialogueFini")
+		combat.litDialogue(dialogueI.dialogueCounter())
+		yield(dialogueI, "dialogueFini")
 		flagContre = true
 	
 	emit_signal("skillCast")

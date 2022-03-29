@@ -3,10 +3,9 @@ extends "res://Scenes/Combat.gd"
 onready var combattantEnnemi = $EnnemiGroup/Ennemi5
 
 onready var attaqueEfficace = false
-onready var pasDesarme = false
 onready var desarme = false
 
-onready var nTourDebutPhase2 = 0
+onready var nTourDebutPhase2 = -1
 onready var flagLucyDepasseF = false
 
 func _ready():
@@ -17,60 +16,64 @@ func _ready():
 	
 	ordreTour()
 	
-	#litDialogue($DialogueInterface.dialogueIntro()) #lancement du premier dialogue
-	#yield($DialogueInterface, "dialogueFini")
+	litDialogue($DialogueInterface.dialogueIntro()) #lancement du premier dialogue
+	yield($DialogueInterface, "dialogueFini")
+	combattantEnnemi.changerSprite()
 	
 	while((combattantHarry.pv > 0 || combattantFlaux.pv > 0) && combattantEnnemi.pv > 0):
 		nTour += 1
 		
-		if(nTour == 4 && (combattantEnnemi.armeF.pv > 707 && combattantEnnemi.armeB.pv > 666)):
-			#litDialogue($DialogueInterface.dialogueName())
-			#yield($DialogueInterface, "dialogueFini")
-			pass
+		if(nTour == 3 && (combattantEnnemi.armeF.pv > 707 && combattantEnnemi.armeB.pv > 666)):
+			litDialogue($DialogueInterface.dialogueHint1())
+			yield($DialogueInterface, "dialogueFini")
+			combattantEnnemi.changerSprite()
 		
 		if(not(attaqueEfficace) && (combattantEnnemi.armeF.pv <= 707 || combattantEnnemi.armeB.pv <= 666)):
-			#litDialogue($DialogueInterface.dialogueName())
-			#yield($DialogueInterface, "dialogueFini")
+			litDialogue($DialogueInterface.dialogueEffective())
+			yield($DialogueInterface, "dialogueFini")
 			attaqueEfficace = true
-		
-		if(nTour == 8 && not(pasDesarme) && (combattantEnnemi.armeF.pv > 0 && combattantEnnemi.armeB.pv > 0)):
-			#litDialogue($DialogueInterface.dialogueName())
-			#yield($DialogueInterface, "dialogueFini")
-			pasDesarme = true
+			combattantEnnemi.changerSprite()
 		
 		if(not(desarme) && (combattantEnnemi.armeF.pv == 0 || combattantEnnemi.armeB.pv == 0)):
-			#litDialogue($DialogueInterface.dialogueName())
-			#yield($DialogueInterface, "dialogueFini")
+			litDialogue($DialogueInterface.dialogueOneWeapon())
+			yield($DialogueInterface, "dialogueFini")
 			desarme = true
+			combattantEnnemi.changerSprite()
 		
 		if(combattantEnnemi.phase1 && ((combattantEnnemi.armeB.pv == 0 && combattantEnnemi.armeF.pv == 0)\
 		|| (combattantEnnemi.pv <= combattantEnnemi.pvmax/2))):
 			combattantEnnemi.armeB.hide() #potentiellement déjà caché
 			combattantEnnemi.armeF.hide()
 			combattantEnnemi.phase1 = false
-			combattantEnnemi.changerSprite()
 			combattantEnnemi.pv = combattantEnnemi.pvmax
 			combattantEnnemi.defense = 15
 			combattantEnnemi.vitesse = 5
 			
-			#litDialogue($DialogueInterface.dialogueName())
-			#yield($DialogueInterface, "dialogueFini")
+			litDialogue($DialogueInterface.dialoguePhase2())
+			yield($DialogueInterface, "dialogueFini")
 			
+			combattantEnnemi.changerSprite()
 			nTourDebutPhase2 = nTour
 		
-		if(nTourDebutPhase2 != 0 && nTourDebutPhase2 < nTour && combattantFlaux.choixSkill == 0\
+		if(nTourDebutPhase2 != -1 && nTourDebutPhase2 < nTour && combattantFlaux.choixSkill == 0\
 		&& combattantFlaux.pv > 0 && not(flagLucyDepasseF)):
-			#litDialogue($DialogueInterface.dialogueName())
-			#yield($DialogueInterface, "dialogueFini")
+			litDialogue($DialogueInterface.dialogueOutspeed())
+			yield($DialogueInterface, "dialogueFini")
 			flagLucyDepasseF = true
+			combattantEnnemi.changerSprite()
+		
+		if(nTourDebutPhase2 != -1 && nTour - nTourDebutPhase2 == 3):
+			litDialogue($DialogueInterface.dialogueHint2())
+			yield($DialogueInterface, "dialogueFini")
+			combattantEnnemi.changerSprite()
 		
 		$GeneralInterface.choixTour() #lance le choix du tour
 		yield($GeneralInterface, "choixTourFini")
 		
 		if(nTour == 1):
-			#litDialogue($DialogueInterface.dialogueName()) #lancement du premier dialogue
-			#yield($DialogueInterface, "dialogueFini")
-			pass
+			litDialogue($DialogueInterface.dialogueWeapons()) #lancement du premier dialogue
+			yield($DialogueInterface, "dialogueFini")
+			combattantEnnemi.changerSprite()
 		
 		deroulementTour() #lance les actions choisies et celle(s) de ou des ennemi(s)
 		yield(self, "derouleTourFini")
@@ -79,8 +82,8 @@ func _ready():
 	
 	if(combattantEnnemi.pv == 0):
 		$EnnemiGroup.hide()
-		#litDialogue($DialogueInterface.dialogueEnd())
-		#yield($DialogueInterface, "dialogueFini")
+		litDialogue($DialogueInterface.dialogueEnd())
+		yield($DialogueInterface, "dialogueFini")
 		combattantHarry.changerSpriteDia(0)
 		combattantFlaux.changerSpriteDia(0)
 		$DialogueInterface.show()
