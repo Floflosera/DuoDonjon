@@ -1,0 +1,5 @@
+{
+  "dialog_1" : {"textHarry": "Woah ah ahhh! I-I’m airborne?!", "spHarry": "8", "textFlaux": "", "spFlaux": "4", "cadreN": "", "supOther": "true", "devent": "0"},
+  "dialog_2" : {"textHarry": "", "spHarry": "8", "textFlaux": "Hey, give me my friend back!", "spFlaux": "2", "cadreN": "", "supOther": "true", "devent": "0"},
+  "dialog_3" : {"textHarry": "", "spHarry": "8", "textFlaux": "Hold on, Harry, I’m gonna get you outta here! I must have something that should do the trick...", "spFlaux": "4", "cadreN": "", "supOther": "true", "devent": "0"},
+}

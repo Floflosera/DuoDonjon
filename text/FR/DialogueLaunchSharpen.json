@@ -1,4 +1,5 @@
 {
 	"dialog_1" : {"textHarry": "Flaux ?", "spHarry": "4", "textFlaux": "Harry ?", "spFlaux": "4", "cadreN": "", "supOther": "true", "devent": "0"},
-	"dialog_1" : {"textHarry": "Je pensais que tu allais attaquer !", "spHarry": "4", "textFlaux": "J'ai besoin de me préparer d'abord !", "spFlaux": "2", "cadreN": "", "supOther": "true", "devent": "0"},
+	"dialog_2" : {"textHarry": "Je pensais que tu allais attaquer !", "spHarry": "4", "textFlaux": "", "spFlaux": "4", "cadreN": "", "supOther": "true", "devent": "0"},
+	"dialog_3" : {"textHarry": "", "spHarry": "4", "textFlaux": "J'ai besoin de me préparer d'abord !", "spFlaux": "2", "cadreN": "", "supOther": "true", "devent": "0"},
 }

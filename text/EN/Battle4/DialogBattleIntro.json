@@ -1,0 +1,7 @@
+{
+  "dialog_1" : {"textHarry": "(No way you’re rushing off on your own again.)", "spHarry": "2", "textFlaux": "", "spFlaux": "0", "cadreN": "", "supOther": "true", "devent": "0"},
+  "dialog_2" : {"textHarry": "", "spHarry": "2", "textFlaux": "(Alright, smartypants. But only if you have an idea to take care of these clowns.)", "spFlaux": "2", "cadreN": "", "supOther": "true", "devent": "0"},
+  "dialog_3" : {"textHarry": "(Well, not yet...)", "spHarry": "3", "textFlaux": "", "spFlaux": "2", "cadreN": "", "supOther": "true", "devent": "0"},
+  "dialog_4" : {"textHarry": "", "spHarry": "3", "textFlaux": "Let’s go, then!", "spFlaux": "0", "cadreN": "", "supOther": "true", "devent": "0"},
+  "dialog_5" : {"textHarry": "C-Coming! Oh no...", "spHarry": "4", "textFlaux": "", "spFlaux": "0", "cadreN": "", "supOther": "true", "devent": "0"},
+}

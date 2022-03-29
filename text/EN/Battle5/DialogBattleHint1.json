@@ -1,0 +1,6 @@
+{
+  "dialog_1" : {"textHarry": "", "spHarry": "0", "textFlaux": "She’s pretty good...", "spFlaux": "2", "cadreN": "", "spLucy": "1", "supOther": "true", "devent": "0"},
+  "dialog_2" : {"textHarry": "That’s the Lucy I know. But she’s not used to these weapons.", "spHarry": "0", "textFlaux": "", "spFlaux": "2", "cadreN": "", "spLucy": "1", "supOther": "true", "devent": "0"},
+  "dialog_3" : {"textHarry": "Try to destabilize her by attacking her... shield. I’ll attack her scythe.", "spHarry": "2", "textFlaux": "", "spFlaux": "2", "cadreN": "", "spLucy": "1", "supOther": "true", "devent": "0"},
+  "dialog_4" : {"textHarry": "If you make even a single scratch on that scythe... You’ll pay from your own pocket!", "spHarry": "2", "textFlaux": "", "spFlaux": "2", "cadreN": "", "spLucy": "1", "supOther": "true", "devent": "0"},
+}

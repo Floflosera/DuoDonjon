@@ -1,0 +1,4 @@
+{
+  "dialog_1" : {"textHarry": "", "spHarry": "0", "textFlaux": "", "spFlaux": "0", "cadreN": "Ah !", "spLucy": "4", "supOther": "true", "devent": "0"},
+  "dialog_2" : {"textHarry": "", "spHarry": "0", "textFlaux": "", "spFlaux": "0", "cadreN": "No prob, I can manage! I can’t use it, anyway!", "spLucy": "1", "supOther": "true", "devent": "0"},
+}

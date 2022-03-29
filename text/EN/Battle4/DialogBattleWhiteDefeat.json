@@ -1,0 +1,5 @@
+{
+  "dialog_1" : {"textHarry": "", "spHarry": "0", "textFlaux": "There we go! Next!", "spFlaux": "1", "cadreN": "", "supOther": "true", "devent": "0"},
+  "dialog_2" : {"textHarry": "I’d watch out if I were you… The other one didn’t seem to like that.", "spHarry": "2", "textFlaux": "", "spFlaux": "1", "cadreN": "", "supOther": "true", "devent": "0"},
+  "dialog_3" : {"textHarry": "", "spHarry": "2", "textFlaux": "Woah! Guess you’re right. Got it!", "spFlaux": "4", "cadreN": "", "supOther": "true", "devent": "0"},
+}

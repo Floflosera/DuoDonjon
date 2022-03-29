@@ -1,0 +1,6 @@
+{
+	"dialog_1" : {"textHarry": "Flaux?", "spHarry": "4", "textFlaux": "Harry?", "spFlaux": "4", "cadreN": "", "supOther": "true", "devent": "0"},
+	"dialog_2" : {"textHarry": "", "spHarry": "4", "textFlaux": "What are you doing?!", "spFlaux": "2", "cadreN": "", "supOther": "true", "devent": "0"},
+	"dialog_3" : {"textHarry": "What are YOU doing?! You're not even hidden anymore!", "spHarry": "4", "textFlaux": "", "spFlaux": "2", "cadreN": "", "supOther": "true", "devent": "0"},
+	"dialog_4" : {"textHarry": "", "spHarry": "4", "textFlaux": "Oh CRAP!", "spFlaux": "4", "cadreN": "", "supOther": "true", "devent": "0"},
+}

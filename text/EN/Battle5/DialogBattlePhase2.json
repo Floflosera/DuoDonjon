@@ -1,0 +1,9 @@
+{
+  "dialog_1" : {"textHarry": "", "spHarry": "0", "textFlaux": "", "spFlaux": "0", "cadreN": "I don’t get how you guys fight with those. Ha! I don’t need them!", "spLucy": "7", "supOther": "true", "devent": "0"},
+  "dialog_2" : {"textHarry": "", "spHarry": "0", "textFlaux": "", "spFlaux": "0", "cadreN": "All I need is a bit of fire magic... and my fists!", "spLucy": "7", "supOther": "true", "devent": "0"},
+  "dialog_3" : {"textHarry": "", "spHarry": "0", "textFlaux": "", "spFlaux": "0", "cadreN": "Enough games! This treasure is mine!", "spLucy": "0", "supOther": "true", "devent": "0"},
+  "dialog_4" : {"textHarry": "", "spHarry": "0", "textFlaux": "I don’t think she’s happy.", "spFlaux": "4", "cadreN": "", "spLucy": "0", "supOther": "true", "devent": "0"},
+  "dialog_5" : {"textHarry": "Oh, quite the opposite. She’s *very* happy.", "spHarry": "2", "textFlaux": "", "spFlaux": "4", "cadreN": "", "spLucy": "0", "supOther": "true", "devent": "0"},
+  "dialog_6" : {"textHarry": "", "spHarry": "2", "textFlaux": "Scary. Ready, \"partner\"?", "spFlaux": "2", "cadreN": "", "spLucy": "0", "supOther": "true", "devent": "0"},
+  "dialog_7" : {"textHarry": "... Ready as I’ll ever be.", "spHarry": "1", "textFlaux": "", "spFlaux": "2", "cadreN": "", "spLucy": "0", "supOther": "true", "devent": "0"},
+}

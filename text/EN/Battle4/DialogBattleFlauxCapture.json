@@ -1,0 +1,5 @@
+{
+  "dialog_1" : {"textHarry": "", "spHarry": "4", "textFlaux": "Aaaaaaaahhh! Heeeeeeelp!", "spFlaux": "8", "cadreN": "", "supOther": "true", "devent": "0"},
+  "dialog_2" : {"textHarry": "Flaux! Why, you... Drop my friend right now!", "spHarry": "2", "textFlaux": "", "spFlaux": "8", "cadreN": "", "supOther": "true", "devent": "0"},
+  "dialog_3" : {"textHarry": "Think, Harry, think... You got to have something that can help her...", "spHarry": "4", "textFlaux": "", "spFlaux": "8", "cadreN": "", "supOther": "true", "devent": "0"},
+}

@@ -1,0 +1,4 @@
+{
+  "dialog_1" : {"textHarry": "What are you waiting for? We have to defeat the white mage!", "spHarry": "5", "textFlaux": "", "spFlaux": "0", "cadreN": "", "supOther": "true", "devent": "0"},
+  "dialog_2" : {"textHarry": "", "spHarry": "5", "textFlaux": "Do it yourself if you want it so bad! I’m doing my best here!", "spFlaux": "5", "cadreN": "", "supOther": "true", "devent": "0"},
+}

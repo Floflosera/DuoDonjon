@@ -1,0 +1,4 @@
+{
+  "dialog_1" : {"textHarry": "Yes, like that! She has trouble blocking the opposite weapon!", "spHarry": "1", "textFlaux": "", "spFlaux": "0", "cadreN": "", "spLucy": "1", "supOther": "true", "devent": "0"},
+  "dialog_2" : {"textHarry": "", "spHarry": "1", "textFlaux": "Let’s keep at it! I’m taking the shield, you take the scythe! And don’t go too hard on that scythe!", "spFlaux": "2", "cadreN": "", "spLucy": "1", "supOther": "true", "devent": "0"},
+}

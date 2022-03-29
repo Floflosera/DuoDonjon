@@ -1,0 +1,4 @@
+{
+  "dialog_1" : {"textHarry": "", "spHarry": "0", "textFlaux": "RAAHHH! I got you in my scythes!", "spFlaux": "2", "cadreN": "", "supOther": "true", "devent": "0"},
+  "dialog_2" : {"textHarry": "Flaux! Calm down! It’s just a trick! Argh...", "spHarry": "4", "textFlaux": "", "spFlaux": "2", "cadreN": "", "supOther": "true", "devent": "0"},
+}

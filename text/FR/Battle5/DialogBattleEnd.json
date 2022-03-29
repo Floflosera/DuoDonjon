@@ -5,7 +5,7 @@
   "dialog_4" : {"textHarry": "", "spHarry": "0", "textFlaux": "", "spFlaux": "1", "cadreN": "Euh, ouais, tiens, prends la.", "spLucy": "8", "supOther": "true", "devent": "0"},
   "dialog_5" : {"textHarry": "", "spHarry": "0", "textFlaux": "WOAAHHHHH ! Elle est tellement bien !", "spFlaux": "1", "cadreN": "", "spLucy": "8", "supOther": "true", "devent": "0"},
   "dialog_6" : {"textHarry": "", "spHarry": "0", "textFlaux": "", "spFlaux": "1", "cadreN": "C'est quoi son délire avec les faux ?", "spLucy": "3", "supOther": "true", "devent": "0"},
-  "dialog_7" : {"textHarry": "", "spHarry": "0", "textFlaux": "C'est compliqué. Tu comptes nous laisser tout le trésor ?", "spFlaux": "1", "cadreN": "", "spLucy": "3", "supOther": "true", "devent": "0"},
+  "dialog_7" : {"textHarry": "C'est compliqué. Tu comptes nous laisser tout le trésor ?", "spHarry": "0", "textFlaux": "", "spFlaux": "1", "cadreN": "", "spLucy": "3", "supOther": "true", "devent": "0"},
   "dialog_8" : {"textHarry": "", "spHarry": "0", "textFlaux": "", "spFlaux": "1", "cadreN": "J'sais que même si je refusais, tu me laisserais pas repartir sans au moins un truc ou deux.", "spLucy": "3", "supOther": "true", "devent": "0"},
   "dialog_9" : {"textHarry": "", "spHarry": "0", "textFlaux": "", "spFlaux": "1", "cadreN": "J'vais me servir et je m'en vais. On se revoit plus tard !", "spLucy": "1", "supOther": "true", "devent": "0"},
   "dialog_10" : {"textHarry": "C'est ça. À plus.", "spHarry": "1", "textFlaux": "", "spFlaux": "1", "cadreN": "", "spLucy": "3", "supOther": "true", "devent": "0"},

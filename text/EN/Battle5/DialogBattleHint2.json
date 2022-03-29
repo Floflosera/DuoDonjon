@@ -1,0 +1,4 @@
+{
+  "dialog_1" : {"textHarry": "Climb on my shield again! And prepare your scythe first!", "spHarry": "0", "textFlaux": "", "spFlaux": "0", "cadreN": "", "spLucy": "0", "supOther": "true", "devent": "0"},
+  "dialog_2" : {"textHarry": "", "spHarry": "0", "textFlaux": "I’m trying!", "spFlaux": "2", "cadreN": "", "spLucy": "0", "supOther": "true", "devent": "0"},
+}
