@@ -47,6 +47,7 @@ func choixSkill():
 #pas de secondText = false parce qu'il n'a jamais de second texte donc sa variable reste en false
 func castSkill1():
 	
+	main.seHeal.play()
 	soinPV(70)
 	
 	yield(spriteAnim,"animation_finished")
@@ -55,6 +56,7 @@ func castSkill1():
 
 func castSkill2():
 	
+	main.seHeal.play()
 	pote.soinPV(100)
 	
 	yield(pote.spriteAnim,"animation_finished")

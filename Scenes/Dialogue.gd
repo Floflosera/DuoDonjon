@@ -223,6 +223,15 @@ func dialogueRead():
 	load_dialogue(dialogue_file)	#On prépare la lecture
 	start_dialogue()				#On commence le dialogue
 	
+	if(dialogue_devent != 0):
+		if(dialogue_devent == 1):
+			get_node("../EnnemiGroup").show()
+		elif(dialogue_devent == 2):
+			if(get_node("../Barreaux") != null):
+				if(get_node("../Barreaux").visible):
+					get_node("../Barreaux").hide()
+				else:
+					get_node("../Barreaux").show()
 	if(dialogue_cadreN == ""):
 		boiteDeDiaAnim(dialogue_textHarry,dialogue_spHarry,dialogue_textFlaux,dialogue_spFlaux,dialogue_supOther)
 	else:

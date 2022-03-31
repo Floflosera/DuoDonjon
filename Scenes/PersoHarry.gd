@@ -78,6 +78,7 @@ func harryDegats(degats):
 		degats += 10
 
 	deg = cible.degatsPrisDef(degats) #il n'augmente pas sa puissance autrement
+	main.seHarryTappe.play()
 	
 	#on attend un petit instant (un changement de frame) pour afficher les dégâts quand l'ennemi clignote
 	yield(cible.spriteAnim,"frame_changed")
@@ -117,6 +118,7 @@ func castSkill2():
 
 func castSkill3():
 	
+	main.seHeal.play()
 	soinPV(100)
 	if(allie.pv > 0 && not(allie.horsCombat)):
 		allie.soinPV(100)

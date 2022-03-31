@@ -112,6 +112,7 @@ func labelVieF():
 func degatsPris(degats):
 	degats = int(degats)
 	spriteAnim.play("Blesse")		#Lance l'animation des dégâts pris
+	main.seFaitTappe.play()
 	if(degats < 1):
 		degats = 0
 	if(pv - degats <= 0):			#La condition fait en sorte de ne pas avoir des pv négatifs

@@ -39,6 +39,8 @@ var labourageDesc
 var lacerationDesc
 var affutageDesc
 
+onready var tourEnCours = false
+
 #Fonction qui se lance automatiquement à l'apparition de GeneralInterface
 func _ready():
 	
@@ -68,6 +70,7 @@ func choixCharaTour(chara):
 		
 		#si on n'a pas annulé le tour avec Flaux
 		if(not(chara.annuleF)):
+			main.seValider.play()
 			#en fonction du personnage, et donc de qui cible, on release le groupe de skills
 			if(kiCible == 0):
 				#Permet de retirer le curseur tous les boutons d'un personnage
@@ -106,10 +109,12 @@ func choixCharaTour(chara):
 					i += 1
 				#si un ennemi a été ciblé, on le fait cibler par le personnage
 				if(i < groupeEnnemi.ennemis.size()):
+					main.seValider.play()
 					chara.cibler(groupeEnnemi.ennemis[i])
 					chara.tourChoisi = true
 				#sinon le ciblage n'a pas eu lieu et on retourne au début du tant que
 				else:
+					main.seCancel.play()
 					chara.ciblage = false
 				#on remet i à 0 dans tous les cas
 				i = 0
@@ -129,6 +134,8 @@ func choixCharaTour(chara):
 
 #Fonction qui permet au joueur de sélectionner les actions qu'il souhaite faire
 func choixTour():
+	
+	tourEnCours = true
 	
 	cFlauxFait = false #booléen pour vérifier si Flaux annule l'action (donc faux de base)
 	
@@ -182,6 +189,8 @@ func choixTour():
 		cFlaux.abled()
 		cFlaux.skills[cFlaux.choixSkill].disabled = true
 	
+	tourEnCours = false
+	
 	emit_signal("choixTourFini") #Permet d'avertir la scène de combat que le tour est terminé
 
 #Fonction qui boucle à l'infini, elle est toujours actif tant que la scène est présente
@@ -189,25 +198,30 @@ func _process(_delta):
 	#En fonction d'où se situe le focus, on affiche un texte différent dans la description du personnage concerné
 	if(cHarry.skill1.has_focus()):
 		cHarry.modifDesc(coupBouclierDesc)
-	if(cHarry.skill2.has_focus()):
+	elif(cHarry.skill2.has_focus()):
 		cHarry.modifDesc(lancerBouclierDesc)
-	if(cHarry.skill3.has_focus()):
+	elif(cHarry.skill3.has_focus()):
 		cHarry.modifDesc(soinDesc)
-	if(cHarry.skill4.has_focus()):
+	elif(cHarry.skill4.has_focus()):
 		cHarry.modifDesc(defenseDesc)
-	if(cHarry.skill5.has_focus()):
+	elif(cHarry.skill5.has_focus()):
 		cHarry.modifDesc(lancementDesc)
 	
-	if(cFlaux.skill1.has_focus()):
+	elif(cFlaux.skill1.has_focus()):
 		cFlaux.modifDesc(seCacherDesc)
-	if(cFlaux.skill2.has_focus()):
+	elif(cFlaux.skill2.has_focus()):
 		cFlaux.modifDesc(coupPlongeantDesc)
-	if(cFlaux.skill3.has_focus()):
+	elif(cFlaux.skill3.has_focus()):
 		cFlaux.modifDesc(labourageDesc)
-	if(cFlaux.skill4.has_focus()):
+	elif(cFlaux.skill4.has_focus()):
 		cFlaux.modifDesc(lacerationDesc)
-	if(cFlaux.skill5.has_focus()):
+	elif(cFlaux.skill5.has_focus()):
 		cFlaux.modifDesc(affutageDesc)
+	
+	if(tourEnCours):
+		if(Input.is_action_just_pressed("ui_left") || Input.is_action_just_pressed("ui_up") || \
+		Input.is_action_just_pressed("ui_down") || Input.is_action_just_pressed("ui_right")):
+			main.seCursor.play()
 
 #La lecture des skills fonctionne d'une manière similaire à la lecture des dialogues dans un fichier
 export(String, FILE, "*.json") var skill_file

@@ -31,8 +31,9 @@ func _ready():
 #et recommencer le choix du tour d'Harry
 func _process(_delta):
 	#si on n'est pas en train de cibler avec Flaux (auquel cas "cancel" renvoie au menu de Flaux)
-	if(not(ciblage)):
+	if(not(multi) && not(ciblage) && interfaceGeneral.cFlauxFait):
 		if(Input.is_action_just_pressed("ui_cancel")):	#lorsqu'on appuie sur cancel
+			main.seCancel.play()
 			annuleF = true								#on informe qu'on veut annuler le tour
 			emit_signal("butPressed")					#et on envoie le signal pour que choixTour continue
 	
@@ -41,17 +42,20 @@ func _process(_delta):
 			skill1.set("custom_colors/font_color", Color(1.0, 84.0/255.0, 53.0/255.0))
 			modifDesc(interfaceGeneral.seCacherDesc)
 			if((Input.is_action_just_pressed("ui_multi_right") || Input.is_action_just_pressed("ui_multi_left")) && not(skill2.disabled)):
+				main.seCursor.play()
 				skill2y = true
 				skill1y = false
 				skill1.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
 				yield(spriteAnim,"frame_changed")
 			elif((Input.is_action_just_pressed("ui_multi_down") || Input.is_action_just_pressed("ui_multi_up")) && not(skill3.disabled)):
+				main.seCursor.play()
 				skill3y = true
 				skill1y = false
 				skill1.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
 				yield(spriteAnim,"frame_changed")
 			elif(Input.is_action_just_pressed("ui_multi_select")):
 				_on_Skill1_pressed()
+				main.seValider.play()
 				skill1y = false
 				skill1.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
 				fFait = true
@@ -60,11 +64,13 @@ func _process(_delta):
 			skill2.set("custom_colors/font_color", Color(1.0, 84.0/255.0, 53.0/255.0))
 			modifDesc(interfaceGeneral.coupPlongeantDesc)
 			if((Input.is_action_just_pressed("ui_multi_right") || Input.is_action_just_pressed("ui_multi_left")) && not(skill1.disabled)):
+				main.seCursor.play()
 				skill1y = true
 				skill2y = false
 				skill2.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
 				yield(spriteAnim,"frame_changed")
 			elif(Input.is_action_just_pressed("ui_multi_down")):
+				main.seCursor.play()
 				if(skill4.visible):
 					if(not(skill4.disabled)):
 						skill4y = true
@@ -78,6 +84,7 @@ func _process(_delta):
 							skill2.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
 							yield(spriteAnim,"frame_changed")
 			elif((Input.is_action_just_pressed("ui_multi_up")) && not(skill5.disabled)):
+				main.seCursor.play()
 				if(skill5.visible):
 					skill5y = true
 					skill2y = false
@@ -85,6 +92,7 @@ func _process(_delta):
 					yield(spriteAnim,"frame_changed")
 			elif(Input.is_action_just_pressed("ui_multi_select")):
 				_on_Skill2_pressed()
+				main.seValider.play()
 				skill2y = false
 				skill2.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
 				ciblageF = true
@@ -93,18 +101,21 @@ func _process(_delta):
 			skill3.set("custom_colors/font_color", Color(1.0, 84.0/255.0, 53.0/255.0))
 			modifDesc(interfaceGeneral.labourageDesc)
 			if((Input.is_action_just_pressed("ui_multi_right") || Input.is_action_just_pressed("ui_multi_left")) && not(skill4.disabled)):
+				main.seCursor.play()
 				if(skill4.visible):
 					skill4y = true
 					skill3y = false
 					skill3.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
 					yield(spriteAnim,"frame_changed")
 			elif((Input.is_action_just_pressed("ui_multi_down") || Input.is_action_just_pressed("ui_multi_up")) && not(skill1.disabled)):
+				main.seCursor.play()
 				skill1y = true
 				skill3y = false
 				skill3.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
 				yield(spriteAnim,"frame_changed")
 			elif(Input.is_action_just_pressed("ui_multi_select")):
 				_on_Skill3_pressed()
+				main.seValider.play()
 				skill3y = false
 				skill3.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
 				fFait = true
@@ -113,23 +124,27 @@ func _process(_delta):
 			skill4.set("custom_colors/font_color", Color(1.0, 84.0/255.0, 53.0/255.0))
 			modifDesc(interfaceGeneral.lacerationDesc)
 			if((Input.is_action_just_pressed("ui_multi_right") || Input.is_action_just_pressed("ui_multi_left")) && not(skill3.disabled)):
+				main.seCursor.play()
 				skill3y = true
 				skill4y = false
 				skill4.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
 				yield(spriteAnim,"frame_changed")
 			elif((Input.is_action_just_pressed("ui_multi_down")) && not(skill5.disabled)):
+				main.seCursor.play()
 				if(skill5.visible):
 					skill5y = true
 					skill4y = false
 					skill4.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
 					yield(spriteAnim,"frame_changed")
 			elif((Input.is_action_just_pressed("ui_multi_up")) && not(skill2.disabled)):
+				main.seCursor.play()
 				skill2y = true
 				skill4y = false
 				skill4.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
 				yield(spriteAnim,"frame_changed")
 			elif(Input.is_action_just_pressed("ui_multi_select")):
 				_on_Skill4_pressed()
+				main.seValider.play()
 				skill4y = false
 				skill4.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
 				ciblageF = true
@@ -138,6 +153,7 @@ func _process(_delta):
 			skill5.set("custom_colors/font_color", Color(1.0, 84.0/255.0, 53.0/255.0))
 			modifDesc(interfaceGeneral.affutageDesc)
 			if(Input.is_action_just_pressed("ui_multi_up")):
+				main.seCursor.play()
 				if(not(skill4.disabled)):
 					skill4y = true
 					skill5y = false
@@ -149,12 +165,14 @@ func _process(_delta):
 					skill5.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
 					yield(spriteAnim,"frame_changed")
 			elif((Input.is_action_just_pressed("ui_multi_down")) && not(skill2.disabled)):
+				main.seCursor.play()
 				skill2y = true
 				skill5y = false
 				skill5.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
 				yield(spriteAnim,"frame_changed")
 			elif(Input.is_action_just_pressed("ui_multi_select")):
 				_on_Skill5_pressed()
+				main.seValider.play()
 				skill5y = false
 				skill5.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
 				fFait = true
@@ -185,6 +203,7 @@ func _process(_delta):
 					i = ennemis.size()-1
 			if(Input.is_action_just_pressed("ui_multi_cancel")):
 				ciblageF = false
+				main.seCancel.play()
 				ennemis[i].selectionF.hide()
 				ennemis[i].barreVie.hide()
 				if(not(skill1.disabled)):
@@ -194,6 +213,7 @@ func _process(_delta):
 				yield(spriteAnim,"frame_changed")
 			if(Input.is_action_just_pressed("ui_multi_select")):
 				ciblageF = false
+				main.seValider.play()
 				ennemis[i]._on_SelectionFlaux_pressed()
 				ennemis[i].selectionF.hide()
 				ennemis[i].barreVie.hide()
@@ -260,6 +280,8 @@ func flauxDegats(degats):
 		deg = cible.degatsPrisDef(int(degats*1.5))
 	else:
 		deg = cible.degatsPrisDef(degats)
+	
+	main.seFlauxTappe.play()
 	
 	#on attend un petit instant (un changement de frame) pour afficher les dégâts quand l'ennemi clignote
 	yield(cible.spriteAnim,"frame_changed")

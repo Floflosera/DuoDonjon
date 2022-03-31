@@ -3,6 +3,7 @@ extends "res://Scenes/Combat.gd"
 onready var combattantEnnemi1 = $EnnemiGroup/Ennemi4_1
 onready var combattantEnnemi2 = $EnnemiGroup/Ennemi4_2
 
+onready var hintFlag2 = false
 onready var flagComptSoin = 0
 onready var flagMageBlancD = false
 onready var flagMageNoirD = false
@@ -23,16 +24,16 @@ func _ready():
 	while((combattantHarry.pv > 0 || combattantFlaux.pv > 0) && (combattantEnnemi1.pv > 0 || combattantEnnemi2.pv > 0)):
 		nTour += 1
 		
-		if(combattantEnnemi1.choixSkill == 1 && flagComptSoin < 2):
+		if(combattantEnnemi1.choixSkill == 1 && flagComptSoin < 2 && not(hintFlag)):
 			flagComptSoin += 1
 			if(flagComptSoin == 2):
 				litDialogue($DialogueInterface.dialogueHint1())
 				yield($DialogueInterface, "dialogueFini")
 				hintFlag = true
-		elif(((nTour >= 5) && combattantEnnemi1.pv > 0) && hintFlag):
+		elif(((nTour >= 5) && combattantEnnemi1.pv > 0) && hintFlag && not(hintFlag2)):
 			litDialogue($DialogueInterface.dialogueHint2())
 			yield($DialogueInterface, "dialogueFini")
-			hintFlag = false
+			hintFlag2 = true
 		
 		if(combattantEnnemi1.pv == 0 && combattantEnnemi2.pv > 0) && not(flagMageBlancD):
 			litDialogue($DialogueInterface.dialogueWhiteDefeat())

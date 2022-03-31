@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Cursor.wav-0c075ba8518c70bf4fb7791a2117383d.sample"
+
+[deps]
+
+source_file="res://assets/ost/SE/Cursor.wav"
+dest_files=[ "res://.import/Cursor.wav-0c075ba8518c70bf4fb7791a2117383d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

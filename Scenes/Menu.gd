@@ -26,54 +26,73 @@ onready var settingsLangen = $SousMenu/SettingsMenu/MarginContainer/VBoxContaine
 onready var settingsControl = $SousMenu/SettingsMenu/MarginContainer/VBoxContainer/Control
 onready var settingsQuitSet = $SousMenu/SettingsMenu/MarginContainer/VBoxContainer/QuitSet
 
+func _ready():
+	if(not(main.pres)):
+		yield(main,"pres")
+	main.langageMenu()
+
 func _process(_delta):
 	
 	if(main.intro):
 		if(Input.is_action_just_pressed("ui_cancel")):
+			main.seCancel.play()
 			get_tree().call_group("SousMenuB", "release_focus")
 			get_tree().call_group("SousMenu", "hide")
 			startB.grab_focus()
+	
+	if(Input.is_action_just_pressed("ui_left") || Input.is_action_just_pressed("ui_up") || \
+	Input.is_action_just_pressed("ui_down") || Input.is_action_just_pressed("ui_right")):
+		main.seCursor.play()
 
 func _on_ChapSelectButton_pressed():
+	main.seValider.play()
 	chapSelectB.release_focus()
 	chapSelectM.show()
 	battle1B.grab_focus()
 
 func _on_Battle1_pressed():
+	main.seValider.play()
 	get_tree().call_group("SousMenuB", "release_focus")
 	sel = 1
 	main.selectBattle()
 
 func _on_Battle2_pressed():
+	main.seValider.play()
 	get_tree().call_group("SousMenuB", "release_focus")
 	sel = 2
 	main.selectBattle()
 
 func _on_Battle3_pressed():
+	main.seValider.play()
 	get_tree().call_group("SousMenuB", "release_focus")
 	sel = 3
 	main.selectBattle()
 
 func _on_Battle4_pressed():
+	main.seValider.play()
 	get_tree().call_group("SousMenuB", "release_focus")
 	sel = 4
 	main.selectBattle()
 
 func _on_Battle5_pressed():
+	main.seValider.play()
 	get_tree().call_group("SousMenuB", "release_focus")
 	sel = 5
 	main.selectBattle()
 
 func _on_StartButton_pressed():
+	main.seValider.play()
 	get_tree().call_group("MenuB", "release_focus")
 	main.startStory()
 
 func _on_SettingsButton_pressed():
+	main.seValider.play()
 	settingsB.release_focus()
 	settingsM.show()
 	settingsMultiYes.grab_focus()
 
 func _on_YesMulti_pressed():
+	main.seValider.play()
 	main.multi = true
 	main.ligne_menu(5)
 	settingsMulti.set_text(main.menu_text)
@@ -81,6 +100,7 @@ func _on_YesMulti_pressed():
 	settingsMulti.set_text(settingsMulti.get_text() + " (" + main.menu_text + ")")
 
 func _on_NoMulti_pressed():
+	main.seValider.play()
 	main.multi = false
 	main.ligne_menu(5)
 	settingsMulti.set_text(main.menu_text)
@@ -88,12 +108,14 @@ func _on_NoMulti_pressed():
 	settingsMulti.set_text(settingsMulti.get_text() + " (" + main.menu_text + ")")
 
 func _on_French_pressed():
+	main.seValider.play()
 	main.fr = true
 	main.en = false
 	
 	main.load_menuText()
 
 func _on_English_pressed():
+	main.seValider.play()
 	main.en = true
 	main.fr = false
 	
@@ -105,6 +127,7 @@ func _on_ExitButton_pressed():
 
 
 func _on_QuitSet_pressed():
+	main.seCancel.play()
 	get_tree().call_group("SousMenuB", "release_focus")
 	get_tree().call_group("SousMenu", "hide")
 	startB.grab_focus()

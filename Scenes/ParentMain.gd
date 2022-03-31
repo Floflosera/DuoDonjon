@@ -6,6 +6,15 @@ onready var transitionS = $CalqueTransition/Transition
 
 onready var menuC = $CalqueScene/Menu
 
+onready var seValider = $SE/Valider
+onready var seCancel = $SE/Cancel
+onready var seCursor = $SE/Cursor
+
+onready var seHarryTappe = $SE/HarryTappe
+onready var seFlauxTappe = $SE/FlauxTappe
+onready var seFaitTappe = $SE/SeFaitTappe
+onready var seHeal = $SE/Heal
+
 onready var fr = true
 onready var en = false
 onready var multi = false

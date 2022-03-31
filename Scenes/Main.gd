@@ -1,10 +1,13 @@
 extends "res://Scenes/ParentMain.gd"
 
 signal finiTransition
+signal pres
 
 var scene
 var scene2
 var instance
+
+onready var pres = false
 
 onready var win = false
 
@@ -13,7 +16,8 @@ onready var intro = false
 func _ready():
 	
 	transitionS.show()
-	langageMenu()
+	pres = true
+	emit_signal("pres")
 	menuC.settingsM.show()
 	
 	$TimerTransi.set_wait_time(1.0)

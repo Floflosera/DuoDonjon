@@ -42,9 +42,9 @@ func dialogueHint1():
 
 func dialogueHint2():
 	if(fr):
-		dialogue_file = dialogueHint1FR
+		dialogue_file = dialogueHint2FR
 	elif(en):
-		dialogue_file = dialogueHint1EN
+		dialogue_file = dialogueHint2EN
 	dialogueRead()
 
 func dialogueEnd():
