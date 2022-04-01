@@ -19,6 +19,8 @@ func _ready():
 	litDialogue($DialogueInterface.dialogueIntro()) #lancement du premier dialogue
 	yield($DialogueInterface, "dialogueFini")
 	
+	$BattleSong.play()
+	
 	while((combattantHarry.pv > 0 || combattantFlaux.pv > 0) && combattantEnnemi.pv > 0):
 		nTour += 1
 		
@@ -42,6 +44,8 @@ func _ready():
 		yield(self, "derouleTourFini")
 		
 		nar.set_text("")
+	
+	$BattleSong.stop()
 	
 	if(combattantEnnemi.pv == 0):
 		$EnnemiGroup.hide()

@@ -286,3 +286,14 @@ func narraRead(spHarry, spFlaux, textNar):
 	confirmation.hide()
 	
 	emit_signal("dialogueSuivant")
+
+#Ces fonctions ne servent qu'à empêcher les erreurs de leur inexistance
+#Mais elles ne servent à rien
+func _on_ConfirmH_pressed():
+	pass
+
+func _on_Confirm_pressed():
+	pass
+
+func _on_ConfirmF_pressed():
+	pass

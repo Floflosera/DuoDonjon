@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scenes/GeneralInterface.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/EnnemiGroup2.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://assets/FondNormal.png" type="Texture" id=6]
 [ext_resource path="res://Scenes/DialogueInterface2.gd" type="Script" id=7]
 [ext_resource path="res://Godot-Fontpack-d244bf6170b399a6d4d26a0d906058ddf2dafdf1/fonts/montreal/Montreal-Regular.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://assets/ost/e.ogg" type="AudioStream" id=9]
 
 [sub_resource type="DynamicFont" id=2]
 size = 18
@@ -63,3 +64,6 @@ __meta__ = {
 [node name="TimerText" type="Timer" parent="."]
 wait_time = 0.01
 one_shot = true
+
+[node name="BattleSong" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
