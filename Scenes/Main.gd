@@ -133,6 +133,9 @@ func startStory():
 		else:
 			scene = preload("res://Scenes/Combat4.tscn")
 		
+		transition()
+		yield(self,"finiTransition")
+		
 		instance.queue_free()
 	
 	win = false
