@@ -31,6 +31,7 @@ const dialoguePhase2EN = "res://text/EN/Battle5/DialogBattlePhase2.json"
 const dialogueWeaponsEN = "res://text/EN/Battle5/DialogBattleWeapons.json"
 
 func dialogueIntro():
+	combat.discussionOst.play()
 	if(fr):
 		dialogue_file = dialogueIntroFR
 	elif(en):
@@ -38,6 +39,17 @@ func dialogueIntro():
 	lucyDia.changerSpriteDia(2)
 	yield(main,"finiTransition")
 	dialogueRead()
+	yield(self,"dialogueFini")
+	combat.discussionOst.stop()
+	
+	combat.rencontreSE.play()
+	yield(combat.rencontreSE,"finished")
+	combat.timerActions.set_wait_time(0.5)
+	combat.timerActions.start()
+	yield(combat.timerActions,"timeout")
+	combat.timerActions.set_wait_time(1.0)
+	
+	emit_signal("dialogueIntroFini")
 
 func dialogueHint1():
 	if(fr):

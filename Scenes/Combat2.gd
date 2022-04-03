@@ -19,11 +19,8 @@ func _ready():
 	
 	ordreTour() #définie l'ordre des tours au début du combat
 	
-	#litDialogue($DialogueInterface.dialogueTest())
-	#yield($DialogueInterface, "dialogueFini")
-	
-	litDialogue($DialogueInterface.dialogueIntro()) #lancement du premier dialogue
-	yield($DialogueInterface, "dialogueFini")
+	litIntroDialogue($DialogueInterface.dialogueIntro()) #lancement du premier dialogue
+	yield($DialogueInterface, "dialogueIntroFini")
 	
 	$BattleSong.play()
 

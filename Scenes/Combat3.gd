@@ -16,8 +16,8 @@ func _ready():
 	
 	ordreTour()
 	
-	litDialogue($DialogueInterface.dialogueIntro()) #lancement du premier dialogue
-	yield($DialogueInterface, "dialogueFini")
+	litIntroDialogue($DialogueInterface.dialogueIntro()) #lancement du premier dialogue
+	yield($DialogueInterface, "dialogueIntroFini")
 	
 	$BattleSong.play()
 	

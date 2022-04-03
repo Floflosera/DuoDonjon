@@ -2,7 +2,10 @@ extends Node
 
 onready var main = get_node("../../..")
 
+onready var combat = get_node("..")
+
 #Signal qui permet d'alerter de la fin d'un dialogue
+signal dialogueIntroFini
 signal dialogueFini
 signal dialogueSuivant
 
@@ -297,3 +300,6 @@ func _on_Confirm_pressed():
 
 func _on_ConfirmF_pressed():
 	pass
+
+func dialogueIntro():
+	emit_signal("dialogueIntroFini")

@@ -17,6 +17,7 @@ const dialogueBroken2EN = "res://text/EN/Battle1/DialogBattleBroken2.json"
 const dialogueEndEN = "res://text/EN/Battle1/DialogBattleEnd.json"
 
 func dialogueIntro():
+	combat.discussionOst.play()
 	if(fr):
 		dialogue_file = dialogueIntroFR
 	elif(en):
@@ -24,6 +25,19 @@ func dialogueIntro():
 	FlauxDia.changerSpriteDia(8)
 	yield(main,"finiTransition")
 	dialogueRead()
+	yield(self,"dialogueFini")
+	
+	get_node("../Barreaux").show()
+	combat.discussionOst.stop()
+	combat.rencontreSE.play()
+	yield(combat.rencontreSE,"finished")
+	combat.timerActions.set_wait_time(0.5)
+	combat.timerActions.start()
+	yield(combat.timerActions,"timeout")
+	combat.timerActions.set_wait_time(1.0)
+	get_node("../Barreaux").hide()
+	
+	emit_signal("dialogueIntroFini")
 
 func dialogueHint1():
 	if(fr):

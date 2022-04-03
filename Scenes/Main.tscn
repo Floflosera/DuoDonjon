@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scenes/Main.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Menu.tscn" type="PackedScene" id=2]
@@ -10,6 +10,8 @@
 [ext_resource path="res://assets/ost/SE/HarryTappe.wav" type="AudioStream" id=8]
 [ext_resource path="res://assets/ost/SE/Cursor.wav" type="AudioStream" id=9]
 [ext_resource path="res://assets/ost/SE/Soin.wav" type="AudioStream" id=10]
+[ext_resource path="res://assets/ost/discution.ogg" type="AudioStream" id=11]
+[ext_resource path="res://assets/ost/SE/RencontreÉtrange.wav" type="AudioStream" id=12]
 
 [node name="Main" type="Node"]
 script = ExtResource( 1 )
@@ -51,3 +53,11 @@ stream = ExtResource( 7 )
 
 [node name="Heal" type="AudioStreamPlayer" parent="SE"]
 stream = ExtResource( 10 )
+
+[node name="Rencontre" type="AudioStreamPlayer" parent="SE"]
+stream = ExtResource( 12 )
+
+[node name="Music" type="Node" parent="."]
+
+[node name="DiscussionSong" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource( 11 )

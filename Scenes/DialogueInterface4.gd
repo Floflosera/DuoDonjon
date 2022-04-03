@@ -25,6 +25,7 @@ const dialogueHarryWillOWispEN = "res://text/EN/Battle4/DialogBattleHarryWillOWi
 const dialogueWhiteDefeatEN = "res://text/EN/Battle4/DialogBattleWhiteDefeat.json"
 
 func dialogueIntro():
+	combat.discussionOst.play()
 	if(fr):
 		dialogue_file = dialogueIntroFR
 	elif(en):
@@ -32,6 +33,17 @@ func dialogueIntro():
 	HarryDia.changerSpriteDia(2)
 	yield(main,"finiTransition")
 	dialogueRead()
+	yield(self,"dialogueFini")
+	combat.discussionOst.stop()
+	
+	combat.rencontreSE.play()
+	yield(combat.rencontreSE,"finished")
+	combat.timerActions.set_wait_time(0.5)
+	combat.timerActions.start()
+	yield(combat.timerActions,"timeout")
+	combat.timerActions.set_wait_time(1.0)
+	
+	emit_signal("dialogueIntroFini")
 
 func dialogueHint1():
 	if(fr):

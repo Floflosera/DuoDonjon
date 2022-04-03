@@ -27,6 +27,10 @@ onready var combattantsBase
 #On définie une variable pour le label de narration
 onready var nar = $CadreNarrateur/DescriptionAction
 
+onready var timerActions = $TimerActions
+onready var rencontreSE = get_node("../../SE/Rencontre")
+onready var discussionOst = get_node("../../Music/DiscussionSong")
+
 #Variable utilisée pour faire des permutations
 var temp
 #Variable utilisée pour l'affichage progressif des textes
@@ -151,6 +155,14 @@ func litDialogue(_dialog):
 	$DialogueInterface.show()
 	#le dialogue entré en paramètre va se lancer directement
 	yield($DialogueInterface, "dialogueFini") #on attend qu'il soit fini
+	combattantHarry.changerSprite()
+	combattantFlaux.changerSprite()
+	$DialogueInterface.hide()
+
+func litIntroDialogue(_dialog):
+	$DialogueInterface.show()
+	#le dialogue entré en paramètre va se lancer directement
+	yield($DialogueInterface, "dialogueIntroFini") #on attend qu'il soit fini
 	combattantHarry.changerSprite()
 	combattantFlaux.changerSprite()
 	$DialogueInterface.hide()

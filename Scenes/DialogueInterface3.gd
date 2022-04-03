@@ -17,12 +17,24 @@ const dialogueFallEN = "res://text/EN/Battle3/DialogBattleFall.json"
 const dialogueOutspeedEN = "res://text/EN/Battle3/DialogBattleOutspeed.json"
 
 func dialogueIntro():
+	combat.discussionOst.play()
 	if(fr):
 		dialogue_file = dialogueIntroFR
 	elif(en):
 		dialogue_file = dialogueIntroEN
 	yield(main,"finiTransition")
 	dialogueRead()
+	yield(self,"dialogueFini")
+	combat.discussionOst.stop()
+	
+	combat.rencontreSE.play()
+	yield(combat.rencontreSE,"finished")
+	combat.timerActions.set_wait_time(0.5)
+	combat.timerActions.start()
+	yield(combat.timerActions,"timeout")
+	combat.timerActions.set_wait_time(1.0)
+	
+	emit_signal("dialogueIntroFini")
 
 func dialogueHint1():
 	if(fr):
