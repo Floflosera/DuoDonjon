@@ -83,9 +83,10 @@ func choixCharaTour(chara):
 			
 			#si le personnage cible avec son attaque, alors
 			if(chara.ciblage):
-				if(not(cFlaux.multi)):
-					#on nettoie les ciblages de l'ennemi pour éviter les problèmes si on annule l'action d'Harry
-					#après sa sélection, seulement en solo car le soucis a lieu quand on annule avec Flaux
+				if(not(cFlaux.multi) && chara == cHarry):
+					#on nettoie les ciblages des ennemis pour éviter d'avoir des problèmes si on annule
+					#l'action de Harry avec Flaux, l'ennemi doit oublier qu'il a été ciblé par Harry
+					#seulement en solo car le soucis a lieu quand on annule avec Flaux
 					get_tree().call_group("EnnemiGroupe", "clearCible")
 				
 				premiereCible = false
