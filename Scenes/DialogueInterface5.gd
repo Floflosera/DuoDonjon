@@ -38,7 +38,7 @@ func dialogueIntro():
 		dialogue_file = dialogueIntroEN
 	lucyDia.changerSpriteDia(2)
 	yield(main,"finiTransition")
-	dialogueRead()
+	dialogueReadL()
 	yield(self,"dialogueFini")
 	combat.discussionOst.stop()
 	
@@ -56,79 +56,79 @@ func dialogueHint1():
 		dialogue_file = dialogueHint1FR
 	elif(en):
 		dialogue_file = dialogueHint1EN
-	dialogueRead()
+	dialogueReadL()
 
 func dialogueHint2():
 	if(fr):
 		dialogue_file = dialogueHint2FR
 	elif(en):
 		dialogue_file = dialogueHint2EN
-	dialogueRead()
+	dialogueReadL()
 
 func dialogueEnd():
 	if(fr):
 		dialogue_file = dialogueEndFR
 	elif(en):
 		dialogue_file = dialogueEndEN
-	dialogueRead()
+	dialogueReadL()
 
 func dialogueCounter():
 	if(fr):
 		dialogue_file = dialogueCounterFR
 	elif(en):
 		dialogue_file = dialogueCounterEN
-	dialogueRead()
+	dialogueReadL()
 
 func dialogueEffective():
 	if(fr):
 		dialogue_file = dialogueEffectiveFR
 	elif(en):
 		dialogue_file = dialogueEffectiveEN
-	dialogueRead()
+	dialogueReadL()
 
 func dialogueFall():
 	if(fr):
 		dialogue_file = dialogueFallFR
 	elif(en):
 		dialogue_file = dialogueFallEN
-	dialogueRead()
+	dialogueReadL()
 
 func dialogueGetReal():
 	if(fr):
 		dialogue_file = dialogueGetRealFR
 	elif(en):
 		dialogue_file = dialogueGetRealEN
-	dialogueRead()
+	dialogueReadL()
 
 func dialogueOneWeapon():
 	if(fr):
 		dialogue_file = dialogueOneWeaponFR
 	elif(en):
 		dialogue_file = dialogueOneWeaponEN
-	dialogueRead()
+	dialogueReadL()
 
 func dialogueOutspeed():
 	if(fr):
 		dialogue_file = dialogueOutspeedFR
 	elif(en):
 		dialogue_file = dialogueOutspeedEN
-	dialogueRead()
+	dialogueReadL()
 
 func dialoguePhase2():
 	if(fr):
 		dialogue_file = dialoguePhase2FR
 	elif(en):
 		dialogue_file = dialoguePhase2EN
-	dialogueRead()
+	dialogueReadL()
 
 func dialogueWeapons():
 	if(fr):
 		dialogue_file = dialogueWeaponsFR
 	elif(en):
 		dialogue_file = dialogueWeaponsEN
-	dialogueRead()
+	dialogueReadL()
 
-func dialogueRead():
+func dialogueReadL():
 	load_dialogue(dialogue_file)	#On prépare la lecture
 	start_dialogueL()				#On commence le dialogue
 	

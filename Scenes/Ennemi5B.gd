@@ -54,5 +54,9 @@ func degatsPris(degats):
 		aLucy.guard = false
 		aLucy.bouclier = false
 		aLucy.choixSkill = randi() % 2
+		combat.litDialogue(dialogueI.dialogueOneWeapon())
+		yield(dialogueI, "dialogueFini")
+		aLucy.changerSprite()
+		combat.nar.set_text("")
 	
 	emit_signal("degatsTermine")

@@ -189,8 +189,10 @@ func choixSkill():
 	tourEffectue = false
 
 func mageNoirDegats(degats):
-	if(attaqueUp || pote.pv == 0):
+	if(attaqueUp):
 		cible.degatsPrisDef(int(degats * 1.5))
+	elif(pote.pv == 0):
+		cible.degatsPrisDef(int(degats * 1.2))
 	else:
 		cible.degatsPrisDef(degats)
 

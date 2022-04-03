@@ -10,7 +10,7 @@
   "dialog_9" : {"textHarry": "", "spHarry": "0", "textFlaux": "", "spFlaux": "1", "cadreN": "J'vais me servir et je m'en vais. On se revoit plus tard !", "spLucy": "1", "supOther": "true", "devent": "0"},
   "dialog_10" : {"textHarry": "C'est ça. À plus.", "spHarry": "1", "textFlaux": "", "spFlaux": "1", "cadreN": "", "spLucy": "3", "supOther": "true", "devent": "0"},
   "dialog_11" : {"textHarry": "", "spHarry": "1", "textFlaux": "", "spFlaux": "1", "cadreN": "(Lucy quitte la pièce par le plafond détruit.)", "spLucy": "9", "supOther": "true", "devent": "0"},
-  "dialog_12" : {"textHarry": "", "spHarry": "1", "textFlaux": "Harry, il faut que tu voies ç- Hein ? Où elle est passée ?", "spFlaux": "0", "cadreN": "", "spLucy": "9", "supOther": "true", "devent": "0"},
+  "dialog_12" : {"textHarry": "", "spHarry": "1", "textFlaux": "Harry, il faut que tu voies ç-\nHein ? Où elle est passée ?", "spFlaux": "0", "cadreN": "", "spLucy": "9", "supOther": "true", "devent": "0"},
   "dialog_13" : {"textHarry": "", "spHarry": "0", "textFlaux": "", "spFlaux": "0", "cadreN": "J'suis partiiiiiiie !", "spLucy": "9", "supOther": "true", "devent": "0"},
   "dialog_14" : {"textHarry": "", "spHarry": "0", "textFlaux": "Oh.", "spFlaux": "0", "cadreN": "", "spLucy": "9", "supOther": "true", "devent": "0"},
   "dialog_15" : {"textHarry": "", "spHarry": "0", "textFlaux": "Bah, pas grave ! À nous le trésor !", "spFlaux": "1", "cadreN": "", "spLucy": "9", "supOther": "true", "devent": "0"},

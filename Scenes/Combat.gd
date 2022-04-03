@@ -101,8 +101,8 @@ func deroulementTour():
 				combattantsBase[i].secondText = false
 	
 	if(combattantHarry.launch && combattantFlaux.hide):
-		#litDialogue($DialogueInterface.dialogueName())
-		#yield($DialogueInterface, "dialogueFini")
+		litDialogue($DialogueInterface.dialogueLaunchHide())
+		yield($DialogueInterface, "dialogueFini")
 		combattantFlaux.hide = false
 		for co in combattantsBase:
 			co.cibler(combattantFlaux)
@@ -110,9 +110,8 @@ func deroulementTour():
 		#mais elle ne sera plus cachée et sera cibler par les attaques qui ciblent au choixSkill
 	
 	if(combattantHarry.launch && combattantFlaux.affute):
-		#litDialogue($DialogueInterface.dialogueName())
-		#yield($DialogueInterface, "dialogueFini")
-		pass
+		litDialogue($DialogueInterface.dialogueLaunchSharpen())
+		yield($DialogueInterface, "dialogueFini")
 	
 	ordreTour()
 	

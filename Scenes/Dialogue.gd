@@ -303,3 +303,25 @@ func _on_ConfirmF_pressed():
 
 func dialogueIntro():
 	emit_signal("dialogueIntroFini")
+
+#En français
+const dialogueLaunchSharpenFR = "res://text/FR/DialogueLaunchSharpen.json"
+const dialogueLaunchHideFR = "res://text/FR/DialogueLaunchHide.json"
+
+#En anglais
+const dialogueLaunchSharpenEN = "res://text/EN/DialogueLaunchSharpen.json"
+const dialogueLaunchHideEN = "res://text/EN/DialogueLaunchHide.json"
+
+func dialogueLaunchSharpen():
+	if(fr):
+		dialogue_file = dialogueLaunchSharpenFR
+	elif(en):
+		dialogue_file = dialogueLaunchSharpenEN
+	dialogueRead()
+
+func dialogueLaunchHide():
+	if(fr):
+		dialogue_file = dialogueLaunchHideFR
+	elif(en):
+		dialogue_file = dialogueLaunchHideEN
+	dialogueRead()

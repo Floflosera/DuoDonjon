@@ -3,7 +3,6 @@ extends "res://Scenes/Combat.gd"
 onready var combattantEnnemi = $EnnemiGroup/Ennemi5
 
 onready var attaqueEfficace = false
-onready var desarme = false
 
 onready var nTourDebutPhase2 = -1
 onready var flagLucyDepasseF = false
@@ -36,16 +35,10 @@ func _ready():
 			attaqueEfficace = true
 			combattantEnnemi.changerSprite()
 		
-		if(not(desarme) && (combattantEnnemi.armeF.pv == 0 || combattantEnnemi.armeB.pv == 0)):
-			litDialogue($DialogueInterface.dialogueOneWeapon())
-			yield($DialogueInterface, "dialogueFini")
-			desarme = true
-			combattantEnnemi.changerSprite()
-		
 		if(combattantEnnemi.phase1 && ((combattantEnnemi.armeB.pv == 0 && combattantEnnemi.armeF.pv == 0)\
 		|| (combattantEnnemi.pv <= combattantEnnemi.pvmax/2))):
-			combattantEnnemi.armeB.hide() #potentiellement déjà caché
-			combattantEnnemi.armeF.hide()
+			#combattantEnnemi.armeB.hide() #déjà caché
+			#combattantEnnemi.armeF.hide()
 			combattantEnnemi.phase1 = false
 			combattantEnnemi.pv = combattantEnnemi.pvmax
 			combattantEnnemi.defense = 15
@@ -57,7 +50,7 @@ func _ready():
 			combattantEnnemi.changerSprite()
 			nTourDebutPhase2 = nTour
 		
-		if(nTourDebutPhase2 != -1 && nTourDebutPhase2 < nTour && combattantFlaux.choixSkill == 0\
+		if(nTourDebutPhase2 != -1 && nTourDebutPhase2 < nTour && combattantFlaux.choixSkill != 0\
 		&& combattantFlaux.pv > 0 && not(flagLucyDepasseF)):
 			litDialogue($DialogueInterface.dialogueOutspeed())
 			yield($DialogueInterface, "dialogueFini")
@@ -85,7 +78,6 @@ func _ready():
 	$BattleSong.stop()
 	
 	if(combattantEnnemi.pv == 0):
-		$EnnemiGroup.hide()
 		litDialogue($DialogueInterface.dialogueEnd())
 		yield($DialogueInterface, "dialogueFini")
 		combattantHarry.changerSpriteDia(0)
