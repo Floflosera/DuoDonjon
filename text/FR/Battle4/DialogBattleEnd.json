@@ -2,7 +2,7 @@
   "dialog_1" : {"textHarry": "Ouf... C'est pas passé loin.", "spHarry": "5", "textFlaux": "", "spFlaux": "5", "cadreN": "", "supOther": "true", "devent": "0"},
   "dialog_2" : {"textHarry": "", "spHarry": "5", "textFlaux": "J'avoue que j'ai un peu flippé.", "spFlaux": "5", "cadreN": "", "supOther": "true", "devent": "0"},
   "dialog_3" : {"textHarry": "...", "spHarry": "0", "textFlaux": "", "spFlaux": "0", "cadreN": "", "supOther": "true", "devent": "0"},
-  "dialog_4" : {"textHarry": "", "spHarry": "0", "textFlaux": "...", "spFlaux": "0", "cadreN": "", "supOther": "false", "devent": "0"},
+  "dialog_4" : {"textHarry": "", "spHarry": "0", "textFlaux": "...", "spFlaux": "0", "cadreN": "", "supOther": "", "devent": "0"},
   "dialog_5" : {"textHarry": "\"Mon ami\" ?", "spHarry": "1", "textFlaux": "\"Mon amie\" ?", "spFlaux": "2", "cadreN": "", "supOther": "true", "devent": "0"},
   "dialog_6" : {"textHarry": "Heh, j'imagine qu'on ne s'entend pas si mal que ça, en fin de compte.", "spHarry": "1", "textFlaux": "", "spFlaux": "2", "cadreN": "", "supOther": "true", "devent": "0"},
   "dialog_7" : {"textHarry": "", "spHarry": "1", "textFlaux": "...", "spFlaux": "2", "cadreN": "", "supOther": "true", "devent": "0"},

@@ -1,5 +1,5 @@
 {
-  "dialog_1" : {"textHarry": "", "spHarry": "0", "textFlaux": "", "spFlaux": "0", "cadreN": "It’s already easier to move without all this junk!", "spLucy": "1", "supOther": "true", "devent": "0"},
-  "dialog_2" : {"textHarry": "", "spHarry": "0", "textFlaux": "She’s faster than me too?! Just who IS your friend?!", "spFlaux": "4", "cadreN": "", "spLucy": "1", "supOther": "true", "devent": "0"},
-  "dialog_3" : {"textHarry": "Focus! We’re gonna try the same thing we did against the drone, but stronger!", "spHarry": "2", "textFlaux": "", "spFlaux": "4", "cadreN": "", "spLucy": "1", "supOther": "true", "devent": "0"},
+  "dialog_1" : {"textHarry": "", "spHarry": "0", "textFlaux": "", "spFlaux": "0", "cadreN": "It’s already easier to move without all this junk!", "spLucy": "6", "supOther": "true", "devent": "0"},
+  "dialog_2" : {"textHarry": "", "spHarry": "0", "textFlaux": "She’s faster than me too?! Just who IS your friend?!", "spFlaux": "4", "cadreN": "", "spLucy": "6", "supOther": "true", "devent": "0"},
+  "dialog_3" : {"textHarry": "Focus! We’re gonna try the same thing we did against the drone, but stronger!", "spHarry": "2", "textFlaux": "", "spFlaux": "4", "cadreN": "", "spLucy": "6", "supOther": "true", "devent": "0"},
 }

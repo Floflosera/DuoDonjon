@@ -216,7 +216,6 @@ func charger_others():
 		other_file = othersFR
 	elif(en):
 		other_file = othersEN
-	load_others(other_file)
 	index_others()
 	
 	textHere(0)

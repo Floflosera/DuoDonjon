@@ -173,7 +173,7 @@ func degatsPris(degats):
 	#à concaténer avec le nombre des dégâts quand on inflige les dégâts avec un personnage
 	showDegats.set_bbcode("[center][wave freq=25]")
 	
-	if(contre):
+	if(contre && pv > 0):
 		cibler(combat.combattants[combat.iActuel])
 		combat.narraText(aTextSkill2())
 		yield(combat,"narraTextFini")
@@ -446,6 +446,7 @@ func castSkill7():
 		combat.litDialogue(dialogueI.dialogueGetReal())
 		yield(dialogueI, "dialogueFini")
 		flagGetReal = true
+		changerSprite()
 	
 	emit_signal("skillCast")
 

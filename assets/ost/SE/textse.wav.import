@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/textse.wav-265069be38c5228e5f6fb0e5926097c9.sample"
+
+[deps]
+
+source_file="res://assets/ost/SE/textse.wav"
+dest_files=[ "res://.import/textse.wav-265069be38c5228e5f6fb0e5926097c9.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -14,6 +14,7 @@ onready var seHarryTappe = $SE/HarryTappe
 onready var seFlauxTappe = $SE/FlauxTappe
 onready var seFaitTappe = $SE/SeFaitTappe
 onready var seHeal = $SE/Heal
+onready var seTexte = $SE/TexteSe
 
 onready var fr = true
 onready var en = false
@@ -53,8 +54,7 @@ func load_menuText():
 		menu_file = menu_fileFR
 	elif(en):
 		menu_file = menu_fileEN
-	#Charge le fichier
-	load_fileMenu(menu_file)
+
 	index_menu()
 	
 	ligne_menu(0)

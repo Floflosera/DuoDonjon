@@ -10,7 +10,7 @@ onready var flagMageNoirD = false
 
 #faut revoir
 func _ready():
-	randomize() #en mettre un seul dans le main
+	randomize()
 	
 	combattants = [combattantHarry, combattantFlaux, combattantEnnemi1, combattantEnnemi2]
 	#on met d'abord les ennemis car on veut que les ennemis agissent prioriairement

@@ -5,31 +5,19 @@ onready var aFlaux = get_node("../../GeneralInterface/HBoxContainer/Flaux")
 
 onready var allies = [aHarry,aFlaux]
 
-onready var compteurSept = 0
-
 onready var aLucy = get_node("../Ennemi5")
 
 func _ready():
 
-	pvmax = 777
-	pv = 777
+	pvmax = 999
+	pv = 999
 	defense = 0
 	vitesse = 0
 
 func degatsPrisDef(_degats):
 	if(combat.combattants[combat.iActuel] == aHarry):
-		match compteurSept:
-			0:
-				degatsPris(70)
-				compteurSept += 1
-				return str(70)
-			1:
-				degatsPris(77)
-				compteurSept += 1
-				return str(77)
-			2:
-				degatsPris(777)
-				return str(777)
+		degatsPris(333)
+		return str(333)
 	else:
 		degatsPris(1)
 		return str(1)
@@ -69,5 +57,8 @@ func degatsPris(degats):
 		yield(dialogueI, "dialogueFini")
 		aLucy.changerSprite()
 		combat.nar.set_text("")
+	
+	if(aLucy.armeB.flagDeSurete):
+		yield(aLucy.armeB,"degatsTermine")
 	
 	emit_signal("degatsTermine")

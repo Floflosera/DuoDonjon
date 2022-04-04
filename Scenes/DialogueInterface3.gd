@@ -51,11 +51,14 @@ func dialogueHint2():
 	dialogueRead()
 
 func dialogueEnd():
+	combat.discussionOst.play()
 	if(fr):
 		dialogue_file = dialogueEndFR
 	elif(en):
 		dialogue_file = dialogueEndEN
 	dialogueRead()
+	yield(self,"dialogueFini")
+	combat.discussionOst.stop()
 
 func dialogueFall():
 	if(fr):

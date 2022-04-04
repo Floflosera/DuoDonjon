@@ -8,7 +8,7 @@ onready var nTourDebutPhase2 = -1
 onready var flagLucyDepasseF = false
 
 func _ready():
-	randomize() #en mettre un seul dans le main
+	randomize()
 	
 	combattants = [combattantHarry, combattantFlaux, combattantEnnemi]
 	combattantsBase = [combattantEnnemi, combattantHarry, combattantFlaux]

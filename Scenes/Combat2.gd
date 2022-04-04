@@ -5,7 +5,7 @@ onready var combattantEnnemi = $EnnemiGroup/Ennemi2
 onready var flagAssomme = false
 
 func _ready():
-	randomize() #à mettre dans le main
+	randomize()
 	
 	#Pour le combat 2 on cache les compétences qui ne sont pas encore disponible
 	combattantHarry.skill5.hide()

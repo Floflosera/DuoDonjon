@@ -73,7 +73,7 @@ func harryDegats(degats):
 	if(emotion == 3):
 		degats += 20
 	elif(emotion == 2):
-		degats -= 20
+		degats -= 10
 	elif(emotion == 1):
 		degats += 10
 
@@ -97,7 +97,7 @@ func castSkill1():
 	
 	bouclier = true
 	
-	harryDegats(4000000+randi()%5)
+	harryDegats(40+randi()%5)
 	ciblage = false
 	
 	yield(cible,"degatsTermine")

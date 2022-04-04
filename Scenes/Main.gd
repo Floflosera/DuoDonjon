@@ -219,6 +219,7 @@ func selectBattle():
 func langageMenu():
 	load_menuText()
 
+#ceci est la première transition testée qui est en écran noir qui glisse sur l'écran
 func transitionS():
 	
 	#transitionS.offset.x = 1280
@@ -247,7 +248,7 @@ func transitionS():
 func transition():
 	
 	if(transitionS.modulate.a8 == 0):
-		transitionS.playing = true
+		#transitionS.playing = true
 		while(transitionS.modulate.a8 < 255):
 			transitionS.modulate.a8 += 5
 			$TimerTransi.start()
@@ -261,6 +262,6 @@ func transition():
 			transitionS.modulate.a8 -= 5
 			$TimerTransi.start()
 			yield($TimerTransi, "timeout")
-		transitionS.playing = false
+		#transitionS.playing = false
 	
 	emit_signal("finiTransition")

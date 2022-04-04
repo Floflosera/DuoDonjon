@@ -66,11 +66,14 @@ func dialogueHint2():
 	dialogueReadL()
 
 func dialogueEnd():
+	combat.discussionOst.play()
 	if(fr):
 		dialogue_file = dialogueEndFR
 	elif(en):
 		dialogue_file = dialogueEndEN
 	dialogueReadL()
+	yield(self,"dialogueFini")
+	combat.discussionOst.stop()
 
 func dialogueCounter():
 	if(fr):
@@ -129,8 +132,7 @@ func dialogueWeapons():
 	dialogueReadL()
 
 func dialogueReadL():
-	load_dialogue(dialogue_file)	#On prépare la lecture
-	start_dialogueL()				#On commence le dialogue
+	start_dialogueL()
 	
 	lucyDia.changerSpriteDia(dialogue_spLucy)
 	if(dialogue_cadreN == ""):

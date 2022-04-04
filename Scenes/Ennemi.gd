@@ -129,7 +129,6 @@ func load_skills():
 	elif(en):
 		skill_file = ennemiSkill_fileEN
 	#Charge le fichier
-	load_fileSkills(skill_file)
 	index_skills()
 
 

@@ -274,8 +274,6 @@ func load_skills():
 		skill_file = skill_fileFR
 	elif(en):
 		skill_file = skill_fileEN
-	#Charge le fichier
-	load_fileSkills(skill_file)
 	
 	#Commence la lecture puis continue 4 fois pour les compétences d'Harry
 	start_skills()

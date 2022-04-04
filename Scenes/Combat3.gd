@@ -6,7 +6,7 @@ onready var combattantEnnemi = $EnnemiGroup/Ennemi3
 onready var flagAgitAvant = false
 
 func _ready():
-	randomize() #en mettre un seul dans le main
+	randomize()
 	
 	#on cache le skill que Flaux n'a pas encore
 	combattantFlaux.skill5.hide()

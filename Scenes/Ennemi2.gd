@@ -157,7 +157,7 @@ func changerSprite():
 	else:
 		spriteAnim.play("Neutre")
 
-#surcharge pour pouvoir afficher les dégâts reçus à côté de l'ennemi
+#surcharge pour lancer garder l'image de l'ennemi assomé lorsqu'il se prend des dégâts
 func degatsPris(degats):
 	if(assomme > 0):
 		spriteAnim.play("BlesseAssomme")

@@ -268,7 +268,7 @@ func flauxDegats(degats):
 	if(emotion == 3):
 		degats += 20
 	elif(emotion == 2):
-		degats -= 20
+		degats -= 10
 	elif(emotion == 1):
 		degats += 10
 	
@@ -312,7 +312,7 @@ func castSkill2():
 	
 	yield(cible,"degatsTermine")
 	
-	affute = false				#Après le yield car l'ennemi5 doit vérifier si Flaux était en affutage
+	affute = false
 	
 	emit_signal("skillCast")
 
@@ -325,9 +325,10 @@ func castSkill3():
 			yield(cible.spriteAnim,"frame_changed")
 	
 	priorite = false
-	affute = false
 	
 	yield(cible,"degatsTermine")
+	
+	affute = false
 	
 	emit_signal("skillCast")
 
@@ -341,11 +342,13 @@ func castSkill4():
 	flauxDegats(50+randi()%6)
 	ciblage = false
 	priorite = false
-	affute = false
 	
 	cible.lacere = true
 	
 	yield(cible,"degatsTermine")
+	
+	affute = false
+	
 	emit_signal("skillCast")
 
 func castSkill5():

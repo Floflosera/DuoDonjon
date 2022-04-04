@@ -16,7 +16,7 @@ func _ready():
 	#Statistiques de l'ennemi
 	pvmax = 700
 	pv = 700
-	defense = 30
+	defense = 29
 	vitesse = 5
 	
 	#charge le texte des compétences de l'ennemis stockés au ligne voulu

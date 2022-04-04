@@ -7,6 +7,8 @@ onready var allies = [aHarry,aFlaux]
 
 onready var aLucy = get_node("../Ennemi5")
 
+onready var flagDeSurete = false
+
 func _ready():
 
 	pvmax = 999
@@ -24,6 +26,9 @@ func degatsPrisDef(_degats):
 
 #surcharge pour envoyer des infos à Lucy
 func degatsPris(degats):
+	
+	flagDeSurete = true
+	
 	if(combat.combattants[combat.iActuel] == aFlaux && aFlaux.choixSkill == 2):
 		pass #Lucy gère
 	else:
@@ -58,5 +63,7 @@ func degatsPris(degats):
 		yield(dialogueI, "dialogueFini")
 		aLucy.changerSprite()
 		combat.nar.set_text("")
+	
+	flagDeSurete = false
 	
 	emit_signal("degatsTermine")

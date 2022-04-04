@@ -223,8 +223,7 @@ func _ready():
 
 #Lit le fichier du chemin "dialogue_file"
 func dialogueRead():
-	load_dialogue(dialogue_file)	#On prépare la lecture
-	start_dialogue()				#On commence le dialogue
+	start_dialogue()
 	
 	if(dialogue_devent != 0):
 		if(dialogue_devent == 1):

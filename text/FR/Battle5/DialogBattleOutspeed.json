@@ -1,5 +1,5 @@
 {
-  "dialog_1" : {"textHarry": "", "spHarry": "0", "textFlaux": "", "spFlaux": "0", "cadreN": "C'est déjà plus facile de bouger quand on est moins encombré !", "spLucy": "1", "supOther": "true", "devent": "0"},
-  "dialog_2" : {"textHarry": "", "spHarry": "0", "textFlaux": "Elle aussi, elle est plus rapide que moi ?! Mais c'est qui, ta pote, en fait ?!", "spFlaux": "4", "cadreN": "", "spLucy": "1", "supOther": "true", "devent": "0"},
-  "dialog_3" : {"textHarry": "Concentre-toi ! On va essayer de refaire ce qu'on a fait contre le drone, mais en plus fort !", "spHarry": "2", "textFlaux": "", "spFlaux": "4", "cadreN": "", "spLucy": "1", "supOther": "true", "devent": "0"},
+  "dialog_1" : {"textHarry": "", "spHarry": "0", "textFlaux": "", "spFlaux": "0", "cadreN": "C'est déjà plus facile de bouger quand on est moins encombré !", "spLucy": "6", "supOther": "true", "devent": "0"},
+  "dialog_2" : {"textHarry": "", "spHarry": "0", "textFlaux": "Elle aussi, elle est plus rapide que moi ?! Mais c'est qui, ta pote, en fait ?!", "spFlaux": "4", "cadreN": "", "spLucy": "6", "supOther": "true", "devent": "0"},
+  "dialog_3" : {"textHarry": "Concentre-toi ! On va essayer de refaire ce qu'on a fait contre le drone, mais en plus fort !", "spHarry": "2", "textFlaux": "", "spFlaux": "4", "cadreN": "", "spLucy": "6", "supOther": "true", "devent": "0"},
 }
