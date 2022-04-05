@@ -13,6 +13,7 @@ func _ready():
 	combattantHarry.skill5.hide()
 	get_tree().call_group("FlauxButtons", "hide")
 	combattantFlaux.labelVie.hide()
+	combattantFlaux.barreVie.hide()
 	$GeneralInterface/HBoxContainer/Flaux/CadreMenu/Background/Menu/VBoxContainer/Separation.hide()
 	combattantFlaux.horsCombat = true
 	

@@ -5,9 +5,17 @@ onready var aRobotGardien = get_node("../Ennemi1_1")
 func _ready():
 	#Statistiques de l'ennemi
 	pvmax = 70
-	pv =70
+	pv = 70
 	defense = 0
 	vitesse = 0
+
+func degatsPrisDef(degats):
+	if(aRobotGardien.blinde > 0):
+		degatsPris(int((degats-defense)*0.6))
+		return str(int((degats-defense)*0.6))
+	else:
+		degatsPris(degats-defense)
+		return str(degats-defense)
 
 #Surcharge pour envoyer des infos au boss
 func degatsPris(degats):

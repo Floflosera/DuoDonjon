@@ -9,6 +9,14 @@ func _ready():
 	defense = 0
 	vitesse = 0
 
+func degatsPrisDef(degats):
+	if(aRobotGardien.blinde > 0):
+		degatsPris(int((degats-defense)*0.6))
+		return str(int((degats-defense)*0.6))
+	else:
+		degatsPris(degats-defense)
+		return str(degats-defense)
+
 #Surcharge pour envoyer des infos au boss
 func degatsPris(degats):
 	spriteAnim.play("Blesse")		#Lance l'animation des dégâts pris

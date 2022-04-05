@@ -37,8 +37,10 @@ func _ready():
 		
 		if(combattantEnnemi.phase1 && ((combattantEnnemi.armeB.pv == 0 && combattantEnnemi.armeF.pv == 0)\
 		|| (combattantEnnemi.pv <= combattantEnnemi.pvmax/2))):
-			#combattantEnnemi.armeB.hide() #déjà caché
-			#combattantEnnemi.armeF.hide()
+			combattantEnnemi.armeB.pv = 0
+			combattantEnnemi.armeB.hide()
+			combattantEnnemi.armeF.pv = 0
+			combattantEnnemi.armeF.hide()
 			combattantEnnemi.phase1 = false
 			combattantEnnemi.pv = combattantEnnemi.pvmax
 			combattantEnnemi.defense = 15
