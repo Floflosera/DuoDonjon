@@ -1,6 +1,6 @@
 # DuoDonjon
 
-Pour jouer au jeu, allez dans "Releases" (à droite), allez dans "First pre-release" et télécharger le fichier "DuoDunDonjon.zip".
+Pour jouer au jeu, allez dans "Releases" (à droite), allez dans "First pre-release" et téléchargez le fichier "DuoDunDonjon.zip".
 
 To play the game, go to "Releases" (on the right), go to "First pre-release" and download the file "DuoDunDonjon.zip".
 
