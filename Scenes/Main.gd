@@ -25,6 +25,7 @@ func _ready():
 	yield($TimerTransi, "timeout")
 	$TimerTransi.set_wait_time(0.01)
 	
+	ostDiscussion.play()
 	transition()
 	menuC.settingsMultiYes.grab_focus()
 	yield(self, "finiTransition")
@@ -35,6 +36,7 @@ func _ready():
 	#menuC.startB.grab_focus()
 
 func startStory():
+	ostDiscussion.stop()
 	scene = preload("res://Scenes/Combat1.tscn")
 	transition()
 	yield(self,"finiTransition")
@@ -168,12 +170,16 @@ func startStory():
 	calqueS.add_child(instance)
 	menuC = instance
 	
+	ostDiscussion.play()
+	
 	transition()
 	yield(self,"finiTransition")
 	
 	menuC.startB.grab_focus()
 
 func selectBattle():
+	
+	ostDiscussion.stop()
 	
 	match menuC.sel:
 		1:
@@ -210,6 +216,8 @@ func selectBattle():
 	
 	menuC = instance
 	calqueS.add_child(instance)
+	
+	ostDiscussion.play()
 	
 	transition()
 	yield(self,"finiTransition")

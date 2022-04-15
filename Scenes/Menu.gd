@@ -25,6 +25,10 @@ onready var settingsLangfr = $SousMenu/SettingsMenu/MarginContainer/VBoxContaine
 onready var settingsLangen = $SousMenu/SettingsMenu/MarginContainer/VBoxContainer/Lang/English
 onready var settingsControl = $SousMenu/SettingsMenu/MarginContainer/VBoxContainer/Control
 onready var settingsQuitSet = $SousMenu/SettingsMenu/MarginContainer/VBoxContainer/QuitSet
+onready var settingsVolumeBGM = $SousMenu/SettingsMenu/MarginContainer/VBoxContainer/VolumeBGMB/VolumeBGM
+onready var settingsVolumeBGMbarre = $SousMenu/SettingsMenu/MarginContainer/VBoxContainer/VolumeBGMB/VolumeBGMbarre
+onready var settingsVolumeSE = $SousMenu/SettingsMenu/MarginContainer/VBoxContainer/VolumeSEB/VolumeSE
+onready var settingsVolumeSEbarre = $SousMenu/SettingsMenu/MarginContainer/VBoxContainer/VolumeSEB/VolumeSEbarre
 
 func _ready():
 	if(not(main.pres)):
@@ -43,6 +47,22 @@ func _process(_delta):
 	if(Input.is_action_just_pressed("ui_left") || Input.is_action_just_pressed("ui_up") || \
 	Input.is_action_just_pressed("ui_down") || Input.is_action_just_pressed("ui_right")):
 		main.seCursor.play()
+	
+	if(settingsVolumeBGM.has_focus()):
+		if(Input.is_action_just_pressed("ui_left") && settingsVolumeBGMbarre.value > 0):
+			settingsVolumeBGMbarre.value -= 10
+			main.bgmVolume(-5)
+		if(Input.is_action_just_pressed("ui_right") && settingsVolumeBGMbarre.value < 100):
+			settingsVolumeBGMbarre.value += 10
+			main.bgmVolume(+5)
+	
+	if(settingsVolumeSE.has_focus()):
+		if(Input.is_action_just_pressed("ui_left") && settingsVolumeSEbarre.value > 0):
+			settingsVolumeSEbarre.value -= 10
+			main.seVolume(-5)
+		if(Input.is_action_just_pressed("ui_right") && settingsVolumeSEbarre.value < 100):
+			settingsVolumeSEbarre.value += 10
+			main.seVolume(+5)
 
 func _on_ChapSelectButton_pressed():
 	main.seValider.play()

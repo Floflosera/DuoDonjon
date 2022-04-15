@@ -3,6 +3,7 @@ extends Node
 onready var calqueS = $CalqueScene
 
 onready var transitionS = $CalqueTransition/Transition
+onready var timerT = $TimerTransi
 
 onready var menuC = $CalqueScene/Menu
 
@@ -15,10 +16,16 @@ onready var seFlauxTappe = $SE/FlauxTappe
 onready var seFaitTappe = $SE/SeFaitTappe
 onready var seHeal = $SE/Heal
 onready var seTexte = $SE/TexteSe
+onready var seRencontre = $SE/Rencontre
+
+onready var ostDiscussion = $Music/DiscussionSong
 
 onready var fr = true
 onready var en = false
 onready var multi = false
+
+onready var BGMvolume = 0
+onready var SEvolume = 0
 
 export(String, FILE, "*.json") var menu_file
 var menu_keys = []
@@ -96,3 +103,33 @@ func load_menuText():
 	menuC.settingsControl.set_text(menu_text)
 	ligne_menu(12)
 	menuC.settingsQuitSet.set_text(menu_text)
+
+func bgmVolume(x):
+	BGMvolume += x
+	if(BGMvolume > -40):
+		ostDiscussion.volume_db = BGMvolume
+	else:
+		ostDiscussion.volume_db = -80
+
+func seVolume(x):
+	SEvolume += x
+	if(SEvolume > -40):
+		seValider.volume_db = -15 + SEvolume
+		seCancel.volume_db = SEvolume
+		seCursor.volume_db = -15 + SEvolume
+		seHarryTappe.volume_db = -15 + SEvolume
+		seFlauxTappe.volume_db = -15 + SEvolume
+		seFaitTappe.volume_db = -15 + SEvolume
+		seHeal.volume_db = SEvolume
+		seRencontre.volume_db = -5 + SEvolume
+	else:
+		seValider.volume_db = -80
+		seCancel.volume_db = -80
+		seCursor.volume_db = -80
+		seHarryTappe.volume_db = -80
+		seFlauxTappe.volume_db = -80
+		seFaitTappe.volume_db = -80
+		seHeal.volume_db = -80
+		seRencontre.volume_db = -80
+	
+	#seTexte.volume_db += x

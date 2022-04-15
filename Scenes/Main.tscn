@@ -45,18 +45,23 @@ volume_db = -15.0
 
 [node name="HarryTappe" type="AudioStreamPlayer" parent="SE"]
 stream = ExtResource( 8 )
+volume_db = -15.0
 
 [node name="FlauxTappe" type="AudioStreamPlayer" parent="SE"]
 stream = ExtResource( 6 )
+volume_db = -15.0
 
 [node name="SeFaitTappe" type="AudioStreamPlayer" parent="SE"]
 stream = ExtResource( 7 )
+volume_db = -15.0
 
 [node name="Heal" type="AudioStreamPlayer" parent="SE"]
 stream = ExtResource( 10 )
+volume_db = -15.0
 
 [node name="Rencontre" type="AudioStreamPlayer" parent="SE"]
 stream = ExtResource( 12 )
+volume_db = -5.0
 
 [node name="TexteSe" type="AudioStreamPlayer" parent="SE"]
 stream = ExtResource( 13 )

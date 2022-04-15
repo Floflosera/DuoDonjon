@@ -1,9 +1,11 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Godot-Fontpack-d244bf6170b399a6d4d26a0d906058ddf2dafdf1/fonts/montreal/Montreal-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/Menu principal.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/Menu.gd" type="Script" id=3]
 [ext_resource path="res://assets/MenuFlaux.png" type="Texture" id=4]
+[ext_resource path="res://assets/viepe.png" type="Texture" id=5]
+[ext_resource path="res://assets/vieve.png" type="Texture" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 28
@@ -33,6 +35,10 @@ font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=7]
 size = 30
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 18
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=8]
@@ -148,9 +154,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -275.0
-margin_top = -318.5
+margin_top = -342.0
 margin_right = 275.0
-margin_bottom = 318.5
+margin_bottom = 338.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -158,7 +164,7 @@ __meta__ = {
 [node name="ChapSelectMenu" type="NinePatchRect" parent="SousMenu" groups=["SousMenu"]]
 visible = false
 margin_right = 550.0
-margin_bottom = 637.0
+margin_bottom = 680.0
 texture = ExtResource( 4 )
 
 [node name="MarginContainer" type="MarginContainer" parent="SousMenu/ChapSelectMenu"]
@@ -280,9 +286,8 @@ __meta__ = {
 }
 
 [node name="SettingsMenu" type="NinePatchRect" parent="SousMenu" groups=["SousMenu"]]
-visible = false
 margin_right = 550.0
-margin_bottom = 637.0
+margin_bottom = 680.0
 texture = ExtResource( 4 )
 
 [node name="MarginContainer" type="MarginContainer" parent="SousMenu/SettingsMenu"]
@@ -291,9 +296,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -204.0
-margin_top = -268.0
+margin_top = -339.0
 margin_right = 205.0
-margin_bottom = 269.0
+margin_bottom = 361.0
 custom_constants/margin_right = 25
 custom_constants/margin_top = 50
 custom_constants/margin_left = 25
@@ -306,7 +311,7 @@ __meta__ = {
 margin_left = 25.0
 margin_top = 50.0
 margin_right = 384.0
-margin_bottom = 521.0
+margin_bottom = 650.0
 custom_constants/separation = 30
 
 [node name="Multi" type="Label" parent="SousMenu/SettingsMenu/MarginContainer/VBoxContainer"]
@@ -383,7 +388,7 @@ margin_bottom = 44.0
 focus_neighbour_left = NodePath("../English")
 focus_neighbour_top = NodePath("../../MultiChoix/YesMulti")
 focus_neighbour_right = NodePath("../English")
-focus_neighbour_bottom = NodePath("../../QuitSet")
+focus_neighbour_bottom = NodePath("../../VolumeBGMB/VolumeBGM")
 focus_next = NodePath(".")
 focus_previous = NodePath(".")
 mouse_filter = 2
@@ -416,10 +421,76 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Control" type="Label" parent="SousMenu/SettingsMenu/MarginContainer/VBoxContainer"]
+[node name="VolumeBGMB" type="HBoxContainer" parent="SousMenu/SettingsMenu/MarginContainer/VBoxContainer"]
 margin_top = 284.0
 margin_right = 359.0
-margin_bottom = 397.0
+margin_bottom = 313.0
+custom_constants/separation = 60
+
+[node name="VolumeBGM" type="Button" parent="SousMenu/SettingsMenu/MarginContainer/VBoxContainer/VolumeBGMB" groups=["SousMenuB"]]
+margin_right = 139.0
+margin_bottom = 29.0
+focus_neighbour_left = NodePath(".")
+focus_neighbour_top = NodePath("../../Lang/French")
+focus_neighbour_right = NodePath(".")
+focus_neighbour_bottom = NodePath("../../VolumeSEB/VolumeSE")
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_colors/font_color_focus = Color( 0.682353, 0.0588235, 0.733333, 1 )
+custom_fonts/font = SubResource( 9 )
+text = "Volume BGM"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VolumeBGMbarre" type="TextureProgress" parent="SousMenu/SettingsMenu/MarginContainer/VBoxContainer/VolumeBGMB"]
+margin_left = 199.0
+margin_right = 359.0
+margin_bottom = 29.0
+value = 80.0
+texture_under = ExtResource( 6 )
+texture_progress = ExtResource( 5 )
+
+[node name="VolumeSEB" type="HBoxContainer" parent="SousMenu/SettingsMenu/MarginContainer/VBoxContainer"]
+margin_top = 343.0
+margin_right = 359.0
+margin_bottom = 372.0
+custom_constants/separation = 60
+
+[node name="VolumeSE" type="Button" parent="SousMenu/SettingsMenu/MarginContainer/VBoxContainer/VolumeSEB" groups=["SousMenuB"]]
+margin_right = 139.0
+margin_bottom = 29.0
+focus_neighbour_left = NodePath(".")
+focus_neighbour_top = NodePath("../../VolumeBGMB/VolumeBGM")
+focus_neighbour_right = NodePath(".")
+focus_neighbour_bottom = NodePath("../../QuitSet")
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_colors/font_color_focus = Color( 0.682353, 0.0588235, 0.733333, 1 )
+custom_fonts/font = SubResource( 9 )
+text = "Volume SE"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VolumeSEbarre" type="TextureProgress" parent="SousMenu/SettingsMenu/MarginContainer/VBoxContainer/VolumeSEB"]
+margin_left = 199.0
+margin_right = 359.0
+margin_bottom = 29.0
+value = 80.0
+texture_under = ExtResource( 6 )
+texture_progress = ExtResource( 5 )
+
+[node name="Control" type="Label" parent="SousMenu/SettingsMenu/MarginContainer/VBoxContainer"]
+margin_top = 402.0
+margin_right = 359.0
+margin_bottom = 515.0
 custom_fonts/font = SubResource( 8 )
 text = "Flèches directionnelles
 J1: Z/Q/S/D J2:flèches
@@ -428,11 +499,11 @@ J1:C/X J2:Entrée/Retour Arr."
 align = 1
 
 [node name="QuitSet" type="Button" parent="SousMenu/SettingsMenu/MarginContainer/VBoxContainer" groups=["SousMenuB"]]
-margin_top = 427.0
+margin_top = 545.0
 margin_right = 359.0
-margin_bottom = 471.0
+margin_bottom = 600.0
 focus_neighbour_left = NodePath(".")
-focus_neighbour_top = NodePath("../Lang/French")
+focus_neighbour_top = NodePath("../VolumeSEB/VolumeSE")
 focus_neighbour_right = NodePath(".")
 focus_neighbour_bottom = NodePath("../MultiChoix/YesMulti")
 focus_next = NodePath(".")
@@ -460,4 +531,6 @@ __meta__ = {
 [connection signal="pressed" from="SousMenu/SettingsMenu/MarginContainer/VBoxContainer/MultiChoix/NoMulti" to="." method="_on_NoMulti_pressed"]
 [connection signal="pressed" from="SousMenu/SettingsMenu/MarginContainer/VBoxContainer/Lang/French" to="." method="_on_French_pressed"]
 [connection signal="pressed" from="SousMenu/SettingsMenu/MarginContainer/VBoxContainer/Lang/English" to="." method="_on_English_pressed"]
+[connection signal="pressed" from="SousMenu/SettingsMenu/MarginContainer/VBoxContainer/VolumeBGMB/VolumeBGM" to="." method="_on_French_pressed"]
+[connection signal="pressed" from="SousMenu/SettingsMenu/MarginContainer/VBoxContainer/VolumeSEB/VolumeSE" to="." method="_on_French_pressed"]
 [connection signal="pressed" from="SousMenu/SettingsMenu/MarginContainer/VBoxContainer/QuitSet" to="." method="_on_QuitSet_pressed"]

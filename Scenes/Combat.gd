@@ -50,6 +50,10 @@ onready var nTourPV0 = 0
 onready var hintFlag = false
 
 func _ready():
+	if(main.BGMvolume > -25):
+		$BattleSong.volume_db = main.BGMvolume
+	else:
+		$BattleSong.volume_db = -80
 	nar.set_text("")
 	charger_others() #charger les textes "autres"
 

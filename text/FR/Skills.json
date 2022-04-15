@@ -1,7 +1,7 @@
 {
-  "skill_1" : {	"nameSkill": "Coup de bouclier", "descSkill": "Harry attaque avec son bouclier, et subit moins de dégâts pour le reste du tour.",
+  "skill_1" : {	"nameSkill": "Coup de bouclier", "descSkill": "Harry donne un petit coup avec son bouclier, et subit moins de dégâts pour le reste du tour.",
 		"textSkill": "Harry donne un coup de bouclier !"},
-  "skill_2" : {	"nameSkill": "Lancer de bouclier", "descSkill": "Harry lance son bouclier avec force.",
+  "skill_2" : {	"nameSkill": "Lancer de bouclier", "descSkill": "Harry lance son bouclier avec force !",
 		"textSkill": "Harry lance son bouclier !"},
   "skill_3" : {	"nameSkill": "Soin", "descSkill": "Harry soigne le groupe.",
 		"textSkill": "Le groupe est soigné."},
