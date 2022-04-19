@@ -103,6 +103,10 @@ func load_menuText():
 	menuC.settingsControl.set_text(menu_text)
 	ligne_menu(12)
 	menuC.settingsQuitSet.set_text(menu_text)
+	ligne_menu(13)
+	menuC.settingsVolumeBGM.set_text(menu_text)
+	ligne_menu(14)
+	menuC.settingsVolumeSE.set_text(menu_text)
 
 func bgmVolume(x):
 	BGMvolume += x

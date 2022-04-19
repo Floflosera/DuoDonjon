@@ -12,6 +12,8 @@
   "language" : {	"text": "Langue"},
   "french" : {		"text": "Français"},
   "english" : {		"text": "English"},
-  "control" : {		"text": "Flèches directionnelles\nJ1: Z/Q/S/D J2:flèches\nValider/Annuler\nJ1:C/X J2:Entrée/Retour Arr."},
+  "control" : {		"text": "Flèches directionnelles\nJ1: Z/Q/S/D J2: flèches\nValider/Annuler\nJ1: C/X J2: Entrée/Retour Arr."},
   "quitSet" : {		"text": "Valider"},
+  "bgm" : {		"text": "Volume BGM"},
+  "se" : {		"text": "Volume SE"},
 }

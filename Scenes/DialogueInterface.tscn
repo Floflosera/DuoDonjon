@@ -1,7 +1,7 @@
 [gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Scenes/Dialogue.gd" type="Script" id=1]
-[ext_resource path="res://assets/MenuHarry.png" type="Texture" id=2]
+[ext_resource path="res://assets/MenuFlaux++.png" type="Texture" id=2]
 [ext_resource path="res://assets/selectionV2.png" type="Texture" id=3]
 [ext_resource path="res://assets/selectionV.png" type="Texture" id=4]
 [ext_resource path="res://assets/selectionVpressed.png" type="Texture" id=5]
@@ -10,7 +10,7 @@
 [ext_resource path="res://assets/selectionR2.png" type="Texture" id=8]
 [ext_resource path="res://assets/selectionB.png" type="Texture" id=9]
 [ext_resource path="res://assets/selectionB2.png" type="Texture" id=10]
-[ext_resource path="res://assets/MenuFlaux.png" type="Texture" id=11]
+[ext_resource path="res://assets/MenuHarry++.png" type="Texture" id=11]
 [ext_resource path="res://assets/selectionRpressed.png" type="Texture" id=12]
 [ext_resource path="res://assets/selectionRpressed2.png" type="Texture" id=13]
 [ext_resource path="res://assets/selectionBpressed.png" type="Texture" id=14]
@@ -106,36 +106,34 @@ margin_right = 357.0
 margin_bottom = 280.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture = ExtResource( 2 )
+texture = ExtResource( 11 )
 
 [node name="Menu" type="MarginContainer" parent="HBoxContainer/HarryDia/Background"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
 custom_constants/margin_right = 5
-custom_constants/margin_top = 5
-custom_constants/margin_left = 5
 custom_constants/margin_bottom = 5
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/HarryDia/Background/Menu"]
-margin_left = 5.0
-margin_top = 5.0
-margin_right = 354.0
-margin_bottom = 275.0
+margin_right = 342.0
+margin_bottom = 265.0
 custom_constants/separation = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/HarryDia/Background/Menu/VBoxContainer"]
-margin_right = 349.0
-margin_bottom = 264.0
-rect_min_size = Vector2( 349, 65 )
+margin_right = 342.0
+margin_bottom = 259.0
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
-custom_constants/margin_right = 5
 custom_constants/margin_top = 5
 custom_constants/margin_left = 5
 custom_constants/margin_bottom = 5
@@ -143,8 +141,8 @@ custom_constants/margin_bottom = 5
 [node name="Dialogue" type="Label" parent="HBoxContainer/HarryDia/Background/Menu/VBoxContainer/MarginContainer"]
 margin_left = 5.0
 margin_top = 5.0
-margin_right = 344.0
-margin_bottom = 259.0
+margin_right = 342.0
+margin_bottom = 254.0
 size_flags_vertical = 1
 custom_fonts/font = SubResource( 5 )
 text = "Harry qui parle genre hey !"
@@ -152,15 +150,15 @@ autowrap = true
 clip_text = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/HarryDia/Background/Menu/VBoxContainer"]
-margin_top = 270.0
-margin_right = 349.0
-margin_bottom = 270.0
+margin_top = 265.0
+margin_right = 342.0
+margin_bottom = 265.0
 alignment = 2
 
 [node name="ConfirmH" type="TextureButton" parent="HBoxContainer/HarryDia/Background/Menu/VBoxContainer/HBoxContainer"]
 visible = false
-margin_left = 327.0
-margin_right = 349.0
+margin_left = 320.0
+margin_right = 342.0
 margin_bottom = 22.0
 mouse_filter = 2
 texture_normal = SubResource( 14 )
@@ -193,36 +191,34 @@ margin_right = 358.0
 margin_bottom = 280.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture = ExtResource( 11 )
+texture = ExtResource( 2 )
 
 [node name="Menu" type="MarginContainer" parent="HBoxContainer/FlauxDia/Background"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
 custom_constants/margin_right = 5
-custom_constants/margin_top = 5
-custom_constants/margin_left = 5
 custom_constants/margin_bottom = 5
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/FlauxDia/Background/Menu"]
-margin_left = 5.0
-margin_top = 5.0
-margin_right = 354.0
-margin_bottom = 275.0
+margin_right = 343.0
+margin_bottom = 265.0
 custom_constants/separation = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/FlauxDia/Background/Menu/VBoxContainer"]
-margin_right = 349.0
-margin_bottom = 264.0
-rect_min_size = Vector2( 349, 65 )
+margin_right = 343.0
+margin_bottom = 259.0
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
-custom_constants/margin_right = 5
 custom_constants/margin_top = 5
 custom_constants/margin_left = 5
 custom_constants/margin_bottom = 5
@@ -230,8 +226,8 @@ custom_constants/margin_bottom = 5
 [node name="Dialogue" type="Label" parent="HBoxContainer/FlauxDia/Background/Menu/VBoxContainer/MarginContainer"]
 margin_left = 5.0
 margin_top = 5.0
-margin_right = 344.0
-margin_bottom = 259.0
+margin_right = 343.0
+margin_bottom = 254.0
 size_flags_vertical = 1
 custom_fonts/font = SubResource( 5 )
 text = "Flaux qui parle genre hey !"
@@ -239,15 +235,15 @@ autowrap = true
 clip_text = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/FlauxDia/Background/Menu/VBoxContainer"]
-margin_top = 270.0
-margin_right = 349.0
-margin_bottom = 270.0
+margin_top = 265.0
+margin_right = 343.0
+margin_bottom = 265.0
 alignment = 2
 
 [node name="ConfirmF" type="TextureButton" parent="HBoxContainer/FlauxDia/Background/Menu/VBoxContainer/HBoxContainer"]
 visible = false
-margin_left = 327.0
-margin_right = 349.0
+margin_left = 321.0
+margin_right = 343.0
 margin_bottom = 22.0
 mouse_filter = 2
 texture_normal = SubResource( 13 )

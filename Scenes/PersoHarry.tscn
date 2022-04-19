@@ -32,9 +32,24 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "Neutre",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 19 ), ExtResource( 13 ), ExtResource( 11 ), ExtResource( 7 ), ExtResource( 16 ), ExtResource( 12 ) ],
+"loop": false,
+"name": "Blesse",
+"speed": 6.0
+}, {
 "frames": [ ExtResource( 14 ), ExtResource( 17 ), ExtResource( 8 ) ],
 "loop": true,
 "name": "Inquiet",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 21 ), ExtResource( 15 ), ExtResource( 18 ) ],
+"loop": true,
+"name": "Fatigue",
 "speed": 3.0
 }, {
 "frames": [ null, null, null ],
@@ -52,25 +67,10 @@ animations = [ {
 "name": "KO",
 "speed": 3.0
 }, {
-"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ],
-"loop": true,
-"name": "Neutre",
-"speed": 3.0
-}, {
 "frames": [ ExtResource( 25 ), ExtResource( 27 ), ExtResource( 28 ) ],
 "loop": true,
 "name": "Triste",
 "speed": 3.0
-}, {
-"frames": [ ExtResource( 21 ), ExtResource( 15 ), ExtResource( 18 ) ],
-"loop": true,
-"name": "Fatigue",
-"speed": 3.0
-}, {
-"frames": [ ExtResource( 19 ), ExtResource( 13 ), ExtResource( 11 ), ExtResource( 7 ), ExtResource( 16 ), ExtResource( 12 ) ],
-"loop": false,
-"name": "Blesse",
-"speed": 6.0
 }, {
 "frames": [ ExtResource( 24 ), ExtResource( 29 ), ExtResource( 26 ) ],
 "loop": true,
@@ -81,32 +81,17 @@ animations = [ {
 [node name="PersoHarry" instance=ExtResource( 1 )]
 script = ExtResource( 23 )
 
-[node name="Skill1" parent="CadreMenu/Background/Menu/VBoxContainer/GridContainer" index="0" groups=["CharaButtons", "HarryButtons"]]
-focus_next = NodePath(".")
-focus_previous = NodePath(".")
-custom_colors/font_color_focus = Color( 0.0980392, 0.701961, 0.968627, 1 )
+[node name="Skill1" parent="CadreMenu/Background/Menu/VBoxContainer/GridContainer" index="5" groups=["HarryButtons"]]
 
-[node name="Skill2" parent="CadreMenu/Background/Menu/VBoxContainer/GridContainer" index="1" groups=["CharaButtons", "HarryButtons"]]
-focus_next = NodePath(".")
-focus_previous = NodePath(".")
-custom_colors/font_color_focus = Color( 0.0980392, 0.701961, 0.968627, 1 )
+[node name="Skill2" parent="CadreMenu/Background/Menu/VBoxContainer/GridContainer" index="6" groups=["HarryButtons"]]
 
-[node name="Skill3" parent="CadreMenu/Background/Menu/VBoxContainer/GridContainer" index="2" groups=["CharaButtons", "HarryButtons"]]
-focus_next = NodePath(".")
-focus_previous = NodePath(".")
-custom_colors/font_color_focus = Color( 0.0980392, 0.701961, 0.968627, 1 )
+[node name="Skill3" parent="CadreMenu/Background/Menu/VBoxContainer/GridContainer" index="7" groups=["HarryButtons"]]
 
-[node name="Skill4" parent="CadreMenu/Background/Menu/VBoxContainer/GridContainer" index="3" groups=["CharaButtons", "HarryButtons"]]
-focus_next = NodePath(".")
-focus_previous = NodePath(".")
-custom_colors/font_color_focus = Color( 0.0980392, 0.701961, 0.968627, 1 )
+[node name="Skill4" parent="CadreMenu/Background/Menu/VBoxContainer/GridContainer" index="8" groups=["HarryButtons"]]
 
-[node name="Skill5" parent="CadreMenu/Background/Menu/VBoxContainer/GridContainer" index="4" groups=["CharaButtons", "HarryButtons"]]
-focus_next = NodePath(".")
-focus_previous = NodePath(".")
-custom_colors/font_color_focus = Color( 0.0980392, 0.701961, 0.968627, 1 )
+[node name="Skill5" parent="CadreMenu/Background/Menu/VBoxContainer/GridContainer" index="9" groups=["HarryButtons"]]
 
-[node name="PV" parent="CadreMenu/Background/Menu/VBoxContainer/GridContainer" index="5"]
+[node name="PV" parent="CadreMenu/Background/Menu/VBoxContainer/GridContainer" index="10"]
 text = "PV : 230 / 230"
 
 [node name="Description" parent="CadreMenu/Background/Menu/VBoxContainer/MarginContainer" index="0"]
@@ -119,3 +104,9 @@ animation = "Neutre"
 [node name="LifeBar" parent="Portrait/VBoxContainer" index="1"]
 max_value = 230.0
 value = 230.0
+
+[connection signal="pressed" from="CadreMenu/Background/Menu/VBoxContainer/GridContainer/Skill1" to="." method="_on_Skill1_pressed"]
+[connection signal="pressed" from="CadreMenu/Background/Menu/VBoxContainer/GridContainer/Skill2" to="." method="_on_Skill2_pressed"]
+[connection signal="pressed" from="CadreMenu/Background/Menu/VBoxContainer/GridContainer/Skill3" to="." method="_on_Skill3_pressed"]
+[connection signal="pressed" from="CadreMenu/Background/Menu/VBoxContainer/GridContainer/Skill4" to="." method="_on_Skill4_pressed"]
+[connection signal="pressed" from="CadreMenu/Background/Menu/VBoxContainer/GridContainer/Skill5" to="." method="_on_Skill5_pressed"]

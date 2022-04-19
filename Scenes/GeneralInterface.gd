@@ -199,25 +199,86 @@ func _process(_delta):
 	#En fonction d'où se situe le focus, on affiche un texte différent dans la description du personnage concerné
 	if(cHarry.skill1.has_focus()):
 		cHarry.modifDesc(coupBouclierDesc)
-	elif(cHarry.skill2.has_focus()):
+		cHarry.skill1.skillName.set("custom_colors/font_color", Color(28.0/255, 165.0/255, 228.0/255))
+	else:
+		if(cHarry.skill1.disabled):
+			cHarry.skill1.skillName.set("custom_colors/font_color", Color( 0.4, 0.4, 0.4, 1 ))
+		else:
+			cHarry.skill1.skillName.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
+	if(cHarry.skill2.has_focus()):
 		cHarry.modifDesc(lancerBouclierDesc)
-	elif(cHarry.skill3.has_focus()):
+		cHarry.skill2.skillName.set("custom_colors/font_color", Color(28.0/255, 165.0/255, 228.0/255))
+	else:
+		if(cHarry.skill2.disabled):
+			cHarry.skill2.skillName.set("custom_colors/font_color", Color( 0.4, 0.4, 0.4, 1 ))
+		else:
+			cHarry.skill2.skillName.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
+	if(cHarry.skill3.has_focus()):
 		cHarry.modifDesc(soinDesc)
-	elif(cHarry.skill4.has_focus()):
+		cHarry.skill3.skillName.set("custom_colors/font_color", Color(28.0/255, 165.0/255, 228.0/255))
+	else:
+		if(cHarry.skill3.disabled):
+			cHarry.skill3.skillName.set("custom_colors/font_color", Color( 0.4, 0.4, 0.4, 1 ))
+		else:
+			cHarry.skill3.skillName.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
+	if(cHarry.skill4.has_focus()):
 		cHarry.modifDesc(defenseDesc)
-	elif(cHarry.skill5.has_focus()):
+		cHarry.skill4.skillName.set("custom_colors/font_color", Color(28.0/255, 165.0/255, 228.0/255))
+	else:
+		if(cHarry.skill4.disabled):
+			cHarry.skill4.skillName.set("custom_colors/font_color", Color( 0.4, 0.4, 0.4, 1 ))
+		else:
+			cHarry.skill4.skillName.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
+	if(cHarry.skill5.has_focus()):
 		cHarry.modifDesc(lancementDesc)
+		cHarry.skill5.skillName.set("custom_colors/font_color", Color(28.0/255, 165.0/255, 228.0/255))
+	else:
+		if(cHarry.skill5.disabled):
+			cHarry.skill5.skillName.set("custom_colors/font_color", Color( 0.4, 0.4, 0.4, 1 ))
+		else:
+			cHarry.skill5.skillName.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
 	
-	elif(cFlaux.skill1.has_focus()):
-		cFlaux.modifDesc(seCacherDesc)
-	elif(cFlaux.skill2.has_focus()):
-		cFlaux.modifDesc(coupPlongeantDesc)
-	elif(cFlaux.skill3.has_focus()):
-		cFlaux.modifDesc(labourageDesc)
-	elif(cFlaux.skill4.has_focus()):
-		cFlaux.modifDesc(lacerationDesc)
-	elif(cFlaux.skill5.has_focus()):
-		cFlaux.modifDesc(affutageDesc)
+	if(not(cFlaux.multi)):
+		if(cFlaux.skill1.has_focus()):
+			cFlaux.modifDesc(seCacherDesc)
+			cFlaux.skill1.skillName.set("custom_colors/font_color", Color(1, 125.0/255.0, 100.0/255.0))
+		else:
+			if(cFlaux.skill1.disabled):
+				cFlaux.skill1.skillName.set("custom_colors/font_color", Color( 0.4, 0.4, 0.4, 1 ))
+			else:
+				cFlaux.skill1.skillName.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
+		if(cFlaux.skill2.has_focus()):
+			cFlaux.modifDesc(coupPlongeantDesc)
+			cFlaux.skill2.skillName.set("custom_colors/font_color", Color(1, 125.0/255.0, 100.0/255.0))
+		else:
+			if(cFlaux.skill2.disabled):
+				cFlaux.skill2.skillName.set("custom_colors/font_color", Color( 0.4, 0.4, 0.4, 1 ))
+			else:
+				cFlaux.skill2.skillName.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
+		if(cFlaux.skill3.has_focus()):
+			cFlaux.modifDesc(labourageDesc)
+			cFlaux.skill3.skillName.set("custom_colors/font_color", Color(1, 125.0/255.0, 100.0/255.0))
+		else:
+			if(cFlaux.skill3.disabled):
+				cFlaux.skill3.skillName.set("custom_colors/font_color", Color( 0.4, 0.4, 0.4, 1 ))
+			else:
+				cFlaux.skill3.skillName.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
+		if(cFlaux.skill4.has_focus()):
+			cFlaux.modifDesc(lacerationDesc)
+			cFlaux.skill4.skillName.set("custom_colors/font_color", Color(1, 125.0/255.0, 100.0/255.0))
+		else:
+			if(cFlaux.skill4.disabled):
+				cFlaux.skill4.skillName.set("custom_colors/font_color", Color( 0.4, 0.4, 0.4, 1 ))
+			else:
+				cFlaux.skill4.skillName.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
+		if(cFlaux.skill5.has_focus()):
+			cFlaux.modifDesc(affutageDesc)
+			cFlaux.skill5.skillName.set("custom_colors/font_color", Color(1, 125.0/255.0, 100.0/255.0))
+		else:
+			if(cFlaux.skill5.disabled):
+				cFlaux.skill5.skillName.set("custom_colors/font_color", Color( 0.4, 0.4, 0.4, 1 ))
+			else:
+				cFlaux.skill5.skillName.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
 	
 	if(tourEnCours):
 		if(Input.is_action_just_pressed("ui_left") || Input.is_action_just_pressed("ui_up") || \
@@ -277,44 +338,54 @@ func load_skills():
 	
 	#Commence la lecture puis continue 4 fois pour les compétences d'Harry
 	start_skills()
-	cHarry.skill1.set_text(skills_name)
+	#cHarry.skill1.set_text(skills_name)
+	cHarry.skill1.skillName.set_text(skills_name)
 	coupBouclierDesc = skills_desc
 	cHarry.skillTextAppend(skills_text)
 	next_skills()
-	cHarry.skill2.set_text(skills_name)
+	#cHarry.skill2.set_text(skills_name)
+	cHarry.skill2.skillName.set_text(skills_name)
 	lancerBouclierDesc = skills_desc
 	cHarry.skillTextAppend(skills_text)
 	next_skills()
-	cHarry.skill3.set_text(skills_name)
+	#cHarry.skill3.set_text(skills_name)
+	cHarry.skill3.skillName.set_text(skills_name)
 	soinDesc = skills_desc
 	cHarry.skillTextAppend(skills_text)
 	next_skills()
-	cHarry.skill4.set_text(skills_name)
+	#cHarry.skill4.set_text(skills_name)
+	cHarry.skill4.skillName.set_text(skills_name)
 	defenseDesc = skills_desc
 	cHarry.skillTextAppend(skills_text)
 	next_skills()
-	cHarry.skill5.set_text(skills_name)
+	#cHarry.skill5.set_text(skills_name)
+	cHarry.skill5.skillName.set_text(skills_name)
 	lancementDesc = skills_desc
 	cHarry.skillTextAppend(skills_text)
 	
 	#Continue la lecture pour les 5 compétences de Flaux
 	next_skills()
-	cFlaux.skill1.set_text(skills_name)
+	#cFlaux.skill1.set_text(skills_name)
+	cFlaux.skill1.skillName.set_text(skills_name)
 	seCacherDesc = skills_desc
 	cFlaux.skillTextAppend(skills_text)
 	next_skills()
-	cFlaux.skill2.set_text(skills_name)
+	#cFlaux.skill2.set_text(skills_name)
+	cFlaux.skill2.skillName.set_text(skills_name)
 	coupPlongeantDesc = skills_desc
 	cFlaux.skillTextAppend(skills_text)
 	next_skills()
-	cFlaux.skill3.set_text(skills_name)
+	#cFlaux.skill3.set_text(skills_name)
+	cFlaux.skill3.skillName.set_text(skills_name)
 	labourageDesc = skills_desc
 	cFlaux.skillTextAppend(skills_text)
 	next_skills()
-	cFlaux.skill4.set_text(skills_name)
+	#cFlaux.skill4.set_text(skills_name)
+	cFlaux.skill4.skillName.set_text(skills_name)
 	lacerationDesc = skills_desc
 	cFlaux.skillTextAppend(skills_text)
 	next_skills()
-	cFlaux.skill5.set_text(skills_name)
+	#cFlaux.skill5.set_text(skills_name)
+	cFlaux.skill5.skillName.set_text(skills_name)
 	affutageDesc = skills_desc
 	cFlaux.skillTextAppend(skills_text)

@@ -39,35 +39,41 @@ func _process(_delta):
 	
 	if(multi && pv>0 && not(horsCombat)):
 		if(skill1y):
-			skill1.set("custom_colors/font_color", Color(1.0, 84.0/255.0, 53.0/255.0))
+			#skill1.set("custom_colors/font_color", Color(1.0, 84.0/255.0, 53.0/255.0))
+			skill1.skillName.set("custom_colors/font_color", Color(1, 125.0/255.0, 100.0/255.0))
 			modifDesc(interfaceGeneral.seCacherDesc)
 			if((Input.is_action_just_pressed("ui_multi_right") || Input.is_action_just_pressed("ui_multi_left")) && not(skill2.disabled)):
 				main.seCursor.play()
 				skill2y = true
 				skill1y = false
-				skill1.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
+				#skill1.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
+				skill1.skillName.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
 				yield(spriteAnim,"frame_changed")
 			elif((Input.is_action_just_pressed("ui_multi_down") || Input.is_action_just_pressed("ui_multi_up")) && not(skill3.disabled)):
 				main.seCursor.play()
 				skill3y = true
 				skill1y = false
-				skill1.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
+				#skill1.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
+				skill1.skillName.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
 				yield(spriteAnim,"frame_changed")
 			elif(Input.is_action_just_pressed("ui_multi_select")):
 				_on_Skill1_pressed()
 				main.seValider.play()
 				skill1y = false
-				skill1.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
+				#skill1.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
+				skill1.skillName.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
 				fFait = true
 				emit_signal("multiFait")
 		elif(skill2y):
-			skill2.set("custom_colors/font_color", Color(1.0, 84.0/255.0, 53.0/255.0))
+			#skill2.set("custom_colors/font_color", Color(1.0, 84.0/255.0, 53.0/255.0))
+			skill2.skillName.set("custom_colors/font_color", Color(1, 125.0/255.0, 100.0/255.0))
 			modifDesc(interfaceGeneral.coupPlongeantDesc)
 			if((Input.is_action_just_pressed("ui_multi_right") || Input.is_action_just_pressed("ui_multi_left")) && not(skill1.disabled)):
 				main.seCursor.play()
 				skill1y = true
 				skill2y = false
-				skill2.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
+				#skill2.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
+				skill2.skillName.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
 				yield(spriteAnim,"frame_changed")
 			elif(Input.is_action_just_pressed("ui_multi_down")):
 				main.seCursor.play()
@@ -75,106 +81,124 @@ func _process(_delta):
 					if(not(skill4.disabled)):
 						skill4y = true
 						skill2y = false
-						skill2.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
+						#skill2.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
+						skill2.skillName.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
 						yield(spriteAnim,"frame_changed")
 					else:
 						if(skill5.visible):
 							skill5y = true
 							skill2y = false
-							skill2.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
+							#skill2.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
+							skill2.skillName.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
 							yield(spriteAnim,"frame_changed")
 			elif((Input.is_action_just_pressed("ui_multi_up")) && not(skill5.disabled)):
 				main.seCursor.play()
 				if(skill5.visible):
 					skill5y = true
 					skill2y = false
-					skill2.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
+					#skill2.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
+					skill2.skillName.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
 					yield(spriteAnim,"frame_changed")
 			elif(Input.is_action_just_pressed("ui_multi_select")):
 				_on_Skill2_pressed()
 				main.seValider.play()
 				skill2y = false
-				skill2.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
+				#skill2.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
+				skill2.skillName.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
 				ciblageF = true
 				yield(spriteAnim,"frame_changed")
 		elif(skill3y):
-			skill3.set("custom_colors/font_color", Color(1.0, 84.0/255.0, 53.0/255.0))
+			#skill3.set("custom_colors/font_color", Color(1.0, 84.0/255.0, 53.0/255.0))
+			skill3.skillName.set("custom_colors/font_color", Color(1, 125.0/255.0, 100.0/255.0))
 			modifDesc(interfaceGeneral.labourageDesc)
 			if((Input.is_action_just_pressed("ui_multi_right") || Input.is_action_just_pressed("ui_multi_left")) && not(skill4.disabled)):
 				main.seCursor.play()
 				if(skill4.visible):
 					skill4y = true
 					skill3y = false
-					skill3.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
+					#skill3.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
+					skill3.skillName.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
 					yield(spriteAnim,"frame_changed")
 			elif((Input.is_action_just_pressed("ui_multi_down") || Input.is_action_just_pressed("ui_multi_up")) && not(skill1.disabled)):
 				main.seCursor.play()
 				skill1y = true
 				skill3y = false
-				skill3.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
+				#skill3.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
+				skill3.skillName.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
 				yield(spriteAnim,"frame_changed")
 			elif(Input.is_action_just_pressed("ui_multi_select")):
 				_on_Skill3_pressed()
 				main.seValider.play()
 				skill3y = false
-				skill3.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
+				#skill3.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
+				skill3.skillName.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
 				fFait = true
 				emit_signal("multiFait")
 		elif(skill4y):
-			skill4.set("custom_colors/font_color", Color(1.0, 84.0/255.0, 53.0/255.0))
+			#skill4.set("custom_colors/font_color", Color(1.0, 84.0/255.0, 53.0/255.0))
+			skill4.skillName.set("custom_colors/font_color", Color(1, 125.0/255.0, 100.0/255.0))
 			modifDesc(interfaceGeneral.lacerationDesc)
 			if((Input.is_action_just_pressed("ui_multi_right") || Input.is_action_just_pressed("ui_multi_left")) && not(skill3.disabled)):
 				main.seCursor.play()
 				skill3y = true
 				skill4y = false
-				skill4.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
+				#skill4.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
+				skill4.skillName.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
 				yield(spriteAnim,"frame_changed")
 			elif((Input.is_action_just_pressed("ui_multi_down")) && not(skill5.disabled)):
 				main.seCursor.play()
 				if(skill5.visible):
 					skill5y = true
 					skill4y = false
-					skill4.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
+					#skill4.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
+					skill4.skillName.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
 					yield(spriteAnim,"frame_changed")
 			elif((Input.is_action_just_pressed("ui_multi_up")) && not(skill2.disabled)):
 				main.seCursor.play()
 				skill2y = true
 				skill4y = false
-				skill4.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
+				#skill4.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
+				skill4.skillName.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
 				yield(spriteAnim,"frame_changed")
 			elif(Input.is_action_just_pressed("ui_multi_select")):
 				_on_Skill4_pressed()
 				main.seValider.play()
 				skill4y = false
-				skill4.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
+				#skill4.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
+				skill4.skillName.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
 				ciblageF = true
 				yield(spriteAnim,"frame_changed")
 		elif(skill5y):
-			skill5.set("custom_colors/font_color", Color(1.0, 84.0/255.0, 53.0/255.0))
+			#skill5.set("custom_colors/font_color", Color(1.0, 84.0/255.0, 53.0/255.0))
+			skill5.skillName.set("custom_colors/font_color", Color(1, 125.0/255.0, 100.0/255.0))
 			modifDesc(interfaceGeneral.affutageDesc)
 			if(Input.is_action_just_pressed("ui_multi_up")):
 				main.seCursor.play()
 				if(not(skill4.disabled)):
 					skill4y = true
 					skill5y = false
-					skill5.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
+					#skill5.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
+					skill5.skillName.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
 					yield(spriteAnim,"frame_changed")
 				else:
 					skill2y = true
 					skill5y = false
-					skill5.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
+					#skill5.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
+					skill5.skillName.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
 					yield(spriteAnim,"frame_changed")
 			elif((Input.is_action_just_pressed("ui_multi_down")) && not(skill2.disabled)):
 				main.seCursor.play()
 				skill2y = true
 				skill5y = false
-				skill5.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
+				#skill5.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
+				skill5.skillName.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
 				yield(spriteAnim,"frame_changed")
 			elif(Input.is_action_just_pressed("ui_multi_select")):
 				_on_Skill5_pressed()
 				main.seValider.play()
 				skill5y = false
-				skill5.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
+				#skill5.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
+				skill5.skillName.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
 				fFait = true
 				emit_signal("multiFait")
 		elif(ciblageF):
