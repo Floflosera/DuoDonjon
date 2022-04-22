@@ -29,6 +29,7 @@ onready var settingsVolumeBGM = $SousMenu/SettingsMenu/MarginContainer/VBoxConta
 onready var settingsVolumeBGMbarre = $SousMenu/SettingsMenu/MarginContainer/VBoxContainer/VolumeBGMB/VolumeBGMbarre
 onready var settingsVolumeSE = $SousMenu/SettingsMenu/MarginContainer/VBoxContainer/VolumeSEB/VolumeSE
 onready var settingsVolumeSEbarre = $SousMenu/SettingsMenu/MarginContainer/VBoxContainer/VolumeSEB/VolumeSEbarre
+onready var settingsFullScreen = $SousMenu/SettingsMenu/MarginContainer/VBoxContainer/HBoxContainer/FullScreen
 
 func _ready():
 	if(not(main.pres)):
@@ -141,13 +142,14 @@ func _on_English_pressed():
 	
 	main.load_menuText()
 
-
 func _on_ExitButton_pressed():
 	get_tree().quit()
-
 
 func _on_QuitSet_pressed():
 	main.seCancel.play()
 	get_tree().call_group("SousMenuB", "release_focus")
 	get_tree().call_group("SousMenu", "hide")
 	startB.grab_focus()
+
+func _on_FullScreen_pressed():
+	OS.window_fullscreen = !OS.window_fullscreen

@@ -16,4 +16,5 @@
   "quitSet" : {		"text": "Accept"},
   "bgm" : {		"text": "BGM Volume"},
   "se" : {		"text": "SE Volume"},
+  "fullscreen" : {	"text": "Fullscreen"},
 }

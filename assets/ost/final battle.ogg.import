@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/final battle.ogg-e6a1754d21345a3e7be5347c357ca163.oggstr"
+
+[deps]
+
+source_file="res://assets/ost/final battle.ogg"
+dest_files=[ "res://.import/final battle.ogg-e6a1754d21345a3e7be5347c357ca163.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

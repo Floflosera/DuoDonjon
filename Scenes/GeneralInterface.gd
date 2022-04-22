@@ -238,47 +238,47 @@ func _process(_delta):
 		else:
 			cHarry.skill5.skillName.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
 	
-	if(not(cFlaux.multi)):
-		if(cFlaux.skill1.has_focus()):
-			cFlaux.modifDesc(seCacherDesc)
-			cFlaux.skill1.skillName.set("custom_colors/font_color", Color(1, 125.0/255.0, 100.0/255.0))
+	
+	if(cFlaux.skill1.has_focus()):
+		cFlaux.modifDesc(seCacherDesc)
+		cFlaux.skill1.skillName.set("custom_colors/font_color", Color(1, 125.0/255.0, 100.0/255.0))
+	else:
+		if(cFlaux.skill1.disabled):
+			cFlaux.skill1.skillName.set("custom_colors/font_color", Color( 0.4, 0.4, 0.4, 1 ))
 		else:
-			if(cFlaux.skill1.disabled):
-				cFlaux.skill1.skillName.set("custom_colors/font_color", Color( 0.4, 0.4, 0.4, 1 ))
-			else:
-				cFlaux.skill1.skillName.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
-		if(cFlaux.skill2.has_focus()):
-			cFlaux.modifDesc(coupPlongeantDesc)
-			cFlaux.skill2.skillName.set("custom_colors/font_color", Color(1, 125.0/255.0, 100.0/255.0))
+			cFlaux.skill1.skillName.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
+	if(cFlaux.skill2.has_focus()):
+		cFlaux.modifDesc(coupPlongeantDesc)
+		cFlaux.skill2.skillName.set("custom_colors/font_color", Color(1, 125.0/255.0, 100.0/255.0))
+	else:
+		if(cFlaux.skill2.disabled):
+			cFlaux.skill2.skillName.set("custom_colors/font_color", Color( 0.4, 0.4, 0.4, 1 ))
 		else:
-			if(cFlaux.skill2.disabled):
-				cFlaux.skill2.skillName.set("custom_colors/font_color", Color( 0.4, 0.4, 0.4, 1 ))
-			else:
-				cFlaux.skill2.skillName.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
-		if(cFlaux.skill3.has_focus()):
-			cFlaux.modifDesc(labourageDesc)
-			cFlaux.skill3.skillName.set("custom_colors/font_color", Color(1, 125.0/255.0, 100.0/255.0))
+			cFlaux.skill2.skillName.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
+	if(cFlaux.skill3.has_focus()):
+		cFlaux.modifDesc(labourageDesc)
+		cFlaux.skill3.skillName.set("custom_colors/font_color", Color(1, 125.0/255.0, 100.0/255.0))
+	else:
+		if(cFlaux.skill3.disabled):
+			cFlaux.skill3.skillName.set("custom_colors/font_color", Color( 0.4, 0.4, 0.4, 1 ))
 		else:
-			if(cFlaux.skill3.disabled):
-				cFlaux.skill3.skillName.set("custom_colors/font_color", Color( 0.4, 0.4, 0.4, 1 ))
-			else:
-				cFlaux.skill3.skillName.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
-		if(cFlaux.skill4.has_focus()):
-			cFlaux.modifDesc(lacerationDesc)
-			cFlaux.skill4.skillName.set("custom_colors/font_color", Color(1, 125.0/255.0, 100.0/255.0))
+			cFlaux.skill3.skillName.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
+	if(cFlaux.skill4.has_focus()):
+		cFlaux.modifDesc(lacerationDesc)
+		cFlaux.skill4.skillName.set("custom_colors/font_color", Color(1, 125.0/255.0, 100.0/255.0))
+	else:
+		if(cFlaux.skill4.disabled):
+			cFlaux.skill4.skillName.set("custom_colors/font_color", Color( 0.4, 0.4, 0.4, 1 ))
 		else:
-			if(cFlaux.skill4.disabled):
-				cFlaux.skill4.skillName.set("custom_colors/font_color", Color( 0.4, 0.4, 0.4, 1 ))
-			else:
-				cFlaux.skill4.skillName.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
-		if(cFlaux.skill5.has_focus()):
-			cFlaux.modifDesc(affutageDesc)
-			cFlaux.skill5.skillName.set("custom_colors/font_color", Color(1, 125.0/255.0, 100.0/255.0))
+			cFlaux.skill4.skillName.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
+	if(cFlaux.skill5.has_focus()):
+		cFlaux.modifDesc(affutageDesc)
+		cFlaux.skill5.skillName.set("custom_colors/font_color", Color(1, 125.0/255.0, 100.0/255.0))
+	else:
+		if(cFlaux.skill5.disabled):
+			cFlaux.skill5.skillName.set("custom_colors/font_color", Color( 0.4, 0.4, 0.4, 1 ))
 		else:
-			if(cFlaux.skill5.disabled):
-				cFlaux.skill5.skillName.set("custom_colors/font_color", Color( 0.4, 0.4, 0.4, 1 ))
-			else:
-				cFlaux.skill5.skillName.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
+			cFlaux.skill5.skillName.set("custom_colors/font_color", Color( 0.88, 0.88, 0.88, 1 ))
 	
 	if(tourEnCours):
 		if(Input.is_action_just_pressed("ui_left") || Input.is_action_just_pressed("ui_up") || \

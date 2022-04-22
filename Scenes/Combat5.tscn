@@ -8,7 +8,7 @@
 [ext_resource path="res://Godot-Fontpack-d244bf6170b399a6d4d26a0d906058ddf2dafdf1/fonts/montreal/Montreal-Regular.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://assets/MenuNarrateur.png" type="Texture" id=7]
 [ext_resource path="res://Scenes/Combat5.gd" type="Script" id=8]
-[ext_resource path="res://assets/ost/e.ogg" type="AudioStream" id=9]
+[ext_resource path="res://assets/ost/final battle.ogg" type="AudioStream" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 18

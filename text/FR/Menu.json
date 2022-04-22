@@ -16,4 +16,5 @@
   "quitSet" : {		"text": "Valider"},
   "bgm" : {		"text": "Volume BGM"},
   "se" : {		"text": "Volume SE"},
+  "fullscreen" : {	"text": "Plein écran"},
 }

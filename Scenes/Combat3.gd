@@ -33,8 +33,9 @@ func _ready():
 			yield($DialogueInterface, "dialogueFini")
 		
 		if(nTour > 1 && combattantFlaux.choixSkill !=0 && not(flagAgitAvant)):
-			litDialogue($DialogueInterface.dialogueOutspeed())
-			yield($DialogueInterface, "dialogueFini")
+			if(not(combattantEnnemi.auSol)):
+				litDialogue($DialogueInterface.dialogueOutspeed())
+				yield($DialogueInterface, "dialogueFini")
 			flagAgitAvant = true
 		
 		$GeneralInterface.choixTour() #lance le choix du tour

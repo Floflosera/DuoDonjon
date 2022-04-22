@@ -158,7 +158,6 @@ func choixSkill():
 			else:
 				choixSkill = 2
 	
-	
 	if(choixSkill == 2): #Feu follet
 		
 		priorite = true
