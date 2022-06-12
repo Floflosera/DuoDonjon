@@ -24,12 +24,15 @@ func _ready():
 	while((combattantHarry.pv > 0 || combattantFlaux.pv > 0) && combattantEnnemi.pv > 0):
 		nTour += 1
 		
-		if(nTour == 3 && (combattantEnnemi.armeF.pv > 707 && combattantEnnemi.armeB.pv > 666)):
+		if(nTour == 3 && (combattantEnnemi.armeF.pv > (combattantEnnemi.armeF.pvmax/3)*2 &&\
+		combattantEnnemi.armeB.pv > (combattantEnnemi.armeB.pvmax/3)*2)):
+		
 			litDialogue($DialogueInterface.dialogueHint1())
 			yield($DialogueInterface, "dialogueFini")
 			combattantEnnemi.changerSprite()
 		
-		if(not(attaqueEfficace) && (combattantEnnemi.armeF.pv <= 707 || combattantEnnemi.armeB.pv <= 666)):
+		if(not(attaqueEfficace) && (combattantEnnemi.armeF.pv <= (combattantEnnemi.armeF.pvmax/3)*2\
+		|| combattantEnnemi.armeB.pv <= (combattantEnnemi.armeB.pvmax/3)*2)):
 			litDialogue($DialogueInterface.dialogueEffective())
 			yield($DialogueInterface, "dialogueFini")
 			attaqueEfficace = true

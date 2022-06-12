@@ -2,6 +2,8 @@ extends Control
 
 onready var main = get_node("../..")
 
+onready var sousMenu = $SousMenu
+
 onready var startB = $MarginContainer/VBoxContainer/StartButton
 onready var chapSelectB = $MarginContainer/VBoxContainer/ChapSelectButton
 onready var settingsB = $MarginContainer/VBoxContainer/SettingsButton
@@ -15,6 +17,8 @@ onready var battle5B = $SousMenu/ChapSelectMenu/MarginContainer/VBoxContainer/Ba
 
 onready var chapSelectM = $SousMenu/ChapSelectMenu
 onready var sel = 1
+
+onready var touches = $SousMenu/Touches
 
 onready var settingsM = $SousMenu/SettingsMenu
 onready var settingsMulti = $SousMenu/SettingsMenu/MarginContainer/VBoxContainer/Multi
@@ -30,6 +34,12 @@ onready var settingsVolumeBGMbarre = $SousMenu/SettingsMenu/MarginContainer/VBox
 onready var settingsVolumeSE = $SousMenu/SettingsMenu/MarginContainer/VBoxContainer/VolumeSEB/VolumeSE
 onready var settingsVolumeSEbarre = $SousMenu/SettingsMenu/MarginContainer/VBoxContainer/VolumeSEB/VolumeSEbarre
 onready var settingsFullScreen = $SousMenu/SettingsMenu/MarginContainer/VBoxContainer/HBoxContainer/FullScreen
+onready var settingsKeybinds = $SousMenu/SettingsMenu/MarginContainer/VBoxContainer/HBoxContainer/Keybinds
+
+onready var settingsCancelKey = $SousMenu/Touches/MarginContainer/VBoxContainer/CancelKey
+onready var settingsInfoKey = $SousMenu/Touches/MarginContainer/VBoxContainer/InfoKey
+onready var settingsDefault = $SousMenu/Touches/MarginContainer/VBoxContainer/Default
+onready var settingsQuitKey = $SousMenu/Touches/MarginContainer/VBoxContainer/QuitKey
 
 func _ready():
 	if(not(main.pres)):
@@ -38,16 +48,19 @@ func _ready():
 
 func _process(_delta):
 	
-	if(main.intro):
-		if(Input.is_action_just_pressed("ui_cancel")):
-			main.seCancel.play()
-			get_tree().call_group("SousMenuB", "release_focus")
-			get_tree().call_group("SousMenu", "hide")
-			startB.grab_focus()
+	if(Input.is_action_just_pressed("ui_cancel")):
+		if(not(touches.visible)):
+			if(main.intro):
+				main.seCancel.play()
+				get_tree().call_group("SousMenuB", "release_focus")
+				get_tree().call_group("SousMenu", "hide")
+				sousMenu.hide()
+				startB.grab_focus()
 	
 	if(Input.is_action_just_pressed("ui_left") || Input.is_action_just_pressed("ui_up") || \
 	Input.is_action_just_pressed("ui_down") || Input.is_action_just_pressed("ui_right")):
-		main.seCursor.play()
+		if(not(touches.visible)):
+			main.seCursor.play()
 	
 	if(settingsVolumeBGM.has_focus()):
 		if(Input.is_action_just_pressed("ui_left") && settingsVolumeBGMbarre.value > 0):
@@ -68,6 +81,7 @@ func _process(_delta):
 func _on_ChapSelectButton_pressed():
 	main.seValider.play()
 	chapSelectB.release_focus()
+	sousMenu.show()
 	chapSelectM.show()
 	battle1B.grab_focus()
 
@@ -109,6 +123,7 @@ func _on_StartButton_pressed():
 func _on_SettingsButton_pressed():
 	main.seValider.play()
 	settingsB.release_focus()
+	sousMenu.show()
 	settingsM.show()
 	settingsMultiYes.grab_focus()
 
@@ -146,10 +161,35 @@ func _on_ExitButton_pressed():
 	get_tree().quit()
 
 func _on_QuitSet_pressed():
-	main.seCancel.play()
+	main.seValider.play()
 	get_tree().call_group("SousMenuB", "release_focus")
 	get_tree().call_group("SousMenu", "hide")
+	sousMenu.hide()
 	startB.grab_focus()
 
 func _on_FullScreen_pressed():
 	OS.window_fullscreen = !OS.window_fullscreen
+
+func _on_Keybinds_pressed():
+	main.seValider.play()
+	touches.show()
+
+func _on_QuitKey_pressed():
+	Global.keybinds = touches.keybinds.duplicate()
+	Global.set_game_binds()
+	Global.write_config()
+	main.seValider.play()
+	touches.hide()
+	settingsKeybinds.grab_focus()
+
+func _on_Default_pressed():
+	Global.filepath = "res://keybindsDef.ini"
+	Global.lecture_ini()
+	Global.filepath = "res://keybinds.ini"
+	touches.key_canceled()
+
+func _on_CancelKey_pressed():
+	touches.key_canceled()
+	main.seCancel.play()
+	touches.hide()
+	settingsKeybinds.grab_focus()

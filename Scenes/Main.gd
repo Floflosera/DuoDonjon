@@ -3,11 +3,16 @@ extends "res://Scenes/ParentMain.gd"
 signal finiTransition
 signal pres
 
+signal anyInput
+
 var scene
 var scene2
 var instance
 
 onready var pres = false
+
+onready var waiting_input = false
+onready var battleN = 0
 
 onready var win = false
 
@@ -18,6 +23,7 @@ func _ready():
 	transitionS.show()
 	pres = true
 	emit_signal("pres")
+	menuC.sousMenu.show()
 	menuC.settingsM.show()
 	
 	$TimerTransi.set_wait_time(1.0)
@@ -156,7 +162,7 @@ func startStory():
 		
 		if(not(instance.gameover)):
 			win = true
-			scene = preload("res://Scenes/Menu.tscn")
+			scene = preload("res://Scenes/End.tscn")
 		else:
 			scene = preload("res://Scenes/Combat5.tscn")
 		
@@ -165,7 +171,22 @@ func startStory():
 		
 		instance.queue_free()
 	
-	#scene = preload("res://Scenes/Menu.tscn")
+	instance = scene.instance()
+	calqueS.add_child(instance)
+	
+	transition()
+	yield(self,"finiTransition")
+	
+	waiting_input = true
+	yield(self,"anyInput")
+	
+	transition()
+	yield(self,"finiTransition")
+	
+	scene = preload("res://Scenes/Menu.tscn")
+	
+	instance.queue_free()
+	
 	instance = scene.instance()
 	calqueS.add_child(instance)
 	menuC = instance
@@ -176,6 +197,12 @@ func startStory():
 	yield(self,"finiTransition")
 	
 	menuC.startB.grab_focus()
+
+func _input(event):
+	if waiting_input:
+		if event is InputEventKey:
+			emit_signal("anyInput")
+			waiting_input = false
 
 func selectBattle():
 	
@@ -193,6 +220,8 @@ func selectBattle():
 		5:
 			scene = preload("res://Scenes/Combat5.tscn")
 	
+	battleN = menuC.sel
+	
 	transition()
 	yield(self,"finiTransition")
 	menuC.queue_free()
@@ -204,6 +233,24 @@ func selectBattle():
 	yield(self,"finiTransition")
 	
 	yield(instance,"finCombat")
+	
+	if(battleN == 5): 
+		if(not(instance.gameover)):
+			scene = preload("res://Scenes/End.tscn")
+			
+			transition()
+			yield(self,"finiTransition")
+			
+			instance.queue_free()
+			
+			instance = scene.instance()
+			calqueS.add_child(instance)
+			
+			transition()
+			yield(self,"finiTransition")
+			
+			waiting_input = true
+			yield(self,"anyInput")
 	
 	scene = preload("res://Scenes/Menu.tscn")
 	

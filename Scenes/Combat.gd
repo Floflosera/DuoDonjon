@@ -36,6 +36,9 @@ var temp
 #Variable utilisée pour l'affichage progressif des textes
 var textTemp = ""
 
+#Variable qui indique si le déroulement des tours est sur les actions prioritaires
+var prio = false
+
 #texte affiché lorsqu'un personnage revient au combat
 var textPV0revive = ""
 
@@ -92,6 +95,7 @@ func deroulementTour():
 	$TimerActions.start()					#Les timers permettent de voir les actions de manière plus clair
 	yield($TimerActions, "timeout")
 	#Boucle pour lancer le tour des personnages qui utilisent une action prioritaire
+	prio = true
 	for i in range(combattantsBase.size()):
 		if(combattantsBase[i].priorite && combattantsBase[i].tourEffectue == false):
 			iActuel = i
@@ -103,6 +107,7 @@ func deroulementTour():
 				narraText(combattantsBase[i].aTextSkill2()) #on affiche son 2e affichage de texte
 				yield(self,"narraTextFini")
 				combattantsBase[i].secondText = false
+	prio = false
 	
 	if(combattantHarry.launch && combattantFlaux.hide):
 		litDialogue($DialogueInterface.dialogueLaunchHide())

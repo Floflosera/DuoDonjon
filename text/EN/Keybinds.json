@@ -1,0 +1,18 @@
+{
+  "accept" : {	"text": "Accept"},
+  "cancel" : {	"text": "Cancel"},
+  "left" : {	"text": "Left"},
+  "right" : {	"text": "Right"},
+  "up" : {	"text": "Up"},
+  "down" : {	"text": "Down"},
+
+  "multi_select" : {	"text": "Accept        (Player 2)"},
+  "multi_cancel" : {	"text": "Cancel        (Player 2)"},
+  "multi_left" : {	"text": "Left             (Player 2)"},
+  "multi_right" : {	"text": "Right           (Player 2)"},
+  "multi_up" : {	"text": "Up               (Player 2)"},
+  "multi_down" : {	"text": "Down          (Player 2)"},
+
+  "pressAnyButton" : {	"text": "Press any button"},
+  "unassigned" : {	"text": "Unassigned"},
+}

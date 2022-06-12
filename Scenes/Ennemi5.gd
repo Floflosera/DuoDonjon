@@ -274,8 +274,6 @@ func choixSkill():
 				
 				if(choixSkill == 5):
 					choixSkill = 4
-					
-			
 	
 	if(choixSkill == 3 || choixSkill == 5 || choixSkill == 7 || choixSkill == 8):
 		priorite = true
@@ -461,7 +459,7 @@ func castSkill8():
 		lucyDegats(40 + randi()%5)
 		cible.abled()
 		cible.tourEffectue = true
-	if(aFlaux.pv > 0 && not(aFlaux.hide)):
+	if(aFlaux.pv > 0):
 		cibler(aFlaux)
 		lucyDegats(40 + randi()%5)
 		cible.abled()

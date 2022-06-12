@@ -11,15 +11,20 @@ onready var flagDeSurete = false
 
 func _ready():
 
-	pvmax = 999
-	pv = 999
-	defense = 999
+	pvmax = 181
+	pv = 181
+	barreVie.max_value = pvmax
+	barreVie.value = pv
+	defense = 30
 	vitesse = 0
 
-func degatsPrisDef(_degats):
-	if(combat.combattants[combat.iActuel] == aFlaux):
-		degatsPris(333)
-		return str(333)
+func degatsPrisDef(degats):
+	if(combat.prio && combat.combattantsBase[combat.iActuel] == aFlaux):
+		degatsPris(degats-defense)
+		return str(degats-defense)
+	elif(combat.combattants[combat.iActuel] == aFlaux):
+		degatsPris(degats-defense)
+		return str(degats-defense)
 	else:
 		degatsPris(1)
 		return str(1)

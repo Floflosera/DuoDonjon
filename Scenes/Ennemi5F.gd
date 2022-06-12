@@ -9,15 +9,20 @@ onready var aLucy = get_node("../Ennemi5")
 
 func _ready():
 
-	pvmax = 999
-	pv = 999
+	pvmax = 140
+	pv = 140
+	barreVie.max_value = pvmax
+	barreVie.value = pv
 	defense = 0
 	vitesse = 0
 
-func degatsPrisDef(_degats):
+func degatsPrisDef(degats):
+	if(combat.prio && combat.combattantsBase[combat.iActuel] == aHarry):
+		degatsPris(degats-defense)
+		return str(degats-defense)
 	if(combat.combattants[combat.iActuel] == aHarry):
-		degatsPris(333)
-		return str(333)
+		degatsPris(degats-defense)
+		return str(degats-defense)
 	else:
 		degatsPris(1)
 		return str(1)

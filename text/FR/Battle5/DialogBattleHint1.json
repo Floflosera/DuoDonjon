@@ -2,5 +2,5 @@
   "dialog_1" : {"textHarry": "", "spHarry": "0", "textFlaux": "Elle se débrouille bien...", "spFlaux": "2", "cadreN": "", "spLucy": "1", "supOther": "true", "devent": "0"},
   "dialog_2" : {"textHarry": "C'est bien la Lucy que je connais. Mais elle n'a pas l'habitude d'utiliser ces armes.", "spHarry": "0", "textFlaux": "", "spFlaux": "2", "cadreN": "", "spLucy": "1", "supOther": "true", "devent": "0"},
   "dialog_3" : {"textHarry": "Essaie de la déstabiliser en attaquant son… bouclier. Je m'occupe de sa faux.", "spHarry": "2", "textFlaux": "", "spFlaux": "2", "cadreN": "", "spLucy": "1", "supOther": "true", "devent": "0"},
-  "dialog_4" : {"textHarry": "Si tu fais une seule éraflure sur cette faux... Tu paieras de ta poche !", "spHarry": "2", "textFlaux": "", "spFlaux": "2", "cadreN": "", "spLucy": "1", "supOther": "true", "devent": "0"},
+  "dialog_4" : {"textHarry": "", "spHarry": "2", "textFlaux": "", "spFlaux": "2", "cadreN": "Si tu fais une seule éraflure sur cette faux... Tu paieras de ta poche !", "spLucy": "1", "supOther": "true", "devent": "0"},
 }

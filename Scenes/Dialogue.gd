@@ -145,7 +145,7 @@ func boiteDeDiaAnim(textHarry,spHarry,textFlaux,spFlaux,supOther):
 			$HBoxContainer/HarryDia.modifDia(tempTextH)	#On affiche ce texte temporaire
 			$TimerDia.start()							#On attend un peu, puis on recommence jusqu'à la fin du string
 			yield($TimerDia,"timeout")
-			if Input.is_action_pressed("ui_select"):		#Si le joueur appuie sur une touche de validation
+			if Input.is_action_pressed("ui_accept"):		#Si le joueur appuie sur une touche de validation
 				$HBoxContainer/HarryDia.modifDia(textHarry)	#Alors on affiche tout le texte directement
 				if(multi):
 					yield(HarryDia.spriteAnim,"frame_changed")
@@ -162,7 +162,7 @@ func boiteDeDiaAnim(textHarry,spHarry,textFlaux,spFlaux,supOther):
 			$HBoxContainer/FlauxDia.modifDia(tempTextF)
 			$TimerDia.start()
 			yield($TimerDia,"timeout")
-			if ((not(multi) && Input.is_action_pressed("ui_select")) || (multi && Input.is_action_pressed("ui_multi_select"))):
+			if ((not(multi) && Input.is_action_pressed("ui_accept")) || (multi && Input.is_action_pressed("ui_multi_select"))):
 				$HBoxContainer/FlauxDia.modifDia(textFlaux)
 				if(multi):
 					yield(HarryDia.spriteAnim,"frame_changed")
@@ -196,7 +196,7 @@ func _process(_delta):
 	
 	if(multi):
 		
-		if Input.is_action_just_pressed("ui_select") && confirmH.visible:
+		if Input.is_action_just_pressed("ui_accept") && confirmH.visible:
 			confirmH.toggle_mode = true
 			confirmH.pressed = true
 		
@@ -205,7 +205,7 @@ func _process(_delta):
 			confirmF.pressed = true
 		
 		if(confirmH.toggle_mode):
-			if not(Input.is_action_pressed("ui_select")):
+			if not(Input.is_action_pressed("ui_accept")):
 				confirmH.pressed = false
 				confirmH.toggle_mode = false
 				emit_signal("confirmHpro")
@@ -277,7 +277,7 @@ func narraRead(spHarry, spFlaux, textNar):
 		cadreN.set_text(tempNar)
 		$TimerDia.start()
 		yield($TimerDia,"timeout")
-		if Input.is_action_pressed("ui_select"):
+		if Input.is_action_pressed("ui_accept"):
 			cadreN.set_text(textNar)
 			break
 	

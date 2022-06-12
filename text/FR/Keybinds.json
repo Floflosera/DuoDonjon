@@ -1,0 +1,18 @@
+{
+  "accept" : {	"text": "Valider"},
+  "cancel" : {	"text": "Retour"},
+  "left" : {	"text": "Gauche"},
+  "right" : {	"text": "Droite"},
+  "up" : {	"text": "Haut"},
+  "down" : {	"text": "Bas"},
+
+  "multi_select" : {	"text": "Valider          (Joueur 2)"},
+  "multi_cancel" : {	"text": "Retour          (Joueur 2)"},
+  "multi_left" : {	"text": "Gauche        (Joueur 2)"},
+  "multi_right" : {	"text": "Droite          (Joueur 2)"},
+  "multi_up" : {	"text": "Haut            (Joueur 2)"},
+  "multi_down" : {	"text": "Bas              (Joueur 2)"},
+
+  "pressAnyButton" : {	"text": "Choisissez une touche"},
+  "unassigned" : {	"text": "Non assignée"},
+}

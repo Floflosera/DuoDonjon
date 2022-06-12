@@ -103,12 +103,24 @@ func load_menuText():
 	menuC.settingsControl.set_text(menu_text)
 	ligne_menu(12)
 	menuC.settingsQuitSet.set_text(menu_text)
+	ligne_menu(12)
+	menuC.settingsQuitKey.set_text(menu_text)
 	ligne_menu(13)
 	menuC.settingsVolumeBGM.set_text(menu_text)
 	ligne_menu(14)
 	menuC.settingsVolumeSE.set_text(menu_text)
 	ligne_menu(15)
 	menuC.settingsFullScreen.set_text(menu_text)
+	ligne_menu(16)
+	menuC.settingsKeybinds.set_text(menu_text)
+	ligne_menu(17)
+	menuC.settingsDefault.set_text(menu_text)
+	ligne_menu(18)
+	menuC.settingsInfoKey.set_text(menu_text)
+	ligne_menu(19)
+	menuC.settingsCancelKey.set_text(menu_text)
+	
+	menuC.touches.load_keyText(fr)
 
 func bgmVolume(x):
 	BGMvolume += x
