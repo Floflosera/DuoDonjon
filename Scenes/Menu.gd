@@ -185,7 +185,7 @@ func _on_QuitKey_pressed():
 func _on_Default_pressed():
 	Global.filepath = "res://keybindsDef.ini"
 	Global.lecture_ini()
-	Global.filepath = "res://keybinds.ini"
+	Global.filepath = "user://keybinds.ini"
 	touches.key_canceled()
 
 func _on_CancelKey_pressed():

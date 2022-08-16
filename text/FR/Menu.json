@@ -19,6 +19,6 @@
   "fullscreen" : {	"text": "Plein écran"},
   "keybinds" : {	"text": "Commandes"},
   "default" : {		"text": "Par défaut"},
-  "infoTextKey" : {	"text": "Utilisez la souris pour cliquez sur les touches que vous souhaitez changer.\nCliquez sur Valider pour confirmer."},
+  "infoTextKey" : {	"text": "Utilisez la souris pour cliquer sur les touches que vous souhaitez changer.\nCliquez sur Valider pour confirmer."},
   "cancelKey" : {	"text": "Annuler modifications"},
 }

@@ -43,6 +43,9 @@ func load_keyText(fr):
 
 	index_key()
 	
+	if(not(Global.kfini)):
+		yield(Global,"kfinito")
+	
 	keybinds = Global.keybinds.duplicate()
 	
 	for k in range(0,12):
